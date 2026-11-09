@@ -1,0 +1,42 @@
+
+name: TRAG 24 - automatska obrada analiza
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '15 6 * * *'
+    - cron: '15 14 * * *'
+    - cron: '15 19 * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: trag24-analize
+  cancel-in-progress: false
+
+jobs:
+  obrada-analiza:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Preuzmi repozitorijum
+        uses: actions/checkout@v4
+
+      - name: Podesi Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Obradi analize
+        run: python scripts/update_analize.py
+
+      - name: Sacuvaj izmene
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add analize.json
+          if ! git diff --cached --quiet; then
+            git commit -m "TRAG 24: azurirane analize"
+            git push
+          fi

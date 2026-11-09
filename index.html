@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 
 <html lang="sr"><head><link rel="apple-touch-icon" sizes="180x180" href="/trag24-portal/apple-touch-icon.png"><meta property="og:type" content="website">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-33ZW61DWWD"></script>
+
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-33ZW61DWWD');
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent', 'default', {
+  'analytics_storage': 'denied',
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied'
+});
+gtag('js', new Date());
+gtag('config', 'G-33ZW61DWWD');
+
+if (localStorage.getItem('trag24_analytics_consent') === 'granted') {
+  gtag('consent', 'update', {
+    'analytics_storage': 'granted'
+  });
+}
 </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33ZW61DWWD"></script>
+
 <link rel="manifest" href="/trag24-portal/manifest.webmanifest">
 
 <script>
@@ -54,4 +68,30 @@ function story(x,kind){const el=document.createElement('article');el.className=k
 function buildCategories(){const n=$('categories');n.replaceChildren();for(const c of cats){const b=document.createElement('button');b.textContent=c==='Sve'?'Sve vesti':c;b.className=active===c?'active':'';b.setAttribute('aria-pressed',String(active===c));b.onclick=()=>{active=c;buildCategories();render()};n.append(b)}}document.querySelectorAll('.region').forEach(b=>b.onclick=()=>{region=b.dataset.region;active='Sve';document.querySelectorAll('.region').forEach(x=>x.classList.toggle('active',x===b));$('heading').textContent=region==='Srbija'?'Vesti iz Srbije':'Vesti iz sveta';buildCategories();render()});$('search').addEventListener('input',render);
 function render(){const q=$('search').value.toLocaleLowerCase('sr');$('listTitle').textContent=active==='Sve'?'Najnovije vesti':active;const arr=items.filter(x=>newsRegion(x)===region&&(active==='Sve'||normCat(x.category)===active)&&[x.title,x.summary||''].join(' ').toLocaleLowerCase('sr').includes(q));const featured=$('featured'),feed=$('feed');featured.replaceChildren();feed.replaceChildren();featured.hidden=!arr.length;$('count').textContent=arr.length+' objava';if(arr.length){featured.append(story(arr[0],'feature-main'));const side=document.createElement('div');side.className='side';for(const x of arr.slice(1,3))side.append(story(x,'side-story'));featured.append(side);for(const x of arr.slice(3))feed.append(story(x,'story'))}$('status').style.display=arr.length?'none':'block';$('status').textContent=items.length?'Nema vesti za izabranu rubriku ili pretragu.':'Trenutno nema dostupnih vesti.'}
 async function load(){try{const r=await fetch('./news.json',{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);const data=await r.json();if(!Array.isArray(data.articles))throw Error('Format');items=data.articles.filter(x=>x&&typeof x.title==='string'&&typeof x.category==='string'&&typeof x.source_url==='string'&&/^https:\/\//.test(x.source_url));render()}catch(e){$('status').textContent='Vesti trenutno nisu dostupne. Pokušajte ponovo kasnije.';console.error(e)}}buildCategories();load();
-</script></body></html>
+</script>
+
+<div id="trag24-cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:99999;background:#101d30;color:white;padding:20px;text-align:center;font:15px Arial,sans-serif;box-shadow:0 -3px 15px #0005">
+  <div style="max-width:850px;margin:auto">
+    TRAG 24 koristi analitičke kolačiće samo uz vašu saglasnost, radi praćenja posećenosti portala.
+    <div style="margin-top:14px">
+      <button onclick="trag24Consent(true)" style="background:#e5b74d;color:#101d30;border:0;padding:12px 22px;border-radius:7px;font-weight:bold;margin:4px">Prihvatam</button>
+      <button onclick="trag24Consent(false)" style="background:transparent;color:white;border:1px solid white;padding:12px 22px;border-radius:7px;margin:4px">Odbijam</button>
+    </div>
+  </div>
+</div>
+<script>
+function trag24Consent(accepted) {
+  localStorage.setItem('trag24_analytics_consent', accepted ? 'granted' : 'denied');
+  if (typeof gtag === 'function') {
+    gtag('consent', 'update', {
+      analytics_storage: accepted ? 'granted' : 'denied'
+    });
+  }
+  document.getElementById('trag24-cookie-banner').style.display = 'none';
+}
+if (!localStorage.getItem('trag24_analytics_consent')) {
+  document.getElementById('trag24-cookie-banner').style.display = 'block';
+}
+</script>
+
+</body></html>

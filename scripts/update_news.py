@@ -176,7 +176,44 @@ def main():
             x['category'] = 'Ekonomija'
         if x.get('region') not in ('Srbija', 'Svet'):
             x['region'] = region(x.get('title', ''))
-    articles = sorted(items.values(), key=lambda x: x.get('published_at', ''), reverse=True)[:300]
+    
+    sve_vesti = sorted(
+        items.values(),
+        key=lambda x: x.get('published_at', ''),
+        reverse=True
+    )
+
+    po_izvorima = {izvor: [] for izvor in FEEDS}
+
+    for vest in sve_vesti:
+        izvor = vest.get('source')
+        if izvor in po_izvorima:
+            po_izvorima[izvor].append(vest)
+
+    articles = []
+    odabrani = set()
+
+    for redni_broj in range(30):
+        for izvor in FEEDS:
+            vesti_izvora = po_izvorima[izvor]
+            if redni_broj < len(vesti_izvora):
+                vest = vesti_izvora[redni_broj]
+                articles.append(vest)
+                odabrani.add(vest['id'])
+
+    for vest in sve_vesti:
+        if len(articles) >= 300:
+            break
+        if vest['id'] not in odabrani:
+            articles.append(vest)
+            odabrani.add(vest['id'])
+
+    articles = sorted(
+        articles[:300],
+        key=lambda x: x.get('published_at', ''),
+        reverse=True
+    )
+
     FILE.write_text(json.dumps({'updated_at': now.isoformat(), 'articles': articles}, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     print(f'Ukupno dodato {added}; sačuvano {len(articles)} vesti.')
 

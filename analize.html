@@ -32,17 +32,80 @@ footer a{color:white}
 <a class="back" href="./">← Nazad na najnovije vesti</a>
 <h1>Analize i objašnjenja</h1>
 <p class="intro">Važni događaji iz Srbije, njihova pozadina, potvrđene činjenice i otvorena pitanja. Bez senzacionalizma i političkog svrstavanja.</p>
-<article class="card">
-<div class="tag">TRAG 24 | ANALIZE</div>
-<h2>Kako TRAG 24 proverava informacije i razlikuje činjenice od tvrdnji</h2>
-<p>U vremenu kada se informacije šire velikom brzinom, važno je razlikovati potvrđene činjenice od tvrdnji, pretpostavki i mišljenja.</p>
 
-<p>TRAG 24 prenosi informacije iz javno dostupnih medijskih izvora. Samo objavljivanje neke vesti ne znači da su svi njeni navodi nezavisno potvrđeni. Zato je važno proveriti izvor, datum objavljivanja i da li postoje dodatne potvrde.</p>
+<div id="lista-analiza">
+  <article class="card">
+    <p>Učitavanje analiza...</p>
+  </article>
+</div>
 
-<p>Posebnu pažnju treba obratiti na razliku između zvaničnih saopštenja, izjava učesnika događaja i dokaza koji se mogu nezavisno proveriti.</p>
+<script>
+(async function () {
+  const lista = document.getElementById('lista-analiza');
 
-<p>Naš cilj je da čitaocima pružimo jasan kontekst, bez senzacionalizma i političkog svrstavanja.</p>
-</article>
+  function element(tag, className, tekst) {
+    const el = document.createElement(tag);
+    if (className) el.className = className;
+    el.textContent = tekst;
+    return el;
+  }
+
+  try {
+    const odgovor = await fetch('./analize.json', {
+      cache: 'no-store'
+    });
+    if (!odgovor.ok) throw new Error('Učitavanje nije uspelo');
+
+    const podaci = await odgovor.json();
+    const analize = (podaci.analize || [])
+      .filter(a => a.status === 'objavljeno')
+      .sort((a, b) => (b.datum || '').localeCompare(a.datum || ''));
+
+    lista.replaceChildren();
+
+    if (!analize.length) {
+      const kartica = element('article', 'card', 'Trenutno nema objavljenih analiza.');
+      lista.appendChild(kartica);
+      return;
+    }
+
+    for (const a of analize) {
+      const kartica = element('article', 'card', '');
+      kartica.appendChild(element('div', 'tag', 'TRAG 24 | ANALIZE'));
+      kartica.appendChild(element('h2', '', a.naslov || ''));
+
+      const meta = [a.datum, a.autor].filter(Boolean).join(' · ');
+      if (meta) kartica.appendChild(element('p', '', meta));
+
+      for (const pasus of (a.tekst || [])) {
+        kartica.appendChild(element('p', '', pasus));
+      }
+
+      if (Array.isArray(a.izvori) && a.izvori.length) {
+        kartica.appendChild(element('h3', '', 'Izvori'));
+        for (const izvor of a.izvori) {
+          if (typeof izvor !== 'string' || !/^https?:\/\//i.test(izvor)) continue;
+          const p = document.createElement('p');
+          const link = document.createElement('a');
+          link.href = izvor;
+          link.textContent = izvor;
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+          p.appendChild(link);
+          kartica.appendChild(p);
+        }
+      }
+
+      lista.appendChild(kartica);
+    }
+  } catch (greska) {
+    lista.replaceChildren(
+      element('article', 'card', 'Analize trenutno nisu dostupne. Pokušajte ponovo kasnije.')
+    );
+  }
+})();
+</script>
+
 </main>
 <footer>
 <strong>TRAG 24</strong>

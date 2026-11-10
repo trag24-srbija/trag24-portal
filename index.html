@@ -58,7 +58,33 @@ if ('serviceWorker' in navigator) {
 <div class="utility"><div class="container"><span>NEZAVISAN PREGLED MEDIJSKIH OBJAVA</span><span id="today"></span></div></div>
 <header class="container masthead"><div><div class="logo">TRAG <b>24</b></div><div class="tagline">SRBIJA · SVET · DOGAĐAJI</div></div><div class="edition">IZVORI UZ SVAKU VEST</div></header>
 
+<!-- TRAG 24 PREMIUM MENI -->
+<div class="nav-shell" style="background:#101d30;border-bottom:3px solid #b92336;">
+  <nav aria-label="Glavne sekcije" class="container nav"
+       style="display:flex;align-items:center;justify-content:space-between;gap:6px;">
 
+    <button class="region active" data-region="Srbija"
+      style="color:#fff;padding:14px 12px;font-size:13px;">
+      SRBIJA
+    </button>
+
+    <button class="region" data-region="Svet"
+      style="color:#fff;padding:14px 12px;font-size:13px;">
+      SVET
+    </button>
+
+    <a href="analize.html"
+       style="display:inline-flex;align-items:center;justify-content:center;
+       background:#b92336;color:#fff;padding:12px 16px;
+       border-radius:8px;text-decoration:none;font-size:13px;
+       font-weight:850;letter-spacing:.5px;white-space:nowrap;
+       margin-left:auto;box-shadow:0 3px 10px #0003;">
+      ◆ ANALIZE
+    </a>
+
+  </nav>
+</div>
+<!-- KRAJ PREMIUM MENIJA -->
 
 <main class="container main"><div class="intro"><div><div class="eyebrow">NAJNOVIJE INFORMACIJE</div><h1 id="heading">Vesti iz Srbije</h1></div><div class="note">Pregled najnovijih objava uz jasno označene izvore.</div></div><nav aria-label="Rubrike" class="category-nav" id="categories"></nav><div class="tools"><h2 id="listTitle">Najnovije vesti</h2><input aria-label="Pretraži vesti" id="search" placeholder="Pretraži vesti…" type="search"/></div><div class="notice" id="status" role="status">Učitavanje vesti…</div><section aria-label="Izdvojene vesti" class="featured" hidden="" id="featured"></section><div class="section-heading"><h2>OSTALE VESTI</h2><span id="count"></span></div><section aria-label="Sve vesti" class="feed" id="feed"></section><section class="editorial"><h2>Urednička napomena</h2><p>TRAG 24 automatski prikazuje naslove i informacije iz javno dostupnih medijskih izvora. Redakcija TRAG 24 ne potvrđuje nezavisno navode drugih medija. Svaka objava sadrži vezu ka izvornom članku. Automatsko razvrstavanje po temi i geografiji može sadržati greške.</p></section></main>
 <footer><div class="container"><strong>TRAG 24</strong><span>© <span id="year"></span> · Srbija i svet · Izvori uz svaku vest</span></div><div style="text-align:center;margin-top:15px;">
@@ -104,7 +130,78 @@ if (!localStorage.getItem('trag24_analytics_consent')) {
 </script>
 
 
+<!-- TRAG 24 | POVRATAK NA VRH -->
+<style>
+#trag24-vrh {
+  position: fixed;
+  right: 18px;
+  bottom: 25px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 13px 17px;
+  background: #b92336;
+  color: white;
+  border: 1px solid #ffffff33;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .5px;
+  box-shadow: 0 5px 20px #0004;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(15px);
+  transition: all .25s ease;
+}
 
+#trag24-vrh.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  #trag24-vrh {
+    right: 15px;
+    bottom: 22px;
+    padding: 12px 15px;
+  }
+}
+</style>
+
+<button id="trag24-vrh" type="button"
+  aria-label="Vrati se na vrh stranice">
+  <span aria-hidden="true">↑</span> VRH
+</button>
+
+<script>
+(function () {
+  const dugme = document.getElementById('trag24-vrh');
+
+  function proveriSkrol() {
+    dugme.classList.toggle(
+      'visible',
+      window.scrollY > 400
+    );
+  }
+
+  window.addEventListener('scroll', proveriSkrol, {
+    passive: true
+  });
+
+  dugme.addEventListener('click', function () {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+
+  proveriSkrol();
+})();
+</script>
+<!-- KRAJ POVRATKA NA VRH -->
 
 <!-- TRAG 24 | INSTALIRAJ APLIKACIJU -->
 <style>
@@ -250,213 +347,5 @@ if (!localStorage.getItem('trag24_analytics_consent')) {
 })();
 </script>
 <!-- KRAJ INSTALACIJE TRAG 24 -->
-
-<!-- TRAG 24 PREMIUM REDIZAJN -->
-<style>
-:root {
-  color-scheme: dark;
-}
-html, body {
-  background: #071426;
-  color: #f4f7fc;
-}
-.utility {
-  background: #050e1c;
-  color: #a9b9ce;
-}
-.masthead {
-  background: #071426;
-  padding: 26px 0;
-}
-.logo {
-  color: #fff;
-  text-shadow: 0 4px 18px #0005;
-}
-.logo b {
-  background: linear-gradient(135deg,#e51a3c,#a40f29);
-  border-radius: 6px;
-}
-.tagline, .edition {
-  color: #b8c8db;
-}
-.nav-shell {
-  background: #0c1b30 !important;
-}
-.nav .region {
-  color: #fff !important;
-  border-radius: 8px;
-}
-.nav .region.active {
-  background: #b92336;
-  border-bottom-color: #e9475e;
-}
-.main {
-  padding-top: 27px;
-}
-.intro h1 {
-  color: #fff;
-  font-family: system-ui, sans-serif;
-  font-weight: 850;
-}
-.eyebrow {
-  color: #ff5770;
-}
-.note {
-  color: #b5c5d8;
-}
-.category-nav button {
-  background: #10243d;
-  color: #e7edf7;
-  border: 1px solid #304b6a;
-  border-radius: 11px;
-}
-.category-nav button.active {
-  background: #b92336;
-  border-color: #e34d64;
-}
-.tools {
-  border-top-color: #2d425b;
-}
-.tools h2 {
-  color: #fff;
-}
-.tools input {
-  background: #102139;
-  color: #fff;
-  border: 1px solid #36506c;
-  border-radius: 10px;
-}
-.tools input::placeholder {
-  color: #9fb0c5;
-}
-.notice {
-  background: #10243d;
-  border: 1px solid #334e6c;
-  color: #d2ddea;
-  border-radius: 12px;
-}
-.featured {
-  background: linear-gradient(120deg,#172f4f,#0a1a2e);
-  border: 1px solid #496887;
-  border-top: 3px solid #d31d3d;
-  border-radius: 18px;
-  padding: 25px;
-  box-shadow: 0 14px 36px #0004;
-}
-.featured h2,
-.featured h3,
-.story h3 {
-  color: #fff;
-  font-family: system-ui, sans-serif !important;
-  font-weight: 800 !important;
-}
-.featured h2 {
-  font-size: 30px !important;
-  line-height: 1.2 !important;
-}
-.label {
-  display: inline-block;
-  background: #b92336;
-  color: #fff;
-  padding: 6px 9px;
-  border-radius: 6px;
-  font-size: 10px;
-}
-.date {
-  color: #b4c3d6;
-}
-.summary {
-  color: #c4d1e0;
-  line-height: 1.65;
-}
-.source {
-  border-top-color: #354c67;
-  color: #c7d3e2;
-}
-.source a {
-  color: #fff;
-  border: 1px solid #6d819a;
-  border-radius: 30px;
-  padding: 8px 12px;
-}
-.side {
-  border-left-color: #3b536d;
-}
-.side-story {
-  border-bottom-color: #3b536d;
-}
-.section-heading {
-  border-bottom-color: #3c5673;
-}
-.section-heading h2 {
-  color: #fff;
-  font-size: 21px;
-}
-.story {
-  background: linear-gradient(145deg,#142a46,#0a192c);
-  border: 1px solid #345475;
-  border-radius: 15px;
-  padding: 21px;
-  box-shadow: 0 6px 22px #0003;
-}
-.editorial {
-  border-top-color: #30445f;
-}
-.editorial h2 {
-  color: #e6edf8;
-}
-.editorial p {
-  color: #a7b8cb;
-}
-footer {
-  background: #050f1e;
-}
-#trag24-install:not([hidden]) {
-  background: linear-gradient(110deg,#173354,#0a192c) !important;
-  border: 1px solid #355c83 !important;
-  border-radius: 14px !important;
-  padding: 12px 15px !important;
-  box-shadow: 0 9px 28px #0004 !important;
-}
-#trag24-install .install-row {
-  flex-wrap: nowrap !important;
-}
-#trag24-install .install-text {
-  min-width: 0 !important;
-}
-#trag24-install strong {
-  color: #fff !important;
-}
-#trag24-install p {
-  color: #b7c9df !important;
-}
-#trag24-install-btn {
-  background: linear-gradient(135deg,#e02142,#ad0d2a) !important;
-  border-radius: 9px !important;
-  padding: 11px 12px !important;
-  white-space: nowrap;
-}
-#trag24-install-close {
-  color: #c0cee0 !important;
-}
-#trag24-install-help {
-  background: #1b304b !important;
-  color: #e8f0fb !important;
-}
-@media(max-width:600px) {
-  .masthead { padding: 20px 0; }
-  .logo { font-size: 40px; }
-  .featured { padding: 19px; }
-  .featured h2 { font-size: 25px !important; }
-  .story { padding: 18px; }
-  #trag24-install strong { font-size: 12px !important; }
-  #trag24-install p { font-size: 10px !important; }
-  #trag24-install-btn {
-    font-size: 10px !important;
-    padding: 10px 9px !important;
-  }
-}
-</style>
-<!-- KRAJ PREMIUM REDIZAJNA -->
 
 </body></html>

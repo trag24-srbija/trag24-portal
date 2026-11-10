@@ -153,5 +153,73 @@ kartica.appendChild(napomena);
 <a href="o-nama.html">O nama</a> ·
 <a href="politika-privatnosti.html">Politika privatnosti</a>
 </footer>
+
+<!-- TRAG 24 | DUGME VRH -->
+<style>
+#trag24-vrh {
+  position: fixed;
+  right: 15px;
+  bottom: 22px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 12px 15px;
+  background: #b92336;
+  color: #fff;
+  border: 1px solid #ffffff33;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .5px;
+  box-shadow: 0 5px 20px #0004;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(15px);
+  transition: opacity .25s ease,
+              transform .25s ease,
+              visibility .25s ease;
+}
+
+#trag24-vrh.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+</style>
+
+<button id="trag24-vrh" type="button"
+  aria-label="Vrati se na vrh stranice">
+  <span aria-hidden="true">↑</span> VRH
+</button>
+
+<script>
+(function () {
+  const dugme = document.getElementById('trag24-vrh');
+
+  function proveriSkrol() {
+    dugme.classList.toggle(
+      'visible',
+      window.scrollY > 400
+    );
+  }
+
+  window.addEventListener('scroll', proveriSkrol, {
+    passive: true
+  });
+
+  dugme.addEventListener('click', function () {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+
+  proveriSkrol();
+})();
+</script>
+<!-- KRAJ DUGMETA VRH -->
+
 </body>
 </html>

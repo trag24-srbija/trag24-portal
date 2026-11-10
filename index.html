@@ -202,4 +202,150 @@ if (!localStorage.getItem('trag24_analytics_consent')) {
 })();
 </script>
 <!-- KRAJ POVRATKA NA VRH -->
+
+<!-- TRAG 24 | INSTALIRAJ APLIKACIJU -->
+<style>
+#trag24-install {
+  max-width: 1120px;
+  margin: 16px auto;
+  padding: 15px;
+  border: 1px solid #dfe5ed;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 4px 18px #101d3010;
+  font-family: system-ui, sans-serif;
+}
+#trag24-install .install-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+#trag24-install .install-text {
+  flex: 1;
+  min-width: 155px;
+}
+#trag24-install strong {
+  color: #101d30;
+  font-size: 14px;
+}
+#trag24-install p {
+  color: #66758a;
+  font-size: 12px;
+  margin: 5px 0 0;
+}
+#trag24-install-btn {
+  background: #b92336;
+  color: white;
+  border: 0;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-weight: 800;
+  font-size: 12px;
+}
+#trag24-install-close {
+  border: 0;
+  background: transparent;
+  color: #64748b;
+  font-size: 22px;
+  padding: 5px;
+}
+#trag24-install-help {
+  display: none;
+  margin-top: 14px;
+  padding: 13px;
+  background: #f3f5f8;
+  border-radius: 8px;
+  color: #26364c;
+  font-size: 13px;
+  line-height: 1.7;
+}
+@media(max-width:600px) {
+  #trag24-install {
+    margin: 12px 16px;
+  }
+}
+</style>
+
+<div id="trag24-install" hidden>
+  <div class="install-row">
+    <div class="install-text">
+      <strong>TRAG 24 na tvom telefonu</strong>
+      <p>Brz pristup vestima i analizama.</p>
+    </div>
+    <button id="trag24-install-btn" type="button">
+      PREUZMI APLIKACIJU
+    </button>
+    <button id="trag24-install-close"
+      type="button" aria-label="Zatvori">×</button>
+  </div>
+  <div id="trag24-install-help"></div>
+</div>
+
+<script>
+(function () {
+  let installEvent = null;
+
+  const panel = document.getElementById('trag24-install');
+  const btn = document.getElementById('trag24-install-btn');
+  const close = document.getElementById('trag24-install-close');
+  const help = document.getElementById('trag24-install-help');
+
+  const ua = navigator.userAgent;
+  const ios = /iPhone|iPad|iPod/i.test(ua) ||
+    (navigator.platform === 'MacIntel' &&
+     navigator.maxTouchPoints > 1);
+  const android = /Android/i.test(ua);
+
+  const installed =
+    window.matchMedia('(display-mode: standalone)').matches ||
+    navigator.standalone === true;
+
+  if (!installed && (ios || android)) {
+    const nav = document.querySelector('.nav-shell');
+    if (nav) nav.insertAdjacentElement('afterend', panel);
+    panel.hidden = false;
+  }
+
+  window.addEventListener('beforeinstallprompt', function(e) {
+    e.preventDefault();
+    installEvent = e;
+  });
+
+  btn.addEventListener('click', async function() {
+    if (installEvent) {
+      const event = installEvent;
+      installEvent = null;
+      await event.prompt();
+      return;
+    }
+
+    help.style.display = 'block';
+
+    if (ios) {
+      help.textContent =
+        'iPhone: Otvori TRAG 24 u Safariju. ' +
+        'Dodirni dugme Deli (kvadrat sa strelicom), ' +
+        'zatim Dodaj na početni ekran i potvrdi Dodaj. ' +
+        'Ako koristiš drugi pregledač, otvori sajt u Safariju.';
+    } else {
+      help.textContent =
+        'Android: Otvori TRAG 24 u Chrome-u. ' +
+        'Dodirni meni sa tri tačke i izaberi ' +
+        'Instaliraj aplikaciju ili Dodaj na početni ekran.';
+    }
+  });
+
+  close.addEventListener('click', function() {
+    panel.hidden = true;
+  });
+
+  window.addEventListener('appinstalled', function() {
+    panel.hidden = true;
+    installEvent = null;
+  });
+})();
+</script>
+<!-- KRAJ INSTALACIJE TRAG 24 -->
+
 </body></html>

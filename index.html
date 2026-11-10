@@ -104,78 +104,7 @@ if (!localStorage.getItem('trag24_analytics_consent')) {
 </script>
 
 
-<!-- TRAG 24 | POVRATAK NA VRH -->
-<style>
-#trag24-vrh {
-  position: fixed;
-  right: 18px;
-  bottom: 25px;
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  padding: 13px 17px;
-  background: #b92336;
-  color: white;
-  border: 1px solid #ffffff33;
-  border-radius: 30px;
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: .5px;
-  box-shadow: 0 5px 20px #0004;
-  cursor: pointer;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(15px);
-  transition: all .25s ease;
-}
 
-#trag24-vrh.visible {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-@media (max-width: 600px) {
-  #trag24-vrh {
-    right: 15px;
-    bottom: 22px;
-    padding: 12px 15px;
-  }
-}
-</style>
-
-<button id="trag24-vrh" type="button"
-  aria-label="Vrati se na vrh stranice">
-  <span aria-hidden="true">↑</span> VRH
-</button>
-
-<script>
-(function () {
-  const dugme = document.getElementById('trag24-vrh');
-
-  function proveriSkrol() {
-    dugme.classList.toggle(
-      'visible',
-      window.scrollY > 400
-    );
-  }
-
-  window.addEventListener('scroll', proveriSkrol, {
-    passive: true
-  });
-
-  dugme.addEventListener('click', function () {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  });
-
-  proveriSkrol();
-})();
-</script>
-<!-- KRAJ POVRATKA NA VRH -->
 
 <!-- TRAG 24 | INSTALIRAJ APLIKACIJU -->
 <style>

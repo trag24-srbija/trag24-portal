@@ -77,9 +77,37 @@ footer a{color:white}
       const meta = [a.datum, a.autor].filter(Boolean).join(' · ');
       if (meta) kartica.appendChild(element('p', '', meta));
 
-      for (const pasus of (a.tekst || [])) {
-        kartica.appendChild(element('p', '', pasus));
-      }
+      
+for (const pasus of (a.tekst || [])) {
+  const tekst = String(pasus || '').trim();
+  const delovi = tekst.match(/^([^:]{3,50}):\s*(.*)$/s);
+
+  const naslovi = [
+    'ŠTA SE DOGODILO',
+    'HRONOLOGIJA',
+    'ŠTA NAVODE IZVORI',
+    'ŠTA JE POTVRĐENO',
+    'ŠTA NIJE POTVRĐENO',
+    'ŠTA OSTAJE OTVORENO'
+  ];
+
+  if (delovi && naslovi.includes(delovi[1].trim().toUpperCase())) {
+    const naslov = element('h3', '', delovi[1].trim());
+    naslov.style.fontWeight = 'bold';
+    naslov.style.fontSize = '19px';
+    naslov.style.color = '#142238';
+    naslov.style.marginTop = '28px';
+    naslov.style.marginBottom = '8px';
+    kartica.appendChild(naslov);
+
+    if (delovi[2].trim()) {
+      kartica.appendChild(element('p', '', delovi[2].trim()));
+    }
+  } else {
+    kartica.appendChild(element('p', '', tekst));
+  }
+}
+
 
       if (Array.isArray(a.izvori) && a.izvori.length) {
         kartica.appendChild(element('h3', '', 'Izvori'));

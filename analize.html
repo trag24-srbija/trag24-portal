@@ -91,7 +91,9 @@ for (const pasus of (a.tekst || [])) {
     'ŠTA OSTAJE OTVORENO'
   ];
 
-  if (delovi && naslovi.includes(delovi[1].trim().toUpperCase())) {
+  
+if (delovi && (naslovi.includes(delovi[1].trim().toUpperCase()) || delovi[1].trim().toUpperCase().startsWith('ŠTA OSTA'))) {
+
     const naslov = element('h3', '', delovi[1].trim());
     naslov.style.fontWeight = 'bold';
     naslov.style.fontSize = '19px';

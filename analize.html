@@ -95,7 +95,17 @@ footer a{color:white}
           kartica.appendChild(p);
         }
       }
-lista.appendChild(kartica);
+
+const napomena = document.createElement('p');
+napomena.textContent =
+  'Ova analiza je pripremljena uz pomoć veštačke inteligencije ' +
+  'na osnovu javno dostupnih vesti navedenih medija. ' +
+  'Navodi izvora nisu nužno nezavisno potvrđeni.';
+napomena.style.fontSize = '13px';
+napomena.style.borderTop = '1px solid #e2e8f0';
+napomena.style.paddingTop = '14px';
+kartica.appendChild(napomena);
+
       lista.appendChild(kartica);
     }
   } catch (greska) {

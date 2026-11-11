@@ -29,6 +29,10 @@ jobs:
           python-version: '3.12'
 
       
+      - name: Instaliraj biblioteku za slike
+        run: pip install Pillow
+
+
       - name: Obradi analize
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}

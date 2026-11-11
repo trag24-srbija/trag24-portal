@@ -73,6 +73,26 @@ footer a{color:white}
       const kartica = element('article', 'card', '');
       kartica.appendChild(element('div', 'tag', 'TRAG 24 | ANALIZE'));
       kartica.appendChild(element('h2', '', a.naslov || ''));
+      
+const putanjaSlike = a.slika || a.image || '';
+
+if (typeof putanjaSlike === 'string' &&
+    putanjaSlike.trim() &&
+    /^(https?:\/\/|\.?\/|slike\/)/i.test(putanjaSlike.trim())) {
+  const slika = document.createElement('img');
+  slika.src = putanjaSlike.trim();
+  slika.alt = 'Ilustracija analize: ' + (a.naslov || 'TRAG 24');
+  slika.loading = 'lazy';
+  slika.style.width = '100%';
+  slika.style.height = 'auto';
+  slika.style.aspectRatio = '4 / 5';
+  slika.style.objectFit = 'cover';
+  slika.style.borderRadius = '12px';
+  slika.style.marginTop = '16px';
+  slika.style.marginBottom = '20px';
+  kartica.appendChild(slika);
+}
+
 
       const meta = [a.datum, a.autor].filter(Boolean).join(' · ');
       if (meta) kartica.appendChild(element('p', '', meta));

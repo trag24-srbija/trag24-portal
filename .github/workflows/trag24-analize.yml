@@ -38,6 +38,10 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: python scripts/update_analize.py
 
+      - name: Generisi ilustracije
+        run: python scripts/generate_images.py
+
+
 
       - name: Sacuvaj izmene
         run: |

@@ -427,6 +427,7 @@ def main():
             "datum": local.strftime("%Y-%m-%d"),
             "kategorija": group["category"],
             "naslov": result["title"],
+            "slika": f"slike/{uid}.png",
             "autor": "TRAG 24 — AI pregled izvora",
             "tekst": result["sections"],
             "izvori": [

@@ -23,6 +23,12 @@ FEEDS = {
     
     'Informer': 'https://informer.rs/rss/najnovije-vesti',
 
+    'Vreme': 'https://vreme.com/feed/',
+    'Insajder': 'https://insajder.net/feed/',
+    '021.rs': 'https://www.021.rs/rss/',
+    'Niške Vesti': 'https://niskevesti.rs/feed/',
+    'Južne vesti': 'https://www.juznevesti.com/feed/',
+
 }
 
 

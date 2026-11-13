@@ -231,7 +231,7 @@ def generate():
 
     for item in sorted(
         data.get("analize", []),
-        key=lambda a: str(a.get("datum", "")),
+        key=lambda a: str(a.get("objavljeno_u") or a.get("datum", "")),
         reverse=True
     ):
         if (
@@ -297,7 +297,7 @@ def generate():
 
         try:
             stamp = dt.datetime.fromisoformat(
-                str(item.get("datum", "")).replace(
+                str(item.get("objavljeno_u") or item.get("datum", "")).replace(
                     "Z", "+00:00"
                 )
             )

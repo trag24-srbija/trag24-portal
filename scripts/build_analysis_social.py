@@ -1,7 +1,7 @@
 
+
 #!/usr/bin/env python3
 import datetime as dt
-from zoneinfo import ZoneInfo
 import email.utils
 import html
 import json
@@ -9,6 +9,7 @@ import re
 import xml.etree.ElementTree as ET
 from pathlib import Path
 from urllib.parse import quote
+from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "analiza"
@@ -25,8 +26,10 @@ HEADINGS = {
     "ŠTA OSTAJE OTVORENO",
 }
 
+
 def esc(value):
     return html.escape(str(value), quote=True)
+
 
 def valid_image(item):
     relative = str(
@@ -51,9 +54,11 @@ def valid_image(item):
         (ROOT / "share.jpg").stat().st_size,
     )
 
+
 def paragraphs(item):
     data = item.get("tekst", [])
     return data if isinstance(data, list) else [data]
+
 
 def summary(item):
     for part in paragraphs(item):
@@ -69,6 +74,7 @@ def summary(item):
                 "…" if len(text) > 330 else ""
             )
     return "Najnovija analiza portala TRAG 24."
+
 
 def article_body(item):
     chunks = []
@@ -119,30 +125,30 @@ def article_body(item):
 
     return "\n".join(chunks)
 
+
+def display_date(item):
+    date = str(item.get("datum", ""))
+    if item.get("objavljeno_u"):
+        try:
+            stamp = dt.datetime.fromisoformat(
+                str(item["objavljeno_u"]).replace("Z", "+00:00")
+            )
+            if stamp.tzinfo is None:
+                stamp = stamp.replace(tzinfo=dt.timezone.utc)
+            return stamp.astimezone(
+                ZoneInfo("Europe/Belgrade")
+            ).strftime("%d.%m.%Y. u %H:%M")
+        except (ValueError, TypeError):
+            pass
+    return date
+
+
 def write_page(item, uid, image_path, image_url):
     title = str(item["naslov"]).strip()
     page_url = (
         BASE + "analiza/" + quote(uid) + ".html"
     )
-        date = str(item.get("datum", ""))
-
-    if item.get("objavljeno_u"):
-        stamp = dt.datetime.fromisoformat(
-            str(item["objavljeno_u"]).replace("Z", "+00:00")
-        )
-        date = stamp.astimezone(
-            ZoneInfo("Europe/Belgrade")
-        ).strftime("%d.%m.%Y. u %H:%M")
-
-    author = str(item.get("autor", "TRAG 24"))
-
-if item.get("objavljeno_u"):
-    stamp = dt.datetime.fromisoformat(
-        str(item["objavljeno_u"]).replace("Z", "+00:00")
-    )
-    date = stamp.astimezone(
-        ZoneInfo("Europe/Belgrade")
-    ).strftime("%d.%m.%Y. u %H:%M")
+    date = display_date(item)
     author = str(item.get("autor", "TRAG 24"))
     description = summary(item)
     image_src = "../" + image_path
@@ -225,6 +231,7 @@ TRAG 24 | <a href="../">Najnovije vesti</a>
         )
 
     return page_url
+
 
 def generate():
     data = json.loads(
@@ -345,6 +352,7 @@ def generate():
         f"TRAG 24: {len(processed)} stranica, "
         f"{published} RSS vesti."
     )
+
 
 if __name__ == "__main__":
     generate()

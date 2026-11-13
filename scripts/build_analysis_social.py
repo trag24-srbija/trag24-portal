@@ -1,6 +1,7 @@
 
 #!/usr/bin/env python3
 import datetime as dt
+from zoneinfo import ZoneInfo
 import email.utils
 import html
 import json
@@ -124,6 +125,14 @@ def write_page(item, uid, image_path, image_url):
         BASE + "analiza/" + quote(uid) + ".html"
     )
     date = str(item.get("datum", ""))
+
+if item.get("objavljeno_u"):
+    stamp = dt.datetime.fromisoformat(
+        str(item["objavljeno_u"]).replace("Z", "+00:00")
+    )
+    date = stamp.astimezone(
+        ZoneInfo("Europe/Belgrade")
+    ).strftime("%d.%m.%Y. u %H:%M")
     author = str(item.get("autor", "TRAG 24"))
     description = summary(item)
     image_src = "../" + image_path

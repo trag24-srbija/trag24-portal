@@ -425,6 +425,7 @@ def main():
         analyses.append({
             "id": uid,
             "datum": local.strftime("%Y-%m-%d"),
+            "objavljeno_u": now.isoformat(),
             "kategorija": group["category"],
             "naslov": result["title"],
             "slika": f"slike/{uid}.png",

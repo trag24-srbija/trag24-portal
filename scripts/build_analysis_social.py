@@ -182,7 +182,7 @@ footer a{{color:white}}
 <p>Srbija. Činjenice. Događaji.</p>
 </header>
 <main>
-<a href="../analize.html">← Sve analize</a>
+<a href="../index.html" style="display:inline-block;background:#b92336;color:#fff;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:700;margin-bottom:12px">← Sve vesti</a>
 <h1>{esc(title)}</h1>
 <p class="meta">{esc(date)} · {esc(author)}</p>
 <img class="cover" src="{esc(image_src)}"

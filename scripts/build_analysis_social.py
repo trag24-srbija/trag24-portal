@@ -124,7 +124,17 @@ def write_page(item, uid, image_path, image_url):
     page_url = (
         BASE + "analiza/" + quote(uid) + ".html"
     )
-    date = str(item.get("datum", ""))
+        date = str(item.get("datum", ""))
+
+    if item.get("objavljeno_u"):
+        stamp = dt.datetime.fromisoformat(
+            str(item["objavljeno_u"]).replace("Z", "+00:00")
+        )
+        date = stamp.astimezone(
+            ZoneInfo("Europe/Belgrade")
+        ).strftime("%d.%m.%Y. u %H:%M")
+
+    author = str(item.get("autor", "TRAG 24"))
 
 if item.get("objavljeno_u"):
     stamp = dt.datetime.fromisoformat(

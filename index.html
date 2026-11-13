@@ -58,6 +58,205 @@ if ('serviceWorker' in navigator) {
 <div class="utility"><div class="container"><span>NEZAVISAN PREGLED MEDIJSKIH OBJAVA</span><span id="today"></span></div></div>
 <header class="container masthead"><div><div class="logo">TRAG <b>24</b></div><div class="tagline">SRBIJA · SVET · DOGAĐAJI</div></div><div class="edition">IZVORI UZ SVAKU VEST</div></header>
 
+<!-- TRAG 24: DRUSTVENE MREZE -->
+<style>
+.trag-social {
+  background: #fff;
+  border-top: 1px solid #edf0f3;
+  border-bottom: 1px solid #dfe4ea;
+}
+.trag-social-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 0;
+}
+.trag-social-title {
+  color: #66758a;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+.trag-social-links {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.trag-social-link {
+  display: flex;
+  width: 38px;
+  height: 38px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  color: #fff;
+  text-decoration: none;
+}
+.trag-social-link svg {
+  width: 21px;
+  height: 21px;
+}
+.trag-fb { background: #1877f2; }
+.trag-ig {
+  background: linear-gradient(
+    135deg, #6c36c8, #c13584, #ef7750
+  );
+}
+.trag-tt { background: #111827; }
+.trag-share {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 38px;
+  padding: 0 13px;
+  border: 0;
+  border-radius: 10px;
+  color: #fff;
+  background: #b92336;
+  font-weight: 800;
+  font-size: 13px;
+  cursor: pointer;
+}
+.trag-share svg {
+  width: 18px;
+  height: 18px;
+}
+@media (max-width: 600px) {
+  .trag-social-title {
+    font-size: 10px;
+    letter-spacing: .3px;
+  }
+  .trag-social-links { gap: 6px; }
+  .trag-social-link {
+    width: 34px;
+    height: 34px;
+  }
+  .trag-share {
+    min-height: 34px;
+    padding: 0 9px;
+    font-size: 12px;
+  }
+}
+</style>
+
+<div class="trag-social">
+  <div class="container trag-social-inner">
+
+    <span class="trag-social-title">
+      PRATITE NAS
+    </span>
+
+    <div class="trag-social-links">
+
+      <!-- FACEBOOK -->
+      <a
+        href="https://www.facebook.com/share/1QU3rSXkbp/?mibextid=wwXIfr"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="trag-social-link trag-fb"
+        aria-label="TRAG 24 Facebook"
+        title="Facebook"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="currentColor"
+            d="M13.5 21v-8h2.7l.4-3.1h-3.1V8c0-.9.3-1.5 1.6-1.5h1.7V3.7c-.3-.1-1.3-.2-2.5-.2-2.5 0-4.2 1.5-4.2 4.3v2.1H7.5V13h2.6v8z"/>
+        </svg>
+      </a>
+
+      <!-- INSTAGRAM -->
+      <a
+        href="https://www.instagram.com/trag24.srbija/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="trag-social-link trag-ig"
+        aria-label="TRAG 24 Instagram"
+        title="Instagram"
+      >
+        <svg viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          aria-hidden="true">
+          <rect x="3" y="3" width="18"
+            height="18" rx="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5"
+            r="1" fill="currentColor"
+            stroke="none"/>
+        </svg>
+      </a>
+
+      <!-- TIKTOK -->
+      <a
+        href="https://www.tiktok.com/@trag24.srbija"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="trag-social-link trag-tt"
+        aria-label="TRAG 24 TikTok"
+        title="TikTok"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="currentColor"
+            d="M16 2c.2 2.8 1.7 4.5 4.4 4.7v3.4c-1.7 0-3.1-.5-4.4-1.4v6.1c0 4.5-3.2 7.1-7.3 7.1A6.6 6.6 0 0 1 2 15.3c0-4.1 3.2-7 7.3-7v3.6c-2.1-.1-3.6 1.2-3.6 3.4 0 2 1.4 3.2 3.2 3.2 2.1 0 3.5-1.4 3.5-3.9V2H16z"/>
+        </svg>
+      </a>
+
+      <!-- PODELI -->
+      <button
+        type="button"
+        class="trag-share"
+        id="trag-share-button"
+      >
+        <svg viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          aria-hidden="true">
+          <circle cx="18" cy="5" r="3"/>
+          <circle cx="6" cy="12" r="3"/>
+          <circle cx="18" cy="19" r="3"/>
+          <path d="m8.7 10.7 6.6-4.4M8.7 13.3l6.6 4.4"/>
+        </svg>
+        Podeli
+      </button>
+
+    </div>
+  </div>
+</div>
+
+<script>
+document.getElementById(
+  "trag-share-button"
+).addEventListener("click", async function () {
+  const url =
+    "https://trag24-srbija.github.io/trag24-portal/";
+
+  if (navigator.share) {
+    try {
+      await navigator.share({
+        title: "TRAG 24",
+        text: "Najnovije vesti iz Srbije i sveta",
+        url: url
+      });
+      return;
+    } catch (error) {
+      if (error.name === "AbortError") return;
+    }
+  }
+
+  try {
+    await navigator.clipboard.writeText(url);
+    alert("Link sajta je kopiran!");
+  } catch (error) {
+    window.prompt("Kopirajte link:", url);
+  }
+});
+</script>
+<!-- KRAJ DRUSTVENIH MREZA -->
+
 <!-- TRAG 24 PREMIUM MENI -->
 <div class="nav-shell" style="background:#101d30;border-bottom:3px solid #b92336;">
   <nav aria-label="Glavne sekcije" class="container nav"

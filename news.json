@@ -1,6 +1,83 @@
 {
-  "updated_at": "2026-11-14T03:23:14.543953+00:00",
+  "updated_at": "2026-11-14T04:27:27.936596+00:00",
   "articles": [
+    {
+      "id": "82ec61e256b519376a5c",
+      "title": "U Srbiji danas osetno hladnije, na planinama pada sneg: Najviša dnevna do 9 °C",
+      "summary": "",
+      "category": "Vreme",
+      "region": "Srbija",
+      "source": "Telegraf",
+      "source_url": "https://www.telegraf.rs/vesti/srbija/4432749-u-srbiji-danas-osetno-hladnije-na-planinama-pada-sneg-najvisa-dnevna-do-9-c",
+      "published_at": "2026-11-14T04:15+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "c594081c304bc7551a36",
+      "title": "ODLAZAK VELIKANA: Napustio nas je Ljubomir Maksimović, učitelj koji je znanjem i strpljenjem povezao vekove",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Kurir",
+      "source_url": "https://www.kurir.rs/vesti/drustvo/10161713/napustio-nas-je-ljubomir-maksimovic",
+      "published_at": "2026-11-14T04:15+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "e5ea28dd57f203f5832c",
+      "title": "Košta dobio jezivo pismo! Potez nemačkog kancelara šokirao EU: Uništiće čitavu Evropu jednim potezom zbog Ukrajine",
+      "summary": "",
+      "category": "Ekonomija",
+      "region": "Neodređeno",
+      "source": "Informer",
+      "source_url": "https://informer.rs/planeta/vesti/1168512/fridrih-merc-budzet-evropske-unije-blokada",
+      "published_at": "2026-11-14T04:03+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "5121ad35a4dc3b26ec95",
+      "title": "easyJet preuzeo kompaniju Adria Tehnika: U planu novi hangar, posao zadržava više od 250 radnika",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Telegraf",
+      "source_url": "https://aero.telegraf.rs/avio-kompanije/4432726-easyjet-preuzeo-kompaniju-adria-tehnika-u-planu-novi-hangar-posao-zadrzava-vise-od-250-radnika",
+      "published_at": "2026-11-14T04:00+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "e4024d383e7ab5c8ac7b",
+      "title": "DRAMATIČNA SITUACIJA: U Mjanmaru evakuisano gotovo 5.000 ljudi zbog poplava",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Kurir",
+      "source_url": "https://www.kurir.rs/planeta/10160996/poplave-u-mjanmaru-evakuacija-skoro-5-000-ljudi",
+      "published_at": "2026-11-14T04:00+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "9d97d856e3873fea3aa0",
+      "title": "Vaše malo nekome znači mnogo: Evo gde danas možete dati krv",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Telegraf",
+      "source_url": "https://www.telegraf.rs/vesti/srbija/4432742-vase-malo-nekome-znaci-mnogo-evo-gde-danas-mozete-dati-krv",
+      "published_at": "2026-11-14T04:00+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "63e77b4b575bb184e949",
+      "title": "Otvorena izložba mađarskih i srpskih umetnika u galeriji \"Štab/Artdragstor\"",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Telegraf",
+      "source_url": "https://www.telegraf.rs/pop-i-kultura/art/4432756-otvorena-izlozba-madjarskih-i-srpskih-umetnika-u-galeriji-stabartdragstor",
+      "published_at": "2026-11-14T03:30+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
     {
       "id": "4ede016d91398a282554",
       "title": "SEVERNA KOREJA PROMENILA ZASTAVU: Evo šta je izmenjeno na prepoznatljivom simbolu \"zatvorenog kraljevstva\"",
@@ -13,17 +90,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "e2ec4e821f71d94a9a98",
-      "title": "Turska i Katar dodatno učvršćuju savez: Potpisan sporazum koji menja odnose dve zemlje",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Svet",
-      "source": "Telegraf",
-      "source_url": "https://www.telegraf.rs/vesti/svet/4432822-turska-i-katar-dodatno-ucvrscuju-savez-potpisan-sporazum-koji-menja-odnose-dve-zemlje",
-      "published_at": "2026-11-14T03:00+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "cff67841520f69fd59fb",
       "title": "NIKO NE ZNA ŠTA SE DEŠAVA... As Bajerna napustio reprezentaciju iz ličnih razloga, svetski mediji bruje o njemu!",
       "summary": "",
@@ -31,6 +97,17 @@
       "region": "Neodređeno",
       "source": "Kurir",
       "source_url": "https://www.kurir.rs/sport/fudbal/10161122/upamekano-napustio-tim-francuske-iz-licnih-razloga",
+      "published_at": "2026-11-14T03:00+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "e2ec4e821f71d94a9a98",
+      "title": "Turska i Katar dodatno učvršćuju savez: Potpisan sporazum koji menja odnose dve zemlje",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Svet",
+      "source": "Telegraf",
+      "source_url": "https://www.telegraf.rs/vesti/svet/4432822-turska-i-katar-dodatno-ucvrscuju-savez-potpisan-sporazum-koji-menja-odnose-dve-zemlje",
       "published_at": "2026-11-14T03:00+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -57,17 +134,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "c72e45e4102e55548250",
-      "title": "Macura: Više od polovine žena u Srbiji zainteresovano za rad u zelenim sektorima",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Srbija",
-      "source": "Telegraf",
-      "source_url": "https://www.telegraf.rs/4432740-macura-vise-od-polovine-zena-u-srbiji-zainteresovano-za-rad-u-zelenim-sektorima",
-      "published_at": "2026-11-14T02:00+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "6ba81022e162baab476d",
       "title": "PAS NAPAO SOCIJALNE RADNICE U NEGOTINU: Izašli na teren u inspekciju, dočekala ih besna životinja",
       "summary": "",
@@ -75,6 +141,17 @@
       "region": "Neodređeno",
       "source": "Kurir",
       "source_url": "https://www.kurir.rs/region/severna-makedonija/10160876/napad-psa-na-socijalne-radnice-u-negotinu",
+      "published_at": "2026-11-14T02:00+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "c72e45e4102e55548250",
+      "title": "Macura: Više od polovine žena u Srbiji zainteresovano za rad u zelenim sektorima",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Srbija",
+      "source": "Telegraf",
+      "source_url": "https://www.telegraf.rs/4432740-macura-vise-od-polovine-zena-u-srbiji-zainteresovano-za-rad-u-zelenim-sektorima",
       "published_at": "2026-11-14T02:00+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -574,17 +651,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "578e60fb8967f8113231",
-      "title": "Novi rat na granicama Evrope! Putin opet pred istom odlukom kao 2022: Rusija u pripravnosti za najgori scenario",
-      "summary": "",
-      "category": "Ekonomija",
-      "region": "Svet",
-      "source": "Informer",
-      "source_url": "https://informer.rs/planeta/vesti/1168505/moldavija-ratno-stanje-rusija",
-      "published_at": "2026-11-13T23:01+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "b796c7b8b063a65aeee3",
       "title": "Судар танкера и речног крузера на Мисисипију - сви путници евакуисани, 32 особе у болници",
       "summary": "",
@@ -592,6 +658,17 @@
       "region": "Neodređeno",
       "source": "RTS",
       "source_url": "https://www.rts.rs/vesti/svet/6083488/sudar-tankera-i-recnog-kruzera-na-misisipiju---svi-putnici-evakuisani-32-osobe-u-bolnici.html",
+      "published_at": "2026-11-13T23:01+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "578e60fb8967f8113231",
+      "title": "Novi rat na granicama Evrope! Putin opet pred istom odlukom kao 2022: Rusija u pripravnosti za najgori scenario",
+      "summary": "",
+      "category": "Ekonomija",
+      "region": "Svet",
+      "source": "Informer",
+      "source_url": "https://informer.rs/planeta/vesti/1168505/moldavija-ratno-stanje-rusija",
       "published_at": "2026-11-13T23:01+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -948,17 +1025,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "881a7b8eeda31b2f74e9",
-      "title": "DOBRE VESTI! Oklahoma prelomila, Nikola Topić se vraća na veliku scenu: Srbin je spreman!",
-      "summary": "",
-      "category": "Ekonomija",
-      "region": "Srbija",
-      "source": "Kurir",
-      "source_url": "https://www.kurir.rs/sport/kosarka/10161472/nikola-topic-se-vraca-u-oklahoma-siti",
-      "published_at": "2026-11-13T22:41+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "a10cf17ec9a391ba2b69",
       "title": "Evropa šalje tim od šest članica na narednu rundu pregovora o Ukrajini",
       "summary": "",
@@ -977,17 +1043,6 @@
       "region": "Srbija",
       "source": "Informer",
       "source_url": "https://informer.rs/sport/fudbal/1169725/jirgen-klop-izjava-srbija-nemacka-mec",
-      "published_at": "2026-11-13T22:40+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "fc907a95c21807a0355d",
-      "title": "Sneg zavejao Zlatibor, ali i OVAJ grad, snimci kao usred zime: Na ovoj planini sneg praćen i grmljavinom",
-      "summary": "",
-      "category": "Vreme",
-      "region": "Neodređeno",
-      "source": "Telegraf",
-      "source_url": "https://www.telegraf.rs/vesti/srbija/4432830-sneg-zavejao-zlatibor-ali-i-ovaj-grad-snimci-kao-usred-zime-na-ovoj-planini-sneg-pracen-i-grmljavinom",
       "published_at": "2026-11-13T22:40+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -1025,17 +1080,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "b60068431fdfeae89f23",
-      "title": "POGEDAJTE KAKO SU PANCERI RAZMONTIRALI ORLOVE: Kiša potopila Marakanu, a Nemačka Srbiju",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Kurir",
-      "source_url": "https://www.kurir.rs/sport/fudbal/10161450/najzanimljiviji-momenti-sa-meca-srbija-nemacka-u-ligi-nacija",
-      "published_at": "2026-11-13T22:34+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "9071ee9f2eed51b3df24",
       "title": "Veliki preokret i pobeda Bešiktaša protiv Asvela",
       "summary": "",
@@ -1058,17 +1102,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "5a432db193147d543bc0",
-      "title": "Au, koje poniženje! Jedni slavili, drugi pognuli glave",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Informer",
-      "source_url": "https://informer.rs/exatlon/vesti/1169719/exatlon-2",
-      "published_at": "2026-11-13T22:31+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "7d0f4e025884ad6c687a",
       "title": "\"JAKO MI JE ŽAO\" Nataša Bekvalac se obratila takmičaru u \"IDJ Pepsi Show-u\", ove njene reči niko nije očekivao: \"Nije ništa lično\"",
       "summary": "",
@@ -1076,6 +1109,17 @@
       "region": "Srbija",
       "source": "Blic",
       "source_url": "https://www.blic.rs/zabava/natasa-bekvalac-se-obratila-takmicaru-u-idj-pepsi-show-u-zao-mi-je/zc6nceb",
+      "published_at": "2026-11-13T22:31+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "5a432db193147d543bc0",
+      "title": "Au, koje poniženje! Jedni slavili, drugi pognuli glave",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Informer",
+      "source_url": "https://informer.rs/exatlon/vesti/1169719/exatlon-2",
       "published_at": "2026-11-13T22:31+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -1135,17 +1179,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "8f599aefc5fda189f951",
-      "title": "Ultimatum iznutra koji trese novu vlast?! Ratibor Trivunac poručio \"Studentskoj listi\": \"Ako ne radite kako plenumi odluče...\" (VIDEO)",
-      "summary": "",
-      "category": "Politika",
-      "region": "Neodređeno",
-      "source": "Informer",
-      "source_url": "https://informer.rs/politika/vesti/1169708/ratibor-trivunac-plenum-anarhija-studentska-lista",
-      "published_at": "2026-11-13T22:26+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "699784d2f65f5df457d2",
       "title": "(MAPA) PREKO 3.000 AVIONA LETI PREMA SJEDINJENIM DRŽAVAMA Haos na nebu iznad Amerike: Otkazano ili kasni preko 7.000",
       "summary": "",
@@ -1153,6 +1186,17 @@
       "region": "Neodređeno",
       "source": "Blic",
       "source_url": "https://www.blic.rs/vesti/svet/mapa-ovako-izgleda-nebo-iznad-amerike-nakon-obustavljanja-svih-letova/w8gfsy8",
+      "published_at": "2026-11-13T22:26+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "8f599aefc5fda189f951",
+      "title": "Ultimatum iznutra koji trese novu vlast?! Ratibor Trivunac poručio \"Studentskoj listi\": \"Ako ne radite kako plenumi odluče...\" (VIDEO)",
+      "summary": "",
+      "category": "Politika",
+      "region": "Neodređeno",
+      "source": "Informer",
+      "source_url": "https://informer.rs/politika/vesti/1169708/ratibor-trivunac-plenum-anarhija-studentska-lista",
       "published_at": "2026-11-13T22:26+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -1179,17 +1223,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "547de4bea0cc0a869f71",
-      "title": "Danas mereno letnjih 27 stepeni, večeras SNEG! Veje kao usred zime, temperatura opala na 0: EVO gde i GRMI",
-      "summary": "",
-      "category": "Vreme",
-      "region": "Neodređeno",
-      "source": "Telegraf",
-      "source_url": "https://www.telegraf.rs/vesti/srbija/4432816-danas-mereno-letnjih-27-stepeni-veceras-sneg-veje-kao-usred-zime-temperatura-opala-na-0-evo-gde-i-grmi",
-      "published_at": "2026-11-13T22:23+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "487e872592eeb6cf505b",
       "title": "Epska pobeda Barselone trojkom Robinsona protiv Panatinaikosa nakon velikog preokreta, trijumfi i Efesa i Bešiktaša",
       "summary": "",
@@ -1197,17 +1230,6 @@
       "region": "Neodređeno",
       "source": "Danas",
       "source_url": "https://www.danas.rs/sport/barselona-panatinaikos-dzastin-robinson-evroliga/",
-      "published_at": "2026-11-13T22:21+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "573946ff9dce7222e8f5",
-      "title": "Klop prezadovoljan: \"Igrali smo protiv jako dobrog tima Srbije, još uvek smo na 50-60 odsto\"",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Srbija",
-      "source": "Telegraf",
-      "source_url": "https://www.telegraf.rs/sport/fudbal/4432823-klop-prezadovoljan-igrali-smo-protiv-jako-dobrog-tima-srbije-jos-uvek-smo-na-50-60-odsto",
       "published_at": "2026-11-13T22:21+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -1285,17 +1307,6 @@
       "region": "Svet",
       "source": "Informer",
       "source_url": "https://informer.rs/planeta/vesti/1169535/dzordz-galovej-rusija-ukrajina-kraj-rata",
-      "published_at": "2026-11-13T22:15+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "218b0ae62fda695de56a",
-      "title": "Nikad viđena zaplena u Mađarskoj: Milijarde bile zakopane u šumama, Peter Mađar poslao oštru poruku Orbanu",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Telegraf",
-      "source_url": "https://www.telegraf.rs/vesti/svet/4432806-nikad-vidjena-zaplena-u-madjarskoj-milijarde-bile-zakopane-u-sumama-peter-madjar-poslao-ostru-poruku-orbanu",
       "published_at": "2026-11-13T22:15+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -1428,17 +1439,6 @@
       "region": "Srbija",
       "source": "Blic",
       "source_url": "https://www.blic.rs/vesti/hronika/tuca-maloletnika-u-pancevu-decak-16-zadobio-teske-telesne-povrede/yx30sqt",
-      "published_at": "2026-11-13T22:01+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "e817fd4f3008729ce71e",
-      "title": "\"Ekskluziva!\": Lakić otkrio kako se Mihailo ponaša kada misli da ga niko ne gleda - Ovo niko nije mogao da očekuje! (VIDEO)",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Informer",
-      "source_url": "https://informer.rs/exatlon/vesti/1169150/nikola-lakic-mihailo-adzic-exatlon-crveni-tim",
       "published_at": "2026-11-13T22:01+00:00",
       "verification_status": "preneto_iz_izvora"
     },

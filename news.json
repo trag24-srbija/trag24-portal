@@ -1,6 +1,28 @@
 {
-  "updated_at": "2026-11-15T01:30:01.307026+00:00",
+  "updated_at": "2026-11-15T02:26:41.532400+00:00",
   "articles": [
+    {
+      "id": "560eae7898ba8a2a89ac",
+      "title": "MIROLJUBIVO U ULCINJU: Bez pogodaka u prijateljskoj utakmici Novog Pazara i Otranta",
+      "summary": "",
+      "category": "Sport",
+      "region": "Neodređeno",
+      "source": "Kurir",
+      "source_url": "https://www.kurir.rs/sport/fudbal/10162272/bez-pogodaka-u-prijateljskoj-utakmici-novog-pazara-i-otranta",
+      "published_at": "2026-11-15T02:07+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "952a0415d2db07d787c6",
+      "title": "SUDARILI SE AUTO I MOTOR, ČOVEKA ZAHVATIO PLAMEN: Dramatična scena u Splitu, prolaznik ga ugasio aparatom - Lekar otkriva da li je to dobro",
+      "summary": "",
+      "category": "Hronika",
+      "region": "Neodređeno",
+      "source": "Kurir",
+      "source_url": "https://www.kurir.rs/region/hrvatska/10161859/kako-pruziti-prvu-pomoc-povredjenima-u-nesrecama",
+      "published_at": "2026-11-15T02:00+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
     {
       "id": "9bcc50d053e6490d3a61",
       "title": "Japan srušio Brazil",
@@ -13,17 +35,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "ff9697291eefc34e8ad9",
-      "title": "ŠTRAJK ĆE TRAJATI VIŠE NEDELJA, ŠKOLE ĆE BITI PARALISANE: U ovoj evropskoj zemlji se sprema najmasovniji protest do sada",
-      "summary": "",
-      "category": "Ekonomija",
-      "region": "Neodređeno",
-      "source": "Kurir",
-      "source_url": "https://www.kurir.rs/planeta/10161845/strajk-nastavnika-u-litvaniji-zahtev-za-povecanje-plata",
-      "published_at": "2026-11-15T01:00+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "cdde3ba9ae0752b64c2c",
       "title": "Ugostiteljske usluge za godinu dana poskupele za 5,6 odsto",
       "summary": "",
@@ -31,6 +42,17 @@
       "region": "Neodređeno",
       "source": "Telegraf",
       "source_url": "https://biznis.telegraf.rs/info-biz/4433111-ugostiteljske-usluge-za-godinu-dana-poskupele-za-56-odsto",
+      "published_at": "2026-11-15T01:00+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "ff9697291eefc34e8ad9",
+      "title": "ŠTRAJK ĆE TRAJATI VIŠE NEDELJA, ŠKOLE ĆE BITI PARALISANE: U ovoj evropskoj zemlji se sprema najmasovniji protest do sada",
+      "summary": "",
+      "category": "Ekonomija",
+      "region": "Neodređeno",
+      "source": "Kurir",
+      "source_url": "https://www.kurir.rs/planeta/10161845/strajk-nastavnika-u-litvaniji-zahtev-za-povecanje-plata",
       "published_at": "2026-11-15T01:00+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -167,17 +189,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "616381c7048f56aa4880",
-      "title": "STARICI \"PRODAO\" POSUĐE, A UZEO ZLATO! Neverovatna prevara u Ljubuškom, uhapšen muškarac",
-      "summary": "",
-      "category": "Hronika",
-      "region": "Neodređeno",
-      "source": "Kurir",
-      "source_url": "https://www.kurir.rs/region/bosna-i-hercegovina/10161787/prevara-u-citluku-muskarac-uhvacen-nakon-kradje-zlata",
-      "published_at": "2026-11-15T00:00+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "fc95d8ae4eb72198f1d6",
       "title": "ZLATIBOR KRCAT! U vreme jesenjeg raspusta više od 50.000 gostiju dnevno, smeštaji skoro puni",
       "summary": "",
@@ -185,6 +196,17 @@
       "region": "Srbija",
       "source": "Telegraf",
       "source_url": "https://biznis.telegraf.rs/info-biz/4433045-zlatibor-krcat-u-vreme-jesenjeg-raspusta-vise-od-50000-gostiju-dnevno-smestaji-skoro-puni",
+      "published_at": "2026-11-15T00:00+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "616381c7048f56aa4880",
+      "title": "STARICI \"PRODAO\" POSUĐE, A UZEO ZLATO! Neverovatna prevara u Ljubuškom, uhapšen muškarac",
+      "summary": "",
+      "category": "Hronika",
+      "region": "Neodređeno",
+      "source": "Kurir",
+      "source_url": "https://www.kurir.rs/region/bosna-i-hercegovina/10161787/prevara-u-citluku-muskarac-uhvacen-nakon-kradje-zlata",
       "published_at": "2026-11-15T00:00+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -739,17 +761,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "adc6d422bda0ee28ed96",
-      "title": "OPASNA ZARAZA NE STAJE! Treći udar ptičjeg gripa ove nedelje u Holandiji: Usmrćuje se još 19.000 životinja, uvedene HITNE ZABRANE",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Kurir",
-      "source_url": "https://www.kurir.rs/planeta/10162263/pticji-grip-u-holandiji-usmrceno-19-000-zivotinja",
-      "published_at": "2026-11-14T22:45+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "df4f1ac12896fedad2a8",
       "title": "Nije ni došao, a već bi da ide: Srbin želi da napusti Olimpijakos",
       "summary": "",
@@ -757,6 +768,17 @@
       "region": "Neodređeno",
       "source": "Telegraf",
       "source_url": "https://www.telegraf.rs/sport/evroliga-kosarka/vesti-evroliga/4433206-nije-ni-dosao-a-vec-bi-da-ide-srbin-zeli-da-napusti-olimpijakos",
+      "published_at": "2026-11-14T22:45+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "adc6d422bda0ee28ed96",
+      "title": "OPASNA ZARAZA NE STAJE! Treći udar ptičjeg gripa ove nedelje u Holandiji: Usmrćuje se još 19.000 životinja, uvedene HITNE ZABRANE",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Kurir",
+      "source_url": "https://www.kurir.rs/planeta/10162263/pticji-grip-u-holandiji-usmrceno-19-000-zivotinja",
       "published_at": "2026-11-14T22:45+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -1124,17 +1146,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "67f4a2240425f1ad30bf",
-      "title": "MOJSILOVIĆ SA KOMANDANTOM KFORA U BEOGRADU Glavna tema očuvanje mira i bezbednosti u našoj južnoj pokrajini",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Srbija",
-      "source": "Kurir",
-      "source_url": "https://www.kurir.rs/vesti/drustvo/10162178/razgovor-o-bezbednosti-na-kosovu-izmedju-vojske-srbije-i-kfora",
-      "published_at": "2026-11-14T22:15+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "98a6ba92c93ef18ce0e2",
       "title": "Život Portugalaca bez Ronalda: Poniženje od Danske usred Brage",
       "summary": "",
@@ -1153,6 +1164,17 @@
       "region": "Svet",
       "source": "Informer",
       "source_url": "https://informer.rs/planeta/vesti/1169819/f16-ukrajina-popravke-rat",
+      "published_at": "2026-11-14T22:15+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "67f4a2240425f1ad30bf",
+      "title": "MOJSILOVIĆ SA KOMANDANTOM KFORA U BEOGRADU Glavna tema očuvanje mira i bezbednosti u našoj južnoj pokrajini",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Srbija",
+      "source": "Kurir",
+      "source_url": "https://www.kurir.rs/vesti/drustvo/10162178/razgovor-o-bezbednosti-na-kosovu-izmedju-vojske-srbije-i-kfora",
       "published_at": "2026-11-14T22:15+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -1344,17 +1366,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "046c9ad4832bae894ce8",
-      "title": "NIŠ NA NOGAMA ZBOG JAKOVA JOZINOVIĆA: Čair pevao horski, pevač uzvratio emocijom!",
-      "summary": "",
-      "category": "Zabava",
-      "region": "Srbija",
-      "source": "Kurir",
-      "source_url": "https://www.kurir.rs/stars/10162435/jakov-jozinovic-odusevio-koncertom",
-      "published_at": "2026-11-14T21:59+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "7b0953ec02c77541e0dd",
       "title": "Mark siguran da bi Ivana sa lakoćom pobedila protiv ove takmičarke - Crveni tim strepi zbog naredne borbe!",
       "summary": "",
@@ -1362,6 +1373,17 @@
       "region": "Neodređeno",
       "source": "Informer",
       "source_url": "https://informer.rs/exatlon/vesti/1169566/crveni-tim-exatlon-mark-kinanga-ivana",
+      "published_at": "2026-11-14T21:59+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "046c9ad4832bae894ce8",
+      "title": "NIŠ NA NOGAMA ZBOG JAKOVA JOZINOVIĆA: Čair pevao horski, pevač uzvratio emocijom!",
+      "summary": "",
+      "category": "Zabava",
+      "region": "Srbija",
+      "source": "Kurir",
+      "source_url": "https://www.kurir.rs/stars/10162435/jakov-jozinovic-odusevio-koncertom",
       "published_at": "2026-11-14T21:59+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -1462,28 +1484,6 @@
       "source": "Politika",
       "source_url": "https://www.politika.rs/scc/clanak/802920/bitkoin-pao-ispod-65-000-dolara-prvi-put-od-19-avgusta",
       "published_at": "2026-11-14T21:52+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "a6995417dc61fb92fd81",
-      "title": "OTKRIVEN MOGUĆI UZROK AVIO-HAOSA U SAD! Mislili su da se sprema novi 11. septembar, a možda je jedan uređaj paralisao vazdušni saobraćaj",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Srbija",
-      "source": "Kurir",
-      "source_url": "https://www.kurir.rs/planeta/10162429/kvar-na-ruteru-izazvao-haos-u-sad-otkazano-vise-od-14-000-letova",
-      "published_at": "2026-11-14T21:48+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "ffd6dce785de451736e4",
-      "title": "\"AUDI\" OD SILINE UDARA OSTAO BEZ KROVA, ZAKUCAO SE U KONJE Meštani otkrili detalje užasa kod Tutina: Mladić poginuo na mestu, mrtve i životinje",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Kurir",
-      "source_url": "https://www.kurir.rs/crna-hronika/10162426/detalji-saobracajne-nesrece-kod-tutina-poginuo-mladic",
-      "published_at": "2026-11-14T21:48+00:00",
       "verification_status": "preneto_iz_izvora"
     },
     {

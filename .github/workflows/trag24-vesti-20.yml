@@ -1,0 +1,31 @@
+name: TRAG 24 - VESTI U 20
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-glasa:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ElevenLabs
+        env:
+          API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          VOICE_ID: ${{ secrets.ELEVENLABS_VOICE_ID }}
+        run: |
+          curl --fail --silent --show-error \
+            --max-time 90 \
+            -X POST "https://api.elevenlabs.io/v1/text-to-speech/$VOICE_ID" \
+            -H "xi-api-key: $API_KEY" \
+            -H "Content-Type: application/json" \
+            -d '{
+              "text": "Dobro veče. Pratite Trag dvadeset četiri. Vaš trag do informacija.",
+              "model_id": "eleven_v3",
+              "language_code": "sr"
+            }' \
+            --output glas.mp3
+
+      - name: Sacuvaj glas
+        uses: actions/upload-artifact@v4
+        with:
+          name: TRAG24-SPIKER
+          path: glas.mp3

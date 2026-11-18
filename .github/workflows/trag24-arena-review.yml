@@ -1,0 +1,58 @@
+name: TRAG 24 ARENA - AI kontrolor
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Rezim rada'
+        required: true
+        type: choice
+        default: health
+        options:
+          - health
+          - review
+
+permissions: {}
+
+concurrency:
+  group: arena-review
+  cancel-in-progress: false
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      ARENA_INGEST_TOKEN: ${{ secrets.ARENA_INGEST_TOKEN }}
+      MODE: ${{ inputs.mode }}
+
+    steps:
+      - name: AI kontrola pitanja
+        run: |
+          node --input-type=module <<'JS'
+          const response = await fetch(
+            'https://onccjifephuyhmciyfzq.supabase.co/functions/v1/arena-review',
+            {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'x-arena-ingest-token': process.env.ARENA_INGEST_TOKEN
+              },
+              body: JSON.stringify({
+                action: process.env.MODE
+              }),
+              signal: AbortSignal.timeout(120000)
+            }
+          );
+
+          const result = await response.json();
+          console.log(JSON.stringify(result, null, 2));
+
+          if (!response.ok || result.ok !== true)
+            throw Error('AI kontrolor nije prosao test');
+
+          if (process.env.MODE === 'health' &&
+              result.ai_configured !== true)
+            throw Error('Nedostaje OpenAI API key');
+
+          JS

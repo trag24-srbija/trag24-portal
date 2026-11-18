@@ -66,11 +66,14 @@ const esc=s=>String(s??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'
 const nfmt=n=>Number(n||0).toLocaleString('sr-RS');
 const today=()=>new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Belgrade',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
 const safeJSON=(s,defaultValue)=>{try{return JSON.parse(s)}catch{return defaultValue}};
-const read=(k,fallback)=>{try{return safeJSON(localStorage.getItem(k),fallback)}catch{return fallback}};
+const read=(k,fallback)=>{try{const raw=localStorage.getItem(k);return raw===null?fallback:(safeJSON(raw,fallback)??fallback)}catch{return fallback}};
 const save=(k,x)=>{try{localStorage.setItem(k,JSON.stringify(x))}catch{}};
 const seed=window.ARENA_QUESTION_BANK?.questions||[];
 let allQuestions=[...seed];
 let state=read('trag_arena_state_v1',{seen:[],history:[],settings:{sound:false},practiceXP:0,conquests:[],guestName:'',guestCountry:'🇷🇸 Srbija'});
+if(!state||typeof state!=='object'||Array.isArray(state))state={};
+state.practiceXP=Number.isFinite(state.practiceXP)?state.practiceXP:0;
+state.settings=state.settings&&typeof state.settings==='object'?state.settings:{sound:false};
 state.seen=Array.isArray(state.seen)?state.seen:[];
 state.history=Array.isArray(state.history)?state.history:[];
 state.conquests=Array.isArray(state.conquests)?state.conquests:[];

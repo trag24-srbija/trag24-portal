@@ -1,5 +1,7 @@
 name: TRAG 24 ARENA - pitanja
 on:
+  schedule:
+    - cron: '17 * * * *'
   workflow_dispatch:
     inputs:
       mode:
@@ -21,7 +23,7 @@ jobs:
     env:
       ARENA_INGEST_TOKEN: ${{ secrets.ARENA_INGEST_TOKEN }}
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-      MODE: ${{ inputs.mode }}
+      MODE: ${{ github.event_name == 'schedule' && 'generate' || inputs.mode }}
     steps:
       - name: Test ili generisanje pitanja
         shell: bash

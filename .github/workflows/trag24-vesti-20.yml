@@ -2,6 +2,11 @@ name: TRAG 24 - VESTI U 20
 
 on:
   workflow_dispatch:
+    inputs:
+      official:
+        description: 'Napravi zvanicnu emisiju'
+        type: boolean
+        default: false
   schedule:
     - cron: '15 19 * * *'
       timezone: 'Europe/Belgrade'
@@ -34,29 +39,28 @@ jobs:
           DATE=$(date +%F)
           echo "$DATE" > datum.txt
           TAG="vesti-$DATE-20"
+          MANUAL=$(jq -r '.inputs.official // false' "$GITHUB_EVENT_PATH")
 
-          echo "run=false" >> "$GITHUB_OUTPUT"
-          echo "official=false" >> "$GITHUB_OUTPUT"
+          RUN=true
+          OFFICIAL=false
 
           if [ "$GITHUB_EVENT_NAME" = "schedule" ]; then
+            OFFICIAL=true
 
             if [ "$(date +%H)" != "19" ]; then
-              echo "Pokretanje van termina."
-              exit 0
-            fi
-
-            if gh release view "$TAG" --json assets,isDraft \
+              RUN=false
+            elif gh release view "$TAG" --json assets,isDraft \
               --jq '(.isDraft == false) and any(.assets[]; .name == "TRAG24-VESTI-U-20.mp4" and .size > 0)' \
               2>/dev/null | grep -qx true; then
-
-              echo "Vec postoji zvanicna emisija."
-              exit 0
+              RUN=false
             fi
 
-            echo "official=true" >> "$GITHUB_OUTPUT"
+          elif [ "$MANUAL" = "true" ]; then
+            OFFICIAL=true
           fi
 
-          echo "run=true" >> "$GITHUB_OUTPUT"
+          echo "run=$RUN" >> "$GITHUB_OUTPUT"
+          echo "official=$OFFICIAL" >> "$GITHUB_OUTPUT"
 
       - uses: actions/setup-python@v5
         if: steps.plan.outputs.run == 'true'
@@ -268,7 +272,7 @@ jobs:
           DATE=$(cat datum.txt)
           TAG="vesti-$DATE-20"
 
-          if [ "$(date +%H)" != "19" ]; then
+          if [ "$GITHUB_EVENT_NAME" = "schedule" ] && [ "$(date +%H)" != "19" ]; then
             echo "Istekao termin za pripremu."
             exit 1
           fi

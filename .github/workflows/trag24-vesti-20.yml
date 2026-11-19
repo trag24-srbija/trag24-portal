@@ -3,7 +3,9 @@ name: TRAG 24 - VESTI U 20
 on:
   workflow_dispatch:
   schedule:
-    - cron: '35 19 * * *'
+    - cron: '15 19 * * *'
+      timezone: 'Europe/Belgrade'
+    - cron: '45 19 * * *'
       timezone: 'Europe/Belgrade'
 
 permissions:
@@ -16,16 +18,53 @@ concurrency:
 jobs:
   vesti:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 15
 
     steps:
       - uses: actions/checkout@v4
 
+      - name: Kontrola emisije
+        id: plan
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TZ: Europe/Belgrade
+        run: |
+          set -euo pipefail
+
+          DATE=$(date +%F)
+          echo "$DATE" > datum.txt
+          TAG="vesti-$DATE-20"
+
+          echo "run=false" >> "$GITHUB_OUTPUT"
+          echo "official=false" >> "$GITHUB_OUTPUT"
+
+          if [ "$GITHUB_EVENT_NAME" = "schedule" ]; then
+
+            if [ "$(date +%H)" != "19" ]; then
+              echo "Pokretanje van termina."
+              exit 0
+            fi
+
+            if gh release view "$TAG" --json assets,isDraft \
+              --jq '(.isDraft == false) and any(.assets[]; .name == "TRAG24-VESTI-U-20.mp4" and .size > 0)' \
+              2>/dev/null | grep -qx true; then
+
+              echo "Vec postoji zvanicna emisija."
+              exit 0
+            fi
+
+            echo "official=true" >> "$GITHUB_OUTPUT"
+          fi
+
+          echo "run=true" >> "$GITHUB_OUTPUT"
+
       - uses: actions/setup-python@v5
+        if: steps.plan.outputs.run == 'true'
         with:
           python-version: '3.12'
 
       - name: AI urednik dnevnih vesti
+        if: steps.plan.outputs.run == 'true'
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
@@ -33,13 +72,8 @@ jobs:
           import json
           import os
           import urllib.request
-          from datetime import datetime
-          from zoneinfo import ZoneInfo
 
-          today = datetime.now(ZoneInfo("Europe/Belgrade")).strftime("%Y-%m-%d")
-
-          with open("datum.txt", "w") as f:
-              f.write(today)
+          today = open("datum.txt").read().strip()
 
           with open("analize.json", encoding="utf-8") as f:
               data = json.load(f)
@@ -51,33 +85,38 @@ jobs:
           ]
 
           if not news:
-              raise SystemExit("Nema objavljenih analiza za danas.")
+              raise SystemExit("Nema danasnjih analiza.")
 
           prompt = """
-          Ti si profesionalni urednik informativne emisije TRAG 24.
+          Ti si profesionalni urednik
+          informativne emisije TRAG 24.
 
           Sastavi tekst za televizijskog spikera.
 
           PRAVILA:
           - Srpski jezik, latinica, ekavica.
           - Profesionalan i neutralan govor.
-          - Obuhvati sve relevantne dnevne teme.
+          - Obuhvati relevantne dnevne teme.
           - Spoji ponovljene vesti.
           - Najvaznije teme idu prve.
           - Ne izmisljaj informacije.
-          - Ne predstavljaj stare dogadjaje kao danasnje.
-          - Navode medija jasno pripisi izvorima.
-          - Optuzbe ne predstavljaj kao dokazane cinjenice.
-          - Bez senzacionalizma i politickog navijanja.
+          - Iskljuci zastarele dogadjaje.
+          - Navode medija pripisi izvorima.
+          - Optuzbe nisu dokazane cinjenice.
+          - Bez senzacionalizma.
+          - Bez politickog navijanja.
           - Najvise 170 reci.
           - Bez naslova, uvoda i odjave.
           - Brojeve pisi recima.
           - Vrati samo tekst za spikera.
-          - Ako nema aktuelnih tema, vrati NEMA_VESTI.
+          - Ako nema aktuelnih tema,
+            vrati samo NEMA_VESTI.
           """
 
-          prompt += "\nDanasnji datum: " + today
-          prompt += "\nAnalize:\n" + json.dumps(news, ensure_ascii=False)
+          prompt += "\nDatum: " + today
+          prompt += "\nAnalize:\n" + json.dumps(
+              news, ensure_ascii=False
+          )
 
           body = {
               "contents": [
@@ -134,6 +173,7 @@ jobs:
           PY
 
       - name: Gemini Lumi
+        if: steps.plan.outputs.run == 'true'
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
@@ -166,6 +206,7 @@ jobs:
           test -s glas.wav
 
       - name: Brza montaza
+        if: steps.plan.outputs.run == 'true'
         run: |
           set -euo pipefail
 
@@ -206,6 +247,7 @@ jobs:
           test -s TRAG24-VESTI-U-20.mp4
 
       - name: Sacuvaj emisiju
+        if: steps.plan.outputs.run == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: TRAG24-VESTI-U-20
@@ -215,23 +257,32 @@ jobs:
           retention-days: 7
           if-no-files-found: error
 
-      - name: Postavi video za Make
+      - name: Objavi zvanicnu emisiju
+        if: steps.plan.outputs.official == 'true' && steps.plan.outputs.run == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TZ: Europe/Belgrade
         run: |
           set -euo pipefail
 
           DATE=$(cat datum.txt)
-          TAG="vesti-$DATE"
+          TAG="vesti-$DATE-20"
+
+          if [ "$(date +%H)" != "19" ]; then
+            echo "Istekao termin za pripremu."
+            exit 1
+          fi
 
           if gh release view "$TAG" >/dev/null 2>&1; then
-            gh release upload "$TAG" TRAG24-VESTI-U-20.mp4 --clobber
+            gh release upload "$TAG" \
+              TRAG24-VESTI-U-20.mp4 --clobber
+            gh release edit "$TAG" --draft=false
           else
             gh release create "$TAG" \
               TRAG24-VESTI-U-20.mp4 \
               --target "$GITHUB_SHA" \
               --title "TRAG 24 - VESTI U 20 - $DATE" \
-              --notes "Dnevna informativna emisija TRAG 24." \
+              --notes "Zvanicna vecernja emisija TRAG 24." \
               --latest=false
           fi
 

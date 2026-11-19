@@ -9,23 +9,28 @@ permissions:
 jobs:
   test-video:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
 
       - name: Gemini Lumi
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
           set -euo pipefail
-          curl --fail-with-body -sS -G \
-            'https://generativelanguage.googleapis.com/v1beta/voices' \
+
+          curl -fsS -G \
+            "https://generativelanguage.googleapis.com/v1beta/voices" \
             -H "x-goog-api-key: $GEMINI_API_KEY" \
-            --data-urlencode 'search=Lumi' > voices.json || { cat voices.json; exit 1; }
+            --data-urlencode "search=Lumi" > voices.json
 
           VOICE=$(jq -er '[.voices[] | select(.displayName == "Lumi" or .display_name == "Lumi") | .id] | unique | if length == 1 then .[0] else error("Lumi ID nije jednoznacan") end' voices.json)
 
-          TEXT='Dobro veče. Pratite Trag dvadeset četiri. Donosimo vam probno izdanje večernjih vesti. Naš cilj je da na jednom mestu dobijete pregled najvažnijih tema iz Srbije i sveta. Svakog dana izdvajamo događaje iz politike, ekonomije, društva, hronike i sporta. Pratimo informacije iz različitih medijskih izvora i jasno razlikujemo potvrđene činjenice od tvrdnji koje tek treba proveriti. Celokupne analize i veze do izvornih vesti možete pronaći na našem portalu. Hvala na pažnji. Pratite nas i budite u toku. Trag dvadeset četiri, vaš trag do informacija.'
+          TEXT='Dobro veče. Pratite Trag dvadeset četiri. Donosimo vam pregled najvažnijih tema iz Srbije i sveta. Svakog dana izdvajamo najvažnije događaje iz politike, ekonomije, društva, hronike i sporta. Hvala na pažnji. Pratite nas i budite u toku. Trag dvadeset četiri, vaš trag do informacija.'
 
           jq -n --arg voice "$VOICE" --arg text "$TEXT" '{
             model: "gemini-3.8-flash-lite-tts",
@@ -34,38 +39,59 @@ jobs:
             generation_config: {speech_config:[{voice:$voice}]}
           }' > request.json
 
-          curl --fail-with-body -sS --max-time 120 \
-            'https://generativelanguage.googleapis.com/v1beta/interactions' \
+          curl -fsS --max-time 120 \
+            "https://generativelanguage.googleapis.com/v1beta/interactions" \
             -H "x-goog-api-key: $GEMINI_API_KEY" \
-            -H 'Content-Type: application/json' \
-            -d @request.json > response.json || { cat response.json; exit 1; }
+            -H "Content-Type: application/json" \
+            -d @request.json > response.json
 
           jq -er '[.steps[] | select(.type=="model_output") | .content[] | select(.type=="audio")] | last | .data' response.json | base64 -d > glas.wav
+
           test -s glas.wav
 
-      - name: Montaza 90 sekundi
+      - name: Brza montaza
         run: |
           set -euo pipefail
-          command -v ffmpeg >/dev/null || { sudo apt-get update && sudo apt-get install -y ffmpeg; }
-          if [ -f trag24-vesti-podloga.mov ]; then VIDEO=trag24-vesti-podloga.mov; else VIDEO=trag24-vesti-podloga.mp4; fi
+
+          pip install --only-binary=:all: imageio-ffmpeg==0.6.0
+
+          FF=$(python -c 'import imageio_ffmpeg; print(imageio_ffmpeg.get_ffmpeg_exe())')
+
+          VIDEO=trag24-vesti-podloga.mov
+          if [ ! -f "$VIDEO" ]; then
+            VIDEO=trag24-vesti-podloga.mp4
+          fi
+
           test -s "$VIDEO"
 
-          DUR=$(ffprobe -v error -show_entries format=duration -of csv=p=0 glas.wav)
-          TEMPO=$(python -c 'import sys; d=float(sys.argv[1]); assert 0 < d <= 115, "Glas je predug ili neispravan"; print(max(1,d/86))' "$DUR")
+          DUR=$(python -c 'import wave; w=wave.open("glas.wav"); print(w.getnframes()/w.getframerate())')
 
-          ffmpeg -hide_banner -loglevel error -y -stream_loop -1 -i "$VIDEO" -i glas.wav \
-            -filter_complex_threads 2 \
+          TEMPO=$(python -c 'import sys; d=float(sys.argv[1]); assert 0<d<=115; print(max(1,d/86))' "$DUR")
+
+          INFO=$("$FF" -hide_banner -i "$VIDEO" 2>&1 || true)
+
+          if grep -q "Video: h264" <<< "$INFO"; then
+            CODEC=(-c:v copy)
+          else
+            CODEC=(-c:v libx264 -preset ultrafast -pix_fmt yuv420p)
+          fi
+
+          "$FF" -hide_banner -loglevel error \
+            -nostdin -y -stream_loop -1 \
+            -i "$VIDEO" -i glas.wav \
             -filter_complex "[0:a]volume=0.12,apad,atrim=duration=90[m];[1:a]atempo=$TEMPO,loudnorm=I=-17:TP=-2:LRA=7,adelay=1000:all=1,apad,atrim=duration=90[g];[m][g]amix=inputs=2:duration=longest:normalize=0,alimiter=limit=0.95:level=0[a]" \
-            -map 0:v:0 -map '[a]' -vf 'scale=1080:1920:force_original_aspect_ratio=decrease:force_divisible_by=2,pad=1080:1920:(ow-iw)/2:(oh-ih)/2,setsar=1,fps=30' \
-            -t 90 -c:v libx264 -preset fast -crf 23 -pix_fmt yuv420p \
-            -c:a aac -b:a 160k -ar 48000 -ac 2 -movflags +faststart TRAG24-VESTI-TEST.mp4
+            -map 0:v:0 -map '[a]' \
+            -t 90 "${CODEC[@]}" \
+            -c:a aac -b:a 160k -ar 48000 \
+            -ac 2 -movflags +faststart \
+            TRAG24-VESTI-TEST.mp4
 
-          ffprobe -v error -show_entries format=duration -of csv=p=0 TRAG24-VESTI-TEST.mp4
+          test -s TRAG24-VESTI-TEST.mp4
 
-      - name: Sacuvaj probnu emisiju
+      - name: Sacuvaj emisiju
         uses: actions/upload-artifact@v4
         with:
           name: TRAG24-VESTI-TEST
           path: TRAG24-VESTI-TEST.mp4
-          if-no-files-found: error
           retention-days: 3
+          if-no-files-found: error

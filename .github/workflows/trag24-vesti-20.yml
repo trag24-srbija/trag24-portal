@@ -7,25 +7,48 @@ jobs:
   test-glasa:
     runs-on: ubuntu-latest
     steps:
-      - name: ElevenLabs
+      - name: Gemini Lumi
         env:
-          API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
-          VOICE_ID: ${{ secrets.ELEVENLABS_VOICE_ID }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
-          curl --fail --silent --show-error \
-            --max-time 90 \
-            -X POST "https://api.elevenlabs.io/v1/text-to-speech/$VOICE_ID" \
-            -H "xi-api-key: $API_KEY" \
+          curl -fsS -G \
+            "https://generativelanguage.googleapis.com/v1beta/voices" \
+            -H "x-goog-api-key: $GEMINI_API_KEY" \
+            --data-urlencode "search=Lumi" > voices.json
+
+          VOICE=$(jq -er '[.voices[] | select(.displayName == "Lumi" or .display_name == "Lumi") | .id] | unique | if length == 1 then .[0] else error("Lumi ID nije jednoznacan") end' voices.json)
+
+          jq -n --arg voice "$VOICE" '{
+            model: "gemini-3.8-flash-lite-tts",
+            input: [{
+              type: "user_input",
+              content: [{
+                type: "text",
+                text: "Dobro veče. Pratite Trag dvadeset četiri. Vaš trag do informacija.",
+                annotations: [{
+                  type: "speech_metadata",
+                  style: "friendly and professional"
+                }]
+              }]
+            }],
+            response_format: {type: "audio"},
+            generation_config: {
+              speech_config: [{voice: $voice}]
+            }
+          }' > request.json
+
+          curl -fsS \
+            --max-time 120 \
+            "https://generativelanguage.googleapis.com/v1beta/interactions" \
+            -H "x-goog-api-key: $GEMINI_API_KEY" \
             -H "Content-Type: application/json" \
-            -d '{
-              "text": "Dobro veče. Pratite Trag dvadeset četiri. Vaš trag do informacija.",
-              "model_id": "eleven_v3",
-              "language_code": "sr"
-            }' \
-            --output glas.mp3
+            -d @request.json > response.json
+
+          jq -er '[.steps[] | select(.type=="model_output") | .content[] | select(.type=="audio")] | last | .data' response.json | base64 -d > glas.wav
 
       - name: Sacuvaj glas
         uses: actions/upload-artifact@v4
         with:
-          name: TRAG24-SPIKER
+          name: TRAG24-LUMI
+          path: glas.wav
           path: glas.mp3

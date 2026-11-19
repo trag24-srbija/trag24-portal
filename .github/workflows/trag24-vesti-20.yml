@@ -110,7 +110,7 @@ jobs:
         if: steps.plan.outputs.run == 'true'
         run: |
           set -euo pipefail
-          pip install --only-binary=:all: imageio-ffmpeg==0.6.0 faster-whisper==1.2.1 pillow
+          pip install --only-binary=:all: imageio-ffmpeg==0.6.0 faster-whisper==1.2.1 av==18.1.0 pillow
           python <<'PY'
           import json, re, wave, textwrap, unicodedata
           from difflib import SequenceMatcher

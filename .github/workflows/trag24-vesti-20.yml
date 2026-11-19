@@ -2,9 +2,16 @@ name: TRAG 24 - VESTI U 20
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '35 19 * * *'
+      timezone: 'Europe/Belgrade'
 
 permissions:
-  contents: read
+  contents: write
+
+concurrency:
+  group: trag24-vesti-20
+  cancel-in-progress: false
 
 jobs:
   vesti:
@@ -31,6 +38,9 @@ jobs:
 
           today = datetime.now(ZoneInfo("Europe/Belgrade")).strftime("%Y-%m-%d")
 
+          with open("datum.txt", "w") as f:
+              f.write(today)
+
           with open("analize.json", encoding="utf-8") as f:
               data = json.load(f)
 
@@ -46,27 +56,27 @@ jobs:
           prompt = """
           Ti si profesionalni urednik informativne emisije TRAG 24.
 
-          Na osnovu dostavljenih analiza sastavi tekst za televizijskog spikera.
+          Sastavi tekst za televizijskog spikera.
 
           PRAVILA:
           - Srpski jezik, latinica, ekavica.
-          - Profesionalan, neutralan i prirodan govor.
-          - Obuhvati sve relevantne i različite dnevne teme.
+          - Profesionalan i neutralan govor.
+          - Obuhvati sve relevantne dnevne teme.
           - Spoji ponovljene vesti.
-          - Najvažnije teme idu prve.
-          - Ne izmišljaj informacije.
-          - Ne predstavljaj stare događaje kao današnje.
-          - Navode medija jasno pripiši izvorima.
-          - Ne predstavljaš optužbe kao dokazane činjenice.
-          - Bez senzacionalizma i političkog navijanja.
-          - Najviše 170 reči.
-          - Bez naslova, uvoda, odjave i nabrajanja.
-          - Brojeve piši rečima radi pravilnog izgovora.
-          - Vrati samo tekst koji će spiker čitati.
-          - Ako nema aktuelnih tema, vrati samo NEMA_VESTI.
+          - Najvaznije teme idu prve.
+          - Ne izmisljaj informacije.
+          - Ne predstavljaj stare dogadjaje kao danasnje.
+          - Navode medija jasno pripisi izvorima.
+          - Optuzbe ne predstavljaj kao dokazane cinjenice.
+          - Bez senzacionalizma i politickog navijanja.
+          - Najvise 170 reci.
+          - Bez naslova, uvoda i odjave.
+          - Brojeve pisi recima.
+          - Vrati samo tekst za spikera.
+          - Ako nema aktuelnih tema, vrati NEMA_VESTI.
           """
 
-          prompt += "\nDanašnji datum: " + today
+          prompt += "\nDanasnji datum: " + today
           prompt += "\nAnalize:\n" + json.dumps(news, ensure_ascii=False)
 
           body = {
@@ -99,10 +109,10 @@ jobs:
           ).strip()
 
           if not tekst or "NEMA_VESTI" in tekst:
-              raise SystemExit("Nema odgovarajućih aktuelnih vesti.")
+              raise SystemExit("Nema aktuelnih vesti.")
 
           if len(tekst.split()) > 190:
-              raise SystemExit("Tekst je predugačak.")
+              raise SystemExit("Tekst je predugacak.")
 
           uvod = (
               "Dobro veče. Pratite Trag dvadeset četiri. "
@@ -188,7 +198,7 @@ jobs:
             -i "$VIDEO" -i glas.wav \
             -filter_complex "[0:a]volume=5,apad,atrim=duration=90[m];[1:a]atempo=$TEMPO,loudnorm=I=-17:TP=-2:LRA=7,adelay=1000:all=1,apad,atrim=duration=90[g];[m][g]amix=inputs=2:duration=longest:normalize=0,alimiter=limit=0.95:level=0[a]" \
             -map 0:v:0 -map '[a]' \
-            -t 90 "${CODEC[@]}" \
+            -t 89.5 "${CODEC[@]}" \
             -c:a aac -b:a 160k -ar 48000 \
             -ac 2 -movflags +faststart \
             TRAG24-VESTI-U-20.mp4
@@ -204,3 +214,25 @@ jobs:
             vesti.txt
           retention-days: 7
           if-no-files-found: error
+
+      - name: Postavi video za Make
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+
+          DATE=$(cat datum.txt)
+          TAG="vesti-$DATE"
+
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" TRAG24-VESTI-U-20.mp4 --clobber
+          else
+            gh release create "$TAG" \
+              TRAG24-VESTI-U-20.mp4 \
+              --target "$GITHUB_SHA" \
+              --title "TRAG 24 - VESTI U 20 - $DATE" \
+              --notes "Dnevna informativna emisija TRAG 24." \
+              --latest=false
+          fi
+
+          echo "https://github.com/$GITHUB_REPOSITORY/releases/download/$TAG/TRAG24-VESTI-U-20.mp4"

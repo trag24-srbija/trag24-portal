@@ -7,15 +7,121 @@ permissions:
   contents: read
 
 jobs:
-  test-video:
+  vesti:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+
     steps:
       - uses: actions/checkout@v4
 
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+
+      - name: AI urednik dnevnih vesti
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python <<'PY'
+          import json
+          import os
+          import urllib.request
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+
+          today = datetime.now(ZoneInfo("Europe/Belgrade")).strftime("%Y-%m-%d")
+
+          with open("analize.json", encoding="utf-8") as f:
+              data = json.load(f)
+
+          news = [
+              a for a in data["analize"]
+              if a.get("datum") == today
+              and a.get("status") == "objavljeno"
+          ]
+
+          if not news:
+              raise SystemExit("Nema objavljenih analiza za danas.")
+
+          prompt = """
+          Ti si profesionalni urednik informativne emisije TRAG 24.
+
+          Na osnovu dostavljenih analiza sastavi tekst za televizijskog spikera.
+
+          PRAVILA:
+          - Srpski jezik, latinica, ekavica.
+          - Profesionalan, neutralan i prirodan govor.
+          - Obuhvati sve relevantne i različite dnevne teme.
+          - Spoji ponovljene vesti.
+          - Najvažnije teme idu prve.
+          - Ne izmišljaj informacije.
+          - Ne predstavljaj stare događaje kao današnje.
+          - Navode medija jasno pripiši izvorima.
+          - Ne predstavljaš optužbe kao dokazane činjenice.
+          - Bez senzacionalizma i političkog navijanja.
+          - Najviše 170 reči.
+          - Bez naslova, uvoda, odjave i nabrajanja.
+          - Brojeve piši rečima radi pravilnog izgovora.
+          - Vrati samo tekst koji će spiker čitati.
+          - Ako nema aktuelnih tema, vrati samo NEMA_VESTI.
+          """
+
+          prompt += "\nDanašnji datum: " + today
+          prompt += "\nAnalize:\n" + json.dumps(news, ensure_ascii=False)
+
+          body = {
+              "contents": [
+                  {"parts": [{"text": prompt}]}
+              ],
+              "generationConfig": {
+                  "temperature": 0.3,
+                  "maxOutputTokens": 4096
+              }
+          }
+
+          req = urllib.request.Request(
+              "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent",
+              data=json.dumps(body).encode("utf-8"),
+              headers={
+                  "Content-Type": "application/json",
+                  "x-goog-api-key": os.environ["GEMINI_API_KEY"]
+              }
+          )
+
+          with urllib.request.urlopen(req, timeout=120) as response:
+              result = json.load(response)
+
+          parts = result["candidates"][0]["content"]["parts"]
+
+          tekst = " ".join(
+              p.get("text", "") for p in parts
+              if not p.get("thought", False)
+          ).strip()
+
+          if not tekst or "NEMA_VESTI" in tekst:
+              raise SystemExit("Nema odgovarajućih aktuelnih vesti.")
+
+          if len(tekst.split()) > 190:
+              raise SystemExit("Tekst je predugačak.")
+
+          uvod = (
+              "Dobro veče. Pratite Trag dvadeset četiri. "
+              "Donosimo vam pregled najvažnijih događaja "
+              "koji su obeležili današnji dan."
+          )
+
+          kraj = (
+              "Hvala na pažnji. Pratite nas i budite u toku. "
+              "Trag dvadeset četiri, vaš trag do informacija."
+          )
+
+          final = uvod + "\n\n" + tekst + "\n\n" + kraj
+
+          with open("vesti.txt", "w", encoding="utf-8") as f:
+              f.write(final)
+
+          print(final)
+          PY
 
       - name: Gemini Lumi
         env:
@@ -30,7 +136,7 @@ jobs:
 
           VOICE=$(jq -er '[.voices[] | select(.displayName == "Lumi" or .display_name == "Lumi") | .id] | unique | if length == 1 then .[0] else error("Lumi ID nije jednoznacan") end' voices.json)
 
-          TEXT='Dobro veče. Pratite Trag dvadeset četiri. Donosimo vam pregled najvažnijih tema iz Srbije i sveta. Svakog dana izdvajamo najvažnije događaje iz politike, ekonomije, društva, hronike i sporta. Hvala na pažnji. Pratite nas i budite u toku. Trag dvadeset četiri, vaš trag do informacija.'
+          TEXT=$(cat vesti.txt)
 
           jq -n --arg voice "$VOICE" --arg text "$TEXT" '{
             model: "gemini-3.8-flash-lite-tts",
@@ -58,6 +164,7 @@ jobs:
           FF=$(python -c 'import imageio_ffmpeg; print(imageio_ffmpeg.get_ffmpeg_exe())')
 
           VIDEO=trag24-vesti-podloga.mov
+
           if [ ! -f "$VIDEO" ]; then
             VIDEO=trag24-vesti-podloga.mp4
           fi
@@ -84,14 +191,16 @@ jobs:
             -t 90 "${CODEC[@]}" \
             -c:a aac -b:a 160k -ar 48000 \
             -ac 2 -movflags +faststart \
-            TRAG24-VESTI-TEST.mp4
+            TRAG24-VESTI-U-20.mp4
 
-          test -s TRAG24-VESTI-TEST.mp4
+          test -s TRAG24-VESTI-U-20.mp4
 
       - name: Sacuvaj emisiju
         uses: actions/upload-artifact@v4
         with:
-          name: TRAG24-VESTI-TEST
-          path: TRAG24-VESTI-TEST.mp4
-          retention-days: 3
+          name: TRAG24-VESTI-U-20
+          path: |
+            TRAG24-VESTI-U-20.mp4
+            vesti.txt
+          retention-days: 7
           if-no-files-found: error

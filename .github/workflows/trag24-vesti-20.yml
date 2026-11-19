@@ -11,10 +11,10 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
-          curl -fsS -G \
+          curl --fail-with-body -sS -G \
             "https://generativelanguage.googleapis.com/v1beta/voices" \
             -H "x-goog-api-key: $GEMINI_API_KEY" \
-            --data-urlencode "search=Lumi" > voices.json
+            --data-urlencode "search=Lumi" > voices.json || { cat voices.json; exit 1; }
 
           VOICE=$(jq -er '[.voices[] | select(.displayName == "Lumi" or .display_name == "Lumi") | .id] | unique | if length == 1 then .[0] else error("Lumi ID nije jednoznacan") end' voices.json)
 

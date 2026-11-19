@@ -79,7 +79,7 @@ jobs:
           "$FF" -hide_banner -loglevel error \
             -nostdin -y -stream_loop -1 \
             -i "$VIDEO" -i glas.wav \
-            -filter_complex "[0:a]volume=0.40,apad,atrim=duration=90[m];[1:a]atempo=$TEMPO,loudnorm=I=-17:TP=-2:LRA=7,adelay=1000:all=1,apad,atrim=duration=90[g];[m][g]amix=inputs=2:duration=longest:normalize=0,alimiter=limit=0.95:level=0[a]" \
+            -filter_complex "[0:a]volume=5,apad,atrim=duration=90[m];[1:a]atempo=$TEMPO,loudnorm=I=-17:TP=-2:LRA=7,adelay=1000:all=1,apad,atrim=duration=90[g];[m][g]amix=inputs=2:duration=longest:normalize=0,alimiter=limit=0.95:level=0[a]" \
             -map 0:v:0 -map '[a]' \
             -t 90 "${CODEC[@]}" \
             -c:a aac -b:a 160k -ar 48000 \

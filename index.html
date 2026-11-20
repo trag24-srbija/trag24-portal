@@ -805,5 +805,133 @@ if (!localStorage.getItem('trag24_analytics_consent')) {
 })();
 </script>
 <!-- KRAJ INSTALACIJE TRAG 24 -->
+<style>
+#signature-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2000;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background: #FFFFFF;
+  border-top: 1px solid #BFA36C;
+  box-shadow: 0 -4px 20px #101A2B12;
+  padding: 10px 0 calc(10px + env(safe-area-inset-bottom));
+}
 
+#signature-bottom a,
+#signature-bottom button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border: 0;
+  background: transparent;
+  color: #101A2B;
+  text-decoration: none;
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: .5px;
+}
+
+#signature-bottom svg {
+  width: 23px;
+  height: 23px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+#signature-bottom .selected {
+  color: #AC2034;
+}
+
+#signature-bottom .arena {
+  color: #A08144;
+}
+
+body {
+  padding-bottom: calc(75px + env(safe-area-inset-bottom));
+}
+
+#trag24-vrh {
+  bottom: calc(85px + env(safe-area-inset-bottom)) !important;
+}
+</style>
+
+<nav id="signature-bottom">
+  <button class="selected" data-tab="Srbija">
+    <svg viewBox="0 0 24 24">
+      <path d="M3 10L12 3L21 10V21H15V14H9V21H3Z"/>
+    </svg>
+    POČETNA
+  </button>
+
+  <button data-tab="Svet">
+    <svg viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9"/>
+      <ellipse cx="12" cy="12" rx="4" ry="9"/>
+      <path d="M3 12H21"/>
+    </svg>
+    SVET
+  </button>
+
+  <a href="./analize.html">
+    <svg viewBox="0 0 24 24">
+      <path d="M4 3H20V21H4Z M8 8H16 M8 12H16 M8 16H13"/>
+    </svg>
+    ANALIZE
+  </a>
+
+  <a href="./arena/" class="arena">
+    <svg viewBox="0 0 24 24">
+      <path d="M7 3H17V11Q12 21 7 11Z M7 5H3V8Q3 13 7 13 M17 5H21V8Q21 13 17 13 M12 16V21 M7 21H17"/>
+    </svg>
+    ARENA
+  </a>
+</nav>
+
+<script>
+(function () {
+  const tabs = document.querySelectorAll(
+    '#signature-bottom [data-tab]'
+  );
+
+  function syncTabs() {
+    tabs.forEach(tab => {
+      tab.classList.toggle(
+        'selected',
+        document.querySelector(
+          '.region[data-region="' +
+          tab.dataset.tab + '"]'
+        ).classList.contains('active')
+      );
+    });
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelector(
+        '.region[data-region="' +
+        tab.dataset.tab + '"]'
+      ).click();
+
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  });
+
+  document.querySelectorAll('.region').forEach(tab => {
+    tab.addEventListener('click', syncTabs);
+  });
+
+  syncTabs();
+})();
+</script>
 </body></html>

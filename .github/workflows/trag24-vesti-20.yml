@@ -42,7 +42,7 @@ jobs:
           if [ "$GITHUB_EVENT_NAME" = "schedule" ]; then
             OFFICIAL=true
             
-            elif gh release view "$TAG" --json assets,isDraft --jq '(.isDraft == false) and any(.assets[]; .name == "TRAG24-VESTI-U-20.mp4" and .size > 0) and any(.assets[]; .name == "opis.json" and .size > 0)' 2>/dev/null | grep -qx true; then
+            if gh release view "$TAG" --json assets,isDraft --jq '(.isDraft == false) and any(.assets[]; .name == "TRAG24-VESTI-U-20.mp4" and .size > 0) and any(.assets[]; .name == "opis.json" and .size > 0)' 2>/dev/null | grep -qx true; then
               RUN=false
             fi
           elif [ "$(jq -r '.inputs.official // false' "$GITHUB_EVENT_PATH")" = "true" ]; then

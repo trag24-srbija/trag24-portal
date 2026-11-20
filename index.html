@@ -284,7 +284,110 @@ document.getElementById(
   </nav>
 </div>
 <!-- KRAJ PREMIUM MENIJA -->
+<style>
+html {
+  overflow-x: clip;
+  scroll-padding-top: 200px;
+}
 
+body {
+  overflow: visible;
+  background: #F7F6F3;
+}
+
+#signature-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #fff;
+  box-shadow: 0 4px 18px #101A2B12;
+}
+
+#signature-header .utility {
+  background: #101A2B;
+  color: #D6C29B;
+}
+
+#signature-header .masthead {
+  padding: 16px 0;
+}
+
+#signature-header .logo {
+  color: #101A2B;
+}
+
+#signature-header .logo b {
+  background: #AC2034;
+}
+
+#signature-header .masthead > a {
+  background: #101A2B !important;
+  color: #E1C48A !important;
+  border: 1px solid #BFA36C;
+  border-radius: 6px !important;
+}
+
+#signature-header .trag-social-inner {
+  padding: 7px 0;
+}
+
+#signature-header .nav-shell {
+  background: #101A2B !important;
+  border-bottom: 2px solid #BFA36C !important;
+}
+
+#signature-header .region.active {
+  color: #E1C48A !important;
+  border-bottom-color: #BFA36C;
+}
+
+#signature-header .nav a {
+  background: transparent !important;
+  color: #E1C48A !important;
+  box-shadow: none !important;
+}
+
+@media(max-width:600px) {
+  #signature-header .masthead {
+    padding: 12px 0;
+  }
+
+  #signature-header .logo {
+    font-size: 34px;
+  }
+
+  #signature-header .tagline {
+    font-size: 8px;
+    margin-top: 6px;
+  }
+
+  #signature-header .utility {
+    font-size: 8px;
+  }
+
+  #signature-header .region {
+    padding: 11px 12px !important;
+  }
+}
+</style>
+
+<script>
+(function () {
+  const parts = [
+    document.querySelector('.utility'),
+    document.querySelector('.masthead'),
+    document.querySelector('.trag-social'),
+    document.querySelector('.nav-shell')
+  ];
+
+  if (parts.every(Boolean)) {
+    const header = document.createElement('div');
+    header.id = 'signature-header';
+    parts[0].before(header);
+    parts.forEach(part => header.appendChild(part));
+  }
+})();
+</script>
 <main class="container main"><div class="intro"><div><div class="eyebrow">NAJNOVIJE INFORMACIJE</div><h1 id="heading">Vesti iz Srbije</h1></div><div class="note">Pregled najnovijih objava uz jasno označene izvore.</div></div><nav aria-label="Rubrike" class="category-nav" id="categories"></nav><div class="tools"><h2 id="listTitle">Najnovije vesti</h2><input aria-label="Pretraži vesti" id="search" placeholder="Pretraži vesti…" type="search"/></div><div class="notice" id="status" role="status">Učitavanje vesti…</div><section aria-label="Izdvojene vesti" class="featured" hidden="" id="featured"></section><div class="section-heading"><h2>OSTALE VESTI</h2><span id="count"></span></div><section aria-label="Sve vesti" class="feed" id="feed"></section><section class="editorial"><h2>Urednička napomena</h2><p>TRAG 24 automatski prikazuje naslove i informacije iz javno dostupnih medijskih izvora. Redakcija TRAG 24 ne potvrđuje nezavisno navode drugih medija. Svaka objava sadrži vezu ka izvornom članku. Automatsko razvrstavanje po temi i geografiji može sadržati greške.</p></section></main>
 <footer><div class="container"><strong>TRAG 24</strong><span>© <span id="year"></span> · Srbija i svet · Izvori uz svaku vest</span></div><div style="text-align:center;margin-top:15px;">
   <a href="/trag24-portal/politika-privatnosti.html" style="color:white;text-decoration:underline;">

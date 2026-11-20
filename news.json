@@ -1,6 +1,842 @@
 {
-  "updated_at": "2026-11-20T19:46:02.796379+00:00",
+  "updated_at": "2026-11-20T20:32:04.492384+00:00",
   "articles": [
+    {
+      "id": "df45b400f9c72b163e4e",
+      "title": "Почео поступак за разрешење декана ДИФ-а Патрика Дрида",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Politika",
+      "source_url": "https://www.politika.rs/scc/clanak/804749/poceo-postupak-za-razresenje-dekana-dif-a-patrika-drida",
+      "published_at": "2026-11-20T20:31+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "70a7d08b2765f0e795c8",
+      "title": "POČINJE BURNO VEČE U \"IDJ PEPSI SHOW-U\" Prve eliminacije u takmičenju! Led probila Monika Trajkov, žiri u šoku: \"Bila si kao svetska zvezda\"",
+      "summary": "",
+      "category": "Sport",
+      "region": "Srbija",
+      "source": "Blic",
+      "source_url": "https://www.blic.rs/zabava/prve-eliminacije-u-idj-pepsi-show-u-veceras-ispadaju-dva-takmicara/b43e7cc",
+      "published_at": "2026-11-20T20:30+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "2db18c11cc71f9768a74",
+      "title": "NEĆE DA PLAĆAJU TUĐE SUKOBE: Generalni štrajk u više od 100 gradova duž Apenina blokirao celu Italiju",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Svet",
+      "source": "Novosti",
+      "source_url": "https://www.novosti.rs/planeta/svet/1673239/nece-placaju-tudje-sukobe-generalni-strajk-vise-100-gradova-duz-apenina-blokirao-celu-italiju",
+      "published_at": "2026-11-20T20:29+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "c981b6a02359fd15d620",
+      "title": "VELIKE IGRE MOĆNIH Šta je postignuto na samitu u Šendženu: Kina \"izbegla metak\", Putin najviše profitirao, Tramp želi da uđe u istoriju",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Svet",
+      "source": "Blic",
+      "source_url": "https://www.blic.rs/vesti/svet/si-djinping-tramp-i-putin-sta-je-postignuto-na-samitu-u-sendzenu/254hlh1",
+      "published_at": "2026-11-20T20:26+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "0028c96ac061a39220e5",
+      "title": "UPAD IZ ODESE U MOLDAVIJU: Rusi nemaju milosti, teritorija opet ugrožena",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Novosti",
+      "source_url": "https://www.novosti.rs/planeta/svet/1673242/upad-odese-moldaviju-rusi-nemaju-milosti-teritorija-opet-ugrozena",
+      "published_at": "2026-11-20T20:26+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "ea4cbc88441ddff10067",
+      "title": "Košta čestitao Čupiću: \"Radujem se što ću ga uskoro ugostiti u Briselu na sastanku uživo\"",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Svet",
+      "source": "N1",
+      "source_url": "https://n1info.rs/vesti/kosta-cestitao-cupicu-radujem-se-sto-cu-ga-uskoro-ugostiti-u-briselu-na-sastanku-uzivo/",
+      "published_at": "2026-11-20T20:25+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "d298e3adc8cd1a30ee44",
+      "title": "Počeli međusobno \"klanje\"! Krenula lavina na Dijanu Hrku: Potrošena si, zalepite joj flaster! (VIDEO)",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Informer",
+      "source_url": "https://informer.rs/politika/vesti/1171801/dijana-hrka-iks-politika",
+      "published_at": "2026-11-20T20:25+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "23fb7decf3ba85169882",
+      "title": "Порази Борца и ФМП-а у АБА лиги",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Politika",
+      "source_url": "https://www.politika.rs/scc/clanak/804746/sport/kosarka/porazi-borca-i-fmp-a-u-aba-ligi",
+      "published_at": "2026-11-20T20:25+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "dab638c9b1adda47496d",
+      "title": "Тетка у Канади, имовина у Србији – може ли држава да уђе у траг новцу од корупције",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "RTS",
+      "source_url": "https://www.rts.rs/vesti/drustvo/6088942/nelegalna-imovina.html",
+      "published_at": "2026-11-20T20:24+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "c5d198b2b2b26f763fae",
+      "title": "Državljanin Rusije uhapšen u Ulcinju zbog sumnje da je organizovao grupu nelegalnih bankara",
+      "summary": "",
+      "category": "Hronika",
+      "region": "Svet",
+      "source": "N1",
+      "source_url": "https://n1info.rs/region/drzavljanin-rusije-uhapsen-u-ulcinju-zbog-sumnje-da-je-organizovao-grupu-nelegalnih-bankara/",
+      "published_at": "2026-11-20T20:23+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "f48f249638121e85244e",
+      "title": "Iraola: Trebalo bi zabraniti snimanje treninga dronovima",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Danas",
+      "source_url": "https://www.danas.rs/sport/andoni-iraola-liverpul-mancester-junajted-trening-snimanje/",
+      "published_at": "2026-11-20T20:22+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "fbfe30a550cebce589e7",
+      "title": "Da li je Putin prijatelj Amerike? Tramp izbegao direktan odgovor",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Svet",
+      "source": "Danas",
+      "source_url": "https://www.danas.rs/svet/da-li-je-putin-prijatelj-amerike-tramp-izbegao-direktan-odgovor/",
+      "published_at": "2026-11-20T20:20+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "aa5e036def46db87a894",
+      "title": "Антонио Кошта честитао Чупићу именовање за председника Скупштине Србије",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Politika",
+      "source_url": "https://www.politika.rs/scc/clanak/804745/antonio-kosta-cestitao-cupicu-imenovanje-za-predsednika-skupstine-srbije",
+      "published_at": "2026-11-20T20:20+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "75fc2b298822bb51584d",
+      "title": "Бренд признао да га је код Кел Брајан привукла боја коже",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Politika",
+      "source_url": "https://www.politika.rs/scc/clanak/804744/brend-priznao-da-ga-je-kod-kel-brajan-privukla-boja-koze",
+      "published_at": "2026-11-20T20:20+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "50707000765a78d67b8d",
+      "title": "Novi šef Delegacije EU u Srbiji ugostio Čupića: \"Narodna skupština ima čvrstog saveznika u Uniji\"",
+      "summary": "",
+      "category": "Politika",
+      "region": "Neodređeno",
+      "source": "N1",
+      "source_url": "https://n1info.rs/vesti/novi-sef-delegacije-eu-u-srbiji-ugostio-cupica/",
+      "published_at": "2026-11-20T20:19+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "366cc06836189d7b6d6f",
+      "title": "(Video) Smederevo bukvalno zatrpano smećem! Deponija zatvorena, grad se guši u đubretu: \"Ovo je potpuni kolaps sistema!\"",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Srbija",
+      "source": "Blic",
+      "source_url": "https://www.blic.rs/vesti/drustvo/smederevo-zatrpano-smecem-deponija-zatvorena-grad-se-gusi-u-smecu/nqqcnjm",
+      "published_at": "2026-11-20T20:19+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "638c1447f4dd61802853",
+      "title": "OSUĐEN: Bivši Šojgujev zamenik 10 godina na robiji - i kazna od 5 miliona €",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Novosti",
+      "source_url": "https://www.novosti.rs/planeta/svet/1673241/osudjen-bivsi-sojgujev-zamenik-10-godina-robiji-kazna-5-miliona",
+      "published_at": "2026-11-20T20:19+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "a2687735645fe977e245",
+      "title": "Rusi poslali dve rakete i dron, poljska vojska i NATO saveznici nisu uspeli da ih obore: Ministar priznao",
+      "summary": "",
+      "category": "Politika",
+      "region": "Neodređeno",
+      "source": "Telegraf",
+      "source_url": "https://www.telegraf.rs/vesti/svet/4436967-rusi-poslali-dve-rakete-i-dron-poljska-vojska-i-nato-saveznici-nisu-uspeli-da-ih-obore-ministar-priznao",
+      "published_at": "2026-11-20T20:18+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "2ee7b30965dfc065d188",
+      "title": "Техеран прети прљавом бомбом, Трамп поручује: САД то неће дозволити",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "RTS",
+      "source_url": "https://www.rts.rs/vesti/svet/6089084/teheran-preti-prljavom-bombom-tramp-porucuje-sad-to-nece-dozvoliti.html",
+      "published_at": "2026-11-20T20:18+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "dfe1044b0f24dfd2d6c8",
+      "title": "Počeo 32. Festival autorskog filma",
+      "summary": "",
+      "category": "Zabava",
+      "region": "Neodređeno",
+      "source": "Telegraf",
+      "source_url": "https://www.telegraf.rs/pop-i-kultura/film-tv/4436972-poceo-32-festival-autorskog-filma",
+      "published_at": "2026-11-20T20:16+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "1e72c5b056dc5816ecd1",
+      "title": "Milena Igoru za rođendan spremila POSEBNU TORTU SA ZLATNIM DETALJIMA! Evo koliko je godina napunio Jurić: \"Volimo te, srećan\"",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Srbija",
+      "source": "Blic",
+      "source_url": "https://www.blic.rs/zabava/milena-igoru-za-rodjendan-spremila-tortu-evo-koliko-je-godina-napunio-juric/npl8rmx",
+      "published_at": "2026-11-20T20:16+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "dd50636f2578f91c3d7f",
+      "title": "Špankinja se doselila u Srbiju, pa udala za srpskog glumca: Ove četiri stvari najviše su je šokirale",
+      "summary": "",
+      "category": "Zabava",
+      "region": "Srbija",
+      "source": "Kurir",
+      "source_url": "https://www.kurir.rs/zabava/zanimljivosti/10168403/dzeni-martin-jovcic-o-stvarima-koje-su-je-iznenadile-u-srbiji",
+      "published_at": "2026-11-20T20:15+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "f51df32fd466cb90b4de",
+      "title": "U ponoć izgovorite ove reči! Veruje se da štite od zlih sila uoči Aranđelovdana",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Informer",
+      "source_url": "https://informer.rs/drustvo/vesti/1171669/molitva-ponoc-arandjelovdan",
+      "published_at": "2026-11-20T20:15+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "0eb91efe8f0a8699e757",
+      "title": "У руском нападу на Криви Рог убијена болничарка, рањено 20 људи",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Politika",
+      "source_url": "https://www.politika.rs/scc/clanak/804743/u-ruskom-napadu-na-krivi-rog-ubijena-bolnicarka-ranjeno-20-ljudi",
+      "published_at": "2026-11-20T20:15+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "3176921b558937fdff66",
+      "title": "FMP izgubio uz zvuk sirene košem bivše legende Partizana, Užičanin vodio Krku do pobede protiv Čačana",
+      "summary": "",
+      "category": "Sport",
+      "region": "Srbija",
+      "source": "Telegraf",
+      "source_url": "https://www.telegraf.rs/sport/kosarka/4436966-fmp-izgubio-uz-zvuk-sirene-kosem-bivse-legende-partizana-uzicanin-vodio-krku-do-pobede-protiv-cacana",
+      "published_at": "2026-11-20T20:13+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "c7cfce6f00347ada2d56",
+      "title": "Ферари: Генетско тестирање спортисткиња је екстремно насиље над женама",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Politika",
+      "source_url": "https://www.politika.rs/scc/clanak/804742/ferari-genetsko-testiranje-sportistkinja-je-ekstremno-nasilje-nad-zenama",
+      "published_at": "2026-11-20T20:13+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "0e0426ae8b6c3aac2714",
+      "title": "NA DEDINJU SE NE ZNA KO KOGA... Evo koliko košta ulaz na svinger žurku u Beogradu i ko sve dolazi! Ukoliko prekršite jedno pravilo, letite napolje",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Srbija",
+      "source": "Kurir",
+      "source_url": "https://www.kurir.rs/vesti/drustvo/10110892/gde-se-nalaze-svinger-klubovi-u-srbiji-i-koliko-kosta-ulaz",
+      "published_at": "2026-11-20T20:12+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "9690aeb40eec8e75e668",
+      "title": "Ovde je uplaćen srećni Loto listić, platio ga 540 dinara: Novi detalji o milioneru iz Niša",
+      "summary": "",
+      "category": "Ekonomija",
+      "region": "Srbija",
+      "source": "Telegraf",
+      "source_url": "https://www.telegraf.rs/vesti/srbija/4436964-ovde-je-uplacen-srecni-loto-listic-platio-ga-540-dinara-novi-detalji-o-milioneru-iz-nisa",
+      "published_at": "2026-11-20T20:11+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "e0b4b2bca6bfddc52c05",
+      "title": "AMBASADOR EU U SRBIJI UGOSTIO ALEKSANDRA ČUPIĆA \"Narodna skupština Srbiјe ima nepokolebljivog saveznika u EU\" (FOTO)",
+      "summary": "",
+      "category": "Politika",
+      "region": "Neodređeno",
+      "source": "Kurir",
+      "source_url": "https://www.kurir.rs/vesti/politika/10168401/dzulijan-vasalo-ugostio-aleksandra-cupica",
+      "published_at": "2026-11-20T20:10+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "4dd80049659398b8f443",
+      "title": "Zašto ljudi prekrštaju noge dok sede? Stručnjaci otkrivaju šta ovaj nesvesni pokret zapravo govori o vama",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Blic",
+      "source_url": "https://www.blic.rs/slobodno-vreme/zasto-sedimo-prekrstenih-nogu-govor-tela-moze-da-vas-oda-u-sekundi/65ecrx2",
+      "published_at": "2026-11-20T20:10+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "151abab898ad2e128ce2",
+      "title": "ČEDA JOVANOVIĆ OSTAO BEZ VIDA, A ONDA SE DESILO ČUDO! Političaru organi otkazivali, lek našao ovde: Mozak mi se gasio...",
+      "summary": "",
+      "category": "Politika",
+      "region": "Neodređeno",
+      "source": "Kurir",
+      "source_url": "https://www.kurir.rs/stars/10168399/ceda-jovanovic-ostao-bez-vida-a-onda-se-desilo-cudo",
+      "published_at": "2026-11-20T20:09+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "da900ed58f1a9541c800",
+      "title": "Vreme je da i vama konačno kapne neki dinar: 3 znaka Zodijaka prvo moraju da pogledaju istini u oči",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Srbija",
+      "source": "Telegraf",
+      "source_url": "https://ona.telegraf.rs/horoskop-astro/4436962-vreme-je-da-i-vama-konacno-kapne-neki-dinar-3-znaka-zodijaka-prvo-moraju-da-pogledaju-istini-u-oci",
+      "published_at": "2026-11-20T20:09+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "491a465074b5e7b5d66b",
+      "title": "Двојица мушкараца погинула у паду једрилице у језеро Лох Левен",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Politika",
+      "source_url": "https://www.politika.rs/scc/clanak/804741/dvojica-muskaraca-poginula-u-padu-jedrilice-u-jezero-loh-leven",
+      "published_at": "2026-11-20T20:07+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "88fa638140bee2752cc7",
+      "title": "Skoro svi ih koriste, a malo ko zna šta rade: Ove aplikacije na telefonu vas neprestano špijuniraju",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Informer",
+      "source_url": "https://informer.rs/magazin/hi-tech/1171763/android-aplikacije-dozvole-licni-podaci",
+      "published_at": "2026-11-20T20:05+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "722feb365f38e833bc2f",
+      "title": "Sve je bilo spremno za dogovor o Ukrajini u Šendženu, a onda je Tramp povukao neočekivani potez: Putinov smrtni neprijatelj otkrio detalje",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Informer",
+      "source_url": "https://informer.rs/planeta/vesti/1171759/aleksandar-stub-sendzen-deklaracija-ukrajina",
+      "published_at": "2026-11-20T20:05+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "1f635e54a635538540f3",
+      "title": "RONALDO KORAK BLIŽE HILJADARCI: Kristijano postigao gol, ali i promašio penal....",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Kurir",
+      "source_url": "https://www.kurir.rs/sport/fudbal/10168397/ronaldo-korak-blize-hiljadarci",
+      "published_at": "2026-11-20T20:05+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "6aeb0090a6cbc972977a",
+      "title": "Dva fonda Intesa Investa bila izložena Alta banci 1,1 odsto: Direktor nam otkrio šta su ga prvo pitali te noći",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Blic",
+      "source_url": "https://www.blic.rs/biznis/vesti/dva-fonda-intesa-invest-izlozena-u-alta-banci-direktor-otkrio-sta-su-ga-prvo-pitali/14wn1n1",
+      "published_at": "2026-11-20T20:05+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "0cfd6a37e04839b5f5fe",
+      "title": "Oglasio se ambasador EU u Srbiji nakon sastanka sa Aleksandrom Čupićem",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Telegraf",
+      "source_url": "https://www.telegraf.rs/4436960-oglasio-se-ambasador-eu-u-srbiji-nakon-sastanka-sa-aleksandrom-cupicem",
+      "published_at": "2026-11-20T20:04+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "c52238d29d35fcaf71d3",
+      "title": "Instagram sada omogućuje uređivanje storija i nakon objave, ali to nije sve",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Kurir",
+      "source_url": "https://www.kurir.rs/zabava/zanimljivosti/10166711/instagram-sada-omogucuje-uredjivanje-storija-i-nakon-objave-ali-to-nije-sve",
+      "published_at": "2026-11-20T20:04+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "66920af2e8232b9f1fad",
+      "title": "Pale žestoke prozivke: Gazda Panatinaikosa pecnuo Olimpijakos zbog kazne!",
+      "summary": "",
+      "category": "Sport",
+      "region": "Neodređeno",
+      "source": "Novosti",
+      "source_url": "https://www.novosti.rs/sport/kosarka/1673236/gazda-panatinaikosa-pecnuo-najveceg-rivala-dimitris-janakopulos-komentar-kazna-olimpijakos-jorgos-barcokas",
+      "published_at": "2026-11-20T20:02+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "cc7a7bf5667610e73943",
+      "title": "Alkaraz zaintrigirao sve izjavom o povredi: Prepuštam vama da spekulišete",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Informer",
+      "source_url": "https://informer.rs/sport/tenis/1171772/karlos-alkaraz-povreda",
+      "published_at": "2026-11-20T20:02+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "7f41eda97afe0578a5f2",
+      "title": "Studentska lista započela razgovore o Vladi odmah posle izbora! Štimac otkrila detalje: \"Razmatramo broj ministarstava\"",
+      "summary": "",
+      "category": "Politika",
+      "region": "Neodređeno",
+      "source": "Blic",
+      "source_url": "https://www.blic.rs/vesti/politika/aleksandra-stimac-studentska-lista-otkrila-detalje-o-formiranju-vlade/ng8pmmg",
+      "published_at": "2026-11-20T20:02+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "922258ba2ac57bd2ebdb",
+      "title": "Anadolu Efes kao furija proleteo pored Asvela, Francuzi primili čak 107 poena u Turskoj",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Svet",
+      "source": "Telegraf",
+      "source_url": "https://www.telegraf.rs/sport/evroliga-kosarka/vesti-evroliga/4436961-anadolu-efes-kao-furija-proleteo-pored-asvela-francuzi-primili-cak-107-poena-u-turskoj",
+      "published_at": "2026-11-20T20:01+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "2049b0ee8a6ad94118a1",
+      "title": "„Nova“: Ko je sve u rukovodstvu srpskog parlamenta",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Nova.rs",
+      "source_url": "https://nova.rs/vesti/drustvo/nova-ko-je-sve-u-rukovodstvu-srpskog-parlamenta/",
+      "published_at": "2026-11-20T20:00+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "7c81507978ba469485e4",
+      "title": "Najbizarnije preletanje ikada: Saša Mirković tvrdi da je žrtva Vučićevog režima - a preko 11 miliona je razloga da mu ne verujemo",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Srbija",
+      "source": "Nova.rs",
+      "source_url": "https://nova.rs/zabava/showbiz/najbizarnije-preletanje-ikada-sasa-mirkovic-tvrdi-da-je-zrtva-vucicevog-rezima-a-preko-11-miliona-je-razloga-da-mu-ne-verujemo/",
+      "published_at": "2026-11-20T20:00+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "455ee8c11b0852fad7fc",
+      "title": "„Medijski spektakl bez dometa“: Sagovornici Danasa analiziraju sastanak Sija, Trampa i Putina",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Svet",
+      "source": "Danas",
+      "source_url": "https://www.danas.rs/svet/medijski-spektakl-bez-dometa-sagovornici-danasa-o-sastanku-sija-trampa-i-putina/",
+      "published_at": "2026-11-20T20:00+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "48e2537182a7244a998f",
+      "title": "Kućni snimak Atine Ferari ugledao svetlost dana! Oblizuje se i poziva na... - Nije za maloletne (VIDEO)",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Informer",
+      "source_url": "https://informer.rs/dzet-set/estrada/1171786/atina-ferari-kucni-snimak-grudi-stajling",
+      "published_at": "2026-11-20T20:00+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "1c6a3df2121790392c6b",
+      "title": "MISTERIJA BELOG AUTOMOBILA U SLUČAJU DANKE ILIĆ! Otkriveno šta je sporno: Trebalo je da vidi...",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Kurir",
+      "source_url": "https://www.kurir.rs/crna-hronika/10168028/sudjenje-danka-ilic-advokat-beli-automobil-ivana-ilic",
+      "published_at": "2026-11-20T20:00+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "9c3c31c2849b468b0dea",
+      "title": "Izgoreli automobili na placu u Sremskoj Kamenici: Sumnja se da je požar podmetnut (FOTO)",
+      "summary": "",
+      "category": "Hronika",
+      "region": "Srbija",
+      "source": "Informer",
+      "source_url": "https://informer.rs/hronika/vesti/1171800/sremska-kamenica-zapaljen-auto-pozar",
+      "published_at": "2026-11-20T20:00+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "63db857866c7236d4042",
+      "title": "Зеленски: Путин је за нас убица",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Politika",
+      "source_url": "https://www.politika.rs/scc/clanak/804740/zelenski-putin-je-za-nas-ubica",
+      "published_at": "2026-11-20T20:00+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "3692c0ebfbda77c8713b",
+      "title": "\"Nemam za šta da svedočim protiv Vučića, taj čovek nije načinio nikakvo zlo ovoj zemlji\": Mihajlović odgovorila na stravične uvrede! (FOTO)",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Srbija",
+      "source": "Informer",
+      "source_url": "https://informer.rs/politika/vesti/1171799/vucic-zorana-mihajlovic-uvrede",
+      "published_at": "2026-11-20T20:00+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "262e2a06b7f3ae5c01f7",
+      "title": "REPRIZA DOČEKA U BARU SA MERLINOM POD ZNAKOM PITANJA Evo šta se dešava nakon što mu je otkazan koncert pred Novu u Splitu: \"300.000 evra košta sve\"",
+      "summary": "",
+      "category": "Zabava",
+      "region": "Neodređeno",
+      "source": "Blic",
+      "source_url": "https://www.blic.rs/zabava/repriza-doceka-u-baru-sa-merlinom-pod-znakom-pitanja-300-hiljada-evra-kosta/66brt9f",
+      "published_at": "2026-11-20T19:59+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "f5dbdaf003086ef728d0",
+      "title": "\"UZMI ME, BOŽE\"! Zatvorenik vrištao od bolova i molio da umre tokom SMRTNE KAZNE kakva se ne pamti u Americi! Egzekucija trajala čak 63 minuta! (FOTO)",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Svet",
+      "source": "Kurir",
+      "source_url": "https://www.kurir.rs/planeta/10168394/zatvorenik-vristao-od-bolova-i-molio-da-umre-tokom-smrtne-kazne",
+      "published_at": "2026-11-20T19:59+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "ab3ca4ce76b5bd88b63a",
+      "title": "Šta Šešelj zna o ubistvu Ivanovića: Trajković objavila prijavu iz 2022.",
+      "summary": "",
+      "category": "Hronika",
+      "region": "Neodređeno",
+      "source": "Vreme",
+      "source_url": "https://vreme.com/vesti/sta-seselj-zna-o-ubistvu-ivanovica-trajkovic-objavila-prijavu-iz-2022/",
+      "published_at": "2026-11-20T19:58+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "0901d67fd7f19f687c60",
+      "title": "RSE: Moskva ministru Nenadu Popoviću poverila borbu protiv \"stranog mešanja\"",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "N1",
+      "source_url": "https://n1info.rs/vesti/rse-moskva-ministru-nenadu-popovicu-poverila-borbu-protiv-stranog-mesanja/",
+      "published_at": "2026-11-20T19:58+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "55f7f8b48fe4239db9d6",
+      "title": "Snimak trenutka pada ruske rakete na Poljsku: Tusk tvrdi da nije slučajnost što se incident dogodio tokom vojne vežbe",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "N1",
+      "source_url": "https://n1info.rs/svet/snimak-trenutka-pada-ruske-rakete-na-poljsku-tusk-tvrdi-da-nije-slucajnost-sto-se-incident-dogodio-tokom-vojne-vezbe/",
+      "published_at": "2026-11-20T19:58+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "31a66e34797cd0bc86cd",
+      "title": "Si i Putin najveći pobednici istorijskog samita sa Trampom: Sastanak u Kini mogao bi da označi početak novog svetskog poretka",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Svet",
+      "source": "Nova.rs",
+      "source_url": "https://nova.rs/vesti/svet/si-i-putin-najveci-pobednici-istorijskog-samita-sa-trampom-sastanak-u-kini-mogao-bi-da-oznaci-pocetak-novog-svetskog-poretka/",
+      "published_at": "2026-11-20T19:57+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "a2f520d42d100581044a",
+      "title": "\"DUŠANE GROBARE!\" Navijači Partizana skandirali Alimpijeviću na meču Partizan - Bešiktaš (VIDEO)",
+      "summary": "",
+      "category": "Sport",
+      "region": "Srbija",
+      "source": "Novosti",
+      "source_url": "https://www.novosti.rs/sport/kosarka/1673237/dusane-grobare-navijaci-partizana-skandirali-alimpijevicu-mecu-partizan-besiktas-video",
+      "published_at": "2026-11-20T19:57+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "51df7cca6fec4aa7cb28",
+      "title": "Радојевић: Поново покренута иницијатива за уклањање знака „Волим Митровицу”",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Politika",
+      "source_url": "https://www.politika.rs/scc/clanak/804738/radojevic-ponovo-pokrenuta-inicijativa-za-uklanjanje-znaka-volim-mitrovicu",
+      "published_at": "2026-11-20T19:57+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "36801a8724bea9048536",
+      "title": "Udala se Zerina Hećo! Bivša zadrugarka posle moždanog udara i rijalitija napokon srećna: ON je njen izabranik",
+      "summary": "",
+      "category": "Zabava",
+      "region": "Neodređeno",
+      "source": "Telegraf",
+      "source_url": "https://www.telegraf.rs/jetset/rijaliti/4436942-udala-se-zerina-heco-bivsa-zadrugarka-posle-mozdanog-udara-i-rijalitija-napokon-srecna-on-je-njen-izabranik",
+      "published_at": "2026-11-20T19:56+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "fb0d58c26e837f38c963",
+      "title": "Лајтер: Америчке трупе вратиће се кући када Иран буде поражен",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Politika",
+      "source_url": "https://www.politika.rs/scc/clanak/804739/lajter-americke-trupe-vratice-se-kuci-kada-iran-bude-porazen",
+      "published_at": "2026-11-20T19:56+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "bd0d6cd0a7b6bfb84936",
+      "title": "Špankinju ove 4 stvari najviše šokirale kad je došla u Srbiju: \"Zovem te, ali to ne znači da ću ja da platim\"",
+      "summary": "",
+      "category": "Ekonomija",
+      "region": "Srbija",
+      "source": "Telegraf",
+      "source_url": "https://www.telegraf.rs/vesti/srbija/4436588-spankinju-ove-4-stvari-najvise-sokirale-kad-je-dosla-u-srbiju-zovem-te-ali-to-ne-znaci-da-cu-ja-da-platim",
+      "published_at": "2026-11-20T19:55+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "0fff143e958ef43ab047",
+      "title": "Neočekivana scena u \"Pioniru\": Evo kako su \"grobari\" dočekali bivšeg trenera Crvene zvezde!",
+      "summary": "",
+      "category": "Sport",
+      "region": "Neodređeno",
+      "source": "Informer",
+      "source_url": "https://informer.rs/sport/kosarka/1171798/kk-partizan-dusan-alimpijevic",
+      "published_at": "2026-11-20T19:53+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "bd39ee6a6df87b774ecc",
+      "title": "Spektakl u Pioniru: Grobari prekinuli meč posle samo sedam sekundi, poletelo na hiljade belih papirića",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Telegraf",
+      "source_url": "https://www.telegraf.rs/sport/evroliga-kosarka/veciti/4436958-spektakl-u-pioniru-grobari-prekinuli-mec-posle-samo-sedam-sekundi-poletelo-na-hiljade-belih-papirica",
+      "published_at": "2026-11-20T19:53+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "851560358ea63115ffb7",
+      "title": "Tom Brejdi ulazi u vlasničku strukturu Čelsija? Legendarni kvoterbek zainteresovan za londonski klub",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Svet",
+      "source": "Novosti",
+      "source_url": "https://www.novosti.rs/sport/ostali-sportovi/1673234/najnovije-sportske-vesti-fudbal-celsi-kupovina-tom-brejdi",
+      "published_at": "2026-11-20T19:52+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "93b63f891e8c8b81813a",
+      "title": "NESTVARNE SCENE IZ PIONIRA: Navijači Partizana aplauzom dočekali selektora Alimpijevića! Pogledajte njegovu reakciju",
+      "summary": "",
+      "category": "Sport",
+      "region": "Srbija",
+      "source": "Kurir",
+      "source_url": "https://www.kurir.rs/sport/kosarka/evroliga/10168388/grobari-aplauzom-docekali-alimpijevica",
+      "published_at": "2026-11-20T19:52+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "bd6e2217629596859c93",
+      "title": "Plenković oštro poručio Crnoj Gori: \"Ne tražimo tuđe, ali svoje ne damo\"",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "N1",
+      "source_url": "https://n1info.rs/region/plenkovic-ostro-porucio-crnoj-gori-ne-trazimo-tudje-ali-svoje-ne-damo/",
+      "published_at": "2026-11-20T19:51+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "49956ce839387d96da12",
+      "title": "\"Odradićeš ovo i dug je obrisan!\" Otkriven jeziv modus operandi mafije koja hara regionom i od dece pravi ubice (Video)",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Blic",
+      "source_url": "https://www.blic.rs/vesti/hronika/otkriven-jeziv-modus-operandi-mafije-koja-hara-regionom-i-od-dece-pravi-ubice/0km3n7e",
+      "published_at": "2026-11-20T19:49+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "c63578c0ff2e7e60ae64",
+      "title": "Ефес убедљив против Асвела",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Politika",
+      "source_url": "https://www.politika.rs/scc/clanak/804737/sport/kosarka/efes-ubedljiv-protiv-asvela",
+      "published_at": "2026-11-20T19:48+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "0b709170cd9c16ef0ae4",
+      "title": "Tri dana rasprave - opomene i uvrede, a Skupština još nije konstituisana: Hoće li se parlament upristojiti?",
+      "summary": "",
+      "category": "Politika",
+      "region": "Srbija",
+      "source": "N1",
+      "source_url": "https://n1info.rs/vesti/sta-mozemo-da-ocekujemo-u-nastavku-rada-skupstine/",
+      "published_at": "2026-11-20T19:47+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "fbd9cd22995c75bf084f",
+      "title": "Mamdani predstavio plan zatvaranja zloglasnog njujorškog zatvora na Rajkerovom ostrvu do 2032.",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Danas",
+      "source_url": "https://www.danas.rs/svet/mamdani-predstavio-plan-zatvaranja-zloglasnog-njujorskog-zatvora-na-rajkerovom-ostrvu-do-2032/",
+      "published_at": "2026-11-20T19:46+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "1ee86bad9004a5e6bb37",
+      "title": "Država mu poveravala poslove vredne milione evra, Gašić i Vučić ga vodili u komandni centar MUP, a sada ga traži policija: Ko je biznismen iz Novog Sada Dejan Slijepčević?",
+      "summary": "",
+      "category": "Hronika",
+      "region": "Srbija",
+      "source": "Nova.rs",
+      "source_url": "https://nova.rs/vesti/hronika/drzava-mu-poveravala-poslove-vredne-milione-evra-gasic-i-vucic-ga-vodili-u-komandni-centar-mup-a-sada-ga-trazi-policija-ko-je-biznismen-iz-novog-sada-dejan-slijepcevic/",
+      "published_at": "2026-11-20T19:45+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "95328decce8e95401540",
+      "title": "Batut: U Srbiji od 9. do 15. novembra zabeleženo 6.630 slučajeva oboljenja sličnih gripu",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Srbija",
+      "source": "N1",
+      "source_url": "https://n1info.rs/vesti/batut-broj-obolelih-od-gripa/",
+      "published_at": "2026-11-20T19:45+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "fbec28b6dcf2abf3c0e9",
+      "title": "Umro advokat Živojin Jokanović",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Blic",
+      "source_url": "https://www.blic.rs/vesti/drustvo/umro-advokat-zivojin-jokanovic/lfy79j6",
+      "published_at": "2026-11-20T19:45+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "7265cd89ecbf793acfea",
+      "title": "Šta se jelo na Titovom \"Galebu\"? Novogodišnji jelovnik maršala mnoge je bacio u razmišljanje",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Kurir",
+      "source_url": "https://www.kurir.rs/zabava/zanimljivosti/10128628/kako-je-izgledao-jelovnik-na-brodu-josipa-broza-tita",
+      "published_at": "2026-11-20T19:45+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "b2216b2e1899097d77a2",
+      "title": "Umro Dragan Manić",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Telegraf",
+      "source_url": "https://www.telegraf.rs/sport/fudbal/4436956-umro-dragan-manic",
+      "published_at": "2026-11-20T19:45+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
     {
       "id": "b331328bf6e0bd68fe38",
       "title": "Око: Експо 2027 – прилика или велики трошак: Какве су последице у случају одустајања од изложбе",
@@ -13,14 +849,36 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "46049d18adcc8c64df5e",
-      "title": "Tramp se opet hvali \"okončanim\" ratovima i ponovo na spisak stavlja i SRBIJU! Evo šta je tačno rekao: \"Spasao sam mnogo života!\"",
+      "id": "09e41f2ab86885389752",
+      "title": "PUKLA STOTKA U ISTANBULU: Efes demolirao Asvel",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Svet",
+      "source": "Kurir",
+      "source_url": "https://www.kurir.rs/sport/kosarka/evroliga/10168384/efes-demolirao-asvel",
+      "published_at": "2026-11-20T19:44+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "bb90eb6411140000898c",
+      "title": "Мјузикл „Евита” премијерно 28. новембра у Мадленијануму",
       "summary": "",
       "category": "Društvo",
       "region": "Neodređeno",
+      "source": "Politika",
+      "source_url": "https://www.politika.rs/scc/clanak/804736/mjuzikl-evita-premijerno-28-novembra-u-madlenijanumu",
+      "published_at": "2026-11-20T19:44+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "26311f18ff3fa91017b2",
+      "title": "\"Nekada ne možeš da kažeš sve prijatelju, ja sam bila kod terapeuta\" Ivana Dudić otvorila dušu, a bivši dečko naše zgodne pevačice stigao sa NOVOM DEVOJKOM na događaj (Video)",
+      "summary": "",
+      "category": "Zabava",
+      "region": "Neodređeno",
       "source": "Blic",
-      "source_url": "https://www.blic.rs/vesti/svet/tramp-se-hvalio-okoncanim-ratovima-pa-na-spisak-stavio-srbiju-i-kosovo/vz67g7c",
-      "published_at": "2026-11-20T19:42+00:00",
+      "source_url": "https://www.blic.rs/zabava/ivana-dudic-otvorila-dusu-nekada-ne-mozes-da-kazes-sve-prijatelju/7wwb6wp",
+      "published_at": "2026-11-20T19:43+00:00",
       "verification_status": "preneto_iz_izvora"
     },
     {
@@ -31,17 +889,6 @@
       "region": "Srbija",
       "source": "Nova.rs",
       "source_url": "https://nova.rs/sport/evroliga/barselona-crvena-zvezda-uzivo-evroliga-danas-prenos/",
-      "published_at": "2026-11-20T19:42+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "d46dff88e86b3c0eadae",
-      "title": "Efes razmontirao Asvel: Turski tim na pogon Džordana Lojda do ubedljivog trijumfa",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Svet",
-      "source": "Novosti",
-      "source_url": "https://www.novosti.rs/sport/kosarka/1673235/efes-razmontirao-asvel-turski-tim-pogon-dzordana-lojda-ubedljivog-trijumfa",
       "published_at": "2026-11-20T19:42+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -57,14 +904,36 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "48887de3e084032939bf",
-      "title": "UŽIVO Barselona – Crvena zvezda, Loš početak crveno-belih",
+      "id": "d46dff88e86b3c0eadae",
+      "title": "Efes razmontirao Asvel: Turski tim na pogon Džordana Lojda do ubedljivog trijumfa",
       "summary": "",
-      "category": "Sport",
-      "region": "Srbija",
-      "source": "Danas",
-      "source_url": "https://www.danas.rs/sport/barselona-zvezda-uzivo-prenos-livestream/",
-      "published_at": "2026-11-20T19:40+00:00",
+      "category": "Društvo",
+      "region": "Svet",
+      "source": "Novosti",
+      "source_url": "https://www.novosti.rs/sport/kosarka/1673235/efes-razmontirao-asvel-turski-tim-pogon-dzordana-lojda-ubedljivog-trijumfa",
+      "published_at": "2026-11-20T19:42+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "46049d18adcc8c64df5e",
+      "title": "Tramp se opet hvali \"okončanim\" ratovima i ponovo na spisak stavlja i SRBIJU! Evo šta je tačno rekao: \"Spasao sam mnogo života!\"",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Blic",
+      "source_url": "https://www.blic.rs/vesti/svet/tramp-se-hvalio-okoncanim-ratovima-pa-na-spisak-stavio-srbiju-i-kosovo/vz67g7c",
+      "published_at": "2026-11-20T19:42+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "4ed58893f909fc12e1d6",
+      "title": "Tramp se opet hvali \"okončanim\" ratovima i ponovo na spisak stavlja i SRBIJU! Evo šta je tačno rekao: \"Spasao sam mnogo života!\"",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Blic",
+      "source_url": "https://www.blic.rs/vesti/politika/tramp-se-hvalio-okoncanim-ratovima-pa-na-spisak-stavio-srbiju-i-kosovo/8c92hnh",
+      "published_at": "2026-11-20T19:42+00:00",
       "verification_status": "preneto_iz_izvora"
     },
     {
@@ -75,6 +944,17 @@
       "region": "Neodređeno",
       "source": "Insajder",
       "source_url": "https://insajder.net/prenosimo/batut-zabelezeno-6630-slucajeva-oboljenja-slicnih-gripu",
+      "published_at": "2026-11-20T19:40+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "48887de3e084032939bf",
+      "title": "UŽIVO Barselona – Crvena zvezda, Loš početak crveno-belih",
+      "summary": "",
+      "category": "Sport",
+      "region": "Srbija",
+      "source": "Danas",
+      "source_url": "https://www.danas.rs/sport/barselona-zvezda-uzivo-prenos-livestream/",
       "published_at": "2026-11-20T19:40+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -112,6 +992,17 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
+      "id": "60a85fe62daba9768450",
+      "title": "Извучена лото седмица, 3.400.000 евра иде у Ниш",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Politika",
+      "source_url": "https://www.politika.rs/scc/clanak/804735/izvucena-loto-sedmica-3-400-000-evra-ide-u-nis",
+      "published_at": "2026-11-20T19:38+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
       "id": "95c69782ac5783bdb262",
       "title": "KO JE DR JELENA PETROVIĆ, NOVA POTPREDSEDNICA SKUPŠTINE: Lekarka iz Kragujevca koja je ušla u politiku sa jasnom porukom o jakim institucijama",
       "summary": "",
@@ -130,6 +1021,17 @@
       "region": "Srbija",
       "source": "Kurir",
       "source_url": "https://www.kurir.rs/vesti/drustvo/10167994/korona-ponovo-hara-srbijom-simptomi-i-lecenje",
+      "published_at": "2026-11-20T19:37+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "1cb97f0f7ddcd37cb0ae",
+      "title": "Вулин: Очекујем продужење гасног аранжмана са Русијом, али ће оно бити опрезно",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Politika",
+      "source_url": "https://www.politika.rs/scc/clanak/804734/vulin-ocekujem-produzenje-gasnog-aranzmana-sa-rusijom-ali-ce-ono-biti-oprezno",
       "published_at": "2026-11-20T19:37+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -178,17 +1080,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "2fa1469c6cfec947e7f0",
-      "title": "Павел упозорио да би Чешка могла да постане „легитимна мета” Русије",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Politika",
-      "source_url": "https://www.politika.rs/scc/clanak/804733/pavel-upozorio-da-bi-ceska-mogla-da-postane-legitimna-meta-rusije",
-      "published_at": "2026-11-20T19:32+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "a484d137ea1880e39bba",
       "title": "Čemu sutra da se nadate: Aranđelovdan je - ne odbijajte nikoga na kućnom pragu da vas sreća ne zaobiđe",
       "summary": "",
@@ -196,6 +1087,17 @@
       "region": "Neodređeno",
       "source": "Telegraf",
       "source_url": "https://ona.telegraf.rs/slave/4436948-cemu-sutra-da-se-nadate-arandjelovdan-je-ne-odbijajte-nikoga-na-kucnom-pragu-da-vas-sreca-ne-zaobidje",
+      "published_at": "2026-11-20T19:32+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "2fa1469c6cfec947e7f0",
+      "title": "Павел упозорио да би Чешка могла да постане „легитимна мета” Русије",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Politika",
+      "source_url": "https://www.politika.rs/scc/clanak/804733/pavel-upozorio-da-bi-ceska-mogla-da-postane-legitimna-meta-rusije",
       "published_at": "2026-11-20T19:32+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -222,6 +1124,17 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
+      "id": "a0d505dc544d34c1822b",
+      "title": "Dnevnik - Cela emisija - 19.11.2026.",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Nova.rs",
+      "source_url": "https://nova.rs/emisije/dnevnik-cela-emisija-19112026/",
+      "published_at": "2026-11-20T19:30+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
       "id": "8bc8c1865ce3e88cc2fb",
       "title": "\"On je agent stranog uticaja, nemački čovek\": Branko Pavlović o Jovu Bakiću - Znam to iz prve ruke! (VIDEO)",
       "summary": "",
@@ -240,17 +1153,6 @@
       "region": "Neodređeno",
       "source": "Informer",
       "source_url": "https://informer.rs/magazin/dom-i-porodica/1171756/kisa-mokre-patike-obuca",
-      "published_at": "2026-11-20T19:30+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "a0d505dc544d34c1822b",
-      "title": "Dnevnik - Cela emisija - 19.11.2026.",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Nova.rs",
-      "source_url": "https://nova.rs/emisije/dnevnik-cela-emisija-19112026/",
       "published_at": "2026-11-20T19:30+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -288,17 +1190,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "742cf6affc488d102504",
-      "title": "Potraga za detetom koje je upalo u Ribnicu biće nastavljena i tokom noći",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Telegraf",
-      "source_url": "https://www.telegraf.rs/vesti/jugosfera/4436951-potraga-za-detetom-koje-je-upalo-u-ribnicu-bice-nastavljena-i-tokom-noci",
-      "published_at": "2026-11-20T19:27+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "ed37787da1998ee3284b",
       "title": "Grom iz Kopenhagena za Putina! Haos zbog atentata: Atmosfera u Moskvi paklena, Kremlj pred velikom odlukom",
       "summary": "",
@@ -310,14 +1201,14 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "aa3054ac2c78424cdd24",
-      "title": "Viša škola, pa fakultet! Sanja Marinković ne radi u struci, a evo šta je završila: Istina o obrazovanju voditeljke",
+      "id": "742cf6affc488d102504",
+      "title": "Potraga za detetom koje je upalo u Ribnicu biće nastavljena i tokom noći",
       "summary": "",
       "category": "Društvo",
       "region": "Neodređeno",
-      "source": "Blic",
-      "source_url": "https://www.blic.rs/zabava/sanja-marinkovic-ne-radi-u-struci-a-evo-sta-je-zavrsila-visa-pa-fakultet/krw0232",
-      "published_at": "2026-11-20T19:26+00:00",
+      "source": "Telegraf",
+      "source_url": "https://www.telegraf.rs/vesti/jugosfera/4436951-potraga-za-detetom-koje-je-upalo-u-ribnicu-bice-nastavljena-i-tokom-noci",
+      "published_at": "2026-11-20T19:27+00:00",
       "verification_status": "preneto_iz_izvora"
     },
     {
@@ -328,6 +1219,17 @@
       "region": "Neodređeno",
       "source": "Novosti",
       "source_url": "https://www.novosti.rs/planeta/svet/1673232/probacemo-formiramo-vladu-netanjahuom-ako-ide-arapima-ajzenkot-dokazao-kao-drzavnik-izjavom-sokirao-sve",
+      "published_at": "2026-11-20T19:26+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "aa3054ac2c78424cdd24",
+      "title": "Viša škola, pa fakultet! Sanja Marinković ne radi u struci, a evo šta je završila: Istina o obrazovanju voditeljke",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Blic",
+      "source_url": "https://www.blic.rs/zabava/sanja-marinkovic-ne-radi-u-struci-a-evo-sta-je-zavrsila-visa-pa-fakultet/krw0232",
       "published_at": "2026-11-20T19:26+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -343,17 +1245,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "d67dc566984f01240cba",
-      "title": "Видео-игра GTA VI зарадила 2,36 милијарди долара за мање од 24 сата",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Politika",
-      "source_url": "https://www.politika.rs/scc/clanak/804732/video-igra-gta-vi-zaradila-2-36-milijardi-dolara-za-manje-od-24-sata",
-      "published_at": "2026-11-20T19:25+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "7fbe037cdf9c71662fb1",
       "title": "Ponovo uspostavljen saobraćaj u tunelu \"Laz\"",
       "summary": "",
@@ -361,6 +1252,17 @@
       "region": "Neodređeno",
       "source": "N1",
       "source_url": "https://n1info.rs/vesti/ponovo-uspostavljen-saobracaj-u-tunelu-laz/",
+      "published_at": "2026-11-20T19:25+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "d67dc566984f01240cba",
+      "title": "Видео-игра GTA VI зарадила 2,36 милијарди долара за мање од 24 сата",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Politika",
+      "source_url": "https://www.politika.rs/scc/clanak/804732/video-igra-gta-vi-zaradila-2-36-milijardi-dolara-za-manje-od-24-sata",
       "published_at": "2026-11-20T19:25+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -431,17 +1333,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "56564f6af2282c83af63",
-      "title": "Индијци развијају надзвучну крстарећу ракету са мотором на принципу ротирајуће детонације",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Politika",
-      "source_url": "https://www.politika.rs/scc/clanak/804730/indijci-razvijaju-nadzvucnu-krstarecu-raketu-sa-motorom-na-principu-rotirajuce-detonacije",
-      "published_at": "2026-11-20T19:20+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "62e36f6c0ce6e80ced94",
       "title": "NASLOVNE STRANE SUTRAŠNJIH NOVINA: Prelistavanje štampe za subotu, 21. novembar 2026. godine",
       "summary": "",
@@ -449,6 +1340,17 @@
       "region": "Neodređeno",
       "source": "Telegraf",
       "source_url": "https://www.telegraf.rs/vesti/srbija/4436943-naslovne-strane-sutrasnjih-novina-prelistavanje-stampe-za-subotu-21-novembar-2026-godine",
+      "published_at": "2026-11-20T19:20+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "56564f6af2282c83af63",
+      "title": "Индијци развијају надзвучну крстарећу ракету са мотором на принципу ротирајуће детонације",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Politika",
+      "source_url": "https://www.politika.rs/scc/clanak/804730/indijci-razvijaju-nadzvucnu-krstarecu-raketu-sa-motorom-na-principu-rotirajuce-detonacije",
       "published_at": "2026-11-20T19:20+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -486,17 +1388,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "31bfee2d7b05fea32dd5",
-      "title": "ПИО Фонд: Међународни дани разговора са БиХ 1. децембра у Новом Саду, а 2. децембра у Бeограду",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Politika",
-      "source_url": "https://www.politika.rs/scc/clanak/804729/pio-fond-medunarodni-dani-razgovora-sa-bih-1-decembra-u-novom-sadu-a-2-decembra-u-beogradu",
-      "published_at": "2026-11-20T19:15+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "d2bbccdc4e3f63e7c6ae",
       "title": "Ovo će zaboleti u Humskoj: Zvezda u probranom društvu giganta, a pogledajte gde se trenutno nalazi Partizan!",
       "summary": "",
@@ -504,6 +1395,17 @@
       "region": "Srbija",
       "source": "Informer",
       "source_url": "https://informer.rs/sport/fudbal/1171783/fk-crvena-zvezda-partizan-fifa",
+      "published_at": "2026-11-20T19:15+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "38cd1d9bd11128157f40",
+      "title": "\"Kako se onda ovo zove?!\" Minja Miletić postavila pitanje od milion dolara i raskrinkala dvostruke aršine nove vlasti (VIDEO)",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Informer",
+      "source_url": "https://informer.rs/politika/vesti/1171791/minja-miletic-gordana-comic-nova-vlast",
       "published_at": "2026-11-20T19:15+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -530,13 +1432,13 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "38cd1d9bd11128157f40",
-      "title": "\"Kako se onda ovo zove?!\" Minja Miletić postavila pitanje od milion dolara i raskrinkala dvostruke aršine nove vlasti (VIDEO)",
+      "id": "31bfee2d7b05fea32dd5",
+      "title": "ПИО Фонд: Међународни дани разговора са БиХ 1. децембра у Новом Саду, а 2. децембра у Бeограду",
       "summary": "",
       "category": "Društvo",
       "region": "Neodređeno",
-      "source": "Informer",
-      "source_url": "https://informer.rs/politika/vesti/1171791/minja-miletic-gordana-comic-nova-vlast",
+      "source": "Politika",
+      "source_url": "https://www.politika.rs/scc/clanak/804729/pio-fond-medunarodni-dani-razgovora-sa-bih-1-decembra-u-novom-sadu-a-2-decembra-u-beogradu",
       "published_at": "2026-11-20T19:15+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -574,6 +1476,17 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
+      "id": "709754b252b41955ee64",
+      "title": "Umro advokat Živojin Jokanović",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Nova.rs",
+      "source_url": "https://nova.rs/vesti/drustvo/umro-advokat-zivojin-jokanovic/",
+      "published_at": "2026-11-20T19:10+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
       "id": "a6aaf51e77de5b620e66",
       "title": "Dnevnik u 19 (19.11.2026)",
       "summary": "",
@@ -596,13 +1509,13 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "709754b252b41955ee64",
-      "title": "Umro advokat Živojin Jokanović",
+      "id": "a70a44f6fb1f573b2a06",
+      "title": "Srbija ima novog Loto milionera!",
       "summary": "",
       "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Nova.rs",
-      "source_url": "https://nova.rs/vesti/drustvo/umro-advokat-zivojin-jokanovic/",
+      "region": "Srbija",
+      "source": "Telegraf",
+      "source_url": "https://www.telegraf.rs/vesti/srbija/4436902-srbija-ima-novog-loto-milionera",
       "published_at": "2026-11-20T19:10+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -614,17 +1527,6 @@
       "region": "Neodređeno",
       "source": "Politika",
       "source_url": "https://www.politika.rs/scc/clanak/804727/naucnici-ispod-ledenog-pokrivaca-antarktika-otkrili-drevne-planinske-lance",
-      "published_at": "2026-11-20T19:10+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "a70a44f6fb1f573b2a06",
-      "title": "Srbija ima novog Loto milionera!",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Srbija",
-      "source": "Telegraf",
-      "source_url": "https://www.telegraf.rs/vesti/srbija/4436902-srbija-ima-novog-loto-milionera",
       "published_at": "2026-11-20T19:10+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -684,17 +1586,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "6d591cb28e22a31ed19b",
-      "title": "Ronaldo dao gol, pa se obrukao! Portugalac sve bliži 1.000 golu, evo koliko mu nedostaje! (VIDEO)",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Novosti",
-      "source_url": "https://www.novosti.rs/sport/fudbal/1673230/kristijano-ronaldo-sve-blizi-hiljaditi-gol-nasr-portugalac-dao-986-pogodak",
-      "published_at": "2026-11-20T19:07+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "10831f89a1f211434355",
       "title": "Partizan razbio Crvenu zvezdu u večitom derbiju",
       "summary": "",
@@ -702,6 +1593,17 @@
       "region": "Srbija",
       "source": "Nova.rs",
       "source_url": "https://nova.rs/sport/sport-ostalo/partizan-razbio-crvenu-zvezdu-u-vecitom-derbiju/",
+      "published_at": "2026-11-20T19:07+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "6d591cb28e22a31ed19b",
+      "title": "Ronaldo dao gol, pa se obrukao! Portugalac sve bliži 1.000 golu, evo koliko mu nedostaje! (VIDEO)",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Novosti",
+      "source_url": "https://www.novosti.rs/sport/fudbal/1673230/kristijano-ronaldo-sve-blizi-hiljaditi-gol-nasr-portugalac-dao-986-pogodak",
       "published_at": "2026-11-20T19:07+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -739,17 +1641,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "fb10aaf43efc53f3943e",
-      "title": "Ko je Mirjana Radaković, nova generalna sekretarka Skupštine Srbije",
-      "summary": "",
-      "category": "Politika",
-      "region": "Srbija",
-      "source": "Blic",
-      "source_url": "https://www.blic.rs/vesti/politika/ko-je-mirjana-radakovic-nova-generalna-sekretarka-skupstine-srbije/9yvsksf",
-      "published_at": "2026-11-20T19:06+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "a822ccd5c285ef4c0656",
       "title": "Pet momenata koji su obeležili sednicu Skupštine: Vučić brutalnim argumentima ućutkao \"Studentsku listu\" pred celom Srbijom! (FOTO/VIDEO)",
       "summary": "",
@@ -757,6 +1648,17 @@
       "region": "Srbija",
       "source": "Informer",
       "source_url": "https://informer.rs/politika/vesti/1171790/sednica-skupstine-srbije-detaljno-vucic",
+      "published_at": "2026-11-20T19:06+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "fb10aaf43efc53f3943e",
+      "title": "Ko je Mirjana Radaković, nova generalna sekretarka Skupštine Srbije",
+      "summary": "",
+      "category": "Politika",
+      "region": "Srbija",
+      "source": "Blic",
+      "source_url": "https://www.blic.rs/vesti/politika/ko-je-mirjana-radakovic-nova-generalna-sekretarka-skupstine-srbije/9yvsksf",
       "published_at": "2026-11-20T19:06+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -780,17 +1682,6 @@
       "source": "Politika",
       "source_url": "https://www.politika.rs/scc/clanak/804724/lavrov-zapad-podstice-destruktivne-procese-van-svojih-granica-ukrajina-je-jedan-od-primera",
       "published_at": "2026-11-20T19:05+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "d7adfeabe61fc0f56328",
-      "title": "SKANDAL TRESE PREMIJER LIGU! Dron snimao Poketina i Junajted na treningu, Iraola pobesneo: Ovo ne bi smelo da bude legalno",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Srbija",
-      "source": "Kurir",
-      "source_url": "https://www.kurir.rs/sport/fudbal/10168365/iraola-trebalo-bi-zabraniti-snimanje-treninga-dronovima",
-      "published_at": "2026-11-20T19:04+00:00",
       "verification_status": "preneto_iz_izvora"
     },
     {
@@ -838,17 +1729,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "c0891a73dd1a2ff1971c",
-      "title": "Отворен 32. Фестивал ауторског филма",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Politika",
-      "source_url": "https://www.politika.rs/scc/clanak/804725/otvoren-32-festival-autorskog-filma",
-      "published_at": "2026-11-20T19:02+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "61f3816d288a34a9db16",
       "title": "U ćeliji završio s Albancem! Folk pevač sproveden u zatvor - Optužili ga za ovo delo",
       "summary": "",
@@ -860,36 +1740,14 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "3317128f591fe2736a42",
-      "title": "POTRAGA ZA DEČAKOM (6) U PODGORICI NE PRESTAJE: Spasioci nastavljaju pretragu reke Ribnice i tokom noći",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Svet",
-      "source": "Kurir",
-      "source_url": "https://www.kurir.rs/region/crna-gora/10168362/potraga-za-decakom-u-reci-ribnici",
-      "published_at": "2026-11-20T19:02+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "13d5f82d25198c2ca0dc",
-      "title": "Макрон у Берлину: Ми Украјинци, ми Европљани",
+      "id": "c0891a73dd1a2ff1971c",
+      "title": "Отворен 32. Фестивал ауторског филма",
       "summary": "",
       "category": "Društvo",
       "region": "Neodređeno",
       "source": "Politika",
-      "source_url": "https://www.politika.rs/scc/clanak/804726/makron-u-berlinu-mi-ukrajinci-mi-evropljani",
-      "published_at": "2026-11-20T19:01+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "9954b5bf4d1e35613451",
-      "title": "Ovo se dogodilo samo 2 puta u istoriji! Raspao se polarni vrtlog, naučnici u čudu - kakva nas zima čeka?",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Kurir",
-      "source_url": "https://www.kurir.rs/vesti/drustvo/10164737/polarni-vrtlog-se-raspao-kakva-zima-nas-ceka",
-      "published_at": "2026-11-20T19:01+00:00",
+      "source_url": "https://www.politika.rs/scc/clanak/804725/otvoren-32-festival-autorskog-filma",
+      "published_at": "2026-11-20T19:02+00:00",
       "verification_status": "preneto_iz_izvora"
     },
     {
@@ -915,28 +1773,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "5309caa505cff5eb595a",
-      "title": "GEOPOLITIČKI POTRES U EVROPI: Francuzi, Nemci i Britanci spremaju se da idu kod Vladimira Putina i to u Kremlj!",
-      "summary": "",
-      "category": "Ekonomija",
-      "region": "Neodređeno",
-      "source": "Novosti",
-      "source_url": "https://www.novosti.rs/planeta/svet/1673229/geopoliticki-potres-evropi-francuzi-nemci-britanci-spremaju-idu-kod-vladimira-putina-kremlj",
-      "published_at": "2026-11-20T19:00+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "8ca0adc930354b9ac64a",
-      "title": "O \"KOVERTI\" 18. DECEMBRA: Knežević, Stijepović i još petoro optuženih ponovo oslobođeni",
-      "summary": "",
-      "category": "Hronika",
-      "region": "Neodređeno",
-      "source": "Novosti",
-      "source_url": "https://www.novosti.rs/crna-gora/vesti/1673215/koverti-18-decembra-knezevic-stijepovic-jos-petoro-optuzenih-ponovo-oslobodjeni",
-      "published_at": "2026-11-20T19:00+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "a6827f5ce69d6e831956",
       "title": "Šaip Kamberi za Danas o tome zašto u Skupštini Srbije nema predstavnika Albanaca među potpredsednicima?",
       "summary": "",
@@ -948,13 +1784,13 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "e99dea54da2723b5b65a",
-      "title": "Otkriće važno za ljude sa polipom: Izostanak IgA antitela dva puta povećava rizik od raka debelog creva",
+      "id": "5309caa505cff5eb595a",
+      "title": "GEOPOLITIČKI POTRES U EVROPI: Francuzi, Nemci i Britanci spremaju se da idu kod Vladimira Putina i to u Kremlj!",
       "summary": "",
-      "category": "Društvo",
+      "category": "Ekonomija",
       "region": "Neodređeno",
-      "source": "Blic",
-      "source_url": "https://www.blic.rs/zdravlje/istrazivanja/izostanak-iga-antitela-dva-puta-povecava-rizik-od-raka-debelog-creva/n9gpjwn",
+      "source": "Novosti",
+      "source_url": "https://www.novosti.rs/planeta/svet/1673229/geopoliticki-potres-evropi-francuzi-nemci-britanci-spremaju-idu-kod-vladimira-putina-kremlj",
       "published_at": "2026-11-20T19:00+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -970,6 +1806,17 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
+      "id": "8ca0adc930354b9ac64a",
+      "title": "O \"KOVERTI\" 18. DECEMBRA: Knežević, Stijepović i još petoro optuženih ponovo oslobođeni",
+      "summary": "",
+      "category": "Hronika",
+      "region": "Neodređeno",
+      "source": "Novosti",
+      "source_url": "https://www.novosti.rs/crna-gora/vesti/1673215/koverti-18-decembra-knezevic-stijepovic-jos-petoro-optuzenih-ponovo-oslobodjeni",
+      "published_at": "2026-11-20T19:00+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
       "id": "d47014127e2f55430526",
       "title": "„Televizije su zabranile Južni vetar jer je smatran šundom, plaćali smo porez“: Srećko Šušić otkriva sa čim se najpopularnija folk grupa susretala",
       "summary": "",
@@ -981,13 +1828,13 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "784f18adf6eda8318e16",
-      "title": "Трамп, Си и Путин не праве нову Јалту",
+      "id": "e99dea54da2723b5b65a",
+      "title": "Otkriće važno za ljude sa polipom: Izostanak IgA antitela dva puta povećava rizik od raka debelog creva",
       "summary": "",
       "category": "Društvo",
       "region": "Neodređeno",
-      "source": "Politika",
-      "source_url": "https://www.politika.rs/scc/clanak/804424/pogledi/tramp-si-i-putin-ne-prave-novu-jaltu",
+      "source": "Blic",
+      "source_url": "https://www.blic.rs/zdravlje/istrazivanja/izostanak-iga-antitela-dva-puta-povecava-rizik-od-raka-debelog-creva/n9gpjwn",
       "published_at": "2026-11-20T19:00+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -1036,28 +1883,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "af2e3e57f001316a136d",
-      "title": "BOSNA JE PROTIVNIK IZ SNOVA! Danci oduševljeni rivalom u baražu Lige nacija...",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Svet",
-      "source": "Kurir",
-      "source_url": "https://www.kurir.rs/sport/fudbal/10168360/bih-je-zreb-iz-snova",
-      "published_at": "2026-11-20T18:59+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "ebf71ca793c0204dbe26",
-      "title": "OČEKIVANJA ĐUROVIĆA NEĆE SE SVIDETI DELIJAMA: \"Ako on ne ubaci 3-4 trojke, Zvezda ne može da pobedi u Barseloni\"",
-      "summary": "",
-      "category": "Sport",
-      "region": "Srbija",
-      "source": "Kurir",
-      "source_url": "https://www.kurir.rs/sport/kosarka/evroliga/10168146/vlade-djurovic-o-mecu-barselona-crvena-zvezda",
-      "published_at": "2026-11-20T18:59+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "abc4a4fcfce2267f8c9e",
       "title": "\"Kad se Devin rodio saznao sam da je sin Miroslava Ilića, a onda sam ga priznao kao svog\"",
       "summary": "",
@@ -1076,17 +1901,6 @@
       "region": "Srbija",
       "source": "Novosti",
       "source_url": "https://www.novosti.rs/sport/ostali-sportovi/1673227/partizan-razbio-vecitog-rivala-krilima-grobara-crno-beli-ubedljivo-slavili-protiv-zvezde",
-      "published_at": "2026-11-20T18:57+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "12da9eb94dab84a3b2f4",
-      "title": "Ираола: Требало би забранити снимање тренинга дроновима",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Politika",
-      "source_url": "https://www.politika.rs/scc/clanak/804723/sport/iraola-trebalo-bi-zabraniti-snimanje-treninga-dronovima",
       "published_at": "2026-11-20T18:57+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -1124,28 +1938,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "772d5531112f7800ffa6",
-      "title": "Французи смислили како да радар, сонар и систем за борбу сместе у шест метара контејнера",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Politika",
-      "source_url": "https://www.politika.rs/scc/clanak/804722/francuzi-smislili-kako-da-radar-sonar-i-sistem-za-borbu-smeste-u-sest-metara-kontejnera",
-      "published_at": "2026-11-20T18:54+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "6e578e23db0a7f672e90",
-      "title": "Porodica koja je optužila Majkla Džeksona za zlostavljanje sad tuži njegovog advokata, isplivali jezivi detalji",
-      "summary": "",
-      "category": "Hronika",
-      "region": "Svet",
-      "source": "Kurir",
-      "source_url": "https://www.kurir.rs/zabava/pop-kultura/10168357/porodica-koja-je-optuzila-majkla-dzeksona-za-zlostavljanje-sad-tuzi-njegovog-advokata",
-      "published_at": "2026-11-20T18:54+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "987a09ff44375d38b451",
       "title": "Oslabljeni Partizan ubedljiv protiv Zvezde",
       "summary": "",
@@ -1168,17 +1960,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "7ded2cf08ca3b1aae271",
-      "title": "(Foto) Automobili izgoreli usred noći na parkingu kod Novog Sada! Sumnja se da je požar podmetnut, od vozila ostao garež",
-      "summary": "",
-      "category": "Hronika",
-      "region": "Neodređeno",
-      "source": "Blic",
-      "source_url": "https://www.blic.rs/vesti/hronika/automobili-izgoreli-usred-noci-kod-novog-sada-foto/3d3w2vw",
-      "published_at": "2026-11-20T18:52+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "32962f59ffc5a250d4b5",
       "title": "Džejson Kid napravio idealnu petorku najboljih asistenata ikada, evo šta je rekao za Nikolu Jokić",
       "summary": "",
@@ -1190,24 +1971,13 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "052af8a60e7dcd562aa9",
-      "title": "I u raspadu, Partizan je demolirao Zvezdu u velikom derbiju",
+      "id": "7ded2cf08ca3b1aae271",
+      "title": "(Foto) Automobili izgoreli usred noći na parkingu kod Novog Sada! Sumnja se da je požar podmetnut, od vozila ostao garež",
       "summary": "",
-      "category": "Sport",
-      "region": "Srbija",
-      "source": "Telegraf",
-      "source_url": "https://www.telegraf.rs/sport/ostali-sportovi/4436941-i-u-raspadu-partizan-je-demolirao-zvezdu-u-velikom-derbiju",
-      "published_at": "2026-11-20T18:52+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "10e300d996090125bf02",
-      "title": "POZNATO DA LI BATLER IGRA PROTIV BARSELONE! Najnovije vesti iz tabora crveno-belih!",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Svet",
-      "source": "Kurir",
-      "source_url": "https://www.kurir.rs/sport/kosarka/evroliga/10168353/dzered-batler-spreman-za-duel-protiv-barselone",
+      "category": "Hronika",
+      "region": "Neodređeno",
+      "source": "Blic",
+      "source_url": "https://www.blic.rs/vesti/hronika/automobili-izgoreli-usred-noci-kod-novog-sada-foto/3d3w2vw",
       "published_at": "2026-11-20T18:52+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -1230,17 +2000,6 @@
       "region": "Neodređeno",
       "source": "Informer",
       "source_url": "https://informer.rs/politika/vesti/1171788/vesna-citakovic-djurisic-uzice-gradonacelnik",
-      "published_at": "2026-11-20T18:51+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "980c7bc95aa542411537",
-      "title": "JEDAN TRAG VODI DO KRADLJIVACA SEFA SA 100.000 EVRA: Evo kakvu su grešku napravili \"radnici\" iz srca Beograda - najnoviji detalji filmske pljačke",
-      "summary": "",
-      "category": "Zabava",
-      "region": "Srbija",
-      "source": "Kurir",
-      "source_url": "https://www.kurir.rs/crna-hronika/10167776/policija-traga-za-pljackasima-koji-su-ukrali-sef",
       "published_at": "2026-11-20T18:51+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -1289,61 +2048,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "78f103289366e545e03e",
-      "title": "Grobari napravili šou na ulicama Beograda: Bakljada i pesma za protivnike iz Turske",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Telegraf",
-      "source_url": "https://www.telegraf.rs/sport/evroliga-kosarka/veciti/4436938-grobari-napravili-sou-na-ulicama-beograda-bakljada-i-pesma-za-protivnike-iz-turske",
-      "published_at": "2026-11-20T18:49+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "8dcfb2fa9d40a35e36d7",
-      "title": "Трамп прети високим порезима америчким фирмама које граде дата центре у иностранству",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Politika",
-      "source_url": "https://www.politika.rs/scc/clanak/804721/tramp-preti-visokim-porezima-americkim-firmama-koje-grade-data-centre-u-inostranstvu",
-      "published_at": "2026-11-20T18:49+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "b31bdeaa9a62a7f05e19",
-      "title": "ĆUTA I FILIPOVIĆ O NOVOJ VLASTI, VUČIĆU I PODELAMA: Jedan poručio da je bivši predsednik sam sebe srušio, drugi tvrdi da nova vlast ne zna šta ih čeka",
-      "summary": "",
-      "category": "Politika",
-      "region": "Srbija",
-      "source": "Kurir",
-      "source_url": "https://www.kurir.rs/vesti/politika/10167671/cuta-i-filipovic-o-novoj-vlasti-vucicu-i-podelama",
-      "published_at": "2026-11-20T18:49+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "6627aa89f63f9a280ce6",
-      "title": "Ko je dr Jelena Petrović, nova potpredsednica Skupštine? Kragujevačka doktorka ovo poručila pred izbore",
-      "summary": "",
-      "category": "Politika",
-      "region": "Srbija",
-      "source": "Telegraf",
-      "source_url": "https://www.telegraf.rs/4436569-ko-je-dr-jelena-petrovic-nova-potpredsednica-skupstine-kragujevacka-doktorka-ovo-porucila-pred-izbore",
-      "published_at": "2026-11-20T18:48+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "d56770627d7c1f927c96",
-      "title": "Ухапшен осумњичени за напад ножем на жупника у Боћу",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Politika",
-      "source_url": "https://www.politika.rs/scc/clanak/804720/uhapsen-osumnjiceni-za-napad-nozem-na-zupnika-u-bocu",
-      "published_at": "2026-11-20T18:46+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "5ea6da5b2c262ba733dd",
       "title": "PUJ-PIKE NE VAŽI: Zašto su Ameri uklonili klauzulu o Ukrajini iz mirovne deklaracije?",
       "summary": "",
@@ -1362,28 +2066,6 @@
       "region": "Srbija",
       "source": "Novosti",
       "source_url": "https://www.novosti.rs/sport/kosarka/1673209/partizan-besiktas-13-kolo-evroliga-lajv-prenos-uzivo-prenos",
-      "published_at": "2026-11-20T18:45+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "1ffc5f94140a1fe7c2c6",
-      "title": "U stanu od 700.000 evra okitili OVAKVU jelku! Svi su šokirani zbog nje, nema nijedne kugle a na vrhu stoji OVO",
-      "summary": "",
-      "category": "Ekonomija",
-      "region": "Svet",
-      "source": "Telegraf",
-      "source_url": "https://www.telegraf.rs/jetset/vesti-jetset/4436920-u-stanu-od-700000-evra-okitili-ovakvu-jelku-svi-su-sokirani-zbog-nje-nema-nijedne-kugle-a-na-vrhu-stoji-ovo",
-      "published_at": "2026-11-20T18:45+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "8b95717006c6d7724ffb",
-      "title": "Poznato šta nas očekuje u 4. epizodi serije \"Pupin\"",
-      "summary": "",
-      "category": "Zabava",
-      "region": "Svet",
-      "source": "Telegraf",
-      "source_url": "https://www.telegraf.rs/pop-i-kultura/film-tv/4436750-poznato-sta-nas-ocekuje-u-4-epizodi-serije-pupin",
       "published_at": "2026-11-20T18:45+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -1421,28 +2103,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "51b7710dd83f8847fbad",
-      "title": "Трамп: Путин јасно изразио жељу да се оконча рат у Украјини",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Politika",
-      "source_url": "https://www.politika.rs/scc/clanak/804719/tramp-putin-jasno-izrazio-zelju-da-se-okonca-rat-u-ukrajini",
-      "published_at": "2026-11-20T18:44+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "3995c98c6546e3871c03",
-      "title": "Poginuo radnik na gradilištu u Leskovcu",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Srbija",
-      "source": "Telegraf",
-      "source_url": "https://www.telegraf.rs/vesti/hronika/4436876-poginuo-radnik-na-gradilistu-u-leskovcu",
-      "published_at": "2026-11-20T18:44+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "4c1ad2cdb701d6013894",
       "title": "Press: Nenad Šebek (20.11.2026)",
       "summary": "",
@@ -1461,17 +2121,6 @@
       "region": "Neodređeno",
       "source": "N1",
       "source_url": "https://n1info.rs/vesti/agencija-za-sprecavanje-korupcije-posle-izbora-imovina-funkcionera/",
-      "published_at": "2026-11-20T18:43+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "9c0318735af3d7aedefe",
-      "title": "Maratonska sednica Skupštine trajala do ponoći, a brojni poslanici nisu iz Beograda: Evo ko im plaća smeštaj i kilometre puta, ali postoji jedan važan uslov",
-      "summary": "",
-      "category": "Politika",
-      "region": "Srbija",
-      "source": "Blic",
-      "source_url": "https://www.blic.rs/vesti/politika/ako-sednica-skupstine-traje-do-ponoci-ko-placa-smestaj-i-kilometre-puta-poslanicima/2v4n62e",
       "published_at": "2026-11-20T18:43+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -1509,17 +2158,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "ace5a9bd84555376795d",
-      "title": "Копенхаген протерује руског војног аташеа због наводне завере против репера",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Politika",
-      "source_url": "https://www.politika.rs/scc/clanak/804684/kopenhagen-proteruje-ruskog-vojnog-atasea-zbog-navodne-zavere-protiv-repera",
-      "published_at": "2026-11-20T18:41+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "1dd0aef19c0ffec2f849",
       "title": "\"Voleo bih da imam...\": Lalatović otvorio dušu pred gostovanje OFK Beogradu!",
       "summary": "",
@@ -1528,17 +2166,6 @@
       "source": "Novosti",
       "source_url": "https://www.novosti.rs/sport/fudbal/1673218/novi-pazar-trener-nenad-lalatovic-najava-utakmica-ofk-beograd-gostovanje-stara-karaburma-superliga-srbije",
       "published_at": "2026-11-20T18:40+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "a179f1ee0c515fbcaa26",
-      "title": "Reakcija JKP \"Javno osvetljenje\" na prilog N1: Oboreni stub u vlasništvu EDS",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Srbija",
-      "source": "N1",
-      "source_url": "https://n1info.rs/vesti/reakcija-jkp-javno-osvetljenje-na-prilog-n1-oboreni-stub-u-vlasnistvu-eds/",
-      "published_at": "2026-11-20T18:38+00:00",
       "verification_status": "preneto_iz_izvora"
     },
     {
@@ -1553,6 +2180,17 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
+      "id": "a179f1ee0c515fbcaa26",
+      "title": "Reakcija JKP \"Javno osvetljenje\" na prilog N1: Oboreni stub u vlasništvu EDS",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Srbija",
+      "source": "N1",
+      "source_url": "https://n1info.rs/vesti/reakcija-jkp-javno-osvetljenje-na-prilog-n1-oboreni-stub-u-vlasnistvu-eds/",
+      "published_at": "2026-11-20T18:38+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
       "id": "d4c2a0447fb0986a7bab",
       "title": "Kraljevo: Nove prijave tužilaštvu za izborne krađe",
       "summary": "",
@@ -1560,28 +2198,6 @@
       "region": "Srbija",
       "source": "Vreme",
       "source_url": "https://vreme.com/vesti/kraljevo-nove-prijave-tuzilastvu-za-izborne-kradje/",
-      "published_at": "2026-11-20T18:37+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "804328a24a3bbad54a7d",
-      "title": "Више од 800 радова у част ћирилице: Млади чувају писмо предака",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Politika",
-      "source_url": "https://www.politika.rs/scc/clanak/804718/vise-od-800-radova-u-cast-cirilice-mladi-cuvaju-pismo-predaka",
-      "published_at": "2026-11-20T18:37+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "d69e7408aac94f7dfb09",
-      "title": "\"NE MOGU DA SE NAJEDEM KAO ČOVEK OD MUĆKALICA I MORSKIH PLODOVA\" Otkrivene tajne naše pevačice, žena koja joj je bila u kući otkrila sve",
-      "summary": "",
-      "category": "Zabava",
-      "region": "Neodređeno",
-      "source": "Kurir",
-      "source_url": "https://www.kurir.rs/stars/10168355/dragana-mirkovic-ne-voli-morske-plodove",
       "published_at": "2026-11-20T18:37+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -1608,17 +2224,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "c82fd2b39ae37a256dca",
-      "title": "Molitva Svetom Arhangelu Mihailu: Ove reči izgovorite uoči Aranđelovdana, veruje se da imaju snažnu moć",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Kurir",
-      "source_url": "https://www.kurir.rs/zabava/zivot/10167319/molitva-svetom-arhangelu-mihailu",
-      "published_at": "2026-11-20T18:35+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "815c2bbd151d20cc4a62",
       "title": "Alakaraz postao deo istorije na Završnom mastersu, rekord Đokovića nije uspeo da obori",
       "summary": "",
@@ -1630,50 +2235,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "061a56f8e4b8d87776fa",
-      "title": "Безбедносни саветници Берлина, Париза и Лондона могуће овог месеца у Москви",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Politika",
-      "source_url": "https://www.politika.rs/scc/clanak/804717/bezbednosni-savetnici-berlina-pariza-i-londona-moguce-ovog-meseca-u-moskvi",
-      "published_at": "2026-11-20T18:34+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "90efe2e971843209e927",
-      "title": "Безбедносни саветници Берлина, Париза и Лондона иду у Москви",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Politika",
-      "source_url": "https://www.politika.rs/scc/clanak/804717/bezbednosni-savetnici-berlina-pariza-i-londona-idu-u-moskvi",
-      "published_at": "2026-11-20T18:34+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "dc45d123bd3d7184253a",
-      "title": "UDALA SE ZERINA HEĆO Evo ko joj je suprug: Posle moždanog udara, intimnog snimka i završavanja na psihijatriji, rijaliti učesnica konačno srećna",
-      "summary": "",
-      "category": "Zabava",
-      "region": "Neodređeno",
-      "source": "Blic",
-      "source_url": "https://www.blic.rs/zabava/udala-se-zerina-heco-evo-ko-je-suprug-rijaliti-ucesnice/07gc1fr",
-      "published_at": "2026-11-20T18:33+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "e986416a08cd54001367",
-      "title": "UDALA SE ZERINA HEĆO Evo ko joj je suprug: Posle moždanog udara i završavanja na psihijatriji, rijaliti takmičarka konačno srećna",
-      "summary": "",
-      "category": "Zabava",
-      "region": "Neodređeno",
-      "source": "Blic",
-      "source_url": "https://www.blic.rs/zabava/udala-se-zerina-heco-evo-ko-je-suprug-rijaliti-takmicarke/07gc1fr",
-      "published_at": "2026-11-20T18:33+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "c8e693e4bdc98d979251",
       "title": "Dženifer Lorens rangirala glumce po tome kako se ljube: Njen izbor je mnoge iznenadio",
       "summary": "",
@@ -1681,17 +2242,6 @@
       "region": "Neodređeno",
       "source": "Nova.rs",
       "source_url": "https://nova.rs/zabava/showbiz/dzenifer-lorens-rangirala-glumce-po-tome-kako-se-ljube-njen-izbor-je-mnoge-iznenadio/",
-      "published_at": "2026-11-20T18:33+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "e55960bd2d254dae4e80",
-      "title": "Француски градоначелник осуђен због узнемиравања пекара који нису секли хлеб",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Politika",
-      "source_url": "https://www.politika.rs/scc/clanak/804716/francuski-gradonacelnik-osuden-zbog-uznemiravanja-pekara-koji-nisu-sekli-hleb",
       "published_at": "2026-11-20T18:33+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -1729,17 +2279,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "b789cbb81eac132c0eb1",
-      "title": "Karleuša bez gaćica?! Dobro zumirajte intimu - Vlažni san svih Srba u izdanju 18+",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Informer",
-      "source_url": "https://informer.rs/dzet-set/estrada/1171779/jelena-karleusa-nema-gacice",
-      "published_at": "2026-11-20T18:31+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "d3b06caf1fc585db86f5",
       "title": "Da li je Studentska lista izborom potpredsednika Skupštine narušila demokratske principe?",
       "summary": "",
@@ -1762,50 +2301,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "16b0c6bdbdf4610c5d4a",
-      "title": "Zvezda na dobro poznatom, neprijatnom mestu: \"Blaugrana\" nekako mora pasti",
-      "summary": "",
-      "category": "Sport",
-      "region": "Neodređeno",
-      "source": "Informer",
-      "source_url": "https://informer.rs/sport/crvena-zvezda/1171780/kk-barselona-crvena-zvezda-uzivo-lajv",
-      "published_at": "2026-11-20T18:30+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "bbfa6fc21606e43fc588",
-      "title": "Sutra je Aranđelovdan! Ove običaje obavezno ispoštujte večeras",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Informer",
-      "source_url": "https://informer.rs/drustvo/vesti/1171770/arandjelovdan-slava-obicaji-sveti-arhangel-mihailo",
-      "published_at": "2026-11-20T18:30+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "c6fde09fa1adab0cd95a",
-      "title": "Dinstani kupus sa slaninom: Starinsko i jeftino jelo koje vraća u detinjstvo",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Informer",
-      "source_url": "https://informer.rs/magazin/recepti/1171741/dinstani-kupus-slanina-recepti",
-      "published_at": "2026-11-20T18:30+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "6746a87e03ac6cad421c",
-      "title": "Sergej Pasisničenko uhapšen u velikoj policijskoj akciji",
-      "summary": "",
-      "category": "Hronika",
-      "region": "Neodređeno",
-      "source": "Telegraf",
-      "source_url": "https://www.telegraf.rs/vesti/jugosfera/4436932-sergej-pasisnicenko-uhapsen-u-velikoj-policijskoj-akciji",
-      "published_at": "2026-11-20T18:29+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "8a117476321d33cececa",
       "title": "KROZ NASELjE SVI VOZE OSIM MINIBUSA 26L: Posle urušavanja gradilišta, u Vojvode Vlahovića saobraćaju vozila uprkos zabrani",
       "summary": "",
@@ -1817,36 +2312,14 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "1148fc789dfdc33d64f3",
-      "title": "Srbija bez greške na startu MEF-a: Tri pobede iz tri meča!",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Srbija",
-      "source": "Telegraf",
-      "source_url": "https://www.telegraf.rs/esports/counter-strike/4436933-srbija-bez-greske-na-startu-mef-a-tri-pobede-iz-tri-meca",
-      "published_at": "2026-11-20T18:28+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "6517e68fab242caa897b",
-      "title": "(Video) Prvo obraćanje Trampa nakon istorijskog sastanka sa Putinom i Sijem: \"Oni nas vole... Mislim poštuju, ali verovatno i vole\"",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Svet",
-      "source": "Blic",
-      "source_url": "https://www.blic.rs/vesti/svet/prvo-obracanje-trampa-nakon-istorijskog-sastanka-sa-putinom-i-sijem/rrd6tln",
-      "published_at": "2026-11-20T18:27+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "89ca820d1bc9685c9d4a",
-      "title": "Украјински премијер Корецки био на аеродрому у Пољској током упада руских ракета",
+      "id": "ea8b9998bf63b619172f",
+      "title": "Gledajte uživo Dnevnik TV Nova",
       "summary": "",
       "category": "Društvo",
       "region": "Neodređeno",
-      "source": "Politika",
-      "source_url": "https://www.politika.rs/scc/clanak/804715/ukrajinski-premijer-korecki-bio-na-aerodromu-u-poljskoj-tokom-upada-ruskih-raketa",
-      "published_at": "2026-11-20T18:27+00:00",
+      "source": "Nova.rs",
+      "source_url": "https://nova.rs/vesti/drustvo/gledajte-uzivo-dnevnik-tv-nova20112026/",
+      "published_at": "2026-11-20T18:25+00:00",
       "verification_status": "preneto_iz_izvora"
     },
     {
@@ -1857,17 +2330,6 @@
       "region": "Neodređeno",
       "source": "N1",
       "source_url": "https://n1info.rs/english/news/state-auditors-say-local-administrations-failed-to-collect-revenues/",
-      "published_at": "2026-11-20T18:25+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "ea8b9998bf63b619172f",
-      "title": "Gledajte uživo Dnevnik TV Nova",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Nova.rs",
-      "source_url": "https://nova.rs/vesti/drustvo/gledajte-uzivo-dnevnik-tv-nova20112026/",
       "published_at": "2026-11-20T18:25+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -1883,50 +2345,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "3b2a90902ec1f25b1e7a",
-      "title": "AKCIJE DAVALAŠTVA KRVI: Sutra na Novom Beogradu, u Rakovici, na Vidikovcu",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Srbija",
-      "source": "Novosti",
-      "source_url": "https://www.novosti.rs/beograd/vesti/1673219/akcije-davalastva-krvi-sutra-novom-beogradu-rakovici-vidikovcu",
-      "published_at": "2026-11-20T18:22+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "49eda992e6821c0c5c30",
-      "title": "Zebre su ponovo u modi, Srbija pomno prati učinak: Slobodnjak i peta za prvo mesto, ovo je falilo našoj zemlji",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Srbija",
-      "source": "Telegraf",
-      "source_url": "https://www.telegraf.rs/sport/fudbal/4436926-zebre-su-ponovo-u-modi-srbija-pomno-prati-ucinak-slobodnjak-i-peta-za-prvo-mesto-ovo-je-falilo-nasoj-zemlji",
-      "published_at": "2026-11-20T18:22+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "e28ffd9322cb4ba18b9b",
-      "title": "Стуб: САД уклониле клаузулу о Украјини из мировне декларације из Шенжена",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Politika",
-      "source_url": "https://www.politika.rs/scc/clanak/804714/stub-sad-uklonile-klauzulu-o-ukrajini-iz-mirovne-deklaracije-iz-senzena",
-      "published_at": "2026-11-20T18:22+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "e6d54616e41a15a44803",
-      "title": "Novi Rafael Nadal izjednačio negativan rekord Novaka Đokovića, mnogi za njega nisu znali da postoji",
-      "summary": "",
-      "category": "Sport",
-      "region": "Srbija",
-      "source": "Telegraf",
-      "source_url": "https://www.telegraf.rs/sport/tenis/4436927-novi-rafael-nadal-izjednacio-negativan-rekord-novaka-djokovica-mnogi-za-njega-nisu-znali-da-postoji",
-      "published_at": "2026-11-20T18:21+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "72956b54d942a5030852",
       "title": "\"Razbežaće se i jedan i drugi predsednik\": Ikodinović oštro o stanju u košarkaškim klubovima",
       "summary": "",
@@ -1934,17 +2352,6 @@
       "region": "Neodređeno",
       "source": "Nova.rs",
       "source_url": "https://nova.rs/sport/evroliga/danilo-ikodinovic-kk-partizan-crvena-zvezda/",
-      "published_at": "2026-11-20T18:20+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "e799ef3f91e2758f562e",
-      "title": "Putin ovako čestitao 80. rođendan patrijarhu Kirilu, ono što mu je poklonio sve govori (FOTO/VIDEO)",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Svet",
-      "source": "Informer",
-      "source_url": "https://informer.rs/planeta/vesti/1171768/vladimir-putin-ikona-patrijarh-kiril-rodjendan",
       "published_at": "2026-11-20T18:20+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -1960,50 +2367,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "9735b7f102631bdfd72a",
-      "title": "Sutra je udarni dan na srpskim putevima! Važno upozorenje vozačima pred Aranđelovdan, držite se ovih 5 ključnih stavki",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Blic",
-      "source_url": "https://www.blic.rs/vesti/drustvo/sutra-je-udarni-dan-na-srpskim-putevima-vazno-upozorenje-vozacima-pred-arandjelovdan/qnww9sf",
-      "published_at": "2026-11-20T18:18+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "4b24a6b62ff7a2a6f244",
-      "title": "Gori nekoliko kuća: Veliki požar u Nišu, vatrogasci na terenu",
-      "summary": "",
-      "category": "Hronika",
-      "region": "Srbija",
-      "source": "Telegraf",
-      "source_url": "https://www.telegraf.rs/vesti/srbija/4436917-gori-nekoliko-kuca-veliki-pozar-u-nisu-vatrogasci-na-terenu",
-      "published_at": "2026-11-20T18:18+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "cc492d69e3d356e56569",
-      "title": "Aktivisti na Trgu republike obeležili Dan sećanja na žrtve transfobije",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "N1",
-      "source_url": "https://n1info.rs/vesti/aktivisti-na-trgu-republike-obelezili-dan-secanja-na-zrtve-transfobije/",
-      "published_at": "2026-11-20T18:17+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "73695bfecead26af9b5e",
-      "title": "Samo u Americi: Suspendovan zbog ujedanja i antisemitizma, ali može odslužiti kaznu dok je povređen",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Svet",
-      "source": "Novosti",
-      "source_url": "https://www.novosti.rs/sport/ostali-sportovi/1673216/najnovije-sportske-vesti-nfl-suspenzija-puka-nakua-cetiri-utakmice",
-      "published_at": "2026-11-20T18:17+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "54bdb8e5ec9e7dff4889",
       "title": "Novakov gest posle poraza nikada nije zaboravio: Marej se prisetio istorijske pobede nad Đokovićem",
       "summary": "",
@@ -2012,28 +2375,6 @@
       "source": "Danas",
       "source_url": "https://www.danas.rs/sport/novak-djokovic-endi-marej-zavrsni-masters/",
       "published_at": "2026-11-20T18:16+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "a465ae6da5d086f2b8ce",
-      "title": "\"Izađem u grad sa drugaricom, on mi celu noć piše poruke, kažu mi: Jao i Miloš je večeras sa nama!\" Jelisaveta Orašanin je ovako pričala o braku sa Teodosićem - ovo su detalji",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Blic",
-      "source_url": "https://www.blic.rs/zabava/jelisaveta-o-teodosicu-izadjem-u-grad-sa-drugaricom-on-mi-celu-noc-pise-poruke/b9j9v4w",
-      "published_at": "2026-11-20T18:16+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "0213b8d8e711c2f721b8",
-      "title": "KAKVE NOGE: Voditeljka RTS-a u nikad kraćem miniću (FOTO)",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Srbija",
-      "source": "Novosti",
-      "source_url": "https://www.novosti.rs/scena/poznati/1673214/kakve-noge-voditeljka-rts-nikad-kracem-minicu-foto",
-      "published_at": "2026-11-20T18:13+00:00",
       "verification_status": "preneto_iz_izvora"
     },
     {
@@ -2055,17 +2396,6 @@
       "region": "Svet",
       "source": "Insajder",
       "source_url": "https://insajder.net/teme/bivsi-sef-diplomatije-ukrajine-za-insajder-putin-ne-zeli-dogovor-vec-obnovu-sovjetske-zone-uticaja-video",
-      "published_at": "2026-11-20T18:12+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "f470bd7073325ec2639d",
-      "title": "Istorijski potpis Srbina za kraj karijere! Živković dobio najveći ugovor u istoriji kluba - evo koliko miliona",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Informer",
-      "source_url": "https://informer.rs/sport/fudbal/1171782/andrija-zivkovic-novi-ugovor-paok-plata",
       "published_at": "2026-11-20T18:12+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -2092,61 +2422,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "50b8596b0017cc8feb9b",
-      "title": "Danska optužila Rusiju za planiranje ubistva američko-ukrajinskog državljanina na danskom tlu",
-      "summary": "",
-      "category": "Hronika",
-      "region": "Svet",
-      "source": "N1",
-      "source_url": "https://n1info.rs/svet/danska-optuzila-rusiju-za-planiranje-ubista-americko-ukrajinskog-drzavljanina/",
-      "published_at": "2026-11-20T18:09+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "6c2e44df0da21602756d",
-      "title": "Nije samo relikvija iz babinog vremena: Zaboravljeni komad nameštaja doživljava pravu renesansu",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Srbija",
-      "source": "Blic",
-      "source_url": "https://www.blic.rs/slobodno-vreme/zaboravljeni-komad-namestaja-iz-nase-mladosti-dozivljava-pravu-renesansu/cr28y8y",
-      "published_at": "2026-11-20T18:09+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "4d0afe809d6b6b3bab1e",
-      "title": "Poginuo radnik na gradilištu: Tragedija u Leskovcu",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Srbija",
-      "source": "Informer",
-      "source_url": "https://informer.rs/hronika/vesti/1171784/poginuo-radnik-na-gradilistu-leskovac",
-      "published_at": "2026-11-20T18:09+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "8f197aac48bd7585b7bd",
-      "title": "Optuženi za napad na ekipu N1 izvinjavao se novinarki u sudnici, pa ispred suda uzvikivao - \"Ratko Mladić je heroj\"",
-      "summary": "",
-      "category": "Hronika",
-      "region": "Neodređeno",
-      "source": "N1",
-      "source_url": "https://n1info.rs/vesti/optuzeni-za-napad-na-ekipu-n1-izvinjavao-se-novinarki-u-sudnici-pa-ispred-suda-uzvikivao-ratko-mladic-je-heroj/",
-      "published_at": "2026-11-20T18:08+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "2f8d8145bd37b8a8d125",
-      "title": "\"Ogoljeni načini Rusije da utiče na buduću politiku Srbije\": Selaković oštro reagovala na izjavu Zaharove",
-      "summary": "",
-      "category": "Politika",
-      "region": "Neodređeno",
-      "source": "Blic",
-      "source_url": "https://www.blic.rs/vesti/politika/zaharova-o-srbiji-selakovic-uzvraca-ovo-je-prava-istina-o-ruskim-pritiscima/vx08jnq",
-      "published_at": "2026-11-20T18:07+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "3f2fceaacc87781db707",
       "title": "\"Mene i moju decu je vodila na letovanje, a mom sinu kupila automobil\": Kućna pomoćnica Dragane Mirković otkrila nepoznate detalje iz života pevačice",
       "summary": "",
@@ -2155,72 +2430,6 @@
       "source": "Nova.rs",
       "source_url": "https://nova.rs/zabava/showbiz/kucna-pomocnica-dragane-mirkovic-sve-otkrila/",
       "published_at": "2026-11-20T18:05+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "98c8b653ac9c6af1722f",
-      "title": "TREĆA PRERASPODELA KASE: Pred odbornicima Skupštine grada Beograda 23. novembra novi rebalans budžeta",
-      "summary": "",
-      "category": "Ekonomija",
-      "region": "Srbija",
-      "source": "Novosti",
-      "source_url": "https://www.novosti.rs/beograd/vesti/1673067/beograd-najnovije-vesti-rebalans-budzeta-skupstina-grada",
-      "published_at": "2026-11-20T18:05+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "08f2f4b757b7d4418837",
-      "title": "\"Ko bi u ovo poverovao pre dva meseca?!\" Janakopulos začuđen zbog kazne za trenera Olimpijakosa Jorgosa Barcokasa",
-      "summary": "",
-      "category": "Sport",
-      "region": "Neodređeno",
-      "source": "Novosti",
-      "source_url": "https://www.novosti.rs/sport/kosarka/1673211/ovo-poverovao-pre-dva-meseca-janakopulos-zacudjen-zbog-kazne-trenera-olimpijakosa-jorgosa-barcokasa",
-      "published_at": "2026-11-20T18:05+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "456697d1309b081d3939",
-      "title": "Za rubriku verovali ili ne! Izgubili utakmicu posle 394 dana!",
-      "summary": "",
-      "category": "Sport",
-      "region": "Neodređeno",
-      "source": "Novosti",
-      "source_url": "https://www.novosti.rs/sport/ostali-sportovi/1673212/megasenzacija-klub-izgubio-utakmicu-posle-394-dana-istorijska-pobeda-prva-liga-rukomet-dunarea-glorija-bistrica-zene",
-      "published_at": "2026-11-20T18:05+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "bcb53209e6e51e8f51b1",
-      "title": "Šok na plenumu zbog Informera! Vučićević otkrio: Zapanjeni su što još postojimo i što smo najgledaniji - zato hoće da nas ukinu (FOTO/VIDEO)",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Srbija",
-      "source": "Informer",
-      "source_url": "https://informer.rs/politika/vesti/1171777/dragan-j-vucicevic-informer-rem",
-      "published_at": "2026-11-20T18:04+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "9ae61d4350cfd8f483bc",
-      "title": "(Foto) Uhapšen diler u Obrenovcu: Evo šta je sve policija pronašla kod njega",
-      "summary": "",
-      "category": "Hronika",
-      "region": "Neodređeno",
-      "source": "Blic",
-      "source_url": "https://www.blic.rs/vesti/hronika/uhapsen-diler-u-obrenovcu-evo-sta-je-sve-policija-pronasla-kod-njega/epjb4jl",
-      "published_at": "2026-11-20T18:03+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "e4b8f2496ec0e1890e82",
-      "title": "Sahraniće je pored njega?! Pevačica kupila grobno mesto i zgranula narod - Je l' moguće ovo?",
-      "summary": "",
-      "category": "Zabava",
-      "region": "Neodređeno",
-      "source": "Informer",
-      "source_url": "https://informer.rs/dzet-set/estrada/1171760/nada-obric-grobno-mesto-bivsi-muz",
-      "published_at": "2026-11-20T18:03+00:00",
       "verification_status": "preneto_iz_izvora"
     },
     {
@@ -2268,17 +2477,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "9359184439f7b0c7efea",
-      "title": "KOVANA OGRADA, RUSTIČAN TEPIH I STOLICA ZA NOGE Evo kako je Emina Jahović uredila stan: \"Pogled na Bosfor je prelep\" (FOTO)",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Blic",
-      "source_url": "https://www.blic.rs/zabava/evo-kako-je-emina-jahovic-uredila-stan-kovana-ograda-rustican-tepih/c9ls4mh",
-      "published_at": "2026-11-20T17:57+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "edd95bb022546b3e0dd3",
       "title": "Poreska uprava objavila obaveštenje za obveznike koji su u Alta banci imali račune",
       "summary": "",
@@ -2287,28 +2485,6 @@
       "source": "Insajder",
       "source_url": "https://insajder.net/prenosimo/poreska-uprava-objavila-obavestenje-za-obveznike-koji-su-u-alta-banci-imali-racune",
       "published_at": "2026-11-20T17:55+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "5da970bbfaa2d1f7caea",
-      "title": "Gledajte Dnevnik u 19h",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "N1",
-      "source_url": "https://n1info.rs/najave-emisija/gledajte-uzivo-dnevnik-u-19-ponedeljak-19-maj/",
-      "published_at": "2026-11-20T17:53+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "b8692fea76ef9c3664d6",
-      "title": "Autobus na Dorćolu udario tinejdžera",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "N1",
-      "source_url": "https://n1info.rs/vesti/autobus-na-dorcolu-udario-tinejdzera/",
-      "published_at": "2026-11-20T17:52+00:00",
       "verification_status": "preneto_iz_izvora"
     },
     {
@@ -2334,17 +2510,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "a20f6389ceb947021f08",
-      "title": "\"Od nedelje bitka na nebu nad Srbijom!\": Čubrilo objavio prognozu do kraja novembra, najavio kog tačno datuma kreće jače zahlađenje i kad će sneg u gradovima",
-      "summary": "",
-      "category": "Vreme",
-      "region": "Srbija",
-      "source": "Blic",
-      "source_url": "https://www.blic.rs/vremenska-prognoza/najnovija-prognoza-vremena-od-27-novembra-jace-zahladjenje/jqgvx20",
-      "published_at": "2026-11-20T17:47+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "6c5c79ad84827e090f51",
       "title": "Skupština grada Beograda u ponedeljak o rebalansu budžeta i inicijativi za razrešenje Šapića",
       "summary": "",
@@ -2352,17 +2517,6 @@
       "region": "Srbija",
       "source": "Insajder",
       "source_url": "https://insajder.net/prenosimo/skupstina-grada-beograda-u-ponedeljak-o-rebalansu-budzeta-i-inicijativi-za-razresenje-sapica",
-      "published_at": "2026-11-20T17:46+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "6429dbef9c317d41dc5b",
-      "title": "„Vi ste za mene veliki heroji!“ Trener Stefan Nevistić rasplakao svoj tim u „Najvećem gubitniku“: Finale je sve bliže, a emocije sve jače",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Nova.rs",
-      "source_url": "https://nova.rs/zabava/showbiz/vi-ste-za-mene-veliki-heroji-trener-stefan-nevistic-rasplakao-svoj-tim-u-najvecem-gubitniku-finale-je-sve-blize-a-emocije-sve-jace/",
       "published_at": "2026-11-20T17:46+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -2375,83 +2529,6 @@
       "source": "RTS",
       "source_url": "https://www.rts.rs/vesti/svet/6088848/kim-izbegao-trampa-a-nuklearni-arsenal-stavio-van-domasaja-pregovora---kako-su-rusija-i-kina-ojacale-poziciju-pjongjanga.html",
       "published_at": "2026-11-20T17:42+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "66ab8e7d50bccf0f3373",
-      "title": "Preradović: Najvažnije je formirati Vladu, odlazeći režim i dalje kontroliše bezbednosne strukture i ministarstva sile",
-      "summary": "",
-      "category": "Politika",
-      "region": "Neodređeno",
-      "source": "N1",
-      "source_url": "https://n1info.rs/vesti/preradovic-najvaznije-je-formirati-vladu-odlazeci-rezim-i-dalje-kontrolise-bezbednosne-strukture-i-ministarstva-sile/",
-      "published_at": "2026-11-20T17:41+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "6b0f36052e439dbf9a45",
-      "title": "Šok jelka u stanu od 700.000 evra! Viktor Živojinović i devojka okitili dom na 40. spratu, ali svi gledaju u OVO na vrhu: Nema nijedne kugle",
-      "summary": "",
-      "category": "Ekonomija",
-      "region": "Neodređeno",
-      "source": "Blic",
-      "source_url": "https://www.blic.rs/zabava/sok-jelka-u-stanu-od-700000-evra-viktor-zivojinovic-i-devojka-okitili-dom/n86cdnn",
-      "published_at": "2026-11-20T17:39+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "e19db84c8d52c769acad",
-      "title": "ANEM, NUNS and UNS Demand Investigation into BIA Surveillance",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "N1",
-      "source_url": "https://n1info.rs/english/news/anem-nuns-and-uns-demand-investigation-into-bia-surveillance/",
-      "published_at": "2026-11-20T17:37+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "bb74a6070eb4fc092a47",
-      "title": "Uklanjanje tetovaže laserom - koju boju je najteže skinuti?",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "N1",
-      "source_url": "https://n1info.rs/magazin/zdravlje/uklanjanje-tetovaze-laserom-koju-boju-je-najteze-skinuti/",
-      "published_at": "2026-11-20T17:35+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "9824a33e0739d3ab275b",
-      "title": "Promene trasa gradskog prevoza zbog Beogradskog polumaratona: Evo koje ulice će biti zatvorene",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Srbija",
-      "source": "Nova.rs",
-      "source_url": "https://nova.rs/vesti/drustvo/promene-trasa-gradskog-prevoza-zbog-beogradskog-polumaratona-evo-koje-ulice-ce-biti-zatvorene/",
-      "published_at": "2026-11-20T17:33+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "9fae56db45caf6eda972",
-      "title": "Oglasio se tim Dina Merlina nakon otkazivanja koncerta u Splitu: \"Uključićemo međunarodni pravni tim\"",
-      "summary": "",
-      "category": "Zabava",
-      "region": "Neodređeno",
-      "source": "Nova.rs",
-      "source_url": "https://nova.rs/zabava/showbiz/oglasio-se-tim-dina-merlina-nakon-otkazivanja-koncerta-u-splitu-ukljucicemo-medjunarodni-pravni-tim/",
-      "published_at": "2026-11-20T17:33+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "de6f19c7b1f4fa7d7961",
-      "title": "Trinkijeri dovodi zvezdu Dubaija, pronašao zamenu za Čedija Osmana",
-      "summary": "",
-      "category": "Sport",
-      "region": "Neodređeno",
-      "source": "Nova.rs",
-      "source_url": "https://nova.rs/sport/kosarka/trinkijeri-dovodi-zvezdu-dubaija-pronasao-zamenu-za-cedija-osmana/",
-      "published_at": "2026-11-20T17:31+00:00",
       "verification_status": "preneto_iz_izvora"
     },
     {
@@ -2474,39 +2551,6 @@
       "source": "Insajder",
       "source_url": "https://insajder.net/teme/student-dimitrije-dimic-nadam-se-da-je-doslo-vreme-pravde-i-da-vec-sada-vidimo-da-ona-postoji-u-srbiji-dostizna-je-ali-spora-video",
       "published_at": "2026-11-20T17:30+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "10207f84385e9658a904",
-      "title": "Oglasio se Partizan: Dve loše i jedna dobra vest za crno-bele uoči meča sa Bešiktašom",
-      "summary": "",
-      "category": "Sport",
-      "region": "Srbija",
-      "source": "Danas",
-      "source_url": "https://www.danas.rs/sport/partizan-besiktas-evroliga-lamar-stivens/",
-      "published_at": "2026-11-20T17:30+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "c62d57cd0214c64f3577",
-      "title": "RHMZ: U većem delu Srbije do kraja dana kiša i pljuskovi sa grmljavinom",
-      "summary": "",
-      "category": "Vreme",
-      "region": "Srbija",
-      "source": "Danas",
-      "source_url": "https://www.danas.rs/vesti/drustvo/rhmz-u-vecem-delu-srbije-do-kraja-dana-kisa-i-pljuskovi-sa-grmljavinom/",
-      "published_at": "2026-11-20T17:26+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "82271047a9fbc619dbc0",
-      "title": "Dodik: Usaglasili smo ime mandatara iz SNSD-a, mogu samo da kažem da to nisam ja",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Srbija",
-      "source": "Danas",
-      "source_url": "https://www.danas.rs/svet/region/dodik-usaglasili-smo-ime-mandatara-iz-snsd-a-mogu-samo-da-kazem-da-to-nisam-ja/",
-      "published_at": "2026-11-20T17:26+00:00",
       "verification_status": "preneto_iz_izvora"
     },
     {
@@ -2583,17 +2627,6 @@
       "region": "Neodređeno",
       "source": "RTS",
       "source_url": "https://www.rts.rs/vesti/drustvo/6088952/patrik-drid-razresenje.html",
-      "published_at": "2026-11-20T17:09+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "ee43b45517db788d7f42",
-      "title": "Skupštinska opomena proslavljena k’o gol protiv Nemačke u 90. minutu",
-      "summary": "",
-      "category": "Politika",
-      "region": "Neodređeno",
-      "source": "Danas",
-      "source_url": "https://www.danas.rs/dijalog/redakcijski-komentar/skupstinska-opomena-komentar/",
       "published_at": "2026-11-20T17:09+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -2939,17 +2972,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "83fff66c3ef44c38abe6",
-      "title": "Захарова: Србија неће да уводи санкције и изда земљу која је увек подржавала",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "RTS",
-      "source_url": "https://www.rts.rs/vesti/politika/6088640/srbija-rusija-eu-politika-odnosi.html",
-      "published_at": "2026-11-20T14:58+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "b66275d30afaf76a3887",
       "title": "Komisija ponovo ispituje prodaju N1, Nove, Danasa i Radara, rešenje odloženo",
       "summary": "",
@@ -2969,17 +2991,6 @@
       "source": "Vreme",
       "source_url": "https://vreme.com/drustvo/mediji-dragan-j-vucicevic-firma-lokalne-televizije/",
       "published_at": "2026-11-20T14:47+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "463aef3b19d65966ce75",
-      "title": "Градски одбор ДС-а: Сајт дигиталних услуга града Београда \"преплаћен 150 пута\"",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "RTS",
-      "source_url": "https://www.rts.rs/vesti/politika/6088733/gradski-odbor-ds-a-sajt-digitalnih-usluga-grada-beograda-preplacen-150-puta.html",
-      "published_at": "2026-11-20T14:46+00:00",
       "verification_status": "preneto_iz_izvora"
     },
     {
@@ -3123,17 +3134,6 @@
       "source": "Vreme",
       "source_url": "https://vreme.com/svet/auto-industrija-nemacka-automobili-mercedes-folksvagen/",
       "published_at": "2026-11-20T10:59+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "8d66ecfea8b3520ea2d5",
-      "title": "Ko pali teretane po Beogradu: Prihodi od 666 miliona i talas napada",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Srbija",
-      "source": "Vreme",
-      "source_url": "https://vreme.com/drustvo/teretana-ahilej-napadi-sale-simetrija/",
-      "published_at": "2026-11-20T10:34+00:00",
       "verification_status": "preneto_iz_izvora"
     },
     {

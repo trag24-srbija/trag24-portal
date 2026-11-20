@@ -1,15 +1,59 @@
 {
-  "updated_at": "2026-11-20T01:00:25.385853+00:00",
+  "updated_at": "2026-11-20T02:10:08.434614+00:00",
   "articles": [
     {
-      "id": "dc625b728f3c885f09a6",
-      "title": "Tramp: \"Ne žurim sa donošenjem odluke o Iranu\"",
+      "id": "5064667b0c7468650713",
+      "title": "Regionalni poslovni forum okupio više od 300 pravnika na Zlatiboru",
       "summary": "",
       "category": "Društvo",
-      "region": "Svet",
+      "region": "Neodređeno",
       "source": "Telegraf",
-      "source_url": "https://www.telegraf.rs/vesti/svet/4436280-tramp-ne-zurim-sa-donosenjem-odluke-o-iranu",
-      "published_at": "2026-11-20T00:30+00:00",
+      "source_url": "https://biznis.telegraf.rs/info-biz/4436199-regionalni-poslovni-forum-okupio-vise-od-300-pravnika-na-zlatiboru",
+      "published_at": "2026-11-20T02:00+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "31d4ebdea9296019d95a",
+      "title": "Poznati parovi polufinala Kupa Srbije u vaterpolu",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Srbija",
+      "source": "Telegraf",
+      "source_url": "https://www.telegraf.rs/sport/ostali-sportovi/4436337-poznati-parovi-polufinala-kupa-srbije-u-vaterpolu",
+      "published_at": "2026-11-20T01:32+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "8ea45e593714e30a815d",
+      "title": "Од средине дана ново наоблачење, температуре до 20 степени",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Politika",
+      "source_url": "https://www.politika.rs/scc/clanak/804468/od-sredine-dana-novo-naoblacenje-temperature-do-20-stepeni",
+      "published_at": "2026-11-20T01:11+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "e44c069a5e5d50fe8136",
+      "title": "OPLJAČKANA CRKVA KOD FOČE Provalnici razvalili vrata i pokrali bogoslužbene predmete",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Kurir",
+      "source_url": "https://www.kurir.rs/region/bosna-i-hercegovina/10166523/provala-u-crkvu-kod-foce-ukradeni-bogosluzbeni-predmeti",
+      "published_at": "2026-11-20T01:00+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "7a35a312911bf04dbe87",
+      "title": "Građevinski sektor evrozone opet u padu: Evo kakve trendove otkrivaju najnoviji podaci Evrostata",
+      "summary": "",
+      "category": "Ekonomija",
+      "region": "Neodređeno",
+      "source": "Telegraf",
+      "source_url": "https://biznis.telegraf.rs/info-biz/4435995-gradjevinski-sektor-evrozone-opet-u-padu-evo-kakve-trendove-otkrivaju-najnoviji-podaci-evrostata",
+      "published_at": "2026-11-20T01:00+00:00",
       "verification_status": "preneto_iz_izvora"
     },
     {
@@ -20,6 +64,17 @@
       "region": "Neodređeno",
       "source": "Politika",
       "source_url": "https://www.politika.rs/scc/clanak/804467/kizilelma-u-vojnoj-floti-turske",
+      "published_at": "2026-11-20T00:30+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "dc625b728f3c885f09a6",
+      "title": "Tramp: \"Ne žurim sa donošenjem odluke o Iranu\"",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Svet",
+      "source": "Telegraf",
+      "source_url": "https://www.telegraf.rs/vesti/svet/4436280-tramp-ne-zurim-sa-donosenjem-odluke-o-iranu",
       "published_at": "2026-11-20T00:30+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -57,17 +112,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "8a965d92cc2b08fdd8ce",
-      "title": "Kina izabrala još 34 fabrike da u njima primene AI: Ovo su rezultati koje su prethodne već ostvarile",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Svet",
-      "source": "Telegraf",
-      "source_url": "https://ubrzanje.telegraf.rs/nauka-i-privreda/4435898-kina-izabrala-jos-34-fabrike-da-u-njima-primene-ai-ovo-su-rezultati-koje-su-prethodne-vec-ostvarile",
-      "published_at": "2026-11-20T00:00+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "ab43d664142f02db142b",
       "title": "PROTESTI PRERASLI U NASILJE, GORELA I KUĆA BIVŠEG PREMIJERA: Dva člana vladajuće stranke ubijena u Bangladešu",
       "summary": "",
@@ -75,6 +119,17 @@
       "region": "Srbija",
       "source": "Kurir",
       "source_url": "https://www.kurir.rs/planeta/10166460/dva-clana-vladajuce-stranke-ubijena-tokom-protesta-u-bangladesu",
+      "published_at": "2026-11-20T00:00+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "8a965d92cc2b08fdd8ce",
+      "title": "Kina izabrala još 34 fabrike da u njima primene AI: Ovo su rezultati koje su prethodne već ostvarile",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Svet",
+      "source": "Telegraf",
+      "source_url": "https://ubrzanje.telegraf.rs/nauka-i-privreda/4435898-kina-izabrala-jos-34-fabrike-da-u-njima-primene-ai-ovo-su-rezultati-koje-su-prethodne-vec-ostvarile",
       "published_at": "2026-11-20T00:00+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -915,17 +970,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "912eb118abe614500763",
-      "title": "Izglasano 6 potpredsednika Narodne skupštine Republike Srbije",
-      "summary": "",
-      "category": "Politika",
-      "region": "Srbija",
-      "source": "Telegraf",
-      "source_url": "https://www.telegraf.rs/4436309-izglasano-6-potpredsednika-narodne-skupstine-republike-srbije",
-      "published_at": "2026-11-19T22:50+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "59dd7fad55924ec8059d",
       "title": "\"TO SU JAKO STRESNE SITUACIJE, NE BIH POŽELELA NIKOME\" Seka Aleksić o paljenju automobila na estradi, a evo šta kaže o korekciji grudi: \"Imam dobar brusthalter\" (Video)",
       "summary": "",
@@ -933,6 +977,17 @@
       "region": "Neodređeno",
       "source": "Blic",
       "source_url": "https://www.blic.rs/zabava/seka-aleksic-o-paljenju-automobila-na-estradi-to-su-stresne-situacije/6xsq6jq",
+      "published_at": "2026-11-19T22:50+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "912eb118abe614500763",
+      "title": "Izglasano 6 potpredsednika Narodne skupštine Republike Srbije",
+      "summary": "",
+      "category": "Politika",
+      "region": "Srbija",
+      "source": "Telegraf",
+      "source_url": "https://www.telegraf.rs/4436309-izglasano-6-potpredsednika-narodne-skupstine-republike-srbije",
       "published_at": "2026-11-19T22:50+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -1366,17 +1421,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "223f5280f3b0bac5ed01",
-      "title": "Žestoka rasprava Vučića i Bakića u Skupštini: Govorili o crkvi, patrijarhu i kandidatima za potpredsednike",
-      "summary": "",
-      "category": "Politika",
-      "region": "Srbija",
-      "source": "Telegraf",
-      "source_url": "https://www.telegraf.rs/4436331-zestoka-rasprava-vucica-i-bakica-u-skupstini-govorili-o-crkvi-patrijarhu-i-kandidatima-za-potpredsednike",
-      "published_at": "2026-11-19T22:20+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "7ac95c90f580c207c666",
       "title": "PUČE TIKVA IZMEĐU SANJE I CARA! Prijateljstvo nije bilo dovoljno jako",
       "summary": "",
@@ -1421,17 +1465,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "4cf8ea6c397decaf0812",
-      "title": "Kakva utakmica u Evroligi: Valensija umalo prokockala prednost, heroj ponovo bio Ti Džej Šorts",
-      "summary": "",
-      "category": "Sport",
-      "region": "Srbija",
-      "source": "Telegraf",
-      "source_url": "https://www.telegraf.rs/sport/evroliga-kosarka/vesti-evroliga/4436324-kakva-utakmica-u-evroligi-valensija-umalo-prokockala-prednost-sorts-sprecio-preokret-virtusa",
-      "published_at": "2026-11-19T22:18+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "9c93d7657637929d928f",
       "title": "Karlik Džons u Olimpijakosu?! Odmah se oglasio Ostoja Mijailović!",
       "summary": "",
@@ -1440,17 +1473,6 @@
       "source": "Novosti",
       "source_url": "https://www.novosti.rs/sport/kosarka/1672947/karlik-dzons-prelazak-olimpijakos-oglasavanje-ostoja-mijailovic-najnovije-kosarkaske-vesti-evroliga",
       "published_at": "2026-11-19T22:17+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "9ec06048209e65992b61",
-      "title": "Tabela Evrolige pred mečeve Zvezde i Partizana u petak: Crveno-beli i dalje u plej-inu, crno-beli ispod crte",
-      "summary": "",
-      "category": "Sport",
-      "region": "Srbija",
-      "source": "Telegraf",
-      "source_url": "https://www.telegraf.rs/sport/evroliga-kosarka/veciti/4436327-tabela-evrolige-pred-meceve-zvezde-i-partizana-u-petak-crveno-beli-i-dalje-u-plej-inu-crno-beli-ispod-crte",
-      "published_at": "2026-11-19T22:16+00:00",
       "verification_status": "preneto_iz_izvora"
     },
     {
@@ -1571,17 +1593,6 @@
       "region": "Srbija",
       "source": "Danas",
       "source_url": "https://www.danas.rs/vesti/ekonomija/zahtev-u-inzenjerskoj-komori-srbije/",
-      "published_at": "2026-11-19T22:05+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "3604d207e73d91be5d9c",
-      "title": "Dvojica tinejdžera teško povređena - jedan hitno prevezen za Beograd: Automobilom sleteli sa puta u selu Solotuša kod Bajine Bašte",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Srbija",
-      "source": "Kurir",
-      "source_url": "https://www.kurir.rs/crna-hronika/10167412/automobilom-sleteli-sa-puta-u-selu-solotusa-kod-bajine-baste",
       "published_at": "2026-11-19T22:05+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -2122,17 +2133,6 @@
       "source": "Novosti",
       "source_url": "https://www.novosti.rs/scena/poznati/1672936/poginuo-cuveni-glumac-udario-auto-dok-prelazio-ulicu-stradao-blizini-doma-nije-docekao-operaciju",
       "published_at": "2026-11-19T21:05+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "c6bc1b1803033f0fbbac",
-      "title": "Руска платформа за плаћање, под санкцијама САД, шири пословање у Африци",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Politika",
-      "source_url": "https://www.politika.rs/scc/clanak/804437/ruska-platforma-za-placanje-pod-sankcijama-sad-siri-poslovanje-u-africi",
-      "published_at": "2026-11-19T21:03+00:00",
       "verification_status": "preneto_iz_izvora"
     },
     {

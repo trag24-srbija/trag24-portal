@@ -388,6 +388,162 @@ body {
   }
 })();
 </script>
+  <style>
+body {
+  background: #F7F6F3;
+  color: #101A2B;
+}
+
+.main {
+  padding-top: 24px;
+}
+
+.intro h1 {
+  font-family: Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -1.5px;
+}
+
+.eyebrow {
+  color: #AC2034;
+  letter-spacing: 2px;
+}
+
+.category-nav {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.category-nav button {
+  background: #fff;
+  border: 1px solid #DDDCD6;
+  border-radius: 5px;
+  font-size: 12px;
+  padding: 12px 3px;
+}
+
+.category-nav button.active {
+  background: #101A2B;
+  color: #fff;
+  border-color: #101A2B;
+}
+
+.tools {
+  border: 0;
+  padding-top: 0;
+}
+
+.tools input {
+  border: 1px solid #DDDCD6;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.featured {
+  background: transparent;
+  padding: 0;
+  border: 0;
+  gap: 14px;
+}
+
+.feature-main {
+  background: linear-gradient(140deg, #1C3049, #101A2B);
+  border: 1px solid #BFA36C;
+  border-radius: 8px;
+  padding: 22px 19px;
+}
+
+.feature-main::before {
+  content: "◆ U FOKUSU";
+  display: block;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.feature-main * {
+  color: #FFFFFF !important;
+}
+
+.feature-main h2 {
+  font-size: 28px !important;
+  font-weight: 500 !important;
+  line-height: 1.2 !important;
+}
+
+.feature-main .source {
+  border-color: #FFFFFF30;
+}
+
+.side {
+  border: 0;
+  padding: 0;
+}
+
+.story, .side-story {
+  background: #FFFFFF;
+  border: 1px solid #E3E0D9;
+  border-radius: 6px;
+  padding: 19px;
+  box-shadow: 0 4px 16px #101A2B06;
+}
+
+.side-story:last-child {
+  border: 1px solid #E3E0D9;
+  padding: 19px;
+}
+
+.story h3, .side-story h3 {
+  font-family: Georgia, serif;
+  font-size: 23px !important;
+  line-height: 1.28 !important;
+  color: #101A2B;
+}
+
+.label {
+  color: #AC2034;
+  letter-spacing: 1px;
+}
+
+.source {
+  border-color: #E3E0D9;
+}
+
+.source a {
+  color: #AC2034;
+}
+
+.section-heading {
+  border-bottom: 1px solid #BFA36C;
+  letter-spacing: 1px;
+}
+
+@media(max-width:600px) {
+  .intro h1 {
+    font-size: 36px;
+  }
+
+  .category-nav button {
+    font-size: 11px;
+  }
+
+  .tools {
+    flex-direction: column;
+  }
+
+  .tools input {
+    width: 100%;
+    min-height: 42px;
+  }
+
+  .tools h2 {
+    align-self: flex-start;
+    max-width: 100%;
+  }
+}
+</style>
 <main class="container main"><div class="intro"><div><div class="eyebrow">NAJNOVIJE INFORMACIJE</div><h1 id="heading">Vesti iz Srbije</h1></div><div class="note">Pregled najnovijih objava uz jasno označene izvore.</div></div><nav aria-label="Rubrike" class="category-nav" id="categories"></nav><div class="tools"><h2 id="listTitle">Najnovije vesti</h2><input aria-label="Pretraži vesti" id="search" placeholder="Pretraži vesti…" type="search"/></div><div class="notice" id="status" role="status">Učitavanje vesti…</div><section aria-label="Izdvojene vesti" class="featured" hidden="" id="featured"></section><div class="section-heading"><h2>OSTALE VESTI</h2><span id="count"></span></div><section aria-label="Sve vesti" class="feed" id="feed"></section><section class="editorial"><h2>Urednička napomena</h2><p>TRAG 24 automatski prikazuje naslove i informacije iz javno dostupnih medijskih izvora. Redakcija TRAG 24 ne potvrđuje nezavisno navode drugih medija. Svaka objava sadrži vezu ka izvornom članku. Automatsko razvrstavanje po temi i geografiji može sadržati greške.</p></section></main>
 <footer><div class="container"><strong>TRAG 24</strong><span>© <span id="year"></span> · Srbija i svet · Izvori uz svaku vest</span></div><div style="text-align:center;margin-top:15px;">
   <a href="/trag24-portal/politika-privatnosti.html" style="color:white;text-decoration:underline;">

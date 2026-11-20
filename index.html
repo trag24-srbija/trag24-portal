@@ -760,7 +760,7 @@ if (!localStorage.getItem('trag24_analytics_consent')) {
     navigator.standalone === true;
 
   if (!installed && (ios || android)) {
-    const nav = document.querySelector('.nav-shell');
+    const nav = document.querySelector('#signature-header');
     if (nav) nav.insertAdjacentElement('afterend', panel);
     panel.hidden = false;
   }

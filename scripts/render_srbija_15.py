@@ -17,11 +17,17 @@ from render_reels import (
 DURATIONS_BY_PROGRAM = {
     "0800": [2, 4, 4, 3, 2],  # 15s
     "1400": [2, 4, 4, 3, 2],  # 15s
+    "1100": [2, 4, 4, 3, 2],  # 15s
+    "1700": [2, 4, 4, 3, 2],  # 15s
+    "2300": [2, 4, 4, 3, 2],  # 15s
     "2000": [2, 5, 5, 5, 3],  # 20s -- odvojeno od duze naratorske emisije
 }
 TEMPLATES_BY_PROGRAM = {
     "0800": TEMPLATES / "0800_srbija_se_budi.jpg",
     "1400": TEMPLATES / "1400_novac_i_zivot.jpg",
+    "1100": TEMPLATES / "1100_verovali_ili_ne.jpg",
+    "1700": TEMPLATES / "1700_pitanje_dana.jpg",
+    "2300": TEMPLATES / "2300_arena.jpg",
     "2000": TEMPLATES / "2000_vesti_u_20.jpg",
 }
 
@@ -54,7 +60,7 @@ def fit_text(draw, txt, max_width=870, max_lines=5, start=70, minimum=46):
     raise ValueError("Tekst ne moze citljivo da stane u kadar.")
 
 
-def make_frame(bg, number, heading, main, detail, source, dest):
+def make_frame(bg, number, heading, main, detail, source, dest, label="PREGLED IZVORA • PROBNI VIDEO"):
     im = bg.copy()
     draw = ImageDraw.Draw(im)
     # Sve promenljivo ostaje unutar praznog centralnog panela.
@@ -78,7 +84,7 @@ def make_frame(bg, number, heading, main, detail, source, dest):
             draw_shadow(draw, (X1, yy), line, dface, MUTED)
             yy+=56
 
-    draw.text((X1, 1504), "PREGLED IZVORA • PROBNI VIDEO",
+    draw.text((X1, 1504), label[:36].upper(),
               font=get_font(25, True), fill="#B5C2D2")
     if source:
         draw.text((X1, 1538), "IZVORI: "+source[:64],
@@ -114,6 +120,15 @@ def render(item, output):
             ("PRATI TRAG 24", "Cela analiza i izvori na portalu",
              "Pratite nove vesti i provere tokom dana."),
         ]
+    elif program == "1100":
+        date_note = str(item.get("datum_vesti", date))
+        slides=[
+            ("VEROVALI ILI NE", "Neobična vest iz izvora", "Analiza od "+date_note),
+            ("ŠTA SE DOGODILO", headline, ""),
+            ("PREMA IZVORIMA", excerpt1, ""),
+            ("ŠTA JOŠ ZNAMO", excerpt2, ""),
+            ("PRATI TRAG 24", "Više detalja na portalu", "Pogledaj originalne izvore vesti."),
+        ]
     elif program == "1400":
         date_note = str(item.get("datum_vesti", date))
         slides=[
@@ -122,6 +137,25 @@ def render(item, output):
             ("PREMA IZVORIMA", excerpt1, ""),
             ("DETALJI I KONTEKST", excerpt2, ""),
             ("PRATI TRAG 24", "Pročitaj celu analizu", "Više informacija i izvori na portalu."),
+        ]
+    elif program == "1700":
+        slides=[
+            ("PITANJE DANA", "Vaše mišljenje je važno", "TRAG 24 • "+date),
+            ("DANAS PITAMO", headline, ""),
+            ("VAŠ ODGOVOR", "Napišite šta mislite", "Vaše iskustvo je dragoceno."),
+            ("OBRAZLOŽITE", "Zašto tako mislite?", "Kratak komentar je dovoljan."),
+            ("PRATI TRAG 24", "Odgovori u komentarima", "Pridruži se razgovoru."),
+        ]
+    elif program == "2300":
+        options=item.get("opcije")
+        if not isinstance(options, list) or len(options)!=4:
+            raise ValueError("Arena: nema četiri postojeća ponuđena odgovora.")
+        slides=[
+            ("ARENA – NOĆNI IZAZOV", "Spreman za kviz?", "Pitanje iz fonda TRAG 24 Arena"),
+            ("PITANJE", headline, ""),
+            ("IZABERI ODGOVOR", "A) "+options[0]+"\nB) "+options[1], ""),
+            ("IZABERI ODGOVOR", "C) "+options[2]+"\nD) "+options[3], ""),
+            ("PRATI TRAG 24 ARENA", "Proveri odgovor u Areni", "Izazovi prijatelja na portalu."),
         ]
     else:
         slides=[
@@ -139,7 +173,10 @@ def render(item, output):
     frames=[]
     for i,(label,head,sub) in enumerate(slides,1):
         dest=output/f"{program}_{i:02d}.png"
-        make_frame(bg,i,label,head,sub,source,dest)
+        provenance = ("PITANJE ZA KOMENTARE" if program == "1700"
+                      else "ARENA: PRETHODNO PREGLEDAN KVIZ" if program == "2300"
+                      else "PREGLED IZVORA • PROBNI VIDEO")
+        make_frame(bg,i,label,head,sub,source,dest,label=provenance)
         frames.append(dest)
 
     # Concat demuxer obezbedjuje pojedinacna trajanja kadrova.
@@ -181,7 +218,7 @@ def main():
     if isinstance(content,dict):
         content=[content]
     found = False
-    for program in ("0800", "1400", "2000"):
+    for program in ("0800", "1100", "1400", "1700", "2000", "2300"):
         items=[x for x in content if str(x.get("program")) == program]
         if not items:
             print(f"Nema odgovarajuce teme za {program}. Preskacem.")
@@ -190,7 +227,7 @@ def main():
         print(f"Proba {program}: 5 kadrova, {sum(DURATIONS_BY_PROGRAM[program])} s, {movie}")
         found = True
     if not found:
-        print("Nema podobnih tema za 08:00, 14:00 ili 20:00.")
+        print("Nema odgovarajucih tema ili prethodno pregledanih pitanja.")
 
 
 if __name__ == "__main__":

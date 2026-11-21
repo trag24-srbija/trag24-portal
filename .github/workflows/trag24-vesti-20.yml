@@ -7,6 +7,11 @@ on:
         description: 'Napravi zvanicnu emisiju'
         type: boolean
         default: false
+      target_date:
+        description: 'Datum emisije (YYYY-MM-DD); prazno = danas'
+        type: string
+        required: false
+        default: ''
   schedule:
     - cron: '15 19 * * *'
       timezone: 'Europe/Belgrade'
@@ -35,6 +40,17 @@ jobs:
         run: |
           set -euo pipefail
           DATE=$(date +%F)
+          if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
+            REQUESTED_DATE=$(jq -r '.inputs.target_date // ""' "$GITHUB_EVENT_PATH")
+            if [ -n "$REQUESTED_DATE" ]; then
+              if ! [[ "$REQUESTED_DATE" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]] || \
+                [ "$(date -d "$REQUESTED_DATE" +%F 2>/dev/null)" != "$REQUESTED_DATE" ]; then
+                echo "Neispravan datum: ocekuje se YYYY-MM-DD" >&2
+                exit 1
+              fi
+              DATE="$REQUESTED_DATE"
+            fi
+          fi
           echo "$DATE" > datum.txt
           TAG="vesti-$DATE-20"
           RUN=true

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""TRAG 24: 08:00 -- pet kadrova, tacno 15 sekundi, bez AI videa.
+"""TRAG 24: tekstualni Reels -- pet citljivih kadrova, >= 15 s, bez AI videa.
 Ovo je SAMO lokalna proba; nema objavljivanja na sajtu i mrezama.
 """
 import argparse
@@ -14,17 +14,15 @@ from render_reels import (
     WHITE, MUTED, ACCENT
 )
 
-DURATIONS = [2, 4, 4, 3, 2]
-TIMELINE = [
-    "JUTARNJI PREGLED",
-    "GLAVNA TEMA",
-    "PREMA IZVORIMA",
-    "JOS DETALJA",
-    "PRATI TRAG 24",
-]
+DURATIONS_BY_PROGRAM = {
+    "0800": [2, 4, 4, 3, 2],  # 15s
+    "1400": [2, 4, 4, 3, 2],  # 15s
+    "2000": [2, 5, 5, 5, 3],  # 20s -- odvojeno od duze naratorske emisije
+}
 TEMPLATES_BY_PROGRAM = {
     "0800": TEMPLATES / "0800_srbija_se_budi.jpg",
     "1400": TEMPLATES / "1400_novac_i_zivot.jpg",
+    "2000": TEMPLATES / "2000_vesti_u_20.jpg",
 }
 
 
@@ -106,6 +104,7 @@ def render(item, output):
     date=str(item.get("datum",""))
     source=re.sub(r"\s+"," ",str(item.get("izvor",""))).strip()
 
+    durations = DURATIONS_BY_PROGRAM[program]
     if program == "0800":
         slides=[
             ("JUTARNJI PREGLED", "Dobro jutro, Srbijo", "TRAG 24 • "+date),
@@ -115,15 +114,25 @@ def render(item, output):
             ("PRATI TRAG 24", "Cela analiza i izvori na portalu",
              "Pratite nove vesti i provere tokom dana."),
         ]
-    else:
+    elif program == "1400":
+        date_note = str(item.get("datum_vesti", date))
         slides=[
-            ("NOVAC I ŽIVOT", "Šta danas utiče na vaš novčanik?", "Cene • plate • posao • standard"),
+            ("NOVAC I ŽIVOT", "Šta utiče na vaš novčanik?", "Analiza od "+date_note),
             ("GLAVNA TEMA", headline, ""),
             ("PREMA IZVORIMA", excerpt1, ""),
             ("DETALJI I KONTEKST", excerpt2, ""),
             ("PRATI TRAG 24", "Pročitaj celu analizu", "Više informacija i izvori na portalu."),
         ]
-    if len(slides)!=5 or sum(DURATIONS)!=15:
+    else:
+        slides=[
+            ("VESTI U 20", "Najvažnija tema dana", "Kratak pregled • TRAG 24"),
+            ("GLAVNA VEST", headline, ""),
+            ("ŠTA ZNAMO", excerpt1, ""),
+            ("DETALJI", excerpt2, ""),
+            ("PRATI TRAG 24", "Celu analizu čitaj na portalu", "Proveri izvore • trag24"),
+        ]
+    total_seconds = sum(durations)
+    if len(slides) != 5 or total_seconds < 15:
         raise AssertionError("Neispravna satnica emisije.")
 
     output.mkdir(parents=True,exist_ok=True)
@@ -137,7 +146,7 @@ def render(item, output):
     lst=output/f"{program}_frames.ffconcat"
     with lst.open("w",encoding="utf-8") as fp:
         fp.write("ffconcat version 1.0\n")
-        for path,duration in zip(frames,DURATIONS):
+        for path,duration in zip(frames,durations):
             fp.write("file '"+path.name+"'\n")
             fp.write("duration "+str(duration)+"\n")
         fp.write("file '"+frames[-1].name+"'\n")
@@ -146,7 +155,7 @@ def render(item, output):
     subprocess.run([
         "ffmpeg","-hide_banner","-loglevel","error","-y",
         "-safe","0","-f","concat","-i",str(lst),
-        "-t","15","-vf","fps=24,format=yuv420p",
+        "-t",str(total_seconds),"-vf","fps=24,format=yuv420p",
         "-c:v","libx264","-preset","veryfast","-crf","25",
         "-movflags","+faststart",str(movie)
     ],check=True)
@@ -157,7 +166,7 @@ def render(item, output):
         "-of","default=nokey=1:noprint_wrappers=1",str(movie)
     ],text=True)
     duration=float(check.strip())
-    if not 15.0 <= duration <= 15.1:
+    if not total_seconds <= duration <= total_seconds+0.1:
         movie.unlink(missing_ok=True)
         raise RuntimeError(f"Pogresno trajanje Reels-a: {duration}")
     return movie
@@ -172,16 +181,16 @@ def main():
     if isinstance(content,dict):
         content=[content]
     found = False
-    for program in ("0800", "1400"):
+    for program in ("0800", "1400", "2000"):
         items=[x for x in content if str(x.get("program")) == program]
         if not items:
             print(f"Nema odgovarajuce teme za {program}. Preskacem.")
             continue
         movie=render(items[0],Path(args.out))
-        print(f"Proba {program}: 5 kadrova, 15 s, {movie}")
+        print(f"Proba {program}: 5 kadrova, {sum(DURATIONS_BY_PROGRAM[program])} s, {movie}")
         found = True
     if not found:
-        print("Nema podobnih tema za 08:00 ili 14:00.")
+        print("Nema podobnih tema za 08:00, 14:00 ili 20:00.")
 
 
 if __name__ == "__main__":

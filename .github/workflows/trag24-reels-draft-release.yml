@@ -1,0 +1,96 @@
+name: TRAG24 - 6 Reels u Draft Release (BEZ OBJAVE)
+
+on:
+  push:
+    branches:
+      - 'feature/trag24-reels-six-programs-20261121'
+    paths:
+      - '.github/workflows/trag24-reels-draft-release.yml'
+  workflow_dispatch:
+    inputs:
+      datum:
+        description: 'Datum provere YYYY-MM-DD'
+        required: false
+        default: '2026-11-21'
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: trag24-reels-draft-release
+  cancel-in-progress: false
+
+jobs:
+  staged_media:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Odredi probni datum
+        env:
+          INPUT_DATE: ${{ inputs.datum }}
+        run: |
+          set -euo pipefail
+          DATUM="${INPUT_DATE:-2026-11-21}"
+          [[ "$DATUM" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]] || exit 1
+          echo "DATUM=$DATUM" >> "$GITHUB_ENV"
+          echo "TAG=trag24-reels-nacrti-$DATUM" >> "$GITHUB_ENV"
+
+      - name: Ne diraj postojecu probnu verziju
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "::error::Draft release sa ovom oznakom vec postoji. Preskacem bez zamene ili objavljivanja."
+            exit 1
+          fi
+
+      - name: Generisi samo proverene PROBNE predloge
+        run: |
+          set -euo pipefail
+          python scripts/pripremi_dnevne_objave.py --datum "$DATUM" --izlaz reels_preview/dnevne_objave.json
+          for p in 0800_srbija_se_budi 1100_verovali_ili_ne 1400_novac_i_zivot 1700_pitanje_dana 2000_vesti_u_20 2300_arena; do
+            test -s "templates/$p.jpg" || { echo "::error::Nedostaje šablon $p"; exit 1; }
+          done
+          test -s assets/global_pulse.m4a
+
+      - name: Instaliraj alate
+        run: |
+          python -m pip install --disable-pip-version-check pillow
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+
+      - name: Napravi svih sest MP4 sa muzikom
+        run: |
+          set -euo pipefail
+          python scripts/render_srbija_15.py --content reels_preview/dnevne_objave.json --out reels_preview/izlaz
+          python scripts/dodaj_global_pulse.py --music assets/global_pulse.m4a --videos reels_preview/izlaz
+          python scripts/napravi_make_pregled.py --content reels_preview/dnevne_objave.json --videos reels_preview/izlaz --datum "$DATUM" --run-id "$GITHUB_RUN_ID" --output reels_preview/make_pregled.json
+          for code in 0800 1100 1400 1700 2000 2300; do
+            test -s "reels_preview/izlaz/${code}_reel_sa_muzikom.mp4"
+            test -s "reels_preview/izlaz/${code}_cover.png"
+          done
+
+      - name: Sacuvaj snimke samo u Draft Release (bez javnog objavljivanja)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mapfile -t ASSETS < <(find reels_preview/izlaz -maxdepth 1 -type f \( -name '*_reel_sa_muzikom.mp4' -o -name '*_cover.png' \) | sort)
+          [ "${#ASSETS[@]}" -eq 12 ] || { echo "::error::Ocekivano 6 MP4 i 6 naslovnica"; exit 1; }
+          ASSETS+=(reels_preview/make_pregled.json)
+          gh release create "$TAG" \
+            --draft \
+            --target "$GITHUB_SHA" \
+            --title "TRAG24 – PROBA 6 Reels ($DATUM) – NE OBJAVLJIVATI" \
+            --notes "Samo nacrt za pregled. Šest probnih Reels snimaka sa originalnom muzikom i naslovnicama. Nema automatskog objavljivanja; nijedan sadržaj nije odobren za mreže." \
+            "${ASSETS[@]}"
+          echo 'Draft Release je napravljen, nijedan medij nije javno objavljen.'
+
+      # NAMERNO: nema gh release edit --draft=false, Make webhooka ili poziva drustvenim mrezama.

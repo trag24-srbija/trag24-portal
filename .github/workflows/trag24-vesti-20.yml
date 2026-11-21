@@ -109,12 +109,10 @@ jobs:
         if: steps.plan.outputs.run == 'true'
         run: |
           set -euo pipefail
-          pip install --only-binary=:all: imageio-ffmpeg==0.6.0 faster-whisper==1.2.1 av==18.1.0 pillow
+          pip install --only-binary=:all: imageio-ffmpeg==0.6.0 pillow
           python <<'PY'
-          import json, re, wave, textwrap, unicodedata
-          from difflib import SequenceMatcher
+          import json, wave
           from pathlib import Path
-          from faster_whisper import WhisperModel
           from PIL import ImageFont
           import subprocess
           font_path = subprocess.check_output(["fc-match","-f","%{file}","DejaVu Sans:style=Bold"],text=True).strip()
@@ -139,50 +137,25 @@ jobs:
           tempo = max(1,dur/86)
           Path('tempo.txt').write_text(str(tempo))
           original = Path('vesti.txt').read_text(encoding='utf-8').split()
-          model = WhisperModel('base',device='cpu',compute_type='int8',cpu_threads=4)
-          segments,_ = model.transcribe('glas.wav',language='sr',word_timestamps=True,beam_size=3)
-          heard = [(w.word,w.start,w.end) for s in segments for w in (s.words or []) if w.word.strip()]
-          cmap = dict(zip('абвгдђежзијклљмнњопрстћуфхцчџш', ['a','b','v','g','d','dj','e','z','z','i','j','k','l','lj','m','n','nj','o','p','r','s','t','c','u','f','h','c','c','dz','s']))
-          def norm(s):
-              s = ''.join(cmap.get(c,c) for c in s.lower()).replace('đ','dj')
-              return re.sub(r'[^a-z0-9]','',unicodedata.normalize('NFKD',s))
-          a,b = [norm(x) for x in original],[norm(x[0]) for x in heard]
-          matches = SequenceMatcher(None,a,b,autojunk=False)
-          ratio = matches.ratio()
-          times = [0.0]*(len(original)+1)
-          if ratio >= 0.50:
-              # Koristi precizno sidrenje u prepoznate reci, kada je pouzdano.
-              alignment_method = 'whisper'
-              anchors = {0:0.0,len(original):dur}
-              for i,j,n in matches.get_matching_blocks():
-                  for k in range(n):
-                      if 0 < i+k < len(original):
-                          anchors[i+k] = max(0,min(dur,heard[j+k][1]))
-              points = sorted(anchors)
-              last = 0.0
-              for l,r in zip(points,points[1:]):
-                  start,end = max(last,anchors[l]),max(last,anchors[l],anchors[r])
-                  for k in range(l,r+1):
-                      times[k] = (start+(end-start)*(k-l)/(r-l))/tempo+1
-                  last=end
-          else:
-              # Tekst je izvorno poslat istom TTS-u koji je proizveo glas.wav.
-              # Nepouzdana ASR transkripcija ne sme oboriti inace validan video.
-              # Rezervni titlovi zadrzavaju originalne reci; tajming je okviran,
-              # proporcionalan duzini reci i pauzama na kraju recenica.
-              alignment_method = 'estimated-from-original-tts-text'
-              if not original or dur < 15:
-                  raise SystemExit('Prekratka naracija; rezervni titlovi nisu bezbedni.')
-              weights = [max(1.0, len(norm(word)) / 2.0) +
-                         (2.0 if word.rstrip('”"').endswith(('.', '!', '?')) else 0.0)
-                         for word in original]
-              total = sum(weights)
-              elapsed = 0.0
-              times[0] = 1.0
-              for k, weight in enumerate(weights, 1):
-                  elapsed += weight
-                  times[k] = 1.0 + (dur / tempo) * elapsed / total
-              print(f'Whisper ratio={ratio:.2f}; rezervni tajming titlova iz originalnog TTS teksta.')
+          # Originalni tekst je vec prosledjen TTS-u.
+          # Titlovi ne smeju da zaustave emisiju zbog razlike u govoru
+          # ili greske automatskog prepoznavanja reci.
+          # Prikazi originalni tekst uz okvirno vremensko rasporedjivanje.
+          if not original:
+              raise SystemExit('Nedostaje tekst emisije.')
+          weights = [
+              max(1.0, len(word.strip('.,!?;:')) / 2.0)
+              + (2.0 if word.rstrip('”"').endswith(('.', '!', '?')) else 0.0)
+              for word in original
+          ]
+          total = sum(weights)
+          times = [1.0]
+          elapsed = 0.0
+          for weight in weights:
+              elapsed += weight
+              times.append(1.0 + (dur / tempo) * elapsed / total)
+          print('Titlovi: okvirni tajming prema originalnom TTS tekstu; '
+                'govorno podudaranje nije uslov za emitovanje.')
           def av(t):
               n=max(0,round(t*100)); h,n=divmod(n,360000); m,n=divmod(n,6000); s,n=divmod(n,100)
               return f'{h}:{m:02}:{s:02}.{n:02}'
@@ -237,7 +210,7 @@ jobs:
               i=j
           Path('titlovi.ass').write_text(header+'\n'.join(events)+'\n',encoding='utf-8')
           Path('titlovi.srt').write_text('\n'.join(srt),encoding='utf-8')
-          print('Uskladjenost govora i teksta:',round(matches.ratio(),2),'metod titlovanja:',alignment_method)
+          print('Titlovi napravljeni iz originalnog teksta emisije.')
           PY
 
       - name: Montaza PRO

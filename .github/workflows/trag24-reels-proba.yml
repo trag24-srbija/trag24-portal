@@ -1,6 +1,11 @@
 name: TRAG24 - proba sest Reels sablona (BEZ OBJAVE)
 
 on:
+  push:
+    branches:
+      - 'feature/trag24-reels-six-programs-20261121'
+    paths:
+      - '.github/workflows/trag24-reels-proba.yml'
   pull_request:
     paths:
       - 'templates/**'

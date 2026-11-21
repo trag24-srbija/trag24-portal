@@ -82,6 +82,15 @@ jobs:
                   subprocess.run(['python','scripts/render_reels.py','--content',str(other),'--out','reels_preview/izlaz','--video','--seconds','15'],check=True)
           PY
 
+      - name: Ubaci Global Pulse u Reels ako je muzika prisutna
+        if: steps.podloge.outputs.ready == 'yes'
+        run: |
+          if [ -f "assets/global_pulse.m4a" ]; then
+            python scripts/dodaj_global_pulse.py --music assets/global_pulse.m4a --videos reels_preview/izlaz
+          else
+            echo "::notice::Global Pulse jos nije dodat u assets/global_pulse.m4a; probni video za sada ostaje bez zvuka."
+          fi
+
       - name: Sacuvaj probne predloge kao GitHub artifact
         uses: actions/upload-artifact@v4
         with:

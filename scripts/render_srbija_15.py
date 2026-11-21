@@ -5,6 +5,7 @@ Ovo je SAMO lokalna proba; nema objavljivanja na sajtu i mrezama.
 import argparse
 import json
 import re
+import shutil
 import subprocess
 from pathlib import Path
 from PIL import Image, ImageDraw
@@ -60,37 +61,72 @@ def fit_text(draw, txt, max_width=870, max_lines=5, start=70, minimum=46):
     raise ValueError("Tekst ne moze citljivo da stane u kadar.")
 
 
-def make_frame(bg, number, heading, main, detail, source, dest, label="PREGLED IZVORA • PROBNI VIDEO"):
+CTA = {
+    "0800": "PRATI TRAG 24",
+    "1100": "PROČITAJ CELU PRIČU",
+    "1400": "VIŠE NA PORTALU",
+    "1700": "PIŠI U KOMENTARU",
+    "2000": "PRATI TRAG 24",
+    "2300": "IGRAJ TRAG 24 ARENU",
+}
+
+
+def make_frame(bg, number, heading, main, detail, source, dest,
+               label="PREGLED IZVORA • PROBNI VIDEO", date_note="", program="0800"):
+    """Zajednički premium raspored: zlato, tamnoplava, crvena, krupan tekst."""
     im = bg.copy()
     draw = ImageDraw.Draw(im)
-    # Sve promenljivo ostaje unutar praznog centralnog panela.
-    draw.text((X1, 690), heading.upper(), font=get_font(40, True), fill="#F3AAB4")
-    draw.line((X1, 747, X1+275, 747), fill=ACCENT, width=5)
+
+    # Brendirani zaglavni pojas unutar slobodnog polja.
+    draw.rounded_rectangle((X1-16, 670, X2+14, 765), radius=17,
+                           fill="#0A1C32", outline="#E5B74D", width=3)
+    draw.rounded_rectangle((X1-16, 674, X1-4, 759), radius=4, fill="#D42139")
+    font_h = get_font(40, True)
+    if draw.textlength(heading.upper(), font=font_h) > X2-X1-34:
+        font_h = get_font(34, True)
+    draw.text((X1+13, 690), heading.upper(), font=font_h, fill="#FFFFFF")
+    draw.line((X1, 783, X1+310, 783), fill="#E5B74D", width=5)
 
     f, lines, step = fit_text(draw, main, max_lines=5,
-                               start=76 if number == 2 else 68)
-    yy=805
+                             start=76 if number == 2 else 68)
+    yy = 822
     for line in lines:
         draw_shadow(draw, (X1, yy), line, f, WHITE)
-        yy+=step
+        yy += step
 
     if detail:
         dface = get_font(40)
         dl = wrap(draw, detail, dface, X2-X1)
-        if len(dl)>4:
-            raise ValueError("Dopunski tekst je predugacak.")
-        yy=max(yy+52, 1190)
+        if len(dl) > 4:
+            raise ValueError("Dopunski tekst ne staje u centralni panel.")
+        yy = max(yy+40, 1210)
+        if yy + 56 * len(dl) > 1455:
+            raise ValueError("Tekst prelazi dozvoljeni prostor.")
         for line in dl:
             draw_shadow(draw, (X1, yy), line, dface, MUTED)
-            yy+=56
+            yy += 56
 
-    draw.text((X1, 1504), label[:36].upper(),
-              font=get_font(25, True), fill="#B5C2D2")
-    if source:
-        draw.text((X1, 1538), "IZVORI: "+source[:64],
-                  font=get_font(23), fill="#CCD5E0")
-    draw.text((930, 1503), f"{number}/5",
-              font=get_font(29, True), fill=WHITE, anchor="ra")
+    # Izvor i datum nisu deo fotografije i uvek ostaju ažurirani.
+    draw.line((X1, 1483, X2, 1483), fill="#AC8A4B", width=2)
+    draw.text((X1, 1503), label[:36].upper(),
+              font=get_font(25, True), fill="#E5B74D")
+    datepart = "DATUM: " + str(date_note) if date_note else ""
+    info = datepart + (("  •  " if datepart else "") + "IZVORI: " + source if source else "")
+    if info:
+        info_font = get_font(22)
+        while len(info) > 20 and draw.textlength(info, font=info_font) > X2-X1:
+            info = info[:-2].rstrip() + "…"
+        draw.text((X1, 1543), info, font=info_font, fill="#D4DCE6")
+    draw.text((X2-4, 1502), f"{number}/5",
+              font=get_font(28, True), fill=WHITE, anchor="ra")
+
+    # Zajednički CTA na svim emisijama: prepoznatljiv Instagram cover.
+    draw.rounded_rectangle((X1+6, 1691, X2-6, 1776), radius=21,
+                           fill="#AE1129", outline="#E5B74D", width=4)
+    cta = CTA.get(program, "PRATI TRAG 24")
+    cta_font = get_font(43, True)
+    draw.text(((W//2), 1709), cta, font=cta_font, fill="#FFFFFF", anchor="mt")
+
     dest.parent.mkdir(parents=True, exist_ok=True)
     im.save(dest, optimize=True)
 
@@ -109,6 +145,7 @@ def render(item, output):
     excerpt1, excerpt2 = sections(text)
     date=str(item.get("datum",""))
     source=re.sub(r"\s+"," ",str(item.get("izvor",""))).strip()
+    date_note=str(item.get("datum_vesti") or date)
 
     durations = DURATIONS_BY_PROGRAM[program]
     if program == "0800":
@@ -176,8 +213,12 @@ def render(item, output):
         provenance = ("PITANJE ZA KOMENTARE" if program == "1700"
                       else "ARENA: PRETHODNO PREGLEDAN KVIZ" if program == "2300"
                       else "PREGLED IZVORA • PROBNI VIDEO")
-        make_frame(bg,i,label,head,sub,source,dest,label=provenance)
+        make_frame(bg,i,label,head,sub,source,dest,label=provenance,
+                   date_note=date_note,program=program)
         frames.append(dest)
+
+    # Naslovna slika za Instagram grid: 2. kadar sa pravim naslovom/pitanjem.
+    shutil.copyfile(frames[1], output / f"{program}_cover.png")
 
     # Concat demuxer obezbedjuje pojedinacna trajanja kadrova.
     lst=output/f"{program}_frames.ffconcat"

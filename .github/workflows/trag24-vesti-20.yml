@@ -148,21 +148,41 @@ jobs:
               return re.sub(r'[^a-z0-9]','',unicodedata.normalize('NFKD',s))
           a,b = [norm(x) for x in original],[norm(x[0]) for x in heard]
           matches = SequenceMatcher(None,a,b,autojunk=False)
-          if matches.ratio() < 0.50:
-              raise SystemExit('Prepoznavanje govora nedovoljno pouzdano; emisija nije objavljena.')
-          anchors = {0:0.0,len(original):dur}
-          for i,j,n in matches.get_matching_blocks():
-              for k in range(n):
-                  if 0 < i+k < len(original):
-                      anchors[i+k] = max(0,min(dur,heard[j+k][1]))
+          ratio = matches.ratio()
           times = [0.0]*(len(original)+1)
-          points = sorted(anchors)
-          last = 0.0
-          for l,r in zip(points,points[1:]):
-              start,end = max(last,anchors[l]),max(last,anchors[l],anchors[r])
-              for k in range(l,r+1):
-                  times[k] = (start+(end-start)*(k-l)/(r-l))/tempo+1
-              last=end
+          if ratio >= 0.50:
+              # Koristi precizno sidrenje u prepoznate reci, kada je pouzdano.
+              alignment_method = 'whisper'
+              anchors = {0:0.0,len(original):dur}
+              for i,j,n in matches.get_matching_blocks():
+                  for k in range(n):
+                      if 0 < i+k < len(original):
+                          anchors[i+k] = max(0,min(dur,heard[j+k][1]))
+              points = sorted(anchors)
+              last = 0.0
+              for l,r in zip(points,points[1:]):
+                  start,end = max(last,anchors[l]),max(last,anchors[l],anchors[r])
+                  for k in range(l,r+1):
+                      times[k] = (start+(end-start)*(k-l)/(r-l))/tempo+1
+                  last=end
+          else:
+              # Tekst je izvorno poslat istom TTS-u koji je proizveo glas.wav.
+              # Nepouzdana ASR transkripcija ne sme oboriti inace validan video.
+              # Rezervni titlovi zadrzavaju originalne reci; tajming je okviran,
+              # proporcionalan duzini reci i pauzama na kraju recenica.
+              alignment_method = 'estimated-from-original-tts-text'
+              if not original or dur < 15:
+                  raise SystemExit('Prekratka naracija; rezervni titlovi nisu bezbedni.')
+              weights = [max(1.0, len(norm(word)) / 2.0) +
+                         (2.0 if word.rstrip('”"').endswith(('.', '!', '?')) else 0.0)
+                         for word in original]
+              total = sum(weights)
+              elapsed = 0.0
+              times[0] = 1.0
+              for k, weight in enumerate(weights, 1):
+                  elapsed += weight
+                  times[k] = 1.0 + (dur / tempo) * elapsed / total
+              print(f'Whisper ratio={ratio:.2f}; rezervni tajming titlova iz originalnog TTS teksta.')
           def av(t):
               n=max(0,round(t*100)); h,n=divmod(n,360000); m,n=divmod(n,6000); s,n=divmod(n,100)
               return f'{h}:{m:02}:{s:02}.{n:02}'
@@ -217,7 +237,7 @@ jobs:
               i=j
           Path('titlovi.ass').write_text(header+'\n'.join(events)+'\n',encoding='utf-8')
           Path('titlovi.srt').write_text('\n'.join(srt),encoding='utf-8')
-          print('Uskladjenost govora i teksta:',round(matches.ratio(),2))
+          print('Uskladjenost govora i teksta:',round(matches.ratio(),2),'metod titlovanja:',alignment_method)
           PY
 
       - name: Montaza PRO

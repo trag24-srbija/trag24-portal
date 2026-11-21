@@ -1,6 +1,12 @@
 name: TRAG24 - proba sest Reels sablona (BEZ OBJAVE)
 
 on:
+  pull_request:
+    paths:
+      - 'templates/**'
+      - 'scripts/render_reels.py'
+      - 'scripts/pripremi_dnevne_objave.py'
+      - '.github/workflows/trag24-reels-proba.yml'
   workflow_dispatch:
     inputs:
       datum:

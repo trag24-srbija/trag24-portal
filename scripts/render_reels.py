@@ -100,7 +100,7 @@ def paginate(draw, title, body):
     return pages or [(title_lines,[],first_body_y)]
 
 
-def render(program,title,body,out_dir,source='',label='DEMO',video=False,sec=8):
+def render(program,title,body,out_dir,source='',label='DEMO',video=False,sec=15):
     if program not in PROGRAMS:
         raise ValueError(f'Nepoznat program: {program}')
     bg_path=TEMPLATES/PROGRAMS[program]
@@ -159,10 +159,10 @@ def main():
     parser.add_argument('--content',required=True,help='JSON datoteka sa poljima program, naslov, tekst, izvor, oznaka')
     parser.add_argument('--out',default='demo',help='Izlazni folder')
     parser.add_argument('--video',action='store_true')
-    parser.add_argument('--seconds',type=int,default=8)
+    parser.add_argument('--seconds',type=int,default=15)
     args=parser.parse_args()
-    if not 3<=args.seconds<=30:
-        parser.error('--seconds treba da bude od 3 do 30')
+    if not 15<=args.seconds<=30:
+        parser.error('--seconds treba da bude od 15 do 30')
     obj=json.loads(Path(args.content).read_text(encoding='utf-8'))
     if isinstance(obj,dict): obj=[obj]
     for item in obj:

@@ -81,16 +81,16 @@ def draw_shadow(draw, xy, txt, font, fill, stroke=False):
 
 
 def paginate(draw, title, body):
-    title_face = get_font(60,True)
+    title_face = get_font(70,True)
     # Enforce legibility; a very long headline is paginated by the caller upstream.
     title_lines=wrap(draw,title,title_face,X2-X1)
     if len(title_lines)>4:
         raise ValueError('Naslov je predugačak za Reel. Skrati ga na najviše 4 reda.')
-    body_face = get_font(45)
+    body_face = get_font(53)
     body_lines=wrap(draw,body,body_face,X2-X1)
-    title_height=len(title_lines)*79
+    title_height=len(title_lines)*91
     first_body_y=TITLE_TOP+title_height+85
-    num_lines=max(1,(BODY_BOTTOM-first_body_y)//66)
+    num_lines=max(1,(BODY_BOTTOM-first_body_y)//76)
     if num_lines<3:
         raise ValueError('Nema dovoljno mesta za tekst — skratiti naslov.')
     # For subsequent pages, repeat same title (clear editorial context).
@@ -120,24 +120,24 @@ def render(program,title,body,out_dir,source='',label='DEMO',video=False,sec=15)
         draw=ImageDraw.Draw(image)
         ty=TITLE_TOP
         for line in title_lines:
-            draw_shadow(draw,(X1,ty),line,get_font(60,True),WHITE)
-            ty+=79
+            draw_shadow(draw,(X1,ty),line,get_font(70,True),WHITE)
+            ty+=91
         rule_y=ty+24
         draw.rounded_rectangle((X1,rule_y,X1+320,rule_y+5),radius=2,fill=ACCENT)
         yy=body_y
         for line in body_lines:
             if line:
-                draw_shadow(draw,(X1,yy),line,get_font(45),MUTED)
-            yy+=66
+                draw_shadow(draw,(X1,yy),line,get_font(53),MUTED)
+            yy+=76
         # Provenance is required, and always visible inside the protected content panel.
         if label:
-            draw.text((X1,1531),label.upper()[:32],font=get_font(22,True),fill='#ADB8C7')
+            draw.text((X1,1531),label.upper()[:32],font=get_font(25,True),fill='#ADB8C7')
         if source:
             origin=re.sub(r'\s+',' ',source).strip()[:65]
-            draw.text((X1,1563),'IZVOR: '+origin,font=get_font(21),fill='#C0CAD7')
+            draw.text((X1,1563),'IZVOR: '+origin,font=get_font(23),fill='#C0CAD7')
         if len(pages)>1:
             count=f'{index}/{len(pages)}'
-            draw.text((950,1531),count,font=get_font(24,True),fill=WHITE,anchor='ra')
+            draw.text((950,1531),count,font=get_font(28,True),fill=WHITE,anchor='ra')
         file=out_dir/f'{program}_{index:02d}.png'
         image.save(file,optimize=True)
         outputs.append(file)

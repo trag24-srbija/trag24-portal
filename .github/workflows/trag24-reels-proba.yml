@@ -14,6 +14,7 @@ on:
       - 'scripts/render_srbija_15.py'
       - 'scripts/pripremi_dnevne_objave.py'
       - 'scripts/dodaj_global_pulse.py'
+      - 'scripts/napravi_make_pregled.py'
       - 'assets/global_pulse.m4a'
       - '.github/workflows/trag24-reels-proba.yml'
   workflow_dispatch:
@@ -47,6 +48,7 @@ jobs:
         run: |
           set -euo pipefail
           if [ -z "$DATUM" ]; then DATUM=$(TZ=Europe/Belgrade date +%F); fi
+          echo "DATUM=$DATUM" >> "$GITHUB_ENV"
           python scripts/pripremi_dnevne_objave.py --datum "$DATUM" --izlaz reels_preview/dnevne_objave.json
 
       - name: Proveri da li su sve odobrene pozadine dodate
@@ -93,6 +95,13 @@ jobs:
           else
             echo "::notice::Global Pulse jos nije dodat u assets/global_pulse.m4a; probni video za sada ostaje bez zvuka."
           fi
+
+      - name: Pripremi Make plan bez slanja i objavljivanja
+        if: steps.podloge.outputs.ready == 'yes'
+        env:
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          python scripts/napravi_make_pregled.py --content reels_preview/dnevne_objave.json --videos reels_preview/izlaz --datum "$DATUM" --run-id "$RUN_ID" --output reels_preview/make_pregled.json
 
       - name: Sacuvaj probne predloge kao GitHub artifact
         uses: actions/upload-artifact@v4

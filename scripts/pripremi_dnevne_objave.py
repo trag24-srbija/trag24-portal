@@ -14,6 +14,15 @@ from urllib.parse import urlsplit
 from zoneinfo import ZoneInfo
 
 TZ = ZoneInfo('Europe/Belgrade')
+# Urednicki filter za 14:00; sama kategorija nije dovoljna (bilo je pogresnih kategorija).
+ECON_HEADLINE = re.compile(
+    r'goriv|cen[ae]|cenov|inflacij|poskuplj|plat[ae]|zarad|penzij|'
+    r'porez|budžet|trgovin|promet|lizing|bank|privred|ekonom|'
+    r'finans|invest|subvenc|kurs evra|kamat|izvoz|uvoz|'
+    r'industr|tržišt|potrošač|energij|poslovanj|maloprodaj|'
+    r'kupovin|sniženj|komunal|minimalac|zakup',
+    re.IGNORECASE
+)
 PROGRAMS = {
     '0800': None,
     '1100': {'zanimljivosti', 'zabava', 'nauka', 'tehnologija', 'kultura'},
@@ -70,10 +79,11 @@ def body(row):
 def prepare(source, date, selected):
     rows = source.get('analize', []) if isinstance(source, dict) else []
     filtered = []
+    day_before = (dt.date.fromisoformat(date) - dt.timedelta(days=1)).isoformat()
     for row in rows:
         if not isinstance(row, dict):
             continue
-        if row.get('datum') != date or row.get('status') != 'objavljeno':
+        if row.get('datum') not in (date, day_before) or row.get('status') != 'objavljeno':
             continue
         urls = approved_urls(row)
         if len(urls) < 2:  # bez dva različita domena ne šaljemo u probnu automatiku
@@ -94,20 +104,30 @@ def prepare(source, date, selected):
         if program not in PROGRAMS:
             raise ValueError(f'Nepoznat termin: {program}')
         cats = PROGRAMS[program]
-        match = next((x for x in filtered if x[0].get('id') not in used and
-            (cats is None or any(k in str(x[0].get('kategorija', '')).casefold() for k in cats))), None)
+        match = next((
+            x for x in filtered
+            if x[0].get('id') not in used
+            and (x[0].get('datum') == date
+                 or (program == '1400' and x[0].get('datum') == day_before))
+            and (cats is None or any(k in str(x[0].get('kategorija', '')).casefold() for k in cats)
+                 or (program == '1400' and ECON_HEADLINE.search(x[2])))
+            and (program != '1400' or ECON_HEADLINE.search(x[2]))
+        ), None)
         if not match:
             print(f'PRESKOČENO {program}: nema odgovarajuće analize sa dva izvora za {date}.', file=sys.stderr)
             continue
         row, urls, headline, text = match
         used.add(row.get('id'))
+        if program == '1400' and row.get('datum') != date:
+            print(f'1400: koristim analizu od {row.get("datum")} (nije nova vest).', file=sys.stderr)
         result.append({
             'program': program,
             'naslov': headline,
             'tekst': text,
             'izvor': ', '.join(sorted({urlsplit(x).hostname for x in urls})[:2]),
-            'oznaka': 'PREGLED IZVORA',
+            'oznaka': ('ANALIZA OD ' + row.get('datum')) if row.get('datum') != date else 'PREGLED IZVORA',
             'datum': date,
+            'datum_vesti': row.get('datum'),
             'id_analize': row.get('id'),
             'izvori': urls,
             'status': 'ZA_PROVERU',

@@ -1,0 +1,73 @@
+name: TRAG24 - proba sest Reels sablona (BEZ OBJAVE)
+
+on:
+  workflow_dispatch:
+    inputs:
+      datum:
+        description: "Datum YYYY-MM-DD (prazno = danas u Srbiji)"
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: trag24-reels-preview
+  cancel-in-progress: false
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Pripremi predloge iz objavljenih analiza
+        env:
+          DATUM: ${{ inputs.datum }}
+        run: |
+          set -euo pipefail
+          if [ -z "$DATUM" ]; then DATUM=$(TZ=Europe/Belgrade date +%F); fi
+          python scripts/pripremi_dnevne_objave.py --datum "$DATUM" --izlaz reels_preview/dnevne_objave.json
+
+      - name: Proveri da li su sve odobrene pozadine dodate
+        id: podloge
+        run: |
+          ready=yes
+          for p in 0800_srbija_se_budi 1100_verovali_ili_ne 1400_novac_i_zivot 1700_pitanje_dana 2000_vesti_u_20 2300_arena; do
+            if [ ! -s "templates/$p.jpg" ]; then echo "Nedostaje: templates/$p.jpg"; ready=no; fi
+          done
+          echo "ready=$ready" >> "$GITHUB_OUTPUT"
+
+      - name: Instaliraj besplatne lokalne alate
+        if: steps.podloge.outputs.ready == 'yes'
+        run: |
+          python -m pip install --disable-pip-version-check pillow
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+
+      - name: Napravi PNG i MP4 samo za proveru
+        if: steps.podloge.outputs.ready == 'yes'
+        run: |
+          python - <<'PY'
+          import json, pathlib, subprocess
+          path=pathlib.Path('reels_preview/dnevne_objave.json')
+          data=json.loads(path.read_text(encoding='utf-8'))
+          if not data:
+              print('Nema odgovarajucih tema: preskacem Reels.')
+          else:
+              subprocess.run(['python','scripts/render_reels.py','--content',str(path),'--out','reels_preview/izlaz','--video','--seconds','7'],check=True)
+          PY
+
+      - name: Sacuvaj probne predloge kao GitHub artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: trag24-reels-preview
+          path: reels_preview/
+          retention-days: 3
+
+      # NEMA: rasporeda, izmene sajta, git push, Make poziva, niti objava na mrezama.

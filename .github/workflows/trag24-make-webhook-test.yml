@@ -50,3 +50,4 @@ jobs:
           echo "Make prihvatio probni paket od 6 stavki. HTTP $code."
           echo "Ovaj workflow nema vezu sa Instagram, Facebook ili TikTok API-jem."
 # Manuelna proba Make Run once 2026-11-21 posle podesavanja filtera; samo testni JSON.
+# Druga probna isporuka identicnog JSON-a: provera deduplikacije u Make-u (2026-11-21).

@@ -72,9 +72,9 @@ jobs:
           if not data:
               print('Nema odgovarajucih tema: preskacem Reels.')
           else:
-              jutarnji=[row for row in data if row.get('program')=='0800']
-              ostali=[row for row in data if row.get('program')!='0800']
-              if jutarnji:
+              posebni=[row for row in data if row.get('program') in ('0800','1400')]
+              ostali=[row for row in data if row.get('program') not in ('0800','1400')]
+              if posebni:
                   subprocess.run(['python','scripts/render_srbija_15.py','--content',str(path),'--out','reels_preview/izlaz'],check=True)
               if ostali:
                   other=path.with_name('ostali_programi.json')

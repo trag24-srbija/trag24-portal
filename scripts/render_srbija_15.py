@@ -22,7 +22,10 @@ TIMELINE = [
     "JOS DETALJA",
     "PRATI TRAG 24",
 ]
-TEMPLATE = TEMPLATES / "0800_srbija_se_budi.jpg"
+TEMPLATES_BY_PROGRAM = {
+    "0800": TEMPLATES / "0800_srbija_se_budi.jpg",
+    "1400": TEMPLATES / "1400_novac_i_zivot.jpg",
+}
 
 
 def sentences(value):
@@ -31,26 +34,18 @@ def sentences(value):
 
 
 def sections(text):
+    """Dva kratka izvoda iz postojece analize; bez dodavanja tvrdnji."""
     pieces = sentences(text)
     if not pieces:
         return ("", "")
-    # Kratki doslovni izvodi -- ne dodajemo nove cinjenice.
-    first = pieces[0]
-    second = " ".join(pieces[1:])
-    if len(first) > 170:
-        words = first.split()
-        buf = []
-        for w in words:
-            if len(" ".join(buf+[w])) > 150:
-                break
-            buf.append(w)
-        first = " ".join(buf).rstrip(" ,;:") + "…"
-    if not second:
-        second = "Vise detalja i izvori dostupni su na portalu TRAG 24."
-    elif len(second) > 170:
-        second = second[:160].rsplit(" ",1)[0].rstrip(" ,;:") + "…"
+    def shorten(value, limit=105):
+        if len(value) <= limit:
+            return value
+        prefix = value[:limit-1].rsplit(" ", 1)[0].rstrip(" ,;:")
+        return (prefix or value[:limit-1]) + "…"
+    first = shorten(pieces[0])
+    second = shorten(" ".join(pieces[1:])) if len(pieces) > 1 else "Detalji i originalni izvori nalaze se na portalu TRAG 24."
     return first, second
-
 
 def fit_text(draw, txt, max_width=870, max_lines=5, start=70, minimum=46):
     for size in range(start, minimum - 1, -2):
@@ -97,7 +92,10 @@ def make_frame(bg, number, heading, main, detail, source, dest):
 
 
 def render(item, output):
-    bg=Image.open(TEMPLATE).convert("RGB")
+    program=str(item.get("program", ""))
+    if program not in TEMPLATES_BY_PROGRAM:
+        raise ValueError(f"Nepoznat program: {program}")
+    bg=Image.open(TEMPLATES_BY_PROGRAM[program]).convert("RGB")
     if bg.size != (W,H):
         bg=bg.resize((W,H), Image.Resampling.LANCZOS)
     headline=re.sub(r"\s+"," ",str(item.get("naslov",""))).strip()
@@ -108,26 +106,35 @@ def render(item, output):
     date=str(item.get("datum",""))
     source=re.sub(r"\s+"," ",str(item.get("izvor",""))).strip()
 
-    slides=[
-        ("JUTARNJI PREGLED", "Dobro jutro, Srbijo", "TRAG 24 • "+date),
-        ("GLAVNA TEMA", headline, ""),
-        ("PREMA IZVORIMA", excerpt1, ""),
-        ("NASTAVAK TEME", excerpt2, ""),
-        ("PRATI TRAG 24", "Cela analiza i izvori na portalu",
-         "Pratite nove vesti i provere tokom dana."),
-    ]
+    if program == "0800":
+        slides=[
+            ("JUTARNJI PREGLED", "Dobro jutro, Srbijo", "TRAG 24 • "+date),
+            ("GLAVNA TEMA", headline, ""),
+            ("PREMA IZVORIMA", excerpt1, ""),
+            ("NASTAVAK TEME", excerpt2, ""),
+            ("PRATI TRAG 24", "Cela analiza i izvori na portalu",
+             "Pratite nove vesti i provere tokom dana."),
+        ]
+    else:
+        slides=[
+            ("NOVAC I ŽIVOT", "Šta danas utiče na vaš novčanik?", "Cene • plate • posao • standard"),
+            ("GLAVNA TEMA", headline, ""),
+            ("PREMA IZVORIMA", excerpt1, ""),
+            ("DETALJI I KONTEKST", excerpt2, ""),
+            ("PRATI TRAG 24", "Pročitaj celu analizu", "Više informacija i izvori na portalu."),
+        ]
     if len(slides)!=5 or sum(DURATIONS)!=15:
         raise AssertionError("Neispravna satnica emisije.")
 
     output.mkdir(parents=True,exist_ok=True)
     frames=[]
     for i,(label,head,sub) in enumerate(slides,1):
-        dest=output/f"0800_{i:02d}.png"
+        dest=output/f"{program}_{i:02d}.png"
         make_frame(bg,i,label,head,sub,source,dest)
         frames.append(dest)
 
     # Concat demuxer obezbedjuje pojedinacna trajanja kadrova.
-    lst=output/"0800_frames.ffconcat"
+    lst=output/f"{program}_frames.ffconcat"
     with lst.open("w",encoding="utf-8") as fp:
         fp.write("ffconcat version 1.0\n")
         for path,duration in zip(frames,DURATIONS):
@@ -135,7 +142,7 @@ def render(item, output):
             fp.write("duration "+str(duration)+"\n")
         fp.write("file '"+frames[-1].name+"'\n")
 
-    movie=output/"0800_reel.mp4"
+    movie=output/f"{program}_reel.mp4"
     subprocess.run([
         "ffmpeg","-hide_banner","-loglevel","error","-y",
         "-safe","0","-f","concat","-i",str(lst),
@@ -164,12 +171,17 @@ def main():
     content=json.loads(Path(args.content).read_text(encoding="utf-8"))
     if isinstance(content,dict):
         content=[content]
-    items=[x for x in content if str(x.get("program"))=="0800"]
-    if not items:
-        print("Nema podobne jutarnje teme. Preskacem.")
-        return
-    movie=render(items[0],Path(args.out))
-    print(f"Proba 08:00: 5 kadrova, 15 s, {movie}")
+    found = False
+    for program in ("0800", "1400"):
+        items=[x for x in content if str(x.get("program")) == program]
+        if not items:
+            print(f"Nema odgovarajuce teme za {program}. Preskacem.")
+            continue
+        movie=render(items[0],Path(args.out))
+        print(f"Proba {program}: 5 kadrova, 15 s, {movie}")
+        found = True
+    if not found:
+        print("Nema podobnih tema za 08:00 ili 14:00.")
 
 
 if __name__ == "__main__":

@@ -259,10 +259,8 @@ jobs:
           set -euo pipefail
           DATE=$(cat datum.txt)
           TAG="vesti-$DATE-20"
-          if [ "$GITHUB_EVENT_NAME" = "schedule" ] && [ "$(date +%H)" != "19" ]; then
-            echo 'Istekao termin za pripremu.'
-            exit 1
-          fi
+          # Bez blokade po satu: raspored na GitHub-u moze kasniti.
+          # Video se sme objaviti tek nakon uspesnog generisanja i kontrola.
           FILES=(TRAG24-VESTI-U-20.mp4 opis.json titlovi.srt)
           if gh release view "$TAG" >/dev/null 2>&1; then
             gh release upload "$TAG" "${FILES[@]}" --clobber

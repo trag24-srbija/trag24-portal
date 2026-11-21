@@ -10,6 +10,7 @@ on:
     paths:
       - 'templates/**'
       - 'scripts/render_reels.py'
+      - 'scripts/render_srbija_15.py'
       - 'scripts/pripremi_dnevne_objave.py'
       - '.github/workflows/trag24-reels-proba.yml'
   workflow_dispatch:
@@ -71,7 +72,14 @@ jobs:
           if not data:
               print('Nema odgovarajucih tema: preskacem Reels.')
           else:
-              subprocess.run(['python','scripts/render_reels.py','--content',str(path),'--out','reels_preview/izlaz','--video','--seconds','7'],check=True)
+              jutarnji=[row for row in data if row.get('program')=='0800']
+              ostali=[row for row in data if row.get('program')!='0800']
+              if jutarnji:
+                  subprocess.run(['python','scripts/render_srbija_15.py','--content',str(path),'--out','reels_preview/izlaz'],check=True)
+              if ostali:
+                  other=path.with_name('ostali_programi.json')
+                  other.write_text(json.dumps(ostali,ensure_ascii=False),encoding='utf-8')
+                  subprocess.run(['python','scripts/render_reels.py','--content',str(other),'--out','reels_preview/izlaz','--video','--seconds','15'],check=True)
           PY
 
       - name: Sacuvaj probne predloge kao GitHub artifact

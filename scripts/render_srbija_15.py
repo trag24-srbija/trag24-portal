@@ -52,7 +52,7 @@ def sections(text):
     return first, second
 
 
-def fit_text(draw, txt, max_width=870, max_lines=5, start=58, minimum=36):
+def fit_text(draw, txt, max_width=870, max_lines=5, start=70, minimum=46):
     for size in range(start, minimum - 1, -2):
         face = get_font(size, True)
         lines = wrap(draw, txt, face, max_width)
@@ -65,33 +65,33 @@ def make_frame(bg, number, heading, main, detail, source, dest):
     im = bg.copy()
     draw = ImageDraw.Draw(im)
     # Sve promenljivo ostaje unutar praznog centralnog panela.
-    draw.text((X1, 690), heading.upper(), font=get_font(34, True), fill="#F3AAB4")
+    draw.text((X1, 690), heading.upper(), font=get_font(40, True), fill="#F3AAB4")
     draw.line((X1, 747, X1+275, 747), fill=ACCENT, width=5)
 
     f, lines, step = fit_text(draw, main, max_lines=5,
-                               start=61 if number == 2 else 56)
+                               start=76 if number == 2 else 68)
     yy=805
     for line in lines:
         draw_shadow(draw, (X1, yy), line, f, WHITE)
         yy+=step
 
     if detail:
-        dface = get_font(34)
+        dface = get_font(40)
         dl = wrap(draw, detail, dface, X2-X1)
         if len(dl)>4:
             raise ValueError("Dopunski tekst je predugacak.")
         yy=max(yy+52, 1190)
         for line in dl:
             draw_shadow(draw, (X1, yy), line, dface, MUTED)
-            yy+=48
+            yy+=56
 
     draw.text((X1, 1504), "PREGLED IZVORA • PROBNI VIDEO",
-              font=get_font(21, True), fill="#B5C2D2")
+              font=get_font(25, True), fill="#B5C2D2")
     if source:
         draw.text((X1, 1538), "IZVORI: "+source[:64],
-                  font=get_font(20), fill="#CCD5E0")
+                  font=get_font(23), fill="#CCD5E0")
     draw.text((930, 1503), f"{number}/5",
-              font=get_font(24, True), fill=WHITE, anchor="ra")
+              font=get_font(29, True), fill=WHITE, anchor="ra")
     dest.parent.mkdir(parents=True, exist_ok=True)
     im.save(dest, optimize=True)
 

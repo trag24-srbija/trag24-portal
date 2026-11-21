@@ -1,0 +1,113 @@
+name: TRAG24 - proba sest Reels sablona (BEZ OBJAVE)
+
+on:
+  push:
+    branches:
+      - 'feature/trag24-reels-six-programs-20261121'
+    paths:
+      - '.github/workflows/trag24-reels-proba.yml'
+      - 'assets/global_pulse.m4a'
+  pull_request:
+    paths:
+      - 'templates/**'
+      - 'scripts/render_reels.py'
+      - 'scripts/render_srbija_15.py'
+      - 'scripts/pripremi_dnevne_objave.py'
+      - 'scripts/dodaj_global_pulse.py'
+      - 'scripts/napravi_make_pregled.py'
+      - 'assets/global_pulse.m4a'
+      - '.github/workflows/trag24-reels-proba.yml'
+  workflow_dispatch:
+    inputs:
+      datum:
+        description: "Datum YYYY-MM-DD (prazno = danas u Srbiji)"
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: trag24-reels-preview
+  cancel-in-progress: false
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Pripremi predloge iz objavljenih analiza
+        env:
+          DATUM: ${{ inputs.datum }}
+        run: |
+          set -euo pipefail
+          if [ -z "$DATUM" ]; then DATUM=$(TZ=Europe/Belgrade date +%F); fi
+          echo "DATUM=$DATUM" >> "$GITHUB_ENV"
+          python scripts/pripremi_dnevne_objave.py --datum "$DATUM" --izlaz reels_preview/dnevne_objave.json
+
+      - name: Proveri da li su sve odobrene pozadine dodate
+        id: podloge
+        run: |
+          ready=yes
+          for p in 0800_srbija_se_budi 1100_verovali_ili_ne 1400_novac_i_zivot 1700_pitanje_dana 2000_vesti_u_20 2300_arena; do
+            if [ ! -s "templates/$p.jpg" ]; then echo "Nedostaje: templates/$p.jpg"; ready=no; fi
+          done
+          echo "ready=$ready" >> "$GITHUB_OUTPUT"
+
+      - name: Instaliraj besplatne lokalne alate
+        if: steps.podloge.outputs.ready == 'yes'
+        run: |
+          python -m pip install --disable-pip-version-check pillow
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+
+      - name: Napravi PNG i MP4 samo za proveru
+        if: steps.podloge.outputs.ready == 'yes'
+        run: |
+          python - <<'PY'
+          import json, pathlib, subprocess
+          path=pathlib.Path('reels_preview/dnevne_objave.json')
+          data=json.loads(path.read_text(encoding='utf-8'))
+          if not data:
+              print('Nema odgovarajucih tema: preskacem Reels.')
+          else:
+              posebni=[row for row in data if row.get('program') in ('0800','1100','1400','1700','2000','2300')]
+              ostali=[row for row in data if row.get('program') not in ('0800','1100','1400','1700','2000','2300')]
+              if posebni:
+                  subprocess.run(['python','scripts/render_srbija_15.py','--content',str(path),'--out','reels_preview/izlaz'],check=True)
+              if ostali:
+                  other=path.with_name('ostali_programi.json')
+                  other.write_text(json.dumps(ostali,ensure_ascii=False),encoding='utf-8')
+                  subprocess.run(['python','scripts/render_reels.py','--content',str(other),'--out','reels_preview/izlaz','--video','--seconds','15'],check=True)
+          PY
+
+      - name: Ubaci Global Pulse u Reels ako je muzika prisutna
+        if: steps.podloge.outputs.ready == 'yes'
+        run: |
+          if [ -f "assets/global_pulse.m4a" ]; then
+            python scripts/dodaj_global_pulse.py --music assets/global_pulse.m4a --videos reels_preview/izlaz
+          else
+            echo "::notice::Global Pulse jos nije dodat u assets/global_pulse.m4a; probni video za sada ostaje bez zvuka."
+          fi
+
+      - name: Pripremi Make plan bez slanja i objavljivanja
+        if: steps.podloge.outputs.ready == 'yes'
+        env:
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          python scripts/napravi_make_pregled.py --content reels_preview/dnevne_objave.json --videos reels_preview/izlaz --datum "$DATUM" --run-id "$RUN_ID" --output reels_preview/make_pregled.json
+
+      - name: Sacuvaj probne predloge kao GitHub artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: trag24-reels-preview
+          path: reels_preview/
+          retention-days: 3
+
+      # NEMA: rasporeda, izmene sajta, git push, Make poziva, niti objava na mrezama.

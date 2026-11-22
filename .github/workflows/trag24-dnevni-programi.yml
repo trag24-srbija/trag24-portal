@@ -97,6 +97,9 @@ jobs:
           assert p["publish_enabled"] is False and p["test_only"] is True
           assert p["github_run_id"] == "12345" and len(p["posts"]) == 1
           assert p["posts"][0]["media_file"].endswith(".mp4")
+          assert p["posts"][0]["media_url"] is None
+          approved = build("23", dt.date(2026,11,22), meta, Path("arena-test.mp4"), "12345", approved=True)
+          assert approved["posts"][0]["media_url"].endswith("/premium-23-2026-11-22/arena-test.mp4")
           print("MAKE PACKET TEST OK")
           PY
       - name: Pripremi danasnje premium Reels nacrte
@@ -211,6 +214,34 @@ jobs:
             ${{ steps.image.outputs.meta }}
             ${{ steps.reel.outputs.video }}
           retention-days: 7
+      - name: Sacuvaj nacrt u GitHub Releases
+        if: steps.image.outputs.ready == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MANUAL_APPROVED: ${{ inputs.approve_publish || false }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          DATE=$(python -c 'import json,sys;print(json.load(open(sys.argv[1], encoding="utf-8"))["datum"])' "${{ steps.image.outputs.meta }}")
+          TAG="premium-$PROGRAM-$DATE"
+          IMAGE="${{ steps.image.outputs.image }}"
+          META="${{ steps.image.outputs.meta }}"
+          VIDEO="${{ steps.reel.outputs.video }}"
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" "$IMAGE" "$VIDEO" "$META" --clobber
+          else
+            gh release create "$TAG" "$IMAGE" "$VIDEO" "$META" --draft --target "$GITHUB_SHA" --title "TRAG 24 - PREMIUM $PROGRAM - $DATE" --notes "Premium dnevni nacrt. Nije automatski objavljen na drustvenim mrezama." --latest=false
+          fi
+          # Only authorised public episodes become publicly fetchable for Instagram.
+          if [ "$GITHUB_EVENT_NAME" = "schedule" ] || { [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ] && [ "$MANUAL_APPROVED" = "true" ]; }; then
+            gh release edit "$TAG" --draft=false --latest=false \
+              --notes "Odobrena TRAG 24 emisija $PROGRAM:00 ($DATE). Video dostupan za objavu na drustvenim mrezama."
+            test "$(gh release view "$TAG" --json isDraft --jq '.isDraft')" = false
+            echo "Public MP4 ready at: https://github.com/$GITHUB_REPOSITORY/releases/download/$TAG/$(basename "$VIDEO")"
+          else
+            echo "Preview remains a private release draft."
+          fi
+
       - name: Pripremi Make paket za novu emisiju
         if: steps.image.outputs.ready == 'true'
         env:
@@ -247,20 +278,3 @@ jobs:
             200|201|202) echo "Make prihvatio paket za $PROGRAM:00 (HTTP $HTTP_CODE), approval=${#APPROVAL[@]}";;
             *) echo "::error::Make nije prihvatio nacrt: HTTP $HTTP_CODE"; exit 1;;
           esac
-      - name: Sacuvaj nacrt u GitHub Releases
-        if: steps.image.outputs.ready == 'true'
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          DATE=$(python -c 'import json,sys;print(json.load(open(sys.argv[1], encoding="utf-8"))["datum"])' "${{ steps.image.outputs.meta }}")
-          TAG="premium-$PROGRAM-$DATE"
-          IMAGE="${{ steps.image.outputs.image }}"
-          META="${{ steps.image.outputs.meta }}"
-          VIDEO="${{ steps.reel.outputs.video }}"
-          if gh release view "$TAG" >/dev/null 2>&1; then
-            gh release upload "$TAG" "$IMAGE" "$VIDEO" "$META" --clobber
-          else
-            gh release create "$TAG" "$IMAGE" "$VIDEO" "$META" --draft --target "$GITHUB_SHA" --title "TRAG 24 - PREMIUM $PROGRAM - $DATE" --notes "Premium dnevni nacrt. Nije automatski objavljen na drustvenim mrezama." --latest=false
-          fi

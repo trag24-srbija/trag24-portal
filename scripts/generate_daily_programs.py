@@ -27,6 +27,8 @@ PROGRAMS = {
            "accent": "#52C8B0", "category": "NOVAC I ŽIVOT"},
     "17": {"title": "PITANJE DANA", "subtitle": "VAŠ GLAS JE VAŽAN",
            "accent": "#F07575", "category": "ŠTA VI MISLITE?"},
+    "20": {"title": "VESTI U 20", "subtitle": "VEČERNJI PREGLED",
+           "accent": "#E45B69", "category": "NAJVAŽNIJE VESTI"},
     "23": {"title": "ARENA", "subtitle": "NOĆNI IZAZOV",
            "accent": "#9E85EC", "category": "TRAG 24 ARENA"},
 }
@@ -129,6 +131,7 @@ def published(day, hour):
         if not desc:
             continue
         result.append((stamp, {
+            "published_date": stamp.date().isoformat(),
             "title": title, "summary": desc, "sources": hosts[:3],
             "category": str(a.get("kategorija", "")),
             "id": str(a.get("id", "")),
@@ -158,6 +161,10 @@ def choose(hour, day):
             "ekonomija", "privreda"
         }]
         return preferred[0] if preferred else None
+    if hour == "20":
+        today = [x for x in data if dt.date.fromisoformat(
+            str(x.get("published_date", day.isoformat()))) == day]
+        return today[0] if today else None
     if hour == "17":
         preferred = [x for x in data if x["category"].casefold() in {
             "društvo", "ekonomija", "privreda", "srbija", "politika"

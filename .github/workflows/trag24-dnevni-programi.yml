@@ -28,13 +28,13 @@ on:
         type: boolean
         default: false
   schedule:
-    - cron: '45 10 * * *'
+    - cron: '0 11 * * *'
       timezone: 'Europe/Belgrade'
-    - cron: '45 13 * * *'
+    - cron: '0 14 * * *'
       timezone: 'Europe/Belgrade'
-    - cron: '45 16 * * *'
+    - cron: '0 17 * * *'
       timezone: 'Europe/Belgrade'
-    - cron: '45 22 * * *'
+    - cron: '0 23 * * *'
       timezone: 'Europe/Belgrade'
 
 permissions:
@@ -154,10 +154,10 @@ jobs:
           else
             SCHEDULE=$(jq -r '.schedule' "$GITHUB_EVENT_PATH")
             case "$SCHEDULE" in
-              '45 10 * * *') PROGRAM=11;;
-              '45 13 * * *') PROGRAM=14;;
-              '45 16 * * *') PROGRAM=17;;
-              '45 22 * * *') PROGRAM=23;;
+              '0 11 * * *') PROGRAM=11;;
+              '0 14 * * *') PROGRAM=14;;
+              '0 17 * * *') PROGRAM=17;;
+              '0 23 * * *') PROGRAM=23;;
               *) echo "Nepoznat termin: $SCHEDULE"; exit 1;;
             esac
             DATE_OVERRIDE=""

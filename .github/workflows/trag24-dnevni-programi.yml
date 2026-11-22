@@ -22,6 +22,11 @@ on:
         required: false
         default: ''
         type: string
+      approve_publish:
+        description: 'Odobri javnu objavu ovog novog videa u Make-u (bez objave starih testova)'
+        required: false
+        type: boolean
+        default: false
   schedule:
     - cron: '45 10 * * *'
       timezone: 'Europe/Belgrade'
@@ -206,10 +211,11 @@ jobs:
             ${{ steps.image.outputs.meta }}
             ${{ steps.reel.outputs.video }}
           retention-days: 7
-      - name: Pripremi proverljiv Make paket za STVARNI Reel
+      - name: Pripremi Make paket za novu emisiju
         if: steps.image.outputs.ready == 'true'
         env:
           HOOK: ${{ secrets.MAKE_REELS_TEST_WEBHOOK_URL }}
+          MANUAL_APPROVED: ${{ inputs.approve_publish || false }}
         shell: bash
         run: |
           set -euo pipefail
@@ -218,11 +224,17 @@ jobs:
           META="${{ steps.image.outputs.meta }}"
           DATE=$(python -c 'import json,sys;print(json.load(open(sys.argv[1],encoding="utf-8"))["datum"])' "$META")
           PACKET="program_output/TRAG24-MAKE-$PROGRAM-$DATE.json"
+          APPROVAL=()
+          if [ "$GITHUB_EVENT_NAME" = "schedule" ] || { [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ] && [ "$MANUAL_APPROVED" = "true" ]; }; then
+            APPROVAL=(--approved)
+          fi
           python scripts/prepare_make_premium_payload.py \
             --program "$PROGRAM" --date "$DATE" \
             --metadata "$META" --video "$VIDEO" \
-            --github-run-id "$GITHUB_RUN_ID" --out "$PACKET"
-          # SAFE: ovaj paket je za pregled. publish_enabled=false
+            --github-run-id "$GITHUB_RUN_ID" --out "$PACKET" "${APPROVAL[@]}"
+          # Official automatic editions can be published only with the Make filter
+          # publish_enabled=true, a matching MP4 filename, and deduplication.
+          # Manual runs require approve_publish=true; normal manual previews stay private.
           if [ -z "${HOOK:-}" ]; then
             echo "::notice::Make webhook nije povezan na ovoj grani. Paket je sačuvan za pregled."
             exit 0
@@ -232,7 +244,7 @@ jobs:
             --data-binary @"$PACKET" \
             -o /tmp/make-response.json -w '%{http_code}' "$HOOK")
           case "$HTTP_CODE" in
-            200|201|202) echo "Make primio nacrt za $PROGRAM:00, HTTP $HTTP_CODE (bez objave)";;
+            200|201|202) echo "Make prihvatio paket za $PROGRAM:00 (HTTP $HTTP_CODE), approval=${#APPROVAL[@]}";;
             *) echo "::error::Make nije prihvatio nacrt: HTTP $HTTP_CODE"; exit 1;;
           esac
       - name: Sacuvaj nacrt u GitHub Releases

@@ -36,17 +36,17 @@ jobs:
       - name: Proveri Python blokove i premium titlove
         run: |
           python - <<'PY'
-          import ast
+          import ast, textwrap
           from pathlib import Path
           s = Path('.github/workflows/trag24-vesti-20.yml').read_text(encoding='utf-8')
-          parts = s.split("python <<'PY'")
-          assert len(parts) >= 4, 'Nedostaju Python blokovi'
-          for section in parts[1:]:
-              code = section.split('\n          PY', 1)[0]
-              code = '\n'.join(line[10:] if line.startswith('          ') else line for line in code.splitlines()[1:])
-              if not code.strip():
-                  continue
-              ast.parse(code)
+          blocks = [
+              ('AI urednik i opis emisije', 'Gemini Lumi'),
+              ('Titlovi i dnevni naslovi', 'Montaza PRO'),
+          ]
+          for first, last in blocks:
+              segment = s.split(f'      - name: {first}', 1)[1].split(f'      - name: {last}', 1)[0]
+              py = segment.split("          python <<'PY'\n", 1)[1].split("\n          PY", 1)[0]
+              ast.parse(textwrap.dedent(py))
           assert "Style: Brand,DejaVu Sans" in s
           assert "cue(0,89.5,'Brand','TRAG 24  |  VESTI U 20')" in s
           assert "Style: Headline,DejaVu Sans,44" in s

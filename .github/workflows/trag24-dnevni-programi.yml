@@ -44,6 +44,6 @@ jobs:
         with:
           python-version: '3.12'
       - name: Pillow
-        run: pip install --only-binary=:all: Pillow
+        run: 'pip install --only-binary=:all: Pillow'
       - name: Python syntax
         run: python -m py_compile scripts/generate_daily_programs.py

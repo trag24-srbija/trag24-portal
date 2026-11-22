@@ -247,6 +247,7 @@ jobs:
         env:
           HOOK: ${{ secrets.MAKE_REELS_TEST_WEBHOOK_URL }}
           IG_HOOK: ${{ secrets.MAKE_INSTAGRAM_REELS_WEBHOOK_URL }}
+          TIKTOK_HOOK: ${{ secrets.MAKE_TIKTOK_REELS_WEBHOOK_URL }}
           MANUAL_APPROVED: ${{ inputs.approve_publish || false }}
         shell: bash
         run: |
@@ -292,4 +293,16 @@ jobs:
             esac
           else
             echo "::notice::Instagram Make webhook nije povezan; nema Instagram slanja."
+          fi
+          if [ -n "${TIKTOK_HOOK:-}" ]; then
+            TT_HTTP_CODE=$(curl --silent --show-error --max-time 30 --retry 0 \
+              -X POST -H 'Content-Type: application/json' \
+              --data-binary @"$PACKET" \
+              -o /tmp/make-tiktok-response.json -w '%{http_code}' "$TIKTOK_HOOK")
+            case "$TT_HTTP_CODE" in
+              200|201|202) echo "TikTok Make webhook prihvatio paket (HTTP $TT_HTTP_CODE).";;
+              *) echo "::error::TikTok Make nije prihvatio paket: HTTP $TT_HTTP_CODE"; exit 1;;
+            esac
+          else
+            echo "::notice::TikTok Make webhook nije povezan; nema TikTok slanja."
           fi

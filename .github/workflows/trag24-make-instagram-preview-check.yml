@@ -1,0 +1,51 @@
+name: TRAG24 - Provera Instagram Make webhooka (BEZ OBJAVE)
+
+on:
+  push:
+    branches:
+      - 'feature/trag24-reels-six-programs-20261121'
+    paths:
+      - '.github/workflows/trag24-make-instagram-preview-check.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  instagram_preview:
+    name: Samo provera prijema (Instagram bez objave)
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - name: Potvrdi da test ne sme da se objavi
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          v=json.loads(Path('docs/make-webhook-sest-proba.json').read_text(encoding='utf-8'))
+          assert v['mode']=='PREVIEW_ONLY' and v['test_only'] is True
+          assert v['publish_enabled'] is False and len(v['posts'])==6
+          assert all(p['publishing_enabled'] is False and p['media_url'] is None
+                     and p['destinations']['instagram']['status']=='HOLD_REVIEW'
+                     for p in v['posts'])
+          print('BEZBEDNO: 6 testnih stavki, Instagram objavljivanje zabranjeno.')
+          PY
+      - name: Proveri NOVI Instagram webhook, bez slanja Facebooku
+        env:
+          IG_HOOK: ${{ secrets.MAKE_INSTAGRAM_REELS_WEBHOOK_URL }}
+        run: |
+          set -euo pipefail
+          if [ -z "${IG_HOOK:-}" ]; then
+            echo "::error::Nedostaje MAKE_INSTAGRAM_REELS_WEBHOOK_URL u GitHub Actions Secrets."
+            exit 1
+          fi
+          code=$(curl --silent --show-error --max-time 30 --retry 0 \
+            -X POST -H 'Content-Type: application/json' \
+            --data-binary @docs/make-webhook-sest-proba.json \
+            -o /tmp/instagram-preview-response.txt -w '%{http_code}' "$IG_HOOK")
+          case "$code" in
+            200|201|202) echo "Instagram Make webhook PRIMIO probni paket. HTTP $code. Bez objave.";;
+            *) echo "::error::Instagram Make webhook nije prihvatio probu. HTTP $code"; exit 1;;
+          esac

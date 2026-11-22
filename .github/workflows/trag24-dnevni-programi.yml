@@ -4,6 +4,17 @@ on:
   push:
     paths:
       - '.github/workflows/trag24-dnevni-programi.yml'
+  workflow_dispatch:
+    inputs:
+      program:
+        description: 'Emisija'
+        required: true
+        default: '11'
+        type: choice
+        options: ['11','14','17','23']
+  schedule:
+    - cron: '45 10 * * *'
+      timezone: 'Europe/Belgrade'
 
 jobs:
   test:

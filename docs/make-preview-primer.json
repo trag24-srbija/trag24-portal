@@ -1,0 +1,43 @@
+{
+  "schema": "trag24.make.preview.v1",
+  "mode": "PREVIEW_ONLY",
+  "publish_enabled": false,
+  "date": "2026-11-21",
+  "timezone": "Europe/Belgrade",
+  "repository": "trag24-srbija/trag24-portal",
+  "artifact_name": "trag24-reels-preview",
+  "artifact_fetch": "requires_authenticated_github_actions_download",
+  "content_ready": 1,
+  "posts": [
+    {
+      "id": "trag24:2026-11-21:1700",
+      "program": "1700",
+      "title": "PITANJE DANA",
+      "event_date": "2026-11-21",
+      "content_date": "2026-11-21",
+      "planned_local_time": "2026-11-21T17:00:00+01:00",
+      "headline": "PROBA POVEZIVANJA – NIJE VEST",
+      "caption": "TRAG 24 – TEST. Ovo nije prava objava.",
+      "media_file": "izlaz/1700_reel_sa_muzikom.mp4",
+      "cover_file": "izlaz/1700_cover.png",
+      "media_url": null,
+      "editorial_status": "NEPROVERENO",
+      "publishing_enabled": false,
+      "destinations": {
+        "instagram": {
+          "idempotency_key": "trag24:2026-11-21:1700:instagram",
+          "status": "HOLD_REVIEW"
+        },
+        "facebook": {
+          "idempotency_key": "trag24:2026-11-21:1700:facebook",
+          "status": "HOLD_REVIEW"
+        },
+        "tiktok": {
+          "idempotency_key": "trag24:2026-11-21:1700:tiktok",
+          "status": "HOLD_REVIEW"
+        }
+      }
+    }
+  ],
+  "notice": "OVO JE SAMO TEST. NE OBJAVLJIVATI."
+}

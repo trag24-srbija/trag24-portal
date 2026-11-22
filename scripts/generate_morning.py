@@ -122,7 +122,7 @@ def render(day, article, i, total):
     d.rounded_rectangle((58,607,1020,1598),radius=40,
                         fill="#112B4B",outline="#B79459",width=3)
     d.line((100,613,978,613),fill=(251,207,115,100),width=2)
-    d.rounded_rectangle((101,655,421,731),radius=12,fill="#E4B45C")
+    d.rounded_rectangle((101,655,462,731),radius=12,fill="#E4B45C")
     if article is None:
         d.text((121,669),"JUTARNJI PREGLED",font=font(28,True),fill="#0A1A2C")
         gold(102,821,"DOBRO JUTRO, SRBIJO",font(50,True))

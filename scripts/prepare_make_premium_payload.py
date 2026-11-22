@@ -37,7 +37,7 @@ def build(program, day, metadata, video, run_id, approved=False):
         raise ValueError("Never publish mock headlines")
 
     code = VALID[program]
-    key = f"trag24:{day.isoformat()}:{code}"
+    key = f"trag24:{'LIVE' if approved else 'PREVIEW'}:{day.isoformat()}:{code}"
     heading = str(story["title"])
     title = metadata.get("program", "TRAG 24")
     if program == "17":

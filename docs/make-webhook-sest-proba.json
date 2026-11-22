@@ -3,7 +3,7 @@
   "mode": "PREVIEW_ONLY",
   "publish_enabled": false,
   "test_only": true,
-  "date": "2026-11-21",
+  "date": "2026-11-22",
   "timezone": "Europe/Belgrade",
   "repository": "trag24-srbija/trag24-portal",
   "artifact_name": "trag24-reels-preview",
@@ -11,13 +11,13 @@
   "content_ready": 6,
   "posts": [
     {
-      "id": "trag24:TEST:2026-11-21:0800",
+      "id": "trag24:TEST-ONE-TIME:2026-11-22:0800",
       "program": "0800",
       "title": "SRBIJA SE BUDI",
-      "event_date": "2026-11-21",
-      "content_date": "2026-11-21",
+      "event_date": "2026-11-22",
+      "content_date": "2026-11-22",
       "timezone": "Europe/Belgrade",
-      "planned_local_time": "2026-11-21T08:00:00+01:00",
+      "planned_local_time": "2026-11-22T08:00:00+01:00",
       "headline": "TEHNIČKA PROBA – NIJE VEST",
       "caption": "TEST PRENOSA PODATAKA. NE OBJAVLJIVATI.",
       "media_file": "izlaz/0800_reel_sa_muzikom.mp4",
@@ -31,27 +31,27 @@
       "publishing_enabled": false,
       "destinations": {
         "instagram": {
-          "idempotency_key": "trag24:TEST:2026-11-21:0800:instagram",
+          "idempotency_key": "trag24:TEST-ONE-TIME:2026-11-22:0800:instagram",
           "status": "HOLD_REVIEW"
         },
         "facebook": {
-          "idempotency_key": "trag24:TEST:2026-11-21:0800:facebook",
+          "idempotency_key": "trag24:TEST-ONE-TIME:2026-11-22:0800:facebook",
           "status": "HOLD_REVIEW"
         },
         "tiktok": {
-          "idempotency_key": "trag24:TEST:2026-11-21:0800:tiktok",
+          "idempotency_key": "trag24:TEST-ONE-TIME:2026-11-22:0800:tiktok",
           "status": "HOLD_REVIEW"
         }
       }
     },
     {
-      "id": "trag24:TEST:2026-11-21:1100",
+      "id": "trag24:TEST-ONE-TIME:2026-11-22:1100",
       "program": "1100",
       "title": "VEROVALI ILI NE",
-      "event_date": "2026-11-21",
-      "content_date": "2026-11-21",
+      "event_date": "2026-11-22",
+      "content_date": "2026-11-22",
       "timezone": "Europe/Belgrade",
-      "planned_local_time": "2026-11-21T11:00:00+01:00",
+      "planned_local_time": "2026-11-22T11:00:00+01:00",
       "headline": "TEHNIČKA PROBA – NIJE VEST",
       "caption": "TEST PRENOSA PODATAKA. NE OBJAVLJIVATI.",
       "media_file": "izlaz/1100_reel_sa_muzikom.mp4",
@@ -65,27 +65,27 @@
       "publishing_enabled": false,
       "destinations": {
         "instagram": {
-          "idempotency_key": "trag24:TEST:2026-11-21:1100:instagram",
+          "idempotency_key": "trag24:TEST-ONE-TIME:2026-11-22:1100:instagram",
           "status": "HOLD_REVIEW"
         },
         "facebook": {
-          "idempotency_key": "trag24:TEST:2026-11-21:1100:facebook",
+          "idempotency_key": "trag24:TEST-ONE-TIME:2026-11-22:1100:facebook",
           "status": "HOLD_REVIEW"
         },
         "tiktok": {
-          "idempotency_key": "trag24:TEST:2026-11-21:1100:tiktok",
+          "idempotency_key": "trag24:TEST-ONE-TIME:2026-11-22:1100:tiktok",
           "status": "HOLD_REVIEW"
         }
       }
     },
     {
-      "id": "trag24:TEST:2026-11-21:1400",
+      "id": "trag24:TEST-ONE-TIME:2026-11-22:1400",
       "program": "1400",
       "title": "NOVAC I ŽIVOT",
-      "event_date": "2026-11-21",
-      "content_date": "2026-11-21",
+      "event_date": "2026-11-22",
+      "content_date": "2026-11-22",
       "timezone": "Europe/Belgrade",
-      "planned_local_time": "2026-11-21T14:00:00+01:00",
+      "planned_local_time": "2026-11-22T14:00:00+01:00",
       "headline": "TEHNIČKA PROBA – NIJE VEST",
       "caption": "TEST PRENOSA PODATAKA. NE OBJAVLJIVATI.",
       "media_file": "izlaz/1400_reel_sa_muzikom.mp4",
@@ -99,27 +99,27 @@
       "publishing_enabled": false,
       "destinations": {
         "instagram": {
-          "idempotency_key": "trag24:TEST:2026-11-21:1400:instagram",
+          "idempotency_key": "trag24:TEST-ONE-TIME:2026-11-22:1400:instagram",
           "status": "HOLD_REVIEW"
         },
         "facebook": {
-          "idempotency_key": "trag24:TEST:2026-11-21:1400:facebook",
+          "idempotency_key": "trag24:TEST-ONE-TIME:2026-11-22:1400:facebook",
           "status": "HOLD_REVIEW"
         },
         "tiktok": {
-          "idempotency_key": "trag24:TEST:2026-11-21:1400:tiktok",
+          "idempotency_key": "trag24:TEST-ONE-TIME:2026-11-22:1400:tiktok",
           "status": "HOLD_REVIEW"
         }
       }
     },
     {
-      "id": "trag24:TEST:2026-11-21:1700",
+      "id": "trag24:TEST-ONE-TIME:2026-11-22:1700",
       "program": "1700",
       "title": "PITANJE DANA",
-      "event_date": "2026-11-21",
-      "content_date": "2026-11-21",
+      "event_date": "2026-11-22",
+      "content_date": "2026-11-22",
       "timezone": "Europe/Belgrade",
-      "planned_local_time": "2026-11-21T17:00:00+01:00",
+      "planned_local_time": "2026-11-22T17:00:00+01:00",
       "headline": "TEHNIČKA PROBA – NIJE VEST",
       "caption": "TEST PRENOSA PODATAKA. NE OBJAVLJIVATI.",
       "media_file": "izlaz/1700_reel_sa_muzikom.mp4",
@@ -133,27 +133,27 @@
       "publishing_enabled": false,
       "destinations": {
         "instagram": {
-          "idempotency_key": "trag24:TEST:2026-11-21:1700:instagram",
+          "idempotency_key": "trag24:TEST-ONE-TIME:2026-11-22:1700:instagram",
           "status": "HOLD_REVIEW"
         },
         "facebook": {
-          "idempotency_key": "trag24:TEST:2026-11-21:1700:facebook",
+          "idempotency_key": "trag24:TEST-ONE-TIME:2026-11-22:1700:facebook",
           "status": "HOLD_REVIEW"
         },
         "tiktok": {
-          "idempotency_key": "trag24:TEST:2026-11-21:1700:tiktok",
+          "idempotency_key": "trag24:TEST-ONE-TIME:2026-11-22:1700:tiktok",
           "status": "HOLD_REVIEW"
         }
       }
     },
     {
-      "id": "trag24:TEST:2026-11-21:2000",
+      "id": "trag24:TEST-ONE-TIME:2026-11-22:2000",
       "program": "2000",
       "title": "VESTI U 20",
-      "event_date": "2026-11-21",
-      "content_date": "2026-11-21",
+      "event_date": "2026-11-22",
+      "content_date": "2026-11-22",
       "timezone": "Europe/Belgrade",
-      "planned_local_time": "2026-11-21T20:00:00+01:00",
+      "planned_local_time": "2026-11-22T20:00:00+01:00",
       "headline": "TEHNIČKA PROBA – NIJE VEST",
       "caption": "TEST PRENOSA PODATAKA. NE OBJAVLJIVATI.",
       "media_file": "izlaz/2000_reel_sa_muzikom.mp4",
@@ -167,27 +167,27 @@
       "publishing_enabled": false,
       "destinations": {
         "instagram": {
-          "idempotency_key": "trag24:TEST:2026-11-21:2000:instagram",
+          "idempotency_key": "trag24:TEST-ONE-TIME:2026-11-22:2000:instagram",
           "status": "HOLD_REVIEW"
         },
         "facebook": {
-          "idempotency_key": "trag24:TEST:2026-11-21:2000:facebook",
+          "idempotency_key": "trag24:TEST-ONE-TIME:2026-11-22:2000:facebook",
           "status": "HOLD_REVIEW"
         },
         "tiktok": {
-          "idempotency_key": "trag24:TEST:2026-11-21:2000:tiktok",
+          "idempotency_key": "trag24:TEST-ONE-TIME:2026-11-22:2000:tiktok",
           "status": "HOLD_REVIEW"
         }
       }
     },
     {
-      "id": "trag24:TEST:2026-11-21:2300",
+      "id": "trag24:TEST-ONE-TIME:2026-11-22:2300",
       "program": "2300",
       "title": "ARENA – NOĆNI IZAZOV",
-      "event_date": "2026-11-21",
-      "content_date": "2026-11-21",
+      "event_date": "2026-11-22",
+      "content_date": "2026-11-22",
       "timezone": "Europe/Belgrade",
-      "planned_local_time": "2026-11-21T23:00:00+01:00",
+      "planned_local_time": "2026-11-22T23:00:00+01:00",
       "headline": "TEHNIČKA PROBA – NIJE VEST",
       "caption": "TEST PRENOSA PODATAKA. NE OBJAVLJIVATI.",
       "media_file": "izlaz/2300_reel_sa_muzikom.mp4",
@@ -201,15 +201,15 @@
       "publishing_enabled": false,
       "destinations": {
         "instagram": {
-          "idempotency_key": "trag24:TEST:2026-11-21:2300:instagram",
+          "idempotency_key": "trag24:TEST-ONE-TIME:2026-11-22:2300:instagram",
           "status": "HOLD_REVIEW"
         },
         "facebook": {
-          "idempotency_key": "trag24:TEST:2026-11-21:2300:facebook",
+          "idempotency_key": "trag24:TEST-ONE-TIME:2026-11-22:2300:facebook",
           "status": "HOLD_REVIEW"
         },
         "tiktok": {
-          "idempotency_key": "trag24:TEST:2026-11-21:2300:tiktok",
+          "idempotency_key": "trag24:TEST-ONE-TIME:2026-11-22:2300:tiktok",
           "status": "HOLD_REVIEW"
         }
       }

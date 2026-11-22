@@ -31,7 +31,8 @@ jobs:
         with:
           python-version: '3.12'
       - name: Alati za video
-        run: pip install --only-binary=:all: pillow imageio-ffmpeg==0.6.0
+        run: |
+          pip install --only-binary=:all: pillow imageio-ffmpeg==0.6.0
       - name: Napravi jutarnji video iz objavljenih analiza
         id: video
         env:

@@ -30,7 +30,7 @@ PROGRAMS = {
     "20": {"title": "VESTI U 20", "subtitle": "VEČERNJI PREGLED",
            "accent": "#E45B69", "category": "NAJVAŽNIJE VESTI"},
     "23": {"title": "ARENA", "subtitle": "NOĆNI IZAZOV",
-           "accent": "#9E85EC", "category": "TRAG 24 ARENA"},
+           "accent": "#4B9CFF", "category": "TRAG 24 ARENA"},
 }
 GOLD = "#F1BE61"
 WHITE = "#F6F8FC"

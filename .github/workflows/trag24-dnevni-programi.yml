@@ -1,0 +1,99 @@
+name: TRAG 24 - PREMIUM DNEVNI PROGRAMI
+
+on:
+  workflow_dispatch:
+    inputs:
+      program:
+        description: 'Emisija koju treba pripremiti'
+        required: true
+        default: '11'
+        type: choice
+        options:
+          - '11'
+          - '14'
+          - '17'
+          - '23'
+      date:
+        description: 'Datum YYYY-MM-DD (prazno = danas)'
+        required: false
+        default: ''
+        type: string
+  schedule:
+    - cron: '45 10 * * *'
+      timezone: 'Europe/Belgrade'
+    - cron: '45 13 * * *'
+      timezone: 'Europe/Belgrade'
+    - cron: '45 16 * * *'
+      timezone: 'Europe/Belgrade'
+    - cron: '45 22 * * *'
+      timezone: 'Europe/Belgrade'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: trag24-premium-dnevni-programi
+  cancel-in-progress: false
+
+jobs:
+  nacrti:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      PROGRAM: ${{ github.event_name == 'workflow_dispatch' && inputs.program || github.event.schedule == '45 10 * * *' && '11' || github.event.schedule == '45 13 * * *' && '14' || github.event.schedule == '45 16 * * *' && '17' || github.event.schedule == '45 22 * * *' && '23' || '' }}
+      DATE_OVERRIDE: ${{ github.event_name == 'workflow_dispatch' && inputs.date || '' }}
+      TZ: Europe/Belgrade
+    steps:
+      - name: Repo
+        uses: actions/checkout@v4
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Pillow
+        run: pip install --only-binary=:all: Pillow
+      - name: Generisi odgovarajuci premium nacrt
+        id: image
+        shell: bash
+        run: |
+          set -euo pipefail
+          case "$PROGRAM" in 11|14|17|23) ;; *) echo "Neispravan termin"; exit 1;; esac
+          if [ -n "$DATE_OVERRIDE" ]; then
+            python scripts/generate_daily_programs.py --program "$PROGRAM" --date "$DATE_OVERRIDE"
+          else
+            python scripts/generate_daily_programs.py --program "$PROGRAM"
+          fi
+          IMAGE=$(find program_output -maxdepth 1 -type f -name "TRAG24-$PROGRAM-*.png" -print -quit 2>/dev/null || true)
+          if [ -n "$IMAGE" ] && [ -s "$IMAGE" ] && [ -s "${IMAGE%.png}.json" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+            echo "image=$IMAGE" >> "$GITHUB_OUTPUT"
+            echo "meta=${IMAGE%.png}.json" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "Nema odgovarajuce teme; ne pravim praznu ili izmisljenu vest."
+          fi
+      - name: Sacuvaj nacrt za pregled
+        if: steps.image.outputs.ready == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: TRAG24-PREMIUM-${{ env.PROGRAM }}
+          path: |
+            ${{ steps.image.outputs.image }}
+            ${{ steps.image.outputs.meta }}
+          retention-days: 7
+      - name: Sacuvaj nacrt u GitHub Releases
+        if: steps.image.outputs.ready == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          DATE=$(python -c 'import json,sys;print(json.load(open(sys.argv[1], encoding="utf-8"))["datum"])' "${{ steps.image.outputs.meta }}")
+          TAG="premium-$PROGRAM-$DATE"
+          IMAGE="${{ steps.image.outputs.image }}"
+          META="${{ steps.image.outputs.meta }}"
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" "$IMAGE" "$META" --clobber
+          else
+            gh release create "$TAG" "$IMAGE" "$META" --draft --target "$GITHUB_SHA" --title "TRAG 24 - PREMIUM $PROGRAM - $DATE" --notes "Premium dnevni nacrt. Nije automatski objavljen na drustvenim mrezama." --latest=false
+          fi

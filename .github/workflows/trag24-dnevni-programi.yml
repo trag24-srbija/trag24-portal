@@ -71,12 +71,30 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
-      PROGRAM: ${{ github.event_name == 'workflow_dispatch' && inputs.program || github.event.schedule == '45 10 * * *' && '11' || github.event.schedule == '45 13 * * *' && '14' || github.event.schedule == '45 16 * * *' && '17' || github.event.schedule == '45 22 * * *' && '23' || '' }}
-      DATE_OVERRIDE: ${{ github.event_name == 'workflow_dispatch' && inputs.date || '' }}
       TZ: Europe/Belgrade
     steps:
       - name: Repo
         uses: actions/checkout@v4
+      - name: Odredi termin emisije
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
+            PROGRAM=$(jq -r '.inputs.program' "$GITHUB_EVENT_PATH")
+            DATE_OVERRIDE=$(jq -r '.inputs.date // ""' "$GITHUB_EVENT_PATH")
+          else
+            SCHEDULE=$(jq -r '.schedule' "$GITHUB_EVENT_PATH")
+            case "$SCHEDULE" in
+              '45 10 * * *') PROGRAM=11;;
+              '45 13 * * *') PROGRAM=14;;
+              '45 16 * * *') PROGRAM=17;;
+              '45 22 * * *') PROGRAM=23;;
+              *) echo "Nepoznat termin: $SCHEDULE"; exit 1;;
+            esac
+            DATE_OVERRIDE=""
+          fi
+          echo "PROGRAM=$PROGRAM" >> "$GITHUB_ENV"
+          echo "DATE_OVERRIDE=$DATE_OVERRIDE" >> "$GITHUB_ENV"
       - name: Python
         uses: actions/setup-python@v5
         with:

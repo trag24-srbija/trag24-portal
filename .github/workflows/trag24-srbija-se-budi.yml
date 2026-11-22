@@ -33,6 +33,7 @@ jobs:
       - name: Alati za video
         run: pip install --only-binary=:all: pillow imageio-ffmpeg==0.6.0
       - name: Napravi jutarnji video iz objavljenih analiza
+        id: video
         env:
           DATE_OVERRIDE: ${{ inputs.date }}
           TZ: Europe/Belgrade
@@ -42,8 +43,14 @@ jobs:
           else
             python scripts/generate_morning.py
           fi
+          if [ -s morning_output/SRBIJA-SE-BUDI.mp4 ] && [ -s morning_output/opis.json ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "Nema odgovarajucih novih tema; preskacem nacrt."
+          fi
       - name: Sacuvaj rezultat za pregled
-        if: hashFiles('morning_output/opis.json') != ''
+        if: steps.video.outputs.ready == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: TRAG24-SRBIJA-SE-BUDI
@@ -53,7 +60,7 @@ jobs:
             morning_output/slide-*.png
           retention-days: 7
       - name: Napravi nacrt sa pojedinacnim fajlovima (bez slanja na mreze)
-        if: hashFiles('morning_output/opis.json') != ''
+        if: steps.video.outputs.ready == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TZ: Europe/Belgrade

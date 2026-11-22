@@ -101,7 +101,7 @@ def published(day, hour):
         return []
     data = json.loads(DATA.read_text(encoding="utf-8"))
     end = dt.datetime.combine(day, dt.time(int(hour), 0), TZ)
-    start = end - dt.timedelta(hours=42)
+    start = end - dt.timedelta(hours=72 if hour == "14" else 42)
     result = []
     for a in data.get("analize", []):
         if not isinstance(a, dict) or a.get("status") != "objavljeno":
@@ -197,7 +197,8 @@ def choose(hour, day):
     if hour == "14":
         preferred = [
             x for x in data
-            if economy.search(x["title"])
+            if x["category"].casefold() in {"ekonomija", "privreda", "finansije"}
+            and economy.search(x["title"])
             and not misleading_econ.search(x["title"] + " " + x["summary"])
             and not tragedy.search(x["title"] + " " + x["summary"])
         ]

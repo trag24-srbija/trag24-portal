@@ -230,6 +230,11 @@ jobs:
             -c:a aac -b:a 160k -ar 48000 -ac 2 -movflags +faststart -use_editlist 0 TRAG24-VESTI-U-20.mp4
           test -s TRAG24-VESTI-U-20.mp4
 
+      - name: Premium naslovnica emisije
+        if: steps.plan.outputs.run == 'true'
+        run: |
+          python scripts/generate_daily_programs.py --program 20 --date "$(cat datum.txt)"
+
       - name: Sacuvaj emisiju
         if: steps.plan.outputs.run == 'true'
         uses: actions/upload-artifact@v4
@@ -240,6 +245,8 @@ jobs:
             vesti.txt
             titlovi.srt
             opis.json
+            program_output/TRAG24-20-*.png
+            program_output/TRAG24-20-*.json
           retention-days: 7
           if-no-files-found: error
 
@@ -255,6 +262,10 @@ jobs:
           # Bez blokade po satu: raspored na GitHub-u moze kasniti.
           # Video se sme objaviti tek nakon uspesnog generisanja i kontrola.
           FILES=(TRAG24-VESTI-U-20.mp4 opis.json titlovi.srt)
+          COVER="program_output/TRAG24-20-$DATE.png"
+          if [ -s "$COVER" ]; then
+            FILES+=("$COVER")
+          fi
           if gh release view "$TAG" >/dev/null 2>&1; then
             gh release upload "$TAG" "${FILES[@]}" --clobber
           else

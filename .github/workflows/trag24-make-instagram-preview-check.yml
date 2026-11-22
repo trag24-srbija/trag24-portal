@@ -49,3 +49,4 @@ jobs:
             200|201|202) echo "Instagram Make webhook PRIMIO probni paket. HTTP $code. Bez objave.";;
             *) echo "::error::Instagram Make webhook nije prihvatio probu. HTTP $code"; exit 1;;
           esac
+# Instagram Make listening schema detection — 2026-11-22 16:33 Europe/Belgrade

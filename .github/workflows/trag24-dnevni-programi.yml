@@ -1,6 +1,10 @@
 name: TRAG 24 - PREMIUM DNEVNI PROGRAMI
 
 on:
+  push:
+    paths:
+      - 'scripts/generate_daily_programs.py'
+      - '.github/workflows/trag24-dnevni-programi.yml'
   workflow_dispatch:
     inputs:
       program:
@@ -36,7 +40,34 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  test-dizajna:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install --only-binary=:all: Pillow
+      - name: Proveri Python i svih pet dizajna
+        run: |
+          python -m py_compile scripts/generate_daily_programs.py
+          python - <<'PY'
+          import datetime as dt
+          from scripts.generate_daily_programs import make_card
+          item = {
+              'title': 'Izmene saobraćaja u Beogradu zbog održavanja polumaratona',
+              'summary': 'Danas su na pojedinim trasama izmenjene linije gradskog prevoza.',
+              'sources': ['nova.rs', 'danas.rs'],
+          }
+          for hour in ('11', '14', '17', '20', '23'):
+              image = make_card(hour, dt.date(2026, 11, 22), item)
+              assert image.size == (1080, 1920), hour
+              print('Dizajn OK:', hour)
+          PY
   nacrti:
+    if: github.event_name != 'push'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:

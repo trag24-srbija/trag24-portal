@@ -174,7 +174,8 @@ jobs:
           Format: Name,Fontname,Fontsize,PrimaryColour,SecondaryColour,OutlineColour,BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding
           Style: Captions,DejaVu Sans,53,&H00FFFFFF,&H00FFFFFF,&H500A1A2C,&H500A1A2C,-1,0,0,0,100,100,0,0,3,12,0,5,60,150,0,1
           Style: Headline,DejaVu Sans,44,&H0061BEF1,&H0061BEF1,&H40081A2C,&H40081A2C,-1,0,0,0,100,100,0,0,3,10,0,8,100,130,175,1
-          Style: Date,DejaVu Sans,39,&H0061BEF1,&H0061BEF1,&H40081A2C,&H40081A2C,-1,0,0,0,100,100,0,0,3,8,0,9,60,100,60,1\n          Style: Brand,DejaVu Sans,43,&H00FFFFFF,&H00FFFFFF,&H40081A2C,&H40081A2C,-1,0,0,0,100,100,0,0,3,8,0,7,65,100,60,1
+          Style: Date,DejaVu Sans,39,&H0061BEF1,&H0061BEF1,&H40081A2C,&H40081A2C,-1,0,0,0,100,100,0,0,3,8,0,9,60,100,60,1
+          Style: Brand,DejaVu Sans,43,&H00FFFFFF,&H00FFFFFF,&H40081A2C,&H40081A2C,-1,0,0,0,100,100,0,0,3,8,0,7,65,100,60,1
           [Events]
           Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
           '''
@@ -183,7 +184,8 @@ jobs:
               events.append(f'Dialogue: 0,{av(start)},{av(end)},{style},,0,0,0,,{text}')
           meta=json.loads(Path('opis.json').read_text(encoding='utf-8'))
           day='.'.join(reversed(meta['datum'].split('-')))+'.'
-          cue(0,89.5,'Date',day)\n          cue(0,89.5,'Brand','TRAG 24  |  VESTI U 20')
+          cue(0,89.5,'Date',day)
+          cue(0,89.5,'Brand','TRAG 24  |  VESTI U 20')
           headings=meta['naslovi']
           for i,start in enumerate(range(0,90,10)):
               h=headings[i%len(headings)]

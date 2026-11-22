@@ -49,7 +49,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: 'pip install --only-binary=:all: Pillow'
+      - run: 'pip install --only-binary=:all: Pillow imageio-ffmpeg==0.6.0'
       - name: Proveri Python i svih pet dizajna
         run: |
           python -m py_compile scripts/generate_daily_programs.py
@@ -64,8 +64,14 @@ jobs:
           for hour in ('11', '14', '17', '20', '23'):
               image = make_card(hour, dt.date(2026, 11, 22), item)
               assert image.size == (1080, 1920), hour
+              if hour == '23':
+                  image.save('arena-test.png')
               print('Dizajn OK:', hour)
           PY
+      - name: Probni video sa odobrenog dizajna
+        run: |
+          python scripts/render_premium_short_video.py --image arena-test.png --output arena-test.mp4
+          test -s arena-test.mp4
   nacrti:
     if: github.event_name != 'push'
     runs-on: ubuntu-latest
@@ -100,7 +106,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Pillow
-        run: 'pip install --only-binary=:all: Pillow'
+        run: 'pip install --only-binary=:all: Pillow imageio-ffmpeg==0.6.0'
       - name: Generisi odgovarajuci premium nacrt
         id: image
         shell: bash
@@ -121,6 +127,17 @@ jobs:
             echo "ready=false" >> "$GITHUB_OUTPUT"
             echo "Nema odgovarajuce teme; ne pravim praznu ili izmisljenu vest."
           fi
+      - name: Pripremi MP4 Reel od odobrene premium kartice
+        if: steps.image.outputs.ready == 'true'
+        id: reel
+        shell: bash
+        run: |
+          set -euo pipefail
+          IMAGE="${{ steps.image.outputs.image }}"
+          VIDEO="${IMAGE%.png}.mp4"
+          python scripts/render_premium_short_video.py --image "$IMAGE" --output "$VIDEO"
+          test -s "$VIDEO"
+          echo "video=$VIDEO" >> "$GITHUB_OUTPUT"
       - name: Sacuvaj nacrt za pregled
         if: steps.image.outputs.ready == 'true'
         uses: actions/upload-artifact@v4
@@ -129,6 +146,7 @@ jobs:
           path: |
             ${{ steps.image.outputs.image }}
             ${{ steps.image.outputs.meta }}
+            ${{ steps.reel.outputs.video }}
           retention-days: 7
       - name: Sacuvaj nacrt u GitHub Releases
         if: steps.image.outputs.ready == 'true'
@@ -141,8 +159,9 @@ jobs:
           TAG="premium-$PROGRAM-$DATE"
           IMAGE="${{ steps.image.outputs.image }}"
           META="${{ steps.image.outputs.meta }}"
+          VIDEO="${{ steps.reel.outputs.video }}"
           if gh release view "$TAG" >/dev/null 2>&1; then
-            gh release upload "$TAG" "$IMAGE" "$META" --clobber
+            gh release upload "$TAG" "$IMAGE" "$VIDEO" "$META" --clobber
           else
-            gh release create "$TAG" "$IMAGE" "$META" --draft --target "$GITHUB_SHA" --title "TRAG 24 - PREMIUM $PROGRAM - $DATE" --notes "Premium dnevni nacrt. Nije automatski objavljen na drustvenim mrezama." --latest=false
+            gh release create "$TAG" "$IMAGE" "$VIDEO" "$META" --draft --target "$GITHUB_SHA" --title "TRAG 24 - PREMIUM $PROGRAM - $DATE" --notes "Premium dnevni nacrt. Nije automatski objavljen na drustvenim mrezama." --latest=false
           fi

@@ -72,6 +72,28 @@ jobs:
         run: |
           python scripts/render_premium_short_video.py --image arena-test.png --output arena-test.mp4
           test -s arena-test.mp4
+      - name: Proveri Make paket (bez objavljivanja)
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          import json
+          from pathlib import Path
+          from scripts.prepare_make_premium_payload import build
+          meta = {
+            "datum": "2026-11-22", "sat": "23:00",
+            "program": "ARENA",
+            "vest": {
+              "title": "5 PITANJA. JEDAN IZAZOV.",
+              "summary": "Proveri znanje, osvoji poene i izazovi prijatelja.",
+              "sources": []
+            }
+          }
+          p = build("23", dt.date(2026,11,22), meta, Path("arena-test.mp4"), "12345")
+          assert p["publish_enabled"] is False and p["test_only"] is True
+          assert p["github_run_id"] == "12345" and len(p["posts"]) == 1
+          assert p["posts"][0]["media_file"].endswith(".mp4")
+          print("MAKE PACKET TEST OK")
+          PY
       - name: Pripremi danasnje premium Reels nacrte
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -184,6 +206,35 @@ jobs:
             ${{ steps.image.outputs.meta }}
             ${{ steps.reel.outputs.video }}
           retention-days: 7
+      - name: Pripremi proverljiv Make paket za STVARNI Reel
+        if: steps.image.outputs.ready == 'true'
+        env:
+          HOOK: ${{ secrets.MAKE_REELS_TEST_WEBHOOK_URL }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          IMAGE="${{ steps.image.outputs.image }}"
+          VIDEO="${{ steps.reel.outputs.video }}"
+          META="${{ steps.image.outputs.meta }}"
+          DATE=$(python -c 'import json,sys;print(json.load(open(sys.argv[1],encoding="utf-8"))["datum"])' "$META")
+          PACKET="program_output/TRAG24-MAKE-$PROGRAM-$DATE.json"
+          python scripts/prepare_make_premium_payload.py \
+            --program "$PROGRAM" --date "$DATE" \
+            --metadata "$META" --video "$VIDEO" \
+            --github-run-id "$GITHUB_RUN_ID" --out "$PACKET"
+          # SAFE: ovaj paket je za pregled. publish_enabled=false
+          if [ -z "${HOOK:-}" ]; then
+            echo "::notice::Make webhook nije povezan na ovoj grani. Paket je sačuvan za pregled."
+            exit 0
+          fi
+          HTTP_CODE=$(curl --silent --show-error --max-time 30 --retry 0 \
+            -X POST -H 'Content-Type: application/json' \
+            --data-binary @"$PACKET" \
+            -o /tmp/make-response.json -w '%{http_code}' "$HOOK")
+          case "$HTTP_CODE" in
+            200|201|202) echo "Make primio nacrt za $PROGRAM:00, HTTP $HTTP_CODE (bez objave)";;
+            *) echo "::error::Make nije prihvatio nacrt: HTTP $HTTP_CODE"; exit 1;;
+          esac
       - name: Sacuvaj nacrt u GitHub Releases
         if: steps.image.outputs.ready == 'true'
         env:

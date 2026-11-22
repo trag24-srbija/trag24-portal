@@ -246,6 +246,7 @@ jobs:
         if: steps.image.outputs.ready == 'true'
         env:
           HOOK: ${{ secrets.MAKE_REELS_TEST_WEBHOOK_URL }}
+          IG_HOOK: ${{ secrets.MAKE_INSTAGRAM_REELS_WEBHOOK_URL }}
           MANUAL_APPROVED: ${{ inputs.approve_publish || false }}
         shell: bash
         run: |
@@ -266,15 +267,29 @@ jobs:
           # Official automatic editions can be published only with the Make filter
           # publish_enabled=true, a matching MP4 filename, and deduplication.
           # Manual runs require approve_publish=true; normal manual previews stay private.
-          if [ -z "${HOOK:-}" ]; then
-            echo "::notice::Make webhook nije povezan na ovoj grani. Paket je sačuvan za pregled."
-            exit 0
+          if [ -n "${HOOK:-}" ]; then
+            HTTP_CODE=$(curl --silent --show-error --max-time 30 --retry 0 \
+              -X POST -H 'Content-Type: application/json' \
+              --data-binary @"$PACKET" \
+              -o /tmp/make-facebook-response.json -w '%{http_code}' "$HOOK")
+            case "$HTTP_CODE" in
+              200|201|202) echo "Facebook Make prihvatio paket za $PROGRAM:00 (HTTP $HTTP_CODE), approval=${#APPROVAL[@]}";;
+              *) echo "::error::Facebook Make nije prihvatio paket: HTTP $HTTP_CODE"; exit 1;;
+            esac
+          else
+            echo "::notice::Facebook Make webhook nije povezan; nema Facebook slanja."
           fi
-          HTTP_CODE=$(curl --silent --show-error --max-time 30 --retry 0 \
-            -X POST -H 'Content-Type: application/json' \
-            --data-binary @"$PACKET" \
-            -o /tmp/make-response.json -w '%{http_code}' "$HOOK")
-          case "$HTTP_CODE" in
-            200|201|202) echo "Make prihvatio paket za $PROGRAM:00 (HTTP $HTTP_CODE), approval=${#APPROVAL[@]}";;
-            *) echo "::error::Make nije prihvatio nacrt: HTTP $HTTP_CODE"; exit 1;;
-          esac
+          # Separate Make webhook: Instagram scenario stays inactive until user finishes its configuration.
+          # Never print webhook secret URL in logs.
+          if [ -n "${IG_HOOK:-}" ]; then
+            IG_HTTP_CODE=$(curl --silent --show-error --max-time 30 --retry 0 \
+              -X POST -H 'Content-Type: application/json' \
+              --data-binary @"$PACKET" \
+              -o /tmp/make-instagram-response.json -w '%{http_code}' "$IG_HOOK")
+            case "$IG_HTTP_CODE" in
+              200|201|202) echo "Instagram Make prihvatio paket za $PROGRAM:00 (HTTP $IG_HTTP_CODE), approval=${#APPROVAL[@]}";;
+              *) echo "::error::Instagram Make nije prihvatio paket: HTTP $IG_HTTP_CODE"; exit 1;;
+            esac
+          else
+            echo "::notice::Instagram Make webhook nije povezan; nema Instagram slanja."
+          fi

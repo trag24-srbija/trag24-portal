@@ -11,7 +11,7 @@
   "content_ready": 6,
   "posts": [
     {
-      "id": "trag24:TEST-FINAL-MAKE:2026-11-22:0800",
+      "id": "trag24:TEST-RUNID-CHECK-02:2026-11-22:0800",
       "program": "0800",
       "title": "SRBIJA SE BUDI",
       "event_date": "2026-11-22",
@@ -31,21 +31,21 @@
       "publishing_enabled": false,
       "destinations": {
         "instagram": {
-          "idempotency_key": "trag24:TEST-FINAL-MAKE:2026-11-22:0800:instagram",
+          "idempotency_key": "trag24:TEST-RUNID-CHECK-02:2026-11-22:0800:instagram",
           "status": "HOLD_REVIEW"
         },
         "facebook": {
-          "idempotency_key": "trag24:TEST-FINAL-MAKE:2026-11-22:0800:facebook",
+          "idempotency_key": "trag24:TEST-RUNID-CHECK-02:2026-11-22:0800:facebook",
           "status": "HOLD_REVIEW"
         },
         "tiktok": {
-          "idempotency_key": "trag24:TEST-FINAL-MAKE:2026-11-22:0800:tiktok",
+          "idempotency_key": "trag24:TEST-RUNID-CHECK-02:2026-11-22:0800:tiktok",
           "status": "HOLD_REVIEW"
         }
       }
     },
     {
-      "id": "trag24:TEST-FINAL-MAKE:2026-11-22:1100",
+      "id": "trag24:TEST-RUNID-CHECK-02:2026-11-22:1100",
       "program": "1100",
       "title": "VEROVALI ILI NE",
       "event_date": "2026-11-22",
@@ -65,21 +65,21 @@
       "publishing_enabled": false,
       "destinations": {
         "instagram": {
-          "idempotency_key": "trag24:TEST-FINAL-MAKE:2026-11-22:1100:instagram",
+          "idempotency_key": "trag24:TEST-RUNID-CHECK-02:2026-11-22:1100:instagram",
           "status": "HOLD_REVIEW"
         },
         "facebook": {
-          "idempotency_key": "trag24:TEST-FINAL-MAKE:2026-11-22:1100:facebook",
+          "idempotency_key": "trag24:TEST-RUNID-CHECK-02:2026-11-22:1100:facebook",
           "status": "HOLD_REVIEW"
         },
         "tiktok": {
-          "idempotency_key": "trag24:TEST-FINAL-MAKE:2026-11-22:1100:tiktok",
+          "idempotency_key": "trag24:TEST-RUNID-CHECK-02:2026-11-22:1100:tiktok",
           "status": "HOLD_REVIEW"
         }
       }
     },
     {
-      "id": "trag24:TEST-FINAL-MAKE:2026-11-22:1400",
+      "id": "trag24:TEST-RUNID-CHECK-02:2026-11-22:1400",
       "program": "1400",
       "title": "NOVAC I ŽIVOT",
       "event_date": "2026-11-22",
@@ -99,21 +99,21 @@
       "publishing_enabled": false,
       "destinations": {
         "instagram": {
-          "idempotency_key": "trag24:TEST-FINAL-MAKE:2026-11-22:1400:instagram",
+          "idempotency_key": "trag24:TEST-RUNID-CHECK-02:2026-11-22:1400:instagram",
           "status": "HOLD_REVIEW"
         },
         "facebook": {
-          "idempotency_key": "trag24:TEST-FINAL-MAKE:2026-11-22:1400:facebook",
+          "idempotency_key": "trag24:TEST-RUNID-CHECK-02:2026-11-22:1400:facebook",
           "status": "HOLD_REVIEW"
         },
         "tiktok": {
-          "idempotency_key": "trag24:TEST-FINAL-MAKE:2026-11-22:1400:tiktok",
+          "idempotency_key": "trag24:TEST-RUNID-CHECK-02:2026-11-22:1400:tiktok",
           "status": "HOLD_REVIEW"
         }
       }
     },
     {
-      "id": "trag24:TEST-FINAL-MAKE:2026-11-22:1700",
+      "id": "trag24:TEST-RUNID-CHECK-02:2026-11-22:1700",
       "program": "1700",
       "title": "PITANJE DANA",
       "event_date": "2026-11-22",
@@ -133,21 +133,21 @@
       "publishing_enabled": false,
       "destinations": {
         "instagram": {
-          "idempotency_key": "trag24:TEST-FINAL-MAKE:2026-11-22:1700:instagram",
+          "idempotency_key": "trag24:TEST-RUNID-CHECK-02:2026-11-22:1700:instagram",
           "status": "HOLD_REVIEW"
         },
         "facebook": {
-          "idempotency_key": "trag24:TEST-FINAL-MAKE:2026-11-22:1700:facebook",
+          "idempotency_key": "trag24:TEST-RUNID-CHECK-02:2026-11-22:1700:facebook",
           "status": "HOLD_REVIEW"
         },
         "tiktok": {
-          "idempotency_key": "trag24:TEST-FINAL-MAKE:2026-11-22:1700:tiktok",
+          "idempotency_key": "trag24:TEST-RUNID-CHECK-02:2026-11-22:1700:tiktok",
           "status": "HOLD_REVIEW"
         }
       }
     },
     {
-      "id": "trag24:TEST-FINAL-MAKE:2026-11-22:2000",
+      "id": "trag24:TEST-RUNID-CHECK-02:2026-11-22:2000",
       "program": "2000",
       "title": "VESTI U 20",
       "event_date": "2026-11-22",
@@ -167,21 +167,21 @@
       "publishing_enabled": false,
       "destinations": {
         "instagram": {
-          "idempotency_key": "trag24:TEST-FINAL-MAKE:2026-11-22:2000:instagram",
+          "idempotency_key": "trag24:TEST-RUNID-CHECK-02:2026-11-22:2000:instagram",
           "status": "HOLD_REVIEW"
         },
         "facebook": {
-          "idempotency_key": "trag24:TEST-FINAL-MAKE:2026-11-22:2000:facebook",
+          "idempotency_key": "trag24:TEST-RUNID-CHECK-02:2026-11-22:2000:facebook",
           "status": "HOLD_REVIEW"
         },
         "tiktok": {
-          "idempotency_key": "trag24:TEST-FINAL-MAKE:2026-11-22:2000:tiktok",
+          "idempotency_key": "trag24:TEST-RUNID-CHECK-02:2026-11-22:2000:tiktok",
           "status": "HOLD_REVIEW"
         }
       }
     },
     {
-      "id": "trag24:TEST-FINAL-MAKE:2026-11-22:2300",
+      "id": "trag24:TEST-RUNID-CHECK-02:2026-11-22:2300",
       "program": "2300",
       "title": "ARENA – NOĆNI IZAZOV",
       "event_date": "2026-11-22",
@@ -201,15 +201,15 @@
       "publishing_enabled": false,
       "destinations": {
         "instagram": {
-          "idempotency_key": "trag24:TEST-FINAL-MAKE:2026-11-22:2300:instagram",
+          "idempotency_key": "trag24:TEST-RUNID-CHECK-02:2026-11-22:2300:instagram",
           "status": "HOLD_REVIEW"
         },
         "facebook": {
-          "idempotency_key": "trag24:TEST-FINAL-MAKE:2026-11-22:2300:facebook",
+          "idempotency_key": "trag24:TEST-RUNID-CHECK-02:2026-11-22:2300:facebook",
           "status": "HOLD_REVIEW"
         },
         "tiktok": {
-          "idempotency_key": "trag24:TEST-FINAL-MAKE:2026-11-22:2300:tiktok",
+          "idempotency_key": "trag24:TEST-RUNID-CHECK-02:2026-11-22:2300:tiktok",
           "status": "HOLD_REVIEW"
         }
       }

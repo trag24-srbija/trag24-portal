@@ -53,3 +53,5 @@ jobs:
 # Druga probna isporuka identicnog JSON-a: provera deduplikacije u Make-u (2026-11-21).
 # Jednokratni test Make prijema: 2026-11-22, PREVIEW_ONLY, bez objava.
 # Schema refresh for github_run_id (PREVIEW_ONLY) 2026-11-22
+
+# Webhook schema detection refresh after Make listening 2026-11-22

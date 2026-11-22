@@ -73,7 +73,9 @@ def build(program, day, metadata, video, run_id, approved=False):
             "caption": caption,
             "media_file": video.name,
             "cover_file": video.with_suffix(".png").name,
-            "media_url": None,
+            "media_url": (f"https://github.com/trag24-srbija/trag24-portal/releases/"
+                          f"download/premium-{program}-{day.isoformat()}/{video.name}")
+                         if approved else None,
             "duration_seconds": 15,
             "video_sha256": digest,
             "sources": sources,

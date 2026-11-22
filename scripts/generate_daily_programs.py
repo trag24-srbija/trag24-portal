@@ -141,35 +141,71 @@ def published(day, hour):
 
 
 def choose(hour, day):
+    # Editor-safe program selection: do not turn deaths or tragedies into trivia.
     if hour == "23":
         return {
             "title": "5 PITANJA. JEDAN IZAZOV.",
             "summary": "Proveri znanje, osvoji poene i izazovi prijatelja.",
             "sources": [], "category": "ARENA", "id": "",
         }
+    if hour == "17":
+        questions = [
+            "Šta bi trebalo prvo unaprediti u vašem gradu?",
+            "Koju temu želite da TRAG 24 dodatno istraži?",
+            "Da li više volite kratke vesti ili detaljne analize?",
+            "Koja informacija vam najviše nedostaje u medijima?",
+            "Koju rubriku biste želeli češće da pratite?",
+            "Šta vam je važnije: brzina ili provera izvora?",
+            "Koje pitanje biste postavili lokalnim vlastima?",
+        ]
+        return {
+            "title": questions[day.toordinal() % len(questions)],
+            "summary": "Napišite mišljenje u komentaru. Razgovarajmo uz uvažavanje različitih stavova.",
+            "sources": [], "category": "PITANJE ZA PUBLIKU", "id": "",
+        }
+
     data = published(day, hour)
+    tragedy = re.compile(
+        r"ubistv|nasil|traged|nesreć|stradal|hapše|zločin|poginu|smrt|"
+        r"preminu|nestal|oružj|povređen|pogib|sudar|ranjen|izgubljen.*život|"
+        r"pronađ.*telo|telo.*detet|dečak.*nest|devojčic.*nest|silovan|otmic|"
+        r"teror|ratna.*dejstv|samoub", re.I
+    )
+    unusual = re.compile(
+        r"munj|grom|meteor|astronom|svemir|nauč|naučn|tehnolog|"
+        r"neobič|neverovat|zanimljiv|otkrić|eksperiment|robot|"
+        r"rekord|fenomen|izum|prvi put|unikat", re.I
+    )
+    economy = re.compile(
+        r"goriv|cen[ae]|cenov|inflacij|poskuplj|plata|plate|"
+        r"zarad|penzij|porez|budžet|promet|lizing|bank|privred|"
+        r"ekonom|finans|invest|subvenc|kamat|tržišt|potrošač|"
+        r"energij|poslovanj|maloprodaj|kupovin|sniženj|"
+        r"komunal|minimalac|zakup|kurs evra", re.I
+    )
+    misleading_econ = re.compile(
+        r"zaplena|zaplenjen|krivič|uhapš|istrag|optuž|suđen|"
+        r"bivš.*ministar|ubistv|nasil|traged|nesreć", re.I
+    )
     if hour == "11":
-        forbidden = re.compile(
-            r"ubistv|nasil|traged|nesreć|stradal|hapše|zločin|rat\b|poginu|smrt|"
-            r"preminu|nestal|oružj|povređen", re.I)
-        preferred = [x for x in data if x["category"].casefold() in {
-            "zabava", "svet", "društvo", "kultura", "sport"
-        } and not forbidden.search(x["title"])]
+        preferred = [
+            x for x in data
+            if unusual.search(x["title"])
+            and not tragedy.search(x["title"] + " " + x["summary"])
+        ]
         return preferred[0] if preferred else None
     if hour == "14":
-        preferred = [x for x in data if x["category"].casefold() in {
-            "ekonomija", "privreda"
-        }]
+        preferred = [
+            x for x in data
+            if economy.search(x["title"])
+            and not misleading_econ.search(x["title"] + " " + x["summary"])
+            and not tragedy.search(x["title"] + " " + x["summary"])
+        ]
         return preferred[0] if preferred else None
     if hour == "20":
         today = [x for x in data if dt.date.fromisoformat(
             str(x.get("published_date", day.isoformat()))) == day]
         return today[0] if today else None
-    if hour == "17":
-        preferred = [x for x in data if x["category"].casefold() in {
-            "društvo", "ekonomija", "privreda", "srbija", "politika"
-        }]
-        return (preferred or data)[0] if (preferred or data) else None
     return None
 
 
@@ -227,11 +263,7 @@ def make_card(hour, day, story):
            fill=(237, 193, 103, 155), width=2)
 
     y = max(1152, y+30)
-    if hour == "17":
-        # One explicit engagement question, without inventing a news claim.
-        body = "Šta mislite o ovoj vesti? Napišite svoj stav u komentaru."
-    else:
-        body = story["summary"]
+    body = story["summary"]
     face, lines, step = fit(d, body, 862, max(120, 1475-y),
                             50, 38, False, 1.24)
     for line in lines:
@@ -241,6 +273,8 @@ def make_card(hour, day, story):
     d.line((101, 1494, 974, 1494), fill=(229, 185, 96, 160), width=2)
     if hour == "23":
         source = "IGRAJ: trag24-srbija.github.io/trag24-portal/arena/"
+    elif hour == "17":
+        source = "PITANJE ZA PUBLIKU • BEZ TVRDNJI O DOGAĐAJIMA"
     else:
         source = "IZVORI: " + ", ".join(story["sources"])
     face = font(30, True)

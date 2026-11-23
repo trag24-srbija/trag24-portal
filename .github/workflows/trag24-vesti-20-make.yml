@@ -51,7 +51,7 @@ jobs:
             echo "ready=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
-          if gh release view "$TAG" --json assets --jq '[.assets[].name] | index("make-2000-sent.json") != null' | grep -qx true; then
+          if gh release view "$TAG" --json assets --jq '[.assets[].name] | index("make-2000-sent-v2.json") != null' | grep -qx true; then
             echo "Make paket za danas je vec predat; preskacem duplikat."
             echo "ready=false" >> "$GITHUB_OUTPUT"
             exit 0
@@ -163,6 +163,12 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          for config in FB_HOOK IG_HOOK TT_HOOK; do
+            if [ -z "${!config}" ]; then
+              echo "::error::Make webhook nije konfigurisan: $config."
+              exit 1
+            fi
+          done
           sent=0
           for platform in Facebook Instagram TikTok; do
             case "$platform" in
@@ -170,10 +176,6 @@ jobs:
               Instagram) HOOK="$IG_HOOK";;
               TikTok) HOOK="$TT_HOOK";;
             esac
-            if [ -z "$HOOK" ]; then
-              echo "::warning::$platform: Make webhook nije konfigurisan."
-              continue
-            fi
             code=$(curl -sS --max-time 45 --retry 2 --retry-delay 5 --retry-all-errors \
               -X POST -H 'Content-Type: application/json' --data-binary @make-2000.json \
               -o "/tmp/make-$platform.json" -w '%{http_code}' "$HOOK")
@@ -182,15 +184,15 @@ jobs:
               *) echo "::error::$platform: Make odbio paket (HTTP $code)."; exit 1;;
             esac
           done
-          test "$sent" -gt 0
+          test "$sent" -eq 3
           python - <<'PY'
           import json
           from pathlib import Path
           p=json.loads(Path("make-2000.json").read_text(encoding="utf-8"))
-          Path("make-2000-sent.json").write_text(json.dumps({
+          Path("make-2000-sent-v2.json").write_text(json.dumps({
               "date":p["date"],"post_id":p["posts"][0]["id"],
               "status":"Accepted by configured Make webhooks; final platform publishing must be checked in Make History"
           },ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
           PY
-          gh release upload "$TAG" make-2000-sent.json --clobber
+          gh release upload "$TAG" make-2000-sent-v2.json --clobber
           echo "Slanje zavrseno. HTTP 200 znaci prijem u Make, ne potvrdu Reels objavljivanja."

@@ -160,6 +160,10 @@ Pravila:
 - Razlikuj potvrđene činjenice od navoda.
 - Ne proglašavaj nikoga krivim.
 - Ako izvori nisu saglasni, objasni razliku.
+- Za sportske vesti jasno razlikuj ostvarene rezultate od najava, transfer glasina i procena.
+- Za vremenske prognoze navedi DATUM i PODRUČJE na koje se prognoza odnosi. Prognoza nije izmereno ili već ostvareno stanje.
+- Ako dve vremenske prognoze nisu za isto područje i period, NE upoređuj ih kao jednu vest. Vrati {"publish": false}.
+- Bez preuveličavanja meteoroloških upozorenja. Za zvanična upozorenja merodavan je RHMZ.
 - Ne prepisuj duge delove tuđih članaka.
 - Ne izmišljaj hronologiju ako nije poznata.
 - Ne dodaj izvore koji nisu dostavljeni.
@@ -287,7 +291,8 @@ def main():
 
         if item.get("category") not in (
             "Politika", "Hronika",
-            "Ekonomija", "Društvo"
+            "Ekonomija", "Društvo",
+            "Sport", "Vreme"
         ):
             continue
 

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101d30">
+  <meta name="description" content="TRAG 24 vremenska prognoza za Beograd, Smederevo, Veliku Planu, Novi Sad, Niš i druge gradove Srbije.">
+  <title>Vremenska prognoza za Srbiju | TRAG 24</title>
+  <style>
+    :root{--navy:#101d30;--gold:#e5b74d;--text:#192b40;--muted:#617082;--border:#dfe5ec}
+    *{box-sizing:border-box}body{margin:0;background:#f3f5f8;color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+    a{color:inherit}header{background:var(--navy);color:#fff;border-bottom:4px solid var(--gold)}
+    .wrap{width:min(1100px,calc(100% - 32px));margin:0 auto}
+    .top{padding:22px 0;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .logo{font-size:31px;font-weight:900;letter-spacing:.03em;text-decoration:none;color:#fff}.logo span{color:var(--gold)}
+    .back{color:#fff;border:1px solid #ffffff66;border-radius:10px;padding:10px 15px;text-decoration:none;font-weight:650;font-size:14px}
+    .hero{padding:44px 0 28px}.eyebrow{color:#9b741b;text-transform:uppercase;font-size:12px;letter-spacing:2px;font-weight:800}
+    h1{font-size:clamp(29px,5vw,45px);line-height:1.1;margin:10px 0}.intro{color:var(--muted);max-width:680px;line-height:1.6;margin:0}
+    .toolbar{margin:20px 0 22px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+    #updated{font-size:13px;color:var(--muted)}
+    input{border:1px solid var(--border);border-radius:12px;padding:13px 16px;width:min(100%,310px);font-size:15px;background:#fff;outline-color:var(--gold)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px;padding-bottom:36px}
+    .card{background:#fff;border:1px solid var(--border);border-radius:16px;box-shadow:0 8px 24px #13283f08;overflow:hidden}
+    .card-head{padding:20px 21px 14px;display:flex;align-items:start;justify-content:space-between;gap:8px}
+    .city{font-size:21px;font-weight:850}.sub{margin-top:5px;color:var(--muted);font-size:12px}
+    .days{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));padding:0 15px 20px;gap:8px}
+    .day{background:#f5f7fa;border-radius:12px;text-align:center;padding:12px 5px 14px;min-width:0}
+    .day-name{font-size:12px;color:#53667b;font-weight:800}
+    .icon{font-size:30px;line-height:1.7}.temp{font-weight:850;font-size:16px;white-space:nowrap}
+    .condition{font-size:11px;color:#526478;margin-top:7px;line-height:1.3;min-height:30px}
+    .note{margin:0 0 26px;background:#fff;border-left:3px solid var(--gold);padding:16px 18px;border-radius:0 9px 9px 0;color:#4d6073;line-height:1.6;font-size:13px}
+    .empty{padding:30px;background:#fff;border:1px solid var(--border);border-radius:14px;color:#526478}
+    footer{background:var(--navy);color:#d8e3ee;padding:28px 0;font-size:12px;line-height:1.8}
+    footer a{color:var(--gold)}
+    @media(max-width:400px){.grid{grid-template-columns:1fr}.days{gap:5px}.day{padding:11px 3px}.temp{font-size:14px}}
+  </style>
+</head>
+<body>
+  <header><div class="wrap top"><a class="logo" href="./index.html">TRAG <span>24</span></a><a class="back" href="./index.html">← Nazad na vesti</a></div></header>
+  <main class="wrap">
+    <section class="hero"><div class="eyebrow">TRAG 24 • Vreme u Srbiji</div><h1>Vremenska prognoza</h1><p class="intro">Pregled prognoziranih temperatura i vremenskih prilika za naredna tri dana, po gradovima. Podaci se automatski osvežavaju; prognoza nije isto što i trenutno merenje.</p></section>
+    <div class="toolbar"><div id="updated" role="status">Učitavanje prognoze…</div><input id="search" type="search" aria-label="Pronađi grad" placeholder="Pronađi grad…"></div>
+    <section id="cities" class="grid" aria-label="Prognoze po gradovima"></section>
+    <p class="note">Za opasne vremenske pojave pratite <a href="https://www.hidmet.gov.rs/latin/upozorenja/index1.php" target="_blank" rel="noopener noreferrer">zvanična upozorenja RHMZ Srbije</a>. Prognoze mogu da se promene; navedeni minimumi i maksimumi izračunati su iz raspoloživih modelskih satnih podataka.</p>
+  </main>
+  <footer><div class="wrap">Izvor: <a href="https://api.met.no/" target="_blank" rel="noopener noreferrer">MET Norway</a> · podaci i modeli prerađeni za TRAG 24 · licenca <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>. MET Norway nije odgovoran za obradu i prikaz na ovoj stranici.<br>TRAG 24 · Srbija i svet</div></footer>
+  <script>
+    const el=id=>document.getElementById(id);
+    let all=[];
+    const dateLabel=date=>{
+      const d=new Date(date+'T12:00:00+01:00');
+      return new Intl.DateTimeFormat('sr-RS',{weekday:'short',day:'numeric',month:'short',timeZone:'Europe/Belgrade'}).format(d);
+    };
+    const cleanText=s=>String(s||'');
+    function make(tag,cls,txt){
+      const n=document.createElement(tag);if(cls)n.className=cls;
+      if(txt!==undefined)n.textContent=txt;return n;
+    }
+    function card(city){
+      const article=make('article','card');
+      const head=make('div','card-head'),namebox=make('div');
+      namebox.append(make('div','city',city.name));
+      const at=city.retrieved_at?new Date(city.retrieved_at):null;
+      const old=!(at&&Date.now()-at.getTime()<12*60*60*1000);
+      namebox.append(make('div','sub',old?'Poslednja dostupna prognoza':'Prognoza za naredne dane'));
+      head.append(namebox,make('div','', '🌤️'));article.append(head);
+      const days=make('div','days');
+      for(const d of city.forecast||[]){
+        const day=make('div','day');
+        day.append(make('div','day-name',dateLabel(d.date)));
+        day.append(make('div','icon',d.icon||'🌤️'));
+        day.append(make('div','temp',d.min_c+'° / '+d.max_c+'°'));
+        day.append(make('div','condition',cleanText(d.condition)));
+        days.append(day);
+      }
+      article.append(days);return article;
+    }
+    function render(){
+      const q=el('search').value.trim().toLocaleLowerCase('sr');
+      const matches=all.filter(x=>x.name.toLocaleLowerCase('sr').includes(q));
+      el('cities').replaceChildren(...matches.map(card));
+      if(!matches.length)el('cities').append(make('p','empty',all.length?'Nema grada sa tim nazivom.':'Prognoza trenutno nije dostupna.'));
+    }
+    async function load(){
+      try{
+        const response=await fetch('./weather.json',{cache:'no-store'});
+        if(!response.ok)throw new Error('HTTP '+response.status);
+        const payload=await response.json();
+        if(!Array.isArray(payload.cities))throw new Error('Neispravan format');
+        all=payload.cities.filter(x=>x&&typeof x.name==='string'&&Array.isArray(x.forecast));
+        const date=new Date(payload.updated_at);
+        el('updated').textContent='Poslednje osvežavanje: '+new Intl.DateTimeFormat('sr-RS',{timeZone:'Europe/Belgrade',dateStyle:'medium',timeStyle:'short'}).format(date);
+      }catch(error){
+        console.error('Prognoza:',error);
+        el('updated').textContent='Čeka se prvo automatsko učitavanje prognoze.';
+      }
+      render();
+    }
+    el('search').addEventListener('input',render);load();
+  </script>
+</body>
+</html>

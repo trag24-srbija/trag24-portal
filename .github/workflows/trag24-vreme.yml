@@ -2,6 +2,10 @@ name: TRAG 24 - vremenska prognoza
 
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/update_weather.py'
+      - '.github/workflows/trag24-vreme.yml'
   schedule:
     # Srbija: na 6 sati; vreme RSS prikupljanja ostaje na 15 minuta.
     - cron: '41 1,7,13,19 * * *'
@@ -29,7 +33,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add weather.json
+          if [ -f weather.json ]; then git add weather.json; fi
           if ! git diff --cached --quiet; then
             git commit -m "TRAG 24: osvezena vremenska prognoza"
             git pull --rebase origin main

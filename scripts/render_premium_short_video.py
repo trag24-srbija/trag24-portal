@@ -29,8 +29,9 @@ def render(image_path, destination, soundtrack, seconds=15):
         "-loop", "1", "-framerate", "24", "-i", str(image_path),
         "-stream_loop", "-1", "-i", str(soundtrack),
         "-filter_complex",
-        "[0:v]scale=1080:1920,format=yuv420p,"
-        "fade=t=in:st=0:d=0.35,fade=t=out:st=14.5:d=0.5[v];"
+        # Instagram may use the first video frame as the Reel cover.
+        # Display the approved premium card continuously from frame zero.
+        "[0:v]scale=1080:1920,format=yuv420p[v];"
         "[1:a]volume=0.55,afade=t=in:st=0:d=0.35,"
         "afade=t=out:st=13.7:d=1.3[a]",
         "-map", "[v]", "-map", "[a]",

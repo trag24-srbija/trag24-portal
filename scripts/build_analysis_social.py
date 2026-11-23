@@ -13,7 +13,7 @@ from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "analiza"
-BASE = "https://trag24-srbija.github.io/trag24-portal/"
+BASE = "https://www.trag24.rs/"
 MEDIA_NS = "http://search.yahoo.com/mrss/"
 ET.register_namespace("media", MEDIA_NS)
 

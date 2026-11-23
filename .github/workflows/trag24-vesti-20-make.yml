@@ -6,7 +6,9 @@ on:
     paths:
       - '.github/workflows/trag24-vesti-20-make.yml'
   schedule:
-    # Rezervne provere posle vecernje emisije (UTC, zimsko vreme Srbije).
+    # Prvi termin u 20:00 po lokalnom vremenu, uz automatsku DST proveru.
+    - cron: '0 18,19 * * *'
+    # Rezervne provere ako video ili Make privremeno nisu dostupni.
     - cron: '55 19 * * *'
     - cron: '25 20 * * *'
 
@@ -38,6 +40,12 @@ jobs:
           TAG="vesti-$DAY-20"
           echo "tag=$TAG" >> "$GITHUB_OUTPUT"
           echo "day=$DAY" >> "$GITHUB_OUTPUT"
+          NOW_HHMM=$(date +%H%M)
+          if [ "$NOW_HHMM" -lt 2000 ]; then
+            echo "Pre 20:00 po vremenu Srbije: jos nije vreme za javnu objavu."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
           if ! gh release view "$TAG" --json assets,isDraft --jq '(.isDraft == false) and any(.assets[]; .name == "TRAG24-VESTI-U-20.mp4" and .size > 1000000) and any(.assets[]; .name == "opis.json" and .size > 10)' 2>/dev/null | grep -qx true; then
             echo "::notice::Danasnji video jos nije spreman; nema objave nepotpunog sadrzaja."
             echo "ready=false" >> "$GITHUB_OUTPUT"

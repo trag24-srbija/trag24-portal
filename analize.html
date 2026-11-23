@@ -24,6 +24,9 @@ footer{background:#142238;color:white;text-align:center;padding:25px 15px;margin
 .filters button{cursor:pointer;border:1px solid #d3c7ab;background:#fff;color:#142238;padding:11px 14px;border-radius:8px;font-weight:700;font-size:13px}
 .filters button.active{background:#142238;border-color:#142238;color:#e5b74d}
 .weather-link{display:inline-block;padding:10px 0;color:#755b22;font-weight:700;text-decoration:underline;font-size:14px}
+.region-filters{margin-top:22px;margin-bottom:12px;gap:10px}
+.region-filters button{background:#101a2b;color:#e5b74d;border-color:#bfa36c;min-width:105px}
+.region-filters button.active{background:#bfa36c;color:#101a2b;border-color:#bfa36c}
 
 footer a{color:white}
 </style>
@@ -41,6 +44,7 @@ footer a{color:white}
 <main>
 <h1>Analize i objašnjenja</h1>
 <p class="intro">Važni događaji iz Srbije, sporta i vremena: pozadina, potvrđene činjenice i otvorena pitanja. Novinarska analiza se objavljuje samo kada postoje najmanje dva nezavisna izvora.</p>
+<nav class="filters region-filters" id="regioni" aria-label="Analize Srbija ili Svet"></nav>
 <nav class="filters" id="filteri" aria-label="Filtriraj analize po rubrici"></nav>
 <a class="weather-link" href="./vreme.html">Vremenska prognoza za 10 gradova Srbije →</a>
 
@@ -72,7 +76,25 @@ footer a{color:white}
       .filter(a => a && a.status === 'objavljeno')
       .sort((a, b) => (b.objavljeno_u || b.datum || '').localeCompare(a.objavljeno_u || a.datum || ''));
 
-    const rubrike = ['Sve', 'Politika', 'Hronika', 'Ekonomija', 'Društvo', 'Sport', 'Vreme'];
+    const rubrike = ['Sve', 'Politika', 'Hronika', 'Ekonomija', 'Društvo', 'Sport', 'Zabava', 'Vreme'];
+    const regioni = ['Sve', 'Srbija', 'Svet'];
+    const regionMeni = document.getElementById('regioni');
+    let aktivanRegion = 'Sve';
+
+    function dugmadRegiona() {
+      regionMeni.replaceChildren();
+      for (const region of regioni) {
+        const dugme = element('button', region === aktivanRegion ? 'active' : '', region === 'Sve' ? 'Sve' : region);
+        dugme.type = 'button';
+        dugme.setAttribute('aria-pressed', region === aktivanRegion ? 'true' : 'false');
+        dugme.addEventListener('click', () => {
+          aktivanRegion = region;
+          dugmadRegiona();
+          prikazi();
+        });
+        regionMeni.appendChild(dugme);
+      }
+    }
     const filteri = document.getElementById('filteri');
     let aktivnaRubrika = 'Sve';
 
@@ -93,12 +115,13 @@ footer a{color:white}
 
     function prikazi() {
     lista.replaceChildren();
-    const vidljive = analize.filter(a => aktivnaRubrika === 'Sve' || a.kategorija === aktivnaRubrika);
+    const vidljive = analize.filter(a =>
+      (aktivnaRubrika === 'Sve' || a.kategorija === aktivnaRubrika) &&
+      (aktivanRegion === 'Sve' || a.region === aktivanRegion)
+    );
 
     if (!vidljive.length) {
-      const poruka = aktivnaRubrika === 'Sve'
-        ? 'Trenutno nema objavljenih analiza.'
-        : 'Još nema potvrđene analize u rubrici ' + aktivnaRubrika + '.';
+      const poruka = 'Trenutno nema analiza za izabranu rubriku i područje. Izaberite „Sve“ za kompletan pregled.';
       lista.appendChild(element('article', 'card', poruka));
       return;
     }
@@ -193,6 +216,7 @@ kartica.appendChild(napomena);
       lista.appendChild(kartica);
     }
     }
+    dugmadRegiona();
     dugmad();
     prikazi();
   } catch (greska) {

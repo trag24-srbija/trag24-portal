@@ -1,0 +1,148 @@
+name: TRAG 24 - VESTI U 20 - Reels Make
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/trag24-vesti-20-make.yml'
+  schedule:
+    # Rezervne provere posle vecernje emisije (UTC, zimsko vreme Srbije).
+    - cron: '55 19 * * *'
+    - cron: '25 20 * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: trag24-vesti-20-make
+  cancel-in-progress: false
+
+jobs:
+  predaja-make:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      TZ: Europe/Belgrade
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      FB_HOOK: ${{ secrets.MAKE_REELS_TEST_WEBHOOK_URL }}
+      IG_HOOK: ${{ secrets.MAKE_INSTAGRAM_REELS_WEBHOOK_URL }}
+      TT_HOOK: ${{ secrets.MAKE_TIKTOK_REELS_WEBHOOK_URL }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Proveri emisiju i preuzmi video
+        id: media
+        shell: bash
+        run: |
+          set -euo pipefail
+          DAY=$(date +%F)
+          TAG="vesti-$DAY-20"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "day=$DAY" >> "$GITHUB_OUTPUT"
+          if ! gh release view "$TAG" --json assets,isDraft --jq '(.isDraft == false) and any(.assets[]; .name == "TRAG24-VESTI-U-20.mp4" and .size > 1000000) and any(.assets[]; .name == "opis.json" and .size > 10)' 2>/dev/null | grep -qx true; then
+            echo "::notice::Danasnji video jos nije spreman; nema objave nepotpunog sadrzaja."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if gh release view "$TAG" --json assets --jq '[.assets[].name] | index("make-2000-sent.json") != null' | grep -qx true; then
+            echo "Make paket za danas je vec predat; preskacem duplikat."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          gh release download "$TAG" -p 'TRAG24-VESTI-U-20.mp4' -p 'opis.json' --clobber
+          test -s TRAG24-VESTI-U-20.mp4
+          test -s opis.json
+          echo "ready=true" >> "$GITHUB_OUTPUT"
+      - name: Provereni paket za Make
+        if: steps.media.outputs.ready == 'true'
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, hashlib, datetime as dt
+          from pathlib import Path
+          from zoneinfo import ZoneInfo
+          import os
+          day = os.environ["DATE_FOR_REELS"]
+          meta = json.loads(Path("opis.json").read_text(encoding="utf-8"))
+          video = Path("TRAG24-VESTI-U-20.mp4")
+          if meta.get("datum") != day or video.stat().st_size < 1000000:
+              raise SystemExit("Datum ili MP4 nisu ispravni.")
+          titles = meta.get("naslovi") or []
+          caption = meta.get("opis") or ""
+          if not isinstance(titles,list) or not titles or not isinstance(caption,str) or len(caption) < 30:
+              raise SystemExit("Nedostaju verifikovani naslov ili opis.")
+          key = f"trag24:LIVE:{day}:2000"
+          planned = dt.datetime.combine(dt.date.fromisoformat(day),dt.time(20),tzinfo=ZoneInfo("Europe/Belgrade"))
+          src=[]
+          try:
+              stored=json.loads(Path("analize.json").read_text(encoding="utf-8")).get("analize",[])
+              for a in stored:
+                  if a.get("datum") == day and a.get("status") == "objavljeno":
+                      src += [x for x in a.get("izvori",[]) if isinstance(x,str) and x.startswith("https://")]
+          except (OSError,ValueError,TypeError):
+              pass
+          packet={
+              "schema":"trag24.make.premium.v1","mode":"PRODUCTION",
+              "publish_enabled":True,"test_only":False,
+              "date":day,"timezone":"Europe/Belgrade",
+              "repository":"trag24-srbija/trag24-portal",
+              "github_run_id":os.environ["GITHUB_RUN_ID"],
+              "artifact_name":"TRAG24-VESTI-U-20","content_ready":1,
+              "posts":[{
+                  "id":key,"program":"2000","title":"TRAG 24 - VESTI U 20",
+                  "event_date":day,"content_date":day,"timezone":"Europe/Belgrade",
+                  "planned_local_time":planned.isoformat(),
+                  "headline":" / ".join(str(t) for t in titles[:3]),
+                  "caption":caption,"media_file":video.name,
+                  "cover_file":f"TRAG24-20-{day}.png",
+                  "media_url":f"https://github.com/trag24-srbija/trag24-portal/releases/download/vesti-{day}-20/{video.name}",
+                  "duration_seconds":90,
+                  "video_sha256":hashlib.sha256(video.read_bytes()).hexdigest(),
+                  "sources":list(dict.fromkeys(src))[:15],
+                  "editorial_status":"READY","publishing_enabled":True,
+                  "destinations":{p:{"idempotency_key":f"{key}:{p}","status":"READY"} for p in ("facebook","instagram","tiktok")}
+              }],
+              "notice":"Make must verify video type and deduplicate the post id before publishing.",
+          }
+          Path("make-2000.json").write_text(json.dumps(packet,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          print("Provereni Make paket VESTI U 20 pripremljen.")
+          PY
+        env:
+          DATE_FOR_REELS: ${{ steps.media.outputs.day }}
+      - name: Prosledi tri Reels objave u Make
+        if: steps.media.outputs.ready == 'true'
+        env:
+          TAG: ${{ steps.media.outputs.tag }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          sent=0
+          for platform in Facebook Instagram TikTok; do
+            case "$platform" in
+              Facebook) HOOK="$FB_HOOK";;
+              Instagram) HOOK="$IG_HOOK";;
+              TikTok) HOOK="$TT_HOOK";;
+            esac
+            if [ -z "$HOOK" ]; then
+              echo "::warning::$platform: Make webhook nije konfigurisan."
+              continue
+            fi
+            code=$(curl -sS --max-time 45 --retry 2 --retry-delay 5 --retry-all-errors \
+              -X POST -H 'Content-Type: application/json' --data-binary @make-2000.json \
+              -o "/tmp/make-$platform.json" -w '%{http_code}' "$HOOK")
+            case "$code" in
+              200|201|202) echo "$platform: Make primio paket (HTTP $code)."; sent=$((sent+1));;
+              *) echo "::error::$platform: Make odbio paket (HTTP $code)."; exit 1;;
+            esac
+          done
+          test "$sent" -gt 0
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=json.loads(Path("make-2000.json").read_text(encoding="utf-8"))
+          Path("make-2000-sent.json").write_text(json.dumps({
+              "date":p["date"],"post_id":p["posts"][0]["id"],
+              "status":"Accepted by configured Make webhooks; final platform publishing must be checked in Make History"
+          },ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          PY
+          gh release upload "$TAG" make-2000-sent.json --clobber
+          echo "Slanje zavrseno. HTTP 200 znaci prijem u Make, ne potvrdu Reels objavljivanja."

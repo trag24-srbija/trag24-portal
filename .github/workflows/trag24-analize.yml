@@ -4,7 +4,7 @@ name: TRAG 24 - automatska obrada analiza
 on:
   workflow_dispatch:
   schedule:
-        - cron: '0 */2 * * *'
+        - cron: '15 * * * *'
 
 permissions:
   contents: write

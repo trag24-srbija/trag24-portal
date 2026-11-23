@@ -53,7 +53,7 @@ jobs:
           print('OK: Python i premium natpisi')
           PY
   vesti:
-    if: github.event_name != 'push'
+    if: github.event_name != 'push' || contains(github.event.head_commit.message, '[emit-vesti-20-2026-11-23]')
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -77,8 +77,17 @@ jobs:
             if gh release view "$TAG" --json assets,isDraft --jq '(.isDraft == false) and any(.assets[]; .name == "TRAG24-VESTI-U-20.mp4" and .size > 0) and any(.assets[]; .name == "opis.json" and .size > 0)' 2>/dev/null | grep -qx true; then
               RUN=false
             fi
+          elif [ "$GITHUB_EVENT_NAME" = "push" ]; then
+            # Jednokratna vanredna obrada uz oznaku u commit poruci.
+            OFFICIAL=true
           elif [ "$(jq -r '.inputs.official // false' "$GITHUB_EVENT_PATH")" = "true" ]; then
             OFFICIAL=true
+          fi
+          if [ "$OFFICIAL" = "true" ]; then
+            if gh release view "$TAG" --json assets,isDraft --jq '(.isDraft == false) and any(.assets[]; .name == "TRAG24-VESTI-U-20.mp4" and .size > 0) and any(.assets[]; .name == "opis.json" and .size > 0)' 2>/dev/null | grep -qx true; then
+              RUN=false
+              echo "Zvanicna emisija za danas vec postoji; preskacem da nema duplikata."
+            fi
           fi
           echo "run=$RUN" >> "$GITHUB_OUTPUT"
           echo "official=$OFFICIAL" >> "$GITHUB_OUTPUT"
@@ -109,7 +118,7 @@ jobs:
           result = None
           for model, delays in (
               ('gemini-3.5-flash-lite', (0, 6, 16)),
-              ('gemini-3.6-flash', (0,)),
+              ('gemini-3.5-flash', (0,)),
           ):
               for pause in delays:
                   if pause:

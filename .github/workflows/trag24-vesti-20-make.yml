@@ -59,6 +59,42 @@ jobs:
           gh release download "$TAG" -p 'TRAG24-VESTI-U-20.mp4' -p 'opis.json' --clobber
           test -s TRAG24-VESTI-U-20.mp4
           test -s opis.json
+
+          # Izvorni run ID: u novim emisijama citaj producer-run.json iz istog Release-a.
+          if gh release view "$TAG" --json assets --jq '[.assets[].name] | index("producer-run.json") != null' | grep -qx true; then
+            gh release download "$TAG" -p 'producer-run.json' --clobber
+            test "$(jq -r '.date' producer-run.json)" = "$DAY"
+            PRODUCER_RUN_ID=$(jq -er '.producer_run_id | tostring | select(test("^[0-9]+$"))' producer-run.json)
+          else
+            # Jednokratna kompatibilnost sa starim emisijama: zahteva TACNO
+            # jedan postojeci, neistekli artifakt te emisije na taj datum.
+            MATCHES=$(gh api "repos/$GITHUB_REPOSITORY/actions/artifacts?name=TRAG24-VESTI-U-20&per_page=100" |
+              jq -c --arg day "$DAY" '[.artifacts[] | select(
+                .name == "TRAG24-VESTI-U-20" and
+                .expired == false and
+                (.created_at | startswith($day)) and
+                (.workflow_run.id != null)
+              )]')
+            MATCH_COUNT=$(echo "$MATCHES" | jq 'length')
+            if [ "$MATCH_COUNT" != "1" ]; then
+              echo "::error::Nije pronadjen tacno jedan izvorni artifakt za $DAY (nadjeno $MATCH_COUNT); nema slanja."
+              exit 1
+            fi
+            PRODUCER_RUN_ID=$(echo "$MATCHES" | jq -r '.[0].workflow_run.id')
+          fi
+
+          # Verifikacija: izvrsavanje mora imati jedan neistekao artifakt
+          # TRAG24-VESTI-U-20. Nikada ne koristi ID ovog posrednickog workflow-a.
+          SOURCE_ARTIFACTS=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$PRODUCER_RUN_ID/artifacts?name=TRAG24-VESTI-U-20" |
+            jq -c '[.artifacts[] | select(.name == "TRAG24-VESTI-U-20" and .expired == false)]')
+          if [ "$(echo "$SOURCE_ARTIFACTS" | jq 'length')" != "1" ]; then
+            echo "::error::Izvorni run $PRODUCER_RUN_ID nema tacno jedan aktivan artifakt."
+            exit 1
+          fi
+          ARTIFACT_ID=$(echo "$SOURCE_ARTIFACTS" | jq -er '.[0].id')
+          echo "producer_run_id=$PRODUCER_RUN_ID" >> "$GITHUB_OUTPUT"
+          echo "artifact_id=$ARTIFACT_ID" >> "$GITHUB_OUTPUT"
+          echo "Izvorni GitHub run: $PRODUCER_RUN_ID; artifakt: $ARTIFACT_ID"
           echo "ready=true" >> "$GITHUB_OUTPUT"
       - name: Provereni paket za Make
         if: steps.media.outputs.ready == 'true'
@@ -93,7 +129,9 @@ jobs:
               "publish_enabled":True,"test_only":False,
               "date":day,"timezone":"Europe/Belgrade",
               "repository":"trag24-srbija/trag24-portal",
-              "github_run_id":os.environ["GITHUB_RUN_ID"],
+              "github_run_id":os.environ["PRODUCER_RUN_ID"],
+              "delivery_run_id":os.environ["GITHUB_RUN_ID"],
+              "artifact_id":int(os.environ["VIDEO_ARTIFACT_ID"]),
               "artifact_name":"TRAG24-VESTI-U-20","content_ready":1,
               "posts":[{
                   "id":key,"program":"2000","title":"TRAG 24 - VESTI U 20",
@@ -116,6 +154,8 @@ jobs:
           PY
         env:
           DATE_FOR_REELS: ${{ steps.media.outputs.day }}
+          PRODUCER_RUN_ID: ${{ steps.media.outputs.producer_run_id }}
+          VIDEO_ARTIFACT_ID: ${{ steps.media.outputs.artifact_id }}
       - name: Prosledi tri Reels objave u Make
         if: steps.media.outputs.ready == 'true'
         env:

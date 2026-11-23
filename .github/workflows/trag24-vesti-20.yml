@@ -341,7 +341,10 @@ jobs:
           TAG="vesti-$DATE-20"
           # Bez blokade po satu: raspored na GitHub-u moze kasniti.
           # Video se sme objaviti tek nakon uspesnog generisanja i kontrola.
-          FILES=(TRAG24-VESTI-U-20.mp4 opis.json titlovi.srt)
+          # Trajno povezivanje Release videa sa izvornim GitHub Actions izvršavanjem.
+          # Make mora dobiti ID OVE emisije, ne ID kasnijeg webhook-posrednika.
+          printf '{"date":"%s","producer_run_id":"%s","artifact_name":"TRAG24-VESTI-U-20"}\n' "$DATE" "$GITHUB_RUN_ID" > producer-run.json
+          FILES=(TRAG24-VESTI-U-20.mp4 opis.json titlovi.srt producer-run.json)
           COVER="program_output/TRAG24-20-$DATE.png"
           if [ -s "$COVER" ]; then
             FILES+=("$COVER")

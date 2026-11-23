@@ -18,6 +18,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: trag24-vesti-20
@@ -347,3 +348,6 @@ jobs:
           fi
           gh release edit "$TAG" --draft=false --latest=false
           echo "https://github.com/$GITHUB_REPOSITORY/releases/download/$TAG/TRAG24-VESTI-U-20.mp4"
+          # Tek posle uspesne objave gotovog MP4 aktiviraj Make Reels predaju.
+          # Make workflow cuva jedinstveni ID i ne salje istu emisiju drugi put.
+          gh workflow run trag24-vesti-20-make.yml --ref main || echo "::warning::Make automatsko pokretanje nije uspelo; rezervna satnica ce proveriti objavu."

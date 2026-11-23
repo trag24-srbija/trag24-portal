@@ -34,6 +34,8 @@ FEEDS = {
     # Ako se izvor privremeno ne otvara, obrada ga preskače bez prekida postojećih.
     'B92': 'https://www.b92.net/rss/b92/info',
     'B92 Sport': 'https://www.b92.net/rss/sport',
+    'Mozzart Sport': 'https://www.mozzartsport.com/rss/0.xml',
+    'Mondo Sport': 'https://mondo.rs/rss/644/Sport',
     'Euronews Srbija': 'https://www.euronews.rs/rss/srbija',
     'Mondo': 'https://mondo.rs/rss/632/Najnovije-vesti',
     'Republika': 'https://www.republika.rs/rss/najnovije-vesti',
@@ -59,6 +61,9 @@ FEEDS = {
     'Index Hrvatska': 'https://www.index.hr/rss',
     '24sata Hrvatska': 'https://www.24sata.hr/feeds/najnovije.xml',
 }
+
+
+SPORT_ONLY_SOURCES = {'B92 Sport', 'Mozzart Sport', 'Mondo Sport'}
 
 
 def category(title):
@@ -187,7 +192,7 @@ def main():
                 items[uid] = {
                     'id': uid, 'title': title[:220],
                     'summary': '',
-                    'category': category(title), 'region': region(title),
+                    'category': 'Sport' if source in SPORT_ONLY_SOURCES else category(title), 'region': region(title),
                     'source': source, 'source_url': link,
                     'published_at': date.isoformat(timespec='minutes'),
                     'verification_status': 'preneto_iz_izvora',

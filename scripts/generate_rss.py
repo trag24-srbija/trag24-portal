@@ -11,7 +11,7 @@ data = json.loads((root / "news.json").read_text(encoding="utf-8"))
 rss = ET.Element("rss", version="2.0")
 channel = ET.SubElement(rss, "channel")
 
-site = "https://trag24-srbija.github.io/trag24-portal/"
+site = "https://www.trag24.rs/"
 
 for tag, value in {
     "title": "TRAG 24 - Vesti",

@@ -29,6 +29,35 @@ FEEDS = {
     'Niške Vesti': 'https://niskevesti.rs/feed/',
     'Južne vesti': 'https://www.juznevesti.com/feed/',
 
+
+    # Proširenje 23.11.2026: RSS/Atom adrese proverene po formatu odgovora.
+    # Ako se izvor privremeno ne otvara, obrada ga preskače bez prekida postojećih.
+    'B92': 'https://www.b92.net/rss/b92/info',
+    'B92 Sport': 'https://www.b92.net/rss/sport',
+    'Euronews Srbija': 'https://www.euronews.rs/rss/srbija',
+    'Mondo': 'https://mondo.rs/rss/632/Najnovije-vesti',
+    'Republika': 'https://www.republika.rs/rss/najnovije-vesti',
+    'Espreso': 'https://www.espreso.co.rs/rss',
+    'Radar': 'https://radar.nova.rs/feed/',
+    'Nedeljnik': 'https://www.nedeljnik.rs/feed/',
+    'KRIK': 'https://www.krik.rs/feed/',
+    'CINS': 'https://www.cins.rs/feed/',
+    'Istinomer': 'https://www.istinomer.rs/feed/',
+    'Mašina': 'https://www.masina.rs/feed/',
+    'Peščanik': 'https://pescanik.net/feed/',
+    'Autonomija': 'https://autonomija.info/feed/',
+    'Cenzolovka': 'https://www.cenzolovka.rs/feed/',
+    'Nova ekonomija': 'https://novaekonomija.rs/feed/',
+    'SDCafe Smederevo': 'https://sdcafe.rs/feed/',
+    'OzonPress Čačak': 'https://www.ozonpress.net/feed/',
+    '013info Pančevo': 'https://013info.rs/feed/',
+    'TV Jasenica': 'https://tvjasenica.rs/feed/',
+    'Vijesti CG': 'https://www.vijesti.me/rss',
+    'Klix BiH': 'https://www.klix.ba/rss',
+    'N1 BiH': 'https://n1info.ba/feed/',
+    'N1 Hrvatska': 'https://n1info.hr/feed/',
+    'Index Hrvatska': 'https://www.index.hr/rss',
+    '24sata Hrvatska': 'https://www.24sata.hr/feeds/najnovije.xml',
 }
 
 

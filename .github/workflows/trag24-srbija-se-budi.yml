@@ -8,6 +8,11 @@ on:
         type: string
         required: false
         default: ''
+      approve_publish:
+        description: 'Odobri objavu pri rucnom pokretanju (podrazumevano samo nacrt)'
+        type: boolean
+        required: false
+        default: false
   schedule:
     - cron: '50 7 * * *'
       timezone: 'Europe/Belgrade'
@@ -60,11 +65,12 @@ jobs:
             morning_output/opis.json
             morning_output/slide-*.png
           retention-days: 7
-      - name: Napravi nacrt sa pojedinacnim fajlovima (bez slanja na mreze)
+      - name: Sacuvaj jutarnji video u GitHub Releases
         if: steps.video.outputs.ready == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TZ: Europe/Belgrade
+          MANUAL_APPROVED: ${{ inputs.approve_publish || false }}
         run: |
           set -euo pipefail
           DATE=$(python -c 'import json;print(json.load(open("morning_output/opis.json"))["datum"])')
@@ -75,3 +81,51 @@ jobs:
           else
             gh release create "$TAG" "${FILES[@]}" --draft --target "$GITHUB_SHA" --title "TRAG 24 - SRBIJA SE BUDI - $DATE" --notes "Jutarnji video iz objavljenih analiza sa vise izvora. Nacrt za pregled. Nije objavljeno na drustvenim mrezama." --latest=false
           fi
+          # A scheduled, source-checked edition must be publicly downloadable by Make.
+          # Manual preview never publishes unless explicitly approved.
+          if [ "$GITHUB_EVENT_NAME" = "schedule" ] || { [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ] && [ "$MANUAL_APPROVED" = "true" ]; }; then
+            gh release edit "$TAG" --draft=false --latest=false --notes "Jutarnja emisija SRBIJA SE BUDI ($DATE); video dostupan za autorizovanu objavu."
+            test "$(gh release view "$TAG" --json isDraft --jq '.isDraft')" = false
+            echo "Morning MP4 public: https://github.com/$GITHUB_REPOSITORY/releases/download/$TAG/SRBIJA-SE-BUDI.mp4"
+          else
+            echo "Morning video retained as private draft; no public Make calls."
+          fi
+
+      - name: Posalji odobrenu jutarnju emisiju Make kanalima
+        if: steps.video.outputs.ready == 'true'
+        env:
+          FACEBOOK_HOOK: ${{ secrets.MAKE_REELS_TEST_WEBHOOK_URL }}
+          INSTAGRAM_HOOK: ${{ secrets.MAKE_INSTAGRAM_REELS_WEBHOOK_URL }}
+          TIKTOK_HOOK: ${{ secrets.MAKE_TIKTOK_REELS_WEBHOOK_URL }}
+          MANUAL_APPROVED: ${{ inputs.approve_publish || false }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          DATE=$(python -c 'import json;print(json.load(open("morning_output/opis.json"))["datum"])')
+          VIDEO=morning_output/SRBIJA-SE-BUDI.mp4
+          META=morning_output/opis.json
+          PACKET=morning_output/TRAG24-MAKE-08-$DATE.json
+          APPROVAL=()
+          if [ "$GITHUB_EVENT_NAME" = "schedule" ] || { [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ] && [ "$MANUAL_APPROVED" = "true" ]; }; then
+            APPROVAL=(--approved)
+          fi
+          python scripts/prepare_make_morning_payload.py --date "$DATE" --metadata "$META" --video "$VIDEO" --github-run-id "$GITHUB_RUN_ID" --out "$PACKET" "${APPROVAL[@]}"
+          if [ "${#APPROVAL[@]}" -eq 0 ]; then
+            echo "Preview-only; webhooks not called."
+            exit 0
+          fi
+          if [ -z "${FACEBOOK_HOOK:-}" ] || [ -z "${INSTAGRAM_HOOK:-}" ] || [ -z "${TIKTOK_HOOK:-}" ]; then
+            echo '::error::One or more Make webhooks are missing; no cross-platform publishing attempted.'
+            exit 1
+          fi
+          send_to_make() {
+            local channel="$1" hook="$2" output="$3" code
+            code=$(curl --silent --show-error --max-time 30 --retry 0 -X POST -H 'Content-Type: application/json' --data-binary @"$PACKET" -o "$output" -w '%{http_code}' "$hook")
+            case "$code" in
+              200|201|202) echo "Make $channel accepted morning payload (HTTP $code); downstream platform posting not verified.";;
+              *) echo "::error::Make $channel rejected morning payload: HTTP $code"; exit 1;;
+            esac
+          }
+          send_to_make facebook "$FACEBOOK_HOOK" /tmp/trag24-morning-facebook.json
+          send_to_make instagram "$INSTAGRAM_HOOK" /tmp/trag24-morning-instagram.json
+          send_to_make tiktok "$TIKTOK_HOOK" /tmp/trag24-morning-tiktok.json

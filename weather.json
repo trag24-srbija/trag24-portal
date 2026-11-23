@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-23T14:10:18.661247+00:00",
+  "updated_at": "2026-11-23T20:29:03.225240+00:00",
   "source": "MET Norway",
   "source_url": "https://api.met.no/",
   "license": "CC BY 4.0",
@@ -11,10 +11,10 @@
       "forecast": [
         {
           "date": "2026-11-23",
-          "min_c": 1,
-          "max_c": 6,
-          "condition": "Oblačno",
-          "icon": "☁️"
+          "min_c": 2,
+          "max_c": 2,
+          "condition": "Vedro",
+          "icon": "☀️"
         },
         {
           "date": "2026-11-24",
@@ -31,7 +31,7 @@
           "icon": "☁️"
         }
       ],
-      "retrieved_at": "2026-11-23T14:10:12.147962+00:00"
+      "retrieved_at": "2026-11-23T20:28:56.235399+00:00"
     },
     {
       "name": "Novi Sad",
@@ -39,7 +39,7 @@
         {
           "date": "2026-11-23",
           "min_c": 1,
-          "max_c": 6,
+          "max_c": 2,
           "condition": "Vedro",
           "icon": "☀️"
         },
@@ -47,8 +47,8 @@
           "date": "2026-11-24",
           "min_c": -1,
           "max_c": 6,
-          "condition": "Vedro",
-          "icon": "☀️"
+          "condition": "Delimično oblačno",
+          "icon": "🌤️"
         },
         {
           "date": "2026-11-25",
@@ -58,17 +58,17 @@
           "icon": "☁️"
         }
       ],
-      "retrieved_at": "2026-11-23T14:10:12.902494+00:00"
+      "retrieved_at": "2026-11-23T20:28:57.027343+00:00"
     },
     {
       "name": "Niš",
       "forecast": [
         {
           "date": "2026-11-23",
-          "min_c": 1,
-          "max_c": 5,
-          "condition": "Oblačno",
-          "icon": "☁️"
+          "min_c": 2,
+          "max_c": 3,
+          "condition": "Delimično oblačno",
+          "icon": "🌤️"
         },
         {
           "date": "2026-11-24",
@@ -85,61 +85,61 @@
           "icon": "☁️"
         }
       ],
-      "retrieved_at": "2026-11-23T14:10:13.659663+00:00"
+      "retrieved_at": "2026-11-23T20:28:57.683506+00:00"
     },
     {
       "name": "Kragujevac",
       "forecast": [
         {
           "date": "2026-11-23",
-          "min_c": 1,
-          "max_c": 6,
+          "min_c": 2,
+          "max_c": 3,
           "condition": "Delimično oblačno",
           "icon": "🌤️"
         },
         {
           "date": "2026-11-24",
-          "min_c": -1,
+          "min_c": -2,
           "max_c": 6,
-          "condition": "Vedro",
-          "icon": "☀️"
-        },
-        {
-          "date": "2026-11-25",
-          "min_c": -2,
-          "max_c": 9,
-          "condition": "Oblačno",
-          "icon": "☁️"
-        }
-      ],
-      "retrieved_at": "2026-11-23T14:10:14.370481+00:00"
-    },
-    {
-      "name": "Subotica",
-      "forecast": [
-        {
-          "date": "2026-11-23",
-          "min_c": 1,
-          "max_c": 5,
-          "condition": "Vedro",
-          "icon": "☀️"
-        },
-        {
-          "date": "2026-11-24",
-          "min_c": -2,
-          "max_c": 5,
           "condition": "Vedro",
           "icon": "☀️"
         },
         {
           "date": "2026-11-25",
           "min_c": -3,
+          "max_c": 9,
+          "condition": "Oblačno",
+          "icon": "☁️"
+        }
+      ],
+      "retrieved_at": "2026-11-23T20:28:58.523078+00:00"
+    },
+    {
+      "name": "Subotica",
+      "forecast": [
+        {
+          "date": "2026-11-23",
+          "min_c": 0,
+          "max_c": 1,
+          "condition": "Vedro",
+          "icon": "☀️"
+        },
+        {
+          "date": "2026-11-24",
+          "min_c": -2,
+          "max_c": 5,
+          "condition": "Vedro",
+          "icon": "☀️"
+        },
+        {
+          "date": "2026-11-25",
+          "min_c": -2,
           "max_c": 3,
           "condition": "Oblačno",
           "icon": "☁️"
         }
       ],
-      "retrieved_at": "2026-11-23T14:10:15.093515+00:00"
+      "retrieved_at": "2026-11-23T20:28:59.175999+00:00"
     },
     {
       "name": "Smederevo",
@@ -147,9 +147,9 @@
         {
           "date": "2026-11-23",
           "min_c": 2,
-          "max_c": 7,
-          "condition": "Oblačno",
-          "icon": "☁️"
+          "max_c": 3,
+          "condition": "Vedro",
+          "icon": "☀️"
         },
         {
           "date": "2026-11-24",
@@ -166,17 +166,17 @@
           "icon": "☁️"
         }
       ],
-      "retrieved_at": "2026-11-23T14:10:15.711969+00:00"
+      "retrieved_at": "2026-11-23T20:28:59.829157+00:00"
     },
     {
       "name": "Velika Plana",
       "forecast": [
         {
           "date": "2026-11-23",
-          "min_c": 1,
-          "max_c": 6,
-          "condition": "Oblačno",
-          "icon": "☁️"
+          "min_c": 2,
+          "max_c": 3,
+          "condition": "Delimično oblačno",
+          "icon": "🌤️"
         },
         {
           "date": "2026-11-24",
@@ -187,23 +187,23 @@
         },
         {
           "date": "2026-11-25",
-          "min_c": -4,
+          "min_c": -3,
           "max_c": 8,
           "condition": "Oblačno",
           "icon": "☁️"
         }
       ],
-      "retrieved_at": "2026-11-23T14:10:16.482660+00:00"
+      "retrieved_at": "2026-11-23T20:29:00.919285+00:00"
     },
     {
       "name": "Kraljevo",
       "forecast": [
         {
           "date": "2026-11-23",
-          "min_c": 1,
-          "max_c": 6,
-          "condition": "Delimično oblačno",
-          "icon": "🌤️"
+          "min_c": 2,
+          "max_c": 3,
+          "condition": "Vedro",
+          "icon": "☀️"
         },
         {
           "date": "2026-11-24",
@@ -220,17 +220,17 @@
           "icon": "☁️"
         }
       ],
-      "retrieved_at": "2026-11-23T14:10:17.248079+00:00"
+      "retrieved_at": "2026-11-23T20:29:01.572339+00:00"
     },
     {
       "name": "Užice",
       "forecast": [
         {
           "date": "2026-11-23",
-          "min_c": -1,
-          "max_c": 4,
-          "condition": "Oblačno",
-          "icon": "☁️"
+          "min_c": 0,
+          "max_c": 1,
+          "condition": "Delimično oblačno",
+          "icon": "🌤️"
         },
         {
           "date": "2026-11-24",
@@ -241,40 +241,40 @@
         },
         {
           "date": "2026-11-25",
-          "min_c": -4,
+          "min_c": -3,
           "max_c": 8,
           "condition": "Oblačno",
           "icon": "☁️"
         }
       ],
-      "retrieved_at": "2026-11-23T14:10:17.891766+00:00"
+      "retrieved_at": "2026-11-23T20:29:02.389125+00:00"
     },
     {
       "name": "Novi Pazar",
       "forecast": [
         {
           "date": "2026-11-23",
-          "min_c": -2,
-          "max_c": 4,
-          "condition": "Oblačno",
-          "icon": "☁️"
+          "min_c": -1,
+          "max_c": 2,
+          "condition": "Delimično oblačno",
+          "icon": "🌤️"
         },
         {
           "date": "2026-11-24",
-          "min_c": -3,
+          "min_c": -2,
           "max_c": 6,
           "condition": "Vedro",
           "icon": "☀️"
         },
         {
           "date": "2026-11-25",
-          "min_c": -3,
+          "min_c": -2,
           "max_c": 7,
           "condition": "Oblačno",
           "icon": "☁️"
         }
       ],
-      "retrieved_at": "2026-11-23T14:10:18.661176+00:00"
+      "retrieved_at": "2026-11-23T20:29:03.225177+00:00"
     }
   ]
 }

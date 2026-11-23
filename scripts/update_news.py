@@ -8,6 +8,7 @@ import urllib.request
 import xml.etree.ElementTree as ET
 from pathlib import Path
 from urllib.parse import urlparse
+from zoneinfo import ZoneInfo
 
 FILE = Path(__file__).resolve().parent.parent / 'news.json'
 FEEDS = {
@@ -183,8 +184,15 @@ def main():
                         continue
                 if date.tzinfo is None:
                     date = date.replace(tzinfo=dt.timezone.utc)
+                # Mozzart Sport RSS oznacava lokalno vreme kao UTC (primer
+                # 23.11.2026: izvor 15:12 -> 16:12 u prikazu Srbije).
+                # Samo za taj izvor UTC-oznacenu vrednost tumacimo kao
+                # lokalno vreme Srbije, uz automatski zimski/letnji pomeraj.
+                if source == 'Mozzart Sport' and date.utcoffset() == dt.timedelta(0):
+                    date = date.replace(tzinfo=ZoneInfo('Europe/Belgrade'))
                 date = date.astimezone(dt.timezone.utc)
-                if not now - dt.timedelta(days=3) <= date <= now + dt.timedelta(hours=2):
+                # Ne prihvataj vremenske oznake daleko u buducnosti.
+                if not now - dt.timedelta(days=3) <= date <= now + dt.timedelta(minutes=2):
                     continue
                 uid = hashlib.sha256(link.encode()).hexdigest()[:20]
                 if uid in items:

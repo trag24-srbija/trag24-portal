@@ -11,10 +11,10 @@ on:
         type: boolean
         default: false
   schedule:
-    - cron: '15 19 * * *'
-      timezone: 'Europe/Belgrade'
-    - cron: '45 19 * * *'
-      timezone: 'Europe/Belgrade'
+    # GitHub cron koristi UTC: obe mogucnosti zimskog/letnjeg sata.
+    # Samo lokalna 19:40 i 20:15 prolaze proveru u koraku ispod.
+    - cron: '40 17,18 * * *'
+    - cron: '15 18,19 * * *'
 
 permissions:
   contents: write
@@ -74,6 +74,11 @@ jobs:
           OFFICIAL=false
           if [ "$GITHUB_EVENT_NAME" = "schedule" ]; then
             OFFICIAL=true
+            LOCAL_HHMM=$(date +%H%M)
+            if [ "$LOCAL_HHMM" -lt 1930 ] || [ "$LOCAL_HHMM" -gt 2030 ]; then
+              RUN=false
+              echo "Preskocen UTC termin izvan vecernjeg prozora Srbije ($LOCAL_HHMM)."
+            fi
             
             if gh release view "$TAG" --json assets,isDraft --jq '(.isDraft == false) and any(.assets[]; .name == "TRAG24-VESTI-U-20.mp4" and .size > 0) and any(.assets[]; .name == "opis.json" and .size > 0)' 2>/dev/null | grep -qx true; then
               RUN=false

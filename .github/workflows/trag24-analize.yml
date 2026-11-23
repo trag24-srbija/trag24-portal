@@ -3,6 +3,10 @@ name: TRAG 24 - automatska obrada analiza
 
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/update_analize.py'
+      - '.github/workflows/trag24-analize.yml'
   schedule:
         - cron: '15 * * * *'
 
@@ -49,5 +53,6 @@ jobs:
           if [ -d slike ]; then git add -A slike/; fi
           if ! git diff --cached --quiet; then
             git commit -m "TRAG 24: azurirane analize"
-            git push
+            git pull --rebase origin main
+            git push origin HEAD:main
           fi

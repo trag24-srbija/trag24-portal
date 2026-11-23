@@ -161,12 +161,15 @@ Pravila:
 - Ne proglašavaj nikoga krivim.
 - Ako izvori nisu saglasni, objasni razliku.
 - Za sportske vesti jasno razlikuj ostvarene rezultate od najava, transfer glasina i procena.
+- Za zabavu odvajaj zvanične izjave i proverene događaje od tračeva, anonimnih navoda i nepotvrđenih tvrdnji o privatnom životu.
+- Za vest iz zabave ili estrade ne objavljuj privatne detalje bez jasne javne relevantnosti i pouzdanih izvora.
 - Za vremenske prognoze navedi DATUM i PODRUČJE na koje se prognoza odnosi. Prognoza nije izmereno ili već ostvareno stanje.
 - Ako dve vremenske prognoze nisu za isto područje i period, NE upoređuj ih kao jednu vest. Vrati {"publish": false}.
 - Bez preuveličavanja meteoroloških upozorenja. Za zvanična upozorenja merodavan je RHMZ.
 - Ne prepisuj duge delove tuđih članaka.
 - Ne izmišljaj hronologiju ako nije poznata.
 - Ne dodaj izvore koji nisu dostavljeni.
+- Odredi geografski fokus: "Srbija" za događaj u Srbiji ili čiji je glavni fokus Srbija, "Svet" za međunarodne događaje van Srbije, inače "Neodređeno". Ne određuj region prema državi medijskog izvora.
 - Ako tekstovi ne govore o istom događaju
   ili nema dovoljno pouzdanih podataka,
   vrati {"publish": false}.
@@ -177,6 +180,7 @@ validan JSON sa sledećim poljima:
 {
   "publish": true,
   "title": "Jasan informativan naslov",
+  "region": "Srbija",
   "sections": [
     "ŠTA SE DOGODILO: ...",
     "HRONOLOGIJA: ...",
@@ -259,9 +263,14 @@ Ukupno približno 350 do 550 reči.
         ):
             return None
 
+        region_value = answer.get("region", "Neodređeno")
+        if region_value not in ("Srbija", "Svet"):
+            region_value = "Neodređeno"
+
         return {
             "title": title.strip()[:180],
-            "sections": sections
+            "sections": sections,
+            "region": region_value,
         }
 
     except Exception as exc:
@@ -292,7 +301,7 @@ def main():
         if item.get("category") not in (
             "Politika", "Hronika",
             "Ekonomija", "Društvo",
-            "Sport", "Vreme"
+            "Sport", "Vreme", "Zabava"
         ):
             continue
 
@@ -432,6 +441,7 @@ def main():
             "datum": local.strftime("%Y-%m-%d"),
             "objavljeno_u": now.isoformat(),
             "kategorija": group["category"],
+            "region": result["region"],
             "naslov": result["title"],
             "slika": f"slike/{uid}.png",
             "autor": "TRAG 24 — AI pregled izvora",

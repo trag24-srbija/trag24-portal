@@ -1,6 +1,61 @@
 {
-  "updated_at": "2026-11-24T01:51:31.765700+00:00",
+  "updated_at": "2026-11-24T02:43:39.027096+00:00",
   "articles": [
+    {
+      "id": "d56aa5f6899a85031c2e",
+      "title": "Srednji kurs dinara za evro u utorak 117,6503 dinara",
+      "summary": "",
+      "category": "Ekonomija",
+      "region": "Srbija",
+      "source": "Telegraf",
+      "source_url": "https://biznis.telegraf.rs/info-biz/4438417-srednji-kurs-dinara-za-evro-u-utorak-1176503-dinara",
+      "published_at": "2026-11-24T02:30+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "3fb55fb4478c9e627cc2",
+      "title": "Haos na Kanarskim ostrvima ne jenjava: Više od 400 migranata stiglo za dan",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Republika",
+      "source_url": "https://www.republika.rs/svet/svet/785004/migranti-kanarska-ostrva-spanija",
+      "published_at": "2026-11-24T02:30+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "c29026770511af99af52",
+      "title": "Salata \"Sedmo nebo“ osvaja na prvi zalogaj, a gotova je za 15 minuta: Kremasta, zdrava, sjajna za probavu!",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Srbija",
+      "source": "Espreso",
+      "source_url": "https://www.espreso.co.rs/lifestyle/zivot/1631309/salata-sedmo-nebo-osvaja-na-prvi-zalogaj-a-gotova-je-za-15-minuta-kremasta-zdrava-sjajna-za-probavu",
+      "published_at": "2026-11-24T02:00+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "88ed143ae8237ed9eb86",
+      "title": "Linta: Napadi na Srbe i njihovu imovinu FBiH ne jenjavaju, nadležni ćute",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Telegraf",
+      "source_url": "https://www.telegraf.rs/4438414-linta-napadi-na-srbe-i-njihovu-imovinu-fbih-ne-jenjavaju-nadlezni-cute",
+      "published_at": "2026-11-24T02:00+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "5ff51b345a8c3b6a8b87",
+      "title": "Vatrogascima otežan pristup u naseljima sa zbijenim kućama i uskim ulicama: Važno upozorenje za građane, ove greške otežavaju gašenje požara",
+      "summary": "",
+      "category": "Hronika",
+      "region": "Neodređeno",
+      "source": "Republika",
+      "source_url": "https://www.republika.rs/hronika/jugohronika/784991/crna-gora-pozar-vatrogasci-apel",
+      "published_at": "2026-11-24T02:00+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
     {
       "id": "324e5f3e7e782bfe46db",
       "title": "STIŽE SPAS ZA BASKONIJU? Francuski centar potpisao do 2030, klub sa dna Evrolige povukao važan potez!",
@@ -79,28 +134,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "6b9470a4b1087b6d1378",
-      "title": "Šta da uradite kada nemir uđe u kuću? Monahinja Magdalina je spomenula najbitnije stvari",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Espreso",
-      "source_url": "https://www.espreso.co.rs/vesti/drustvo/1631276/monahinja-magdalina-o-nemiru-u-kuci",
-      "published_at": "2026-11-24T01:00+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "9f49131c7ea6358e7cf6",
-      "title": "Francuska privreda sve više usporava: Raste rizik od pada u tehničku recesiju",
-      "summary": "",
-      "category": "Ekonomija",
-      "region": "Svet",
-      "source": "Telegraf",
-      "source_url": "https://biznis.telegraf.rs/info-biz/4438210-francuska-privreda-sve-vise-usporava-raste-rizik-od-pada-u-tehnicku-recesiju",
-      "published_at": "2026-11-24T01:00+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "247a2784391c24664e07",
       "title": "OVO SE DESILO PRVI PUT: Severnokorejski brod izazvao uzbunu u Žutom moru",
       "summary": "",
@@ -112,6 +145,17 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
+      "id": "6b9470a4b1087b6d1378",
+      "title": "Šta da uradite kada nemir uđe u kuću? Monahinja Magdalina je spomenula najbitnije stvari",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Espreso",
+      "source_url": "https://www.espreso.co.rs/vesti/drustvo/1631276/monahinja-magdalina-o-nemiru-u-kuci",
+      "published_at": "2026-11-24T01:00+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
       "id": "66dd457964c12c906a70",
       "title": "Najkišovitije naseljeno mjesto u Evropi je na Orjenu: U Crkvicama padne i do pet metara kiše godišnje",
       "summary": "",
@@ -119,6 +163,17 @@
       "region": "Neodređeno",
       "source": "N1 BiH",
       "source_url": "https://n1info.ba/magazin/putovanja/najkisovitije-naseljeno-mjesto-u-evropi-je-na-orjenu-u-crkvicama-padne-i-do-pet-metara-kise-godisnje/",
+      "published_at": "2026-11-24T01:00+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "9f49131c7ea6358e7cf6",
+      "title": "Francuska privreda sve više usporava: Raste rizik od pada u tehničku recesiju",
+      "summary": "",
+      "category": "Ekonomija",
+      "region": "Svet",
+      "source": "Telegraf",
+      "source_url": "https://biznis.telegraf.rs/info-biz/4438210-francuska-privreda-sve-vise-usporava-raste-rizik-od-pada-u-tehnicku-recesiju",
       "published_at": "2026-11-24T01:00+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -266,17 +321,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "7484d803a0ece7910228",
-      "title": "Gde su radnici najsrećniji na svetu? Objavljena nova globalna lista, Japan na samom dnu",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Svet",
-      "source": "Telegraf",
-      "source_url": "https://biznis.telegraf.rs/info-biz/4438032-gde-su-radnici-najsrecniji-na-svetu-objavljena-nova-globalna-lista-japan-na-samom-dnu",
-      "published_at": "2026-11-24T00:00+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "df560a8887c862d94bda",
       "title": "VELIKI POŽAR U RESTORANU KOD MOSTARA: Vatrogasci se celu noć borili sa stihijom (VIDEO)",
       "summary": "",
@@ -295,6 +339,17 @@
       "region": "Svet",
       "source": "Kurir",
       "source_url": "https://www.kurir.rs/planeta/10170881/sad-uvele-nove-sankcije-iranskom-paralelnom-bankarskom-sistemu",
+      "published_at": "2026-11-24T00:00+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "7484d803a0ece7910228",
+      "title": "Gde su radnici najsrećniji na svetu? Objavljena nova globalna lista, Japan na samom dnu",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Svet",
+      "source": "Telegraf",
+      "source_url": "https://biznis.telegraf.rs/info-biz/4438032-gde-su-radnici-najsrecniji-na-svetu-objavljena-nova-globalna-lista-japan-na-samom-dnu",
       "published_at": "2026-11-24T00:00+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -442,17 +497,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "c7360e4dea9ad07cd550",
-      "title": "Poznati klub smenio trenera i legendu, nema zaštićenih kad ide loše",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Telegraf",
-      "source_url": "https://www.telegraf.rs/sport/fudbal/4438319-poznati-klub-smenio-trenera-i-legendu-nema-zasticenih-kad-ide-lose",
-      "published_at": "2026-11-23T23:32+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "8b3e47c7bd8b3e646737",
       "title": "Tramp nije smeo da izgubi, već je počelo! CNN objavio poverljivo pismo: Povučen radikalan potez zbog Ukrajine",
       "summary": "",
@@ -538,17 +582,6 @@
       "source": "Blic",
       "source_url": "https://www.blic.rs/vesti/svet/haker-koji-je-ukrao-snimke-gta-vi-osudjen-na-sedam-godina-zatvora-pa-pusten-na/jws6pz0",
       "published_at": "2026-11-23T23:27+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "315a6b384efcc84edbc8",
-      "title": "\"Uskoro neće biti ovako prelagan!\" Miona o ulasku u Elitu, otkrila datum i priznala šta će uraditi kad ga vidi",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Telegraf",
-      "source_url": "https://www.telegraf.rs/jetset/rijaliti/4438497-uskoro-nece-biti-ovako-prelagan-miona-o-ulasku-u-elitu-otkrila-datum-i-priznala-sta-ce-uraditi-kad-ga-vidi",
-      "published_at": "2026-11-23T23:22+00:00",
       "verification_status": "preneto_iz_izvora"
     },
     {
@@ -706,17 +739,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "2c61d083ffa7e8bdfc47",
-      "title": "HOROSKOP ZA 24. NOVEMBAR: Ovnove zapostavlja parter, Rakovima povoljan period u ljubavi, a ovaj znak očekuje poznanstvo",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Republika",
-      "source_url": "https://www.republika.rs/vesti/drustvo/785121/horoskop-za-24-novembar-astro",
-      "published_at": "2026-11-23T23:01+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "158edb10997f85ecd84c",
       "title": "Dnevni horoskop za utorak 24. studenoga: Bikovi donose bitne odluke, Jarci zadivljuju šarmom",
       "summary": "",
@@ -724,6 +746,17 @@
       "region": "Neodređeno",
       "source": "24sata Hrvatska",
       "source_url": "https://www.24sata.hr/lifestyle/dnevni-horoskop-za-utorak-24-studenoga-bikovi-donose-bitne-odluke-jarci-zadivljuju-sarmom-1170394",
+      "published_at": "2026-11-23T23:01+00:00",
+      "verification_status": "preneto_iz_izvora"
+    },
+    {
+      "id": "2c61d083ffa7e8bdfc47",
+      "title": "HOROSKOP ZA 24. NOVEMBAR: Ovnove zapostavlja parter, Rakovima povoljan period u ljubavi, a ovaj znak očekuje poznanstvo",
+      "summary": "",
+      "category": "Društvo",
+      "region": "Neodređeno",
+      "source": "Republika",
+      "source_url": "https://www.republika.rs/vesti/drustvo/785121/horoskop-za-24-novembar-astro",
       "published_at": "2026-11-23T23:01+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -1091,17 +1124,6 @@
       "verification_status": "preneto_iz_izvora"
     },
     {
-      "id": "d657d3ff7e19a96dc1d2",
-      "title": "Ispovest Dejana Koturovića: Ovako sam sprečio Vardu da zadavi Dejana Tomaševića (VIDEO)",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Republika",
-      "source_url": "https://www.republika.rs/sport/sport/785133/dejan-koturovic-dejan-tomasevic-ratko-varda",
-      "published_at": "2026-11-23T22:40+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
       "id": "758892304f444d2c9b2a",
       "title": "Гујон разрешен са функције в. д. директора Канцеларије за јавну и културну дипломатију",
       "summary": "",
@@ -1186,17 +1208,6 @@
       "region": "Svet",
       "source": "Index Hrvatska",
       "source_url": "https://www.index.hr/vijesti/clanak/sad-trazi-izrucenje-narkobosa-meksiko-mu-prvo-zeli-suditi/2860111.aspx",
-      "published_at": "2026-11-23T22:36+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "8d613522f2f768284f54",
-      "title": "Uhapšen nećak poslanika tzv. Kosova: Na hard disku imao 2,7 miliona brojeva platnih kartica, FBI razotkrio neverovatnu prevaru!",
-      "summary": "",
-      "category": "Hronika",
-      "region": "Srbija",
-      "source": "Republika",
-      "source_url": "https://www.republika.rs/svet/region/785132/sad-uhapsen-hektor-avdilji",
       "published_at": "2026-11-23T22:36+00:00",
       "verification_status": "preneto_iz_izvora"
     },
@@ -1737,17 +1748,6 @@
       "source": "N1 BiH",
       "source_url": "https://n1info.ba/vijesti/sta-je-ovo-monarhija-izbor-igora-dodika-izazvao-reakcije-dok-njegov-otac-najavljuje-jos-snazniju-vlast/",
       "published_at": "2026-11-23T21:53+00:00",
-      "verification_status": "preneto_iz_izvora"
-    },
-    {
-      "id": "653ec47d682b0659b534",
-      "title": "\"ZBOG OVOGA VAM RASTE MASNOĆA U KRVI\": Kardiolozi upozorili na 3 NAVIKE koji Srbi praktikuju",
-      "summary": "",
-      "category": "Društvo",
-      "region": "Neodređeno",
-      "source": "Espreso",
-      "source_url": "https://www.espreso.co.rs/lifestyle/zivot/1631398/kardiolozi-o-masnoci-u-krvi",
-      "published_at": "2026-11-23T21:50+00:00",
       "verification_status": "preneto_iz_izvora"
     },
     {

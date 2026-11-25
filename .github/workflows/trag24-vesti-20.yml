@@ -16,6 +16,8 @@ on:
     - cron: '40 17,18 * * *'
     - cron: '15 18,19 * * *'
     - cron: '45 18,19 * * *'
+    - cron: '10 20 * * *'
+    - cron: '10 21 * * *'
 
 permissions:
   contents: write
@@ -26,6 +28,36 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  provera-izdanja:
+    if: github.event_name == 'schedule' && (github.event.schedule == '10 20 * * *' || github.event.schedule == '10 21 * * *')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - name: Proveri video i opis zvaničnog izdanja
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          TZ: Europe/Belgrade
+          SCHEDULE: ${{ github.event.schedule }}
+        run: |
+          set -euo pipefail
+          case "$(date +%z):$SCHEDULE" in
+            '+0200:10 20 * * *'|'+0100:10 21 * * *') ;;
+            *) exit 0 ;;
+          esac
+          tag="vesti-$(date +%F)-20"
+          if ! release=$(gh release view "$tag" --json isDraft,assets); then
+            echo "::error title=Vesti u 20::Izdanje $tag nije dostupno na GitHub-u. Proveriti da li je izrada završena i da li je GitHub dostupan."
+            exit 1
+          fi
+          if ! jq -e '.isDraft == false and any(.assets[]; .name == "TRAG24-VESTI-U-20.mp4" and .size > 0) and any(.assets[]; .name == "opis.json" and .size > 0)' <<< "$release" >/dev/null; then
+            echo "::error title=Vesti u 20::Izdanje $tag je nacrt ili mu nedostaje ispravan video ili opis."
+            exit 1
+          fi
+          echo "Izdanje $tag ima video i opis. Status objava na mrežama proverava se zasebno."
+
   provera-sablona:
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
@@ -55,7 +87,7 @@ jobs:
           print('OK: Python i premium natpisi')
           PY
   vesti:
-    if: github.event_name != 'push' || contains(github.event.head_commit.message, '[emit-vesti-20-2026-11-23]')
+    if: github.event.schedule != '10 20 * * *' && github.event.schedule != '10 21 * * *' && (github.event_name != 'push' || contains(github.event.head_commit.message, '[emit-vesti-20-2026-11-23]'))
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:

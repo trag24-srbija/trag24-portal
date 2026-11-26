@@ -101,7 +101,7 @@ def published(day, hour):
         return []
     data = json.loads(DATA.read_text(encoding="utf-8"))
     end = dt.datetime.combine(day, dt.time(int(hour), 0), TZ)
-    start = end - dt.timedelta(hours=72 if hour == "14" else 42)
+    start = dt.datetime.combine(day, dt.time.min, TZ) if hour == "14" else end - dt.timedelta(hours=42)
     result = []
     for a in data.get("analize", []):
         if not isinstance(a, dict) or a.get("status") != "objavljeno":
@@ -130,6 +130,13 @@ def published(day, hour):
         desc = clean_summary(a)
         if not desc:
             continue
+        if hour == "14":
+            # An analysis can be published today even when its source story is old.
+            text = title + " " + desc
+            years = re.findall(r"\b(?:19|20)\d{2}\b", text)
+            relative_time = re.search(r"\b(?:danas|juče|jučer|sutra|ov(?:e|oj) godine|ovoj godini)\b", text, re.I)
+            if relative_time and any(int(year) < day.year for year in years):
+                continue
         result.append((stamp, {
             "published_date": stamp.date().isoformat(),
             "title": title, "summary": desc, "sources": hosts[:3],

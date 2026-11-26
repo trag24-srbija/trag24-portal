@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-26T02:41:00.407326+00:00",
+  "updated_at": "2026-11-26T08:49:01.023449+00:00",
   "source": "MET Norway",
   "source_url": "https://api.met.no/",
   "license": "CC BY 4.0",
@@ -13,8 +13,8 @@
           "date": "2026-11-26",
           "min_c": 4,
           "max_c": 8,
-          "condition": "Kiša",
-          "icon": "🌧️"
+          "condition": "Delimično oblačno",
+          "icon": "🌤️"
         },
         {
           "date": "2026-11-27",
@@ -25,13 +25,13 @@
         },
         {
           "date": "2026-11-28",
-          "min_c": 4,
-          "max_c": 6,
+          "min_c": 3,
+          "max_c": 5,
           "condition": "Kiša",
           "icon": "🌧️"
         }
       ],
-      "retrieved_at": "2026-11-26T02:40:54.078983+00:00"
+      "retrieved_at": "2026-11-26T08:48:51.728801+00:00"
     },
     {
       "name": "Novi Sad",
@@ -39,13 +39,13 @@
         {
           "date": "2026-11-26",
           "min_c": 5,
-          "max_c": 9,
+          "max_c": 10,
           "condition": "Oblačno",
           "icon": "☁️"
         },
         {
           "date": "2026-11-27",
-          "min_c": 4,
+          "min_c": 3,
           "max_c": 6,
           "condition": "Oblačno",
           "icon": "☁️"
@@ -53,46 +53,46 @@
         {
           "date": "2026-11-28",
           "min_c": 3,
-          "max_c": 6,
+          "max_c": 4,
           "condition": "Kiša",
           "icon": "🌧️"
         }
       ],
-      "retrieved_at": "2026-11-26T02:40:54.637643+00:00"
+      "retrieved_at": "2026-11-26T08:48:52.629218+00:00"
     },
     {
       "name": "Niš",
       "forecast": [
         {
           "date": "2026-11-26",
-          "min_c": 1,
-          "max_c": 11,
-          "condition": "Kiša",
-          "icon": "🌧️"
+          "min_c": 4,
+          "max_c": 9,
+          "condition": "Oblačno",
+          "icon": "☁️"
         },
         {
           "date": "2026-11-27",
-          "min_c": 5,
+          "min_c": 4,
           "max_c": 13,
           "condition": "Oblačno",
           "icon": "☁️"
         },
         {
           "date": "2026-11-28",
-          "min_c": 1,
+          "min_c": 0,
           "max_c": 6,
-          "condition": "Jaka kiša",
+          "condition": "Kiša",
           "icon": "🌧️"
         }
       ],
-      "retrieved_at": "2026-11-26T02:40:55.325551+00:00"
+      "retrieved_at": "2026-11-26T08:48:53.592384+00:00"
     },
     {
       "name": "Kragujevac",
       "forecast": [
         {
           "date": "2026-11-26",
-          "min_c": 5,
+          "min_c": 7,
           "max_c": 11,
           "condition": "Oblačno",
           "icon": "☁️"
@@ -106,20 +106,20 @@
         },
         {
           "date": "2026-11-28",
-          "min_c": 3,
+          "min_c": 2,
           "max_c": 5,
-          "condition": "Jaka kiša",
-          "icon": "🌧️"
+          "condition": "Susnežica",
+          "icon": "🌨️"
         }
       ],
-      "retrieved_at": "2026-11-26T02:40:56.040467+00:00"
+      "retrieved_at": "2026-11-26T08:48:54.386195+00:00"
     },
     {
       "name": "Subotica",
       "forecast": [
         {
           "date": "2026-11-26",
-          "min_c": 2,
+          "min_c": 3,
           "max_c": 6,
           "condition": "Oblačno",
           "icon": "☁️"
@@ -127,19 +127,19 @@
         {
           "date": "2026-11-27",
           "min_c": 2,
-          "max_c": 6,
-          "condition": "Oblačno",
-          "icon": "☁️"
+          "max_c": 4,
+          "condition": "Kiša",
+          "icon": "🌧️"
         },
         {
           "date": "2026-11-28",
           "min_c": 2,
-          "max_c": 5,
+          "max_c": 4,
           "condition": "Oblačno",
           "icon": "☁️"
         }
       ],
-      "retrieved_at": "2026-11-26T02:40:56.866489+00:00"
+      "retrieved_at": "2026-11-26T08:48:55.328274+00:00"
     },
     {
       "name": "Smederevo",
@@ -148,35 +148,35 @@
           "date": "2026-11-26",
           "min_c": 3,
           "max_c": 6,
-          "condition": "Oblačno",
-          "icon": "☁️"
+          "condition": "Delimično oblačno",
+          "icon": "🌤️"
         },
         {
           "date": "2026-11-27",
-          "min_c": 2,
+          "min_c": 3,
           "max_c": 8,
           "condition": "Oblačno",
           "icon": "☁️"
         },
         {
           "date": "2026-11-28",
-          "min_c": 5,
-          "max_c": 7,
+          "min_c": 3,
+          "max_c": 5,
           "condition": "Kiša",
           "icon": "🌧️"
         }
       ],
-      "retrieved_at": "2026-11-26T02:40:57.585690+00:00"
+      "retrieved_at": "2026-11-26T08:48:56.434469+00:00"
     },
     {
       "name": "Velika Plana",
       "forecast": [
         {
           "date": "2026-11-26",
-          "min_c": 5,
-          "max_c": 10,
-          "condition": "Jaka kiša",
-          "icon": "🌧️"
+          "min_c": 6,
+          "max_c": 9,
+          "condition": "Oblačno",
+          "icon": "☁️"
         },
         {
           "date": "2026-11-27",
@@ -187,30 +187,30 @@
         },
         {
           "date": "2026-11-28",
-          "min_c": 4,
-          "max_c": 6,
+          "min_c": 1,
+          "max_c": 5,
           "condition": "Jaka kiša",
           "icon": "🌧️"
         }
       ],
-      "retrieved_at": "2026-11-26T02:40:58.172145+00:00"
+      "retrieved_at": "2026-11-26T08:48:57.095032+00:00"
     },
     {
       "name": "Kraljevo",
       "forecast": [
         {
           "date": "2026-11-26",
-          "min_c": 4,
-          "max_c": 12,
-          "condition": "Oblačno",
-          "icon": "☁️"
+          "min_c": 6,
+          "max_c": 11,
+          "condition": "Kiša",
+          "icon": "🌧️"
         },
         {
           "date": "2026-11-27",
           "min_c": 6,
           "max_c": 9,
-          "condition": "Oblačno",
-          "icon": "☁️"
+          "condition": "Kiša",
+          "icon": "🌧️"
         },
         {
           "date": "2026-11-28",
@@ -220,15 +220,15 @@
           "icon": "🌨️"
         }
       ],
-      "retrieved_at": "2026-11-26T02:40:58.879617+00:00"
+      "retrieved_at": "2026-11-26T08:48:58.032015+00:00"
     },
     {
       "name": "Užice",
       "forecast": [
         {
           "date": "2026-11-26",
-          "min_c": 2,
-          "max_c": 11,
+          "min_c": 5,
+          "max_c": 12,
           "condition": "Kiša",
           "icon": "🌧️"
         },
@@ -236,8 +236,8 @@
           "date": "2026-11-27",
           "min_c": 4,
           "max_c": 9,
-          "condition": "Oblačno",
-          "icon": "☁️"
+          "condition": "Kiša",
+          "icon": "🌧️"
         },
         {
           "date": "2026-11-28",
@@ -247,34 +247,34 @@
           "icon": "🌨️"
         }
       ],
-      "retrieved_at": "2026-11-26T02:40:59.736427+00:00"
+      "retrieved_at": "2026-11-26T08:48:58.998969+00:00"
     },
     {
       "name": "Novi Pazar",
       "forecast": [
         {
           "date": "2026-11-26",
-          "min_c": 2,
-          "max_c": 10,
+          "min_c": 5,
+          "max_c": 9,
           "condition": "Kiša",
           "icon": "🌧️"
         },
         {
           "date": "2026-11-27",
           "min_c": 4,
-          "max_c": 11,
-          "condition": "Kiša",
-          "icon": "🌧️"
+          "max_c": 12,
+          "condition": "Oblačno",
+          "icon": "☁️"
         },
         {
           "date": "2026-11-28",
-          "min_c": 2,
+          "min_c": 1,
           "max_c": 5,
           "condition": "Kiša",
           "icon": "🌧️"
         }
       ],
-      "retrieved_at": "2026-11-26T02:41:00.407262+00:00"
+      "retrieved_at": "2026-11-26T08:49:01.023386+00:00"
     }
   ]
 }

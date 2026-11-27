@@ -6,6 +6,7 @@ on:
   push:
     paths:
       - 'scripts/update_analize.py'
+      - 'scripts/generate_images.py'
       - '.github/workflows/trag24-analize.yml'
   schedule:
         - cron: '15 * * * *'

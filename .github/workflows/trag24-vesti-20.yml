@@ -311,6 +311,7 @@ jobs:
           day='.'.join(reversed(meta['datum'].split('-')))+'.'
           cue(0,89.5,'Date',day)
           cue(0,89.5,'Brand','TRAG 24  |  VESTI U 20')
+          cue(0,89.5,'Brand',r'{\pos(65,115)\fs33}Posetite portal www.trag24.rs')
           headings=meta['naslovi']
           for i,start in enumerate(range(0,90,10)):
               h=headings[i%len(headings)]

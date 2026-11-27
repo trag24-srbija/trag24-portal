@@ -13,7 +13,9 @@ jobs:
       - name: Tekst za naratorku
         run: |
           cat > vesti.txt <<'TEKST'
-          Prema zvaničnoj kursnoj listi Narodne banke Srbije od dvadeset sedmog novembra, jedan evro vredi sto sedamnaest dinara i šest hiljada trista devetnaest desetohiljaditih delova dinara. To je nešto više od jedne pare manje nego na prethodnoj listi. Posetite portal Trag dvadeset četiri tačka er es.
+          Prema kursnoj listi Narodne banke Srbije od dvadeset sedmog novembra, jedan evro vredi sto sedamnaest dinara i šezdeset tri pare. To je oko jedne pare manje nego na prethodnoj listi.
+
+          A koliko košta potrošačka korpa? Prema podacima Ministarstva trgovine za jul, minimalna korpa iznosila je oko pedeset sedam hiljada dvesta osamdeset šest dinara, a prosečna oko sto jedanaest hiljada trideset jedan dinar. Posetite portal Trag dvadeset četiri tačka er es.
           TEKST
       - name: Gemini Kore
         env:

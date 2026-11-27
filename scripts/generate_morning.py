@@ -158,7 +158,7 @@ def render(day, article, i, total):
     d.rectangle((75,1691,82,1786),fill=GOLD)
     d.text((104,1675),"PREGLED OBJAVLJENIH IZVORA",
            font=font(38,True),fill=WHITE)
-    d.text((104,1740),"Detalji i izvorni linkovi: TRAG 24",
+    d.text((104,1740),"Posetite portal www.trag24.rs",
            font=font(35),fill=MUTED)
     d.rectangle((0,1824,1080,1920),fill="#081324")
     d.line((0,1824,1080,1824),fill=RED,width=5)

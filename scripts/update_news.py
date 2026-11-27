@@ -55,12 +55,6 @@ FEEDS = {
     'OzonPress Čačak': 'https://www.ozonpress.net/feed/',
     '013info Pančevo': 'https://013info.rs/feed/',
     'TV Jasenica': 'https://tvjasenica.rs/feed/',
-    'Vijesti CG': 'https://www.vijesti.me/rss',
-    'Klix BiH': 'https://www.klix.ba/rss',
-    'N1 BiH': 'https://n1info.ba/feed/',
-    'N1 Hrvatska': 'https://n1info.hr/feed/',
-    'Index Hrvatska': 'https://www.index.hr/rss',
-    '24sata Hrvatska': 'https://www.24sata.hr/feeds/najnovije.xml',
 }
 
 
@@ -149,7 +143,10 @@ def main():
         old = json.loads(FILE.read_text(encoding='utf-8')).get('articles', [])
     except (OSError, ValueError):
         old = []
-    items = {x['id']: x for x in old if isinstance(x, dict) and x.get('id')}
+    items = {
+        item['id']: item for item in old
+        if isinstance(item, dict) and item.get('id') and item.get('source') in FEEDS
+    }
     success, added = 0, 0
     for source, url in FEEDS.items():
         try:

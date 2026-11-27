@@ -28,19 +28,15 @@ jobs:
           sudo apt-get -qq update
           sudo apt-get -qq install -y ffmpeg
           VOICE=Kore
-          i=0
-          while IFS= read -r segment; do
-            i=$((i+1))
-            jq -n --arg voice "$VOICE" --arg text "Pročitaj kao smirena spikerka televizijskih vesti na srpskom, ekavski: $segment" '{contents:[{parts:[{text:$text}]}],generationConfig:{responseModalities:["AUDIO"],speechConfig:{voiceConfig:{prebuiltVoiceConfig:{voiceName:$voice}}}}}' > request.json
-            curl -fsS --retry 3 --retry-delay 6 --retry-max-time 240 --max-time 120 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent' -H "x-goog-api-key: $GEMINI_API_KEY" -H 'Content-Type: application/json' -d @request.json > response.json
-            jq -er '.candidates[0].content.parts[0].inlineData.data' response.json | base64 -d > "glas-$i.pcm"
-            ffmpeg -nostdin -loglevel error -f s16le -ar 24000 -ac 1 -i "glas-$i.pcm" "glas-$i.wav"
-            test -s "glas-$i.wav"
-          done < vesti.txt
+          jq -n --arg voice "$VOICE" --arg text "$(cat vesti.txt)" '{contents:[{parts:[{text:("Pročitaj samo tekst ispod kao iskusna voditeljka centralnog televizijskog dnevnika u Srbiji. Govori standardnim srpskim jezikom, ekavicom, u nižem, toplom registru. Mirno, razgovetno i samouvereno, sa urednim izgovorom brojeva, bez teatralnosti. Između pasusa napravi jasnu pauzu. Ne dodaj reči.\n\n" + $text)}]}],generationConfig:{responseModalities:["AUDIO"],speechConfig:{voiceConfig:{prebuiltVoiceConfig:{voiceName:$voice}}}}}' > request.json
+          curl -fsS --retry 2 --max-time 120 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent' -H "x-goog-api-key: $GEMINI_API_KEY" -H 'Content-Type: application/json' -d @request.json > response.json
+          jq -er '.candidates[0].content.parts[0].inlineData.data' response.json | base64 -d > glas.pcm
+          ffmpeg -nostdin -loglevel error -f s16le -ar 24000 -ac 1 -i glas.pcm glas-premium.wav
+          test -s glas-premium.wav
 
       - uses: actions/upload-artifact@v4
         with:
           name: novac-i-zivot-naracija
-          path: glas-*.wav
+          path: glas-premium.wav
           retention-days: 2
           if-no-files-found: error

@@ -10,28 +10,35 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Tekst za naratora
+      - name: Tekst za naratorku
         run: |
           cat > vesti.txt <<'TEKST'
+          Novac i život. Kako živimo u Srbiji? U oktobru je godišnja inflacija iznosila četiri zarez četiri odsto, a u septembru četiri zarez jedan odsto.
+          U odnosu na septembar, odeća i obuća poskupele su dva zarez četiri odsto, a hrana i bezalkoholna pića jedan zarez sedam odsto.
           Prosečna neto plata u septembru bila je sto devetnaest hiljada trista trideset pet dinara. Polovina zaposlenih primila je do devedeset četiri hiljade osamsto dvadeset devet dinara.
-          Prosečna penzija u oktobru iznosila je pedeset šest hiljada osamsto trideset osam dinara.
-          Minimalna cena rada u dve hiljade dvadeset šestoj iznosi trista sedamdeset jedan dinar neto po satu. Za sto sedamdeset šest sati to je šezdeset pet hiljada dvesta devedeset šest dinara.
+          Prosečna penzija za oktobar iznosila je pedeset šest hiljada osamsto trideset osam dinara.
+          Minimalna cena rada u dve hiljade dvadeset šestoj je trista sedamdeset jedan dinar neto po satu. Za sto sedamdeset šest sati, to je šezdeset pet hiljada dvesta devedeset šest dinara.
+          Posetite portal Trag dvadeset četiri tačka er es.
           TEKST
-      - name: Gemini Lumi
+      - name: Gemini Kore
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
           set -euo pipefail
-          curl -fsS --retry 3 --retry-delay 6 --retry-max-time 180 -G 'https://generativelanguage.googleapis.com/v1beta/voices' -H "x-goog-api-key: $GEMINI_API_KEY" --data-urlencode 'search=Lumi' > voices.json
-          VOICE=$(jq -er '[.voices[] | select(.displayName == "Lumi" or .display_name == "Lumi") | .id] | unique | if length == 1 then .[0] else error("Lumi ID nije jednoznacan") end' voices.json)
-          jq -n --arg voice "$VOICE" --arg text "$(cat vesti.txt)" '{model:"gemini-3.8-flash-lite-tts",input:[{type:"user_input",content:[{type:"text",text:$text,annotations:[{type:"speech_metadata",style:"friendly and professional"}]}]}],response_format:{type:"audio"},generation_config:{speech_config:[{voice:$voice}]}}' > request.json
-          curl -fsS --retry 3 --retry-delay 6 --retry-max-time 240 --max-time 120 'https://generativelanguage.googleapis.com/v1beta/interactions' -H "x-goog-api-key: $GEMINI_API_KEY" -H 'Content-Type: application/json' -d @request.json > response.json
-          jq -er '[.steps[] | select(.type=="model_output") | .content[] | select(.type=="audio")] | last | .data' response.json | base64 -d > glas.wav
-          test -s glas.wav
+          curl -fsS --retry 3 --retry-delay 6 --retry-max-time 180 -G 'https://generativelanguage.googleapis.com/v1beta/voices' -H "x-goog-api-key: $GEMINI_API_KEY" --data-urlencode 'search=Kore' > voices.json
+          VOICE=$(jq -er '[.voices[] | select(.displayName == "Kore" or .display_name == "Kore") | .id] | unique | if length == 1 then .[0] else error("Kore ID nije jednoznacan") end' voices.json)
+          i=0
+          while IFS= read -r segment; do
+            i=$((i+1))
+            jq -n --arg voice "$VOICE" --arg text "$segment" '{model:"gemini-3.8-flash-lite-tts",input:[{type:"user_input",content:[{type:"text",text:$text,annotations:[{type:"speech_metadata",style:"Clear, composed female Serbian television news anchor, standard Serbian Ekavian, steady pace and crisp pronunciation"}]}]}],response_format:{type:"audio"},generation_config:{speech_config:[{voice:$voice}]}}' > request.json
+            curl -fsS --retry 3 --retry-delay 6 --retry-max-time 240 --max-time 120 'https://generativelanguage.googleapis.com/v1beta/interactions' -H "x-goog-api-key: $GEMINI_API_KEY" -H 'Content-Type: application/json' -d @request.json > response.json
+            jq -er '[.steps[] | select(.type=="model_output") | .content[] | select(.type=="audio")] | last | .data' response.json | base64 -d > "glas-$i.wav"
+            test -s "glas-$i.wav"
+          done < vesti.txt
 
       - uses: actions/upload-artifact@v4
         with:
           name: novac-i-zivot-naracija
-          path: glas.wav
+          path: glas-*.wav
           retention-days: 2
           if-no-files-found: error

@@ -167,6 +167,13 @@ def draw_poster(item, width, height, destination):
         anchor="ra"
     )
 
+    draw.text(
+        (margin, footer_y + 72),
+        "Posetite portal www.trag24.rs",
+        font=font(29, True),
+        fill=GOLD
+    )
+
     image.save(destination, "PNG", optimize=True)
 
 

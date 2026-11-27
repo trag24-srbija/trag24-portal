@@ -3,7 +3,7 @@ import json
 import re
 from pathlib import Path
 from datetime import datetime
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont, PngImagePlugin
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "analize.json"
@@ -16,6 +16,7 @@ GOLD = "#F1BE55"
 WHITE = "#FFF9ED"
 MUTED = "#BCC8D7"
 RED = "#BA2039"
+CARD_LAYOUT = "portal-cta-v1"
 
 FONT_DIR = Path("/usr/share/fonts/truetype/dejavu")
 REGULAR = FONT_DIR / "DejaVuSans.ttf"
@@ -174,7 +175,17 @@ def draw_poster(item, width, height, destination):
         fill=GOLD
     )
 
-    image.save(destination, "PNG", optimize=True)
+    metadata = PngImagePlugin.PngInfo()
+    metadata.add_text("trag24_layout", CARD_LAYOUT)
+    image.save(destination, "PNG", optimize=True, pnginfo=metadata)
+
+
+def has_current_layout(path):
+    try:
+        with Image.open(path) as image:
+            return image.info.get("trag24_layout") == CARD_LAYOUT
+    except OSError:
+        return False
 
 
 def main():
@@ -196,11 +207,11 @@ def main():
         portrait = IMAGES / f"{uid}.png"
         story = IMAGES / f"{uid}-story.png"
 
-        if not portrait.exists():
+        if not has_current_layout(portrait):
             draw_poster(item, 1080, 1350, portrait)
             print("Kreirana slika:", portrait.name)
 
-        if not story.exists():
+        if not has_current_layout(story):
             draw_poster(item, 1080, 1920, story)
             print("Kreirana Story slika:", story.name)
 

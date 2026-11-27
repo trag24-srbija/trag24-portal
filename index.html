@@ -65,7 +65,7 @@ if ('serviceWorker' in navigator) {
   </a>
   <a class="game-card" href="https://trag24-arena-trka.aleksandar1111.chatgpt.site/">
     <span class="game-icon" aria-hidden="true">🏁</span>
-    <span><strong>TRKA 24</strong><small>Trka kroz Srbiju · 2–4 igrača</small></span>
+    <span><strong>TRKA 24</strong><small>Trka kroz Srbiju</small></span>
     <span class="game-arrow" aria-hidden="true">›</span>
   </a>
 </nav>
@@ -336,7 +336,8 @@ body {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
-  padding-bottom: 10px;
+  width: min(380px, calc(100% - 32px));
+  padding-bottom: 8px;
   scroll-margin-top: 12px;
 }
 
@@ -345,8 +346,8 @@ body {
   grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
   gap: 9px;
-  min-height: 60px;
-  padding: 9px 12px;
+  min-height: 46px;
+  padding: 5px 9px;
   border: 1px solid #BFA36C;
   border-radius: 10px;
   background: #101A2B;
@@ -356,8 +357,8 @@ body {
 
 #signature-header .game-card:hover { background: #1d2a40; }
 #signature-header .game-card:focus-visible { outline: 2px solid #AC2034; outline-offset: 2px; }
-#signature-header .game-card strong { display: block; font-size: 15px; }
-#signature-header .game-card small { display: block; color: #E1C48A; font-size: 11px; }
+#signature-header .game-card strong { display: block; font-size: 14px; line-height: 1.15; }
+#signature-header .game-card small { display: block; color: #E1C48A; font-size: 10px; line-height: 1.2; }
 #signature-header .game-icon, #signature-header .game-arrow { color: #E1C48A; font-size: 20px; }
 
 @media (max-width: 420px) {

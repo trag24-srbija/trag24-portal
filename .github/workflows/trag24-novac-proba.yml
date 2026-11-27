@@ -1,0 +1,35 @@
+name: TRAG 24 - Novac i život - proba
+on:
+  push:
+    paths: ['.github/workflows/trag24-novac-proba.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  proba:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Tekst za naratora
+        run: |
+          cat > vesti.txt <<'TEKST'
+          Novac i život. U Srbiji je godišnja inflacija porasla sa četiri zarez jedan odsto u septembru na četiri zarez četiri odsto u oktobru 2026. U odnosu na septembar, odeća i obuća poskupele su dva zarez četiri odsto, a hrana i bezalkoholna pića jedan zarez sedam odsto. Posetite portal Trag dvadeset četiri tačka er es.
+          TEKST
+      - name: Gemini Lumi
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          set -euo pipefail
+          curl -fsS --retry 3 --retry-delay 6 --retry-max-time 180 -G 'https://generativelanguage.googleapis.com/v1beta/voices' -H "x-goog-api-key: $GEMINI_API_KEY" --data-urlencode 'search=Lumi' > voices.json
+          VOICE=$(jq -er '[.voices[] | select(.displayName == "Lumi" or .display_name == "Lumi") | .id] | unique | if length == 1 then .[0] else error("Lumi ID nije jednoznacan") end' voices.json)
+          jq -n --arg voice "$VOICE" --arg text "$(cat vesti.txt)" '{model:"gemini-3.8-flash-lite-tts",input:[{type:"user_input",content:[{type:"text",text:$text,annotations:[{type:"speech_metadata",style:"friendly and professional"}]}]}],response_format:{type:"audio"},generation_config:{speech_config:[{voice:$voice}]}}' > request.json
+          curl -fsS --retry 3 --retry-delay 6 --retry-max-time 240 --max-time 120 'https://generativelanguage.googleapis.com/v1beta/interactions' -H "x-goog-api-key: $GEMINI_API_KEY" -H 'Content-Type: application/json' -d @request.json > response.json
+          jq -er '[.steps[] | select(.type=="model_output") | .content[] | select(.type=="audio")] | last | .data' response.json | base64 -d > glas.wav
+          test -s glas.wav
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: novac-i-zivot-naracija
+          path: glas.wav
+          retention-days: 2
+          if-no-files-found: error

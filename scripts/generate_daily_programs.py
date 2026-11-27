@@ -6,9 +6,12 @@ Uses only existing published, multi-source analyses. No automatic social posting
 import argparse
 import datetime as dt
 import json
+import html
 import re
+from decimal import Decimal
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import urlencode, urlparse
+from urllib.request import urlopen
 from zoneinfo import ZoneInfo
 
 from PIL import Image, ImageDraw, ImageFont
@@ -293,11 +296,16 @@ def make_card(hour, day, story):
     d.rectangle((77, 1693, 84, 1786), fill=accent)
     section = "PROVERI ZNANJE I IZAZOVI PRIJATELJA" if hour == "23" else (
         "PRATITE CELOKUPNU PRIČU NA TRAG 24")
+    euro = story.get("euro_nbs")
+    if euro:
+        d.text((105, 1660), euro["title"], font=font(38, True), fill=GOLD)
+        d.text((105, 1711), euro["detail"], font=font(23), fill=WHITE)
+        section = ""
     face = font(37, True)
     while d.textbbox((0, 0), section, font=face)[2] > 879:
         face = font(face.size-1, True)
     d.text((105, 1680), section, font=face, fill=WHITE)
-    d.text((105, 1744), "Posetite portal www.trag24.rs",
+    d.text((105, 1760 if euro else 1744), "Posetite portal www.trag24.rs",
            font=font(34), fill=LIGHT)
 
     d.rectangle((0, 1824, W, H), fill="#081326")
@@ -308,6 +316,57 @@ def make_card(hour, day, story):
     return im
 
 
+NBS = "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/"
+
+
+def nbs_middle_rate(url):
+    with urlopen(url, timeout=7) as response:
+        page = response.read().decode("utf-8")
+    text = html.unescape(re.sub(r"<[^>]+>", " ", page))
+    date = re.search(r"ФОРМИРАНА НА ДАН\s+(\d{2}\.\d{2}\.\d{4})\.", text)
+    rate = re.search(r"\bEUR\s+978\s+ЕМУ\s+1\s+(\d+,\d{4})\b", text)
+    if not date or not rate or "СРЕДЊИ КУРС" not in text:
+        return None
+    return dt.datetime.strptime(date[1], "%d.%m.%Y").date(), Decimal(rate[1].replace(",", "."))
+
+
+def euro_update(day):
+    try:
+        current = nbs_middle_rate(NBS + "CurrentMiddleRate")
+    except (OSError, ValueError):
+        return None
+    if not current or current[0] > day or (day-current[0]).days > 7:
+        return None
+    date, rate = current
+    result = {
+        "title": f"1 EUR = {rate:.4f} RSD".replace(".", ","),
+        "detail": f"NBS · lista od {date:%d.%m.%Y.}",
+        "date": date.isoformat(),
+        "source": NBS + "CurrentMiddleRate",
+    }
+    if date < day:
+        result["detail"] += " · i dalje važi"
+        return result
+    for offset in range(1, 8):
+        previous_day = date - dt.timedelta(days=offset)
+        if previous_day.weekday() >= 5:
+            continue
+        query = urlencode({"isSearchExecuted": "true", "Date": previous_day.strftime("%d.%m.%Y."), "ExchangeRateListTypeID": 3})
+        try:
+            previous = nbs_middle_rate(NBS + "IndexByDate?" + query)
+        except (OSError, ValueError):
+            break
+        if not previous or previous[0] >= date:
+            continue
+        delta = rate - previous[1]
+        result["previous_date"] = previous[0].isoformat()
+        result["change"] = f"{delta:+.4f}".replace(".", ",")
+        change = f"{delta:+.4f} din".replace(".", ",") if delta else "bez promene"
+        result["detail"] += f" · {change} prema prethodnoj listi"
+        break
+    return result
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--program", choices=sorted(PROGRAMS), required=True)
@@ -315,6 +374,12 @@ def main():
     args = parser.parse_args()
     day = dt.date.fromisoformat(args.date) if args.date else dt.datetime.now(TZ).date()
     story = choose(args.program, day)
+    if args.program == "14" and day == dt.datetime.now(TZ).date():
+        euro = euro_update(day)
+        if euro:
+            if story is None:
+                story = {"title": "Zvanični srednji kurs evra", "summary": euro["title"] + ". " + euro["detail"], "sources": ["nbs.rs"]}
+            story["euro_nbs"] = euro
     if story is None:
         print(f"SKIP: nema prikladne sveže, objavljene teme sa 2 izvora za {args.program}:00")
         return

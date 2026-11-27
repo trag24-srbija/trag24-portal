@@ -28,7 +28,13 @@ def build(program, day, metadata, video, run_id, approved=False):
     if not isinstance(story, dict) or not story.get("title"):
         raise ValueError("Missing story")
     sources = story.get("sources") or []
-    if program in {"11", "14"} and len(set(sources)) < 2:
+    euro = story.get("euro_nbs") if program == "14" else None
+    official_rate_only = (
+        euro and story["title"] == "Zvanični srednji kurs evra"
+        and sources == ["nbs.rs"]
+        and euro.get("source") == "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+    )
+    if program in {"11", "14"} and len(set(sources)) < 2 and not official_rate_only:
         raise ValueError("A news Reel must have two separate sources")
     text = str(story.get("summary") or "").strip()
     if not text:
@@ -48,6 +54,12 @@ def build(program, day, metadata, video, run_id, approved=False):
         caption = (f"TRAG 24 | {title}\n\n{heading}\n\n{BASE}"
                    f"\nPregled objavljenih izvora; navodi nisu nezavisno potvrđeni."
                    f"\n#TRAG24 #Vesti")
+    if euro:
+        rate_note = f'{euro["title"]}\\n{euro["detail"]}\\n{euro["source"]}'
+        if official_rate_only:
+            caption = f"TRAG 24 | {title}\\n\\n{heading}\\n\\n{rate_note}\\n\\n{BASE}\\n#TRAG24"
+        else:
+            caption += "\\n\\n" + rate_note
     digest = hashlib.sha256(video.read_bytes()).hexdigest()
     planned = dt.datetime.combine(day, dt.time(int(program), 0), tzinfo=TZ)
     return {

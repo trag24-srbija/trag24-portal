@@ -104,7 +104,6 @@ jobs:
           PY
       - name: Pripremi danasnje premium Reels nacrte
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TZ: Europe/Belgrade
         shell: bash
         run: |
@@ -113,7 +112,6 @@ jobs:
           for PROGRAM in 11 14 17 23; do
             python scripts/generate_daily_programs.py --program "$PROGRAM" --date "$TODAY"
             IMAGE="program_output/TRAG24-$PROGRAM-$TODAY.png"
-            META="program_output/TRAG24-$PROGRAM-$TODAY.json"
             VIDEO="program_output/TRAG24-$PROGRAM-$TODAY.mp4"
             if [ ! -s "$IMAGE" ]; then
               echo "Nema odgovarajuce pouzdane teme za $PROGRAM:00; preskacem."
@@ -121,12 +119,6 @@ jobs:
             fi
             python scripts/render_premium_short_video.py --image "$IMAGE" --output "$VIDEO"
             test -s "$VIDEO"
-            TAG="premium-$PROGRAM-$TODAY"
-            if gh release view "$TAG" >/dev/null 2>&1; then
-              gh release upload "$TAG" "$IMAGE" "$VIDEO" "$META" --clobber
-            else
-              gh release create "$TAG" "$IMAGE" "$VIDEO" "$META" --draft --target "$GITHUB_SHA" --title "TRAG 24 - $PROGRAM - $TODAY" --notes "Nacrt za pregled: jos nije javna objava niti je poslat na drustvene mreze." --latest=false
-            fi
           done
       - name: Sacuvaj danasnje Reels snimke za pregled
         uses: actions/upload-artifact@v4

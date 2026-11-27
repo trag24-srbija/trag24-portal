@@ -56,7 +56,19 @@ if ('serviceWorker' in navigator) {
   font-weight: 700 !important;
 }</style></head><body>
 <div class="utility"><div class="container"><span>NEZAVISAN PREGLED MEDIJSKIH OBJAVA</span><span id="today"></span></div></div>
-<header class="container masthead"><div><div class="logo">TRAG <b>24</b></div><div class="tagline">SRBIJA · SVET · DOGAĐAJI</div></div><a href="./arena/" style="display:inline-flex;align-items:center;justify-content:center;background:#b92336;color:#fff;padding:12px 10px;border-radius:8px;font-size:13px;font-weight:850;white-space:nowrap;text-decoration:none;min-height:44px;flex-shrink:0;">ARENA KVIZ</a></header>
+<header class="container masthead"><div><div class="logo">TRAG <b>24</b></div><div class="tagline">SRBIJA · SVET · DOGAĐAJI</div></div></header>
+<nav class="container game-cards" id="arena-games" aria-label="TRAG 24 Arena">
+  <a class="game-card" href="./arena/">
+    <span class="game-icon" aria-hidden="true">🏆</span>
+    <span><strong>TRAG KVIZ</strong><small>5 pitanja · Rang-lista</small></span>
+    <span class="game-arrow" aria-hidden="true">›</span>
+  </a>
+  <a class="game-card" href="https://trag24-arena-trka.aleksandar1111.chatgpt.site/">
+    <span class="game-icon" aria-hidden="true">🏁</span>
+    <span><strong>TRKA 24</strong><small>Trka kroz Srbiju · 2–4 igrača</small></span>
+    <span class="game-arrow" aria-hidden="true">›</span>
+  </a>
+</nav>
 
 <!-- TRAG 24: DRUSTVENE MREZE -->
 <style>
@@ -320,11 +332,38 @@ body {
   background: #AC2034;
 }
 
-#signature-header .masthead > a {
-  background: #101A2B !important;
-  color: #E1C48A !important;
+#signature-header .game-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  padding-bottom: 10px;
+  scroll-margin-top: 12px;
+}
+
+#signature-header .game-card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 9px;
+  min-height: 60px;
+  padding: 9px 12px;
   border: 1px solid #BFA36C;
-  border-radius: 6px !important;
+  border-radius: 10px;
+  background: #101A2B;
+  color: #fff;
+  text-decoration: none;
+}
+
+#signature-header .game-card:hover { background: #1d2a40; }
+#signature-header .game-card:focus-visible { outline: 2px solid #AC2034; outline-offset: 2px; }
+#signature-header .game-card strong { display: block; font-size: 15px; }
+#signature-header .game-card small { display: block; color: #E1C48A; font-size: 11px; }
+#signature-header .game-icon, #signature-header .game-arrow { color: #E1C48A; font-size: 20px; }
+
+@media (max-width: 420px) {
+  #signature-header .game-card { gap: 5px; padding-inline: 7px; }
+  #signature-header .game-icon { font-size: 15px; }
+  #signature-header .game-arrow { display: none; }
 }
 
 #signature-header .trag-social-inner {
@@ -376,6 +415,7 @@ body {
   const parts = [
     document.querySelector('.utility'),
     document.querySelector('.masthead'),
+    document.querySelector('.game-cards'),
     document.querySelector('.trag-social'),
     document.querySelector('.nav-shell')
   ];
@@ -887,7 +927,7 @@ body {
     ANALIZE
   </a>
 
-  <a href="./arena/" class="arena">
+  <a href="#arena-games" class="arena">
     <svg viewBox="0 0 24 24">
       <path d="M7 3H17V11Q12 21 7 11Z M7 5H3V8Q3 13 7 13 M17 5H21V8Q21 13 17 13 M12 16V21 M7 21H17"/>
     </svg>

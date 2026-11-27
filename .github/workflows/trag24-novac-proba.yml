@@ -13,7 +13,9 @@ jobs:
       - name: Tekst za naratora
         run: |
           cat > vesti.txt <<'TEKST'
-          Novac i život. U Srbiji je godišnja inflacija porasla sa četiri zarez jedan odsto u septembru na četiri zarez četiri odsto u oktobru 2026. U odnosu na septembar, odeća i obuća poskupele su dva zarez četiri odsto, a hrana i bezalkoholna pića jedan zarez sedam odsto. Posetite portal Trag dvadeset četiri tačka er es.
+          Prosečna neto plata u septembru bila je sto devetnaest hiljada trista trideset pet dinara. Polovina zaposlenih primila je do devedeset četiri hiljade osamsto dvadeset devet dinara.
+          Prosečna penzija u oktobru iznosila je pedeset šest hiljada osamsto trideset osam dinara.
+          Minimalna cena rada u dve hiljade dvadeset šestoj iznosi trista sedamdeset jedan dinar neto po satu. Za sto sedamdeset šest sati to je šezdeset pet hiljada dvesta devedeset šest dinara.
           TEKST
       - name: Gemini Lumi
         env:

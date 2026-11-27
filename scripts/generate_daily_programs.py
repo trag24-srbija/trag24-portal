@@ -297,7 +297,7 @@ def make_card(hour, day, story):
     while d.textbbox((0, 0), section, font=face)[2] > 879:
         face = font(face.size-1, True)
     d.text((105, 1680), section, font=face, fill=WHITE)
-    d.text((105, 1744), "Vesti, izvori i detalji na našem portalu",
+    d.text((105, 1744), "Posetite portal www.trag24.rs",
            font=font(34), fill=LIGHT)
 
     d.rectangle((0, 1824, W, H), fill="#081326")

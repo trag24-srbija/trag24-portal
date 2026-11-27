@@ -13,12 +13,7 @@ jobs:
       - name: Tekst za naratorku
         run: |
           cat > vesti.txt <<'TEKST'
-          Novac i život. Kako živimo u Srbiji? U oktobru je godišnja inflacija iznosila četiri zarez četiri odsto, a u septembru četiri zarez jedan odsto.
-          U odnosu na septembar, odeća i obuća poskupele su dva zarez četiri odsto, a hrana i bezalkoholna pića jedan zarez sedam odsto.
-          Prosečna neto plata u septembru bila je sto devetnaest hiljada trista trideset pet dinara. Polovina zaposlenih primila je do devedeset četiri hiljade osamsto dvadeset devet dinara.
-          Prosečna penzija za oktobar iznosila je pedeset šest hiljada osamsto trideset osam dinara.
-          Minimalna cena rada u dve hiljade dvadeset šestoj je trista sedamdeset jedan dinar neto po satu. Za sto sedamdeset šest sati, to je šezdeset pet hiljada dvesta devedeset šest dinara.
-          Posetite portal Trag dvadeset četiri tačka er es.
+          Prema zvaničnoj kursnoj listi Narodne banke Srbije od dvadeset sedmog novembra, jedan evro vredi sto sedamnaest dinara i šest hiljada trista devetnaest desetohiljaditih delova dinara. To je nešto više od jedne pare manje nego na prethodnoj listi. Posetite portal Trag dvadeset četiri tačka er es.
           TEKST
       - name: Gemini Kore
         env:

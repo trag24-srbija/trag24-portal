@@ -55,11 +55,11 @@ def build(program, day, metadata, video, run_id, approved=False):
                    f"\nPregled objavljenih izvora; navodi nisu nezavisno potvrđeni."
                    f"\n#TRAG24 #Vesti")
     if euro:
-        rate_note = f'{euro["title"]}\\n{euro["detail"]}\\n{euro["source"]}'
+        rate_note = f'{euro["title"]}\n{euro["detail"]}\n{euro["source"]}'
         if official_rate_only:
-            caption = f"TRAG 24 | {title}\\n\\n{heading}\\n\\n{rate_note}\\n\\n{BASE}\\n#TRAG24"
+            caption = f"TRAG 24 | {title}\n\n{heading}\n\n{rate_note}\n\n{BASE}\n#TRAG24"
         else:
-            caption += "\\n\\n" + rate_note
+            caption += "\n\n" + rate_note
     digest = hashlib.sha256(video.read_bytes()).hexdigest()
     planned = dt.datetime.combine(day, dt.time(int(program), 0), tzinfo=TZ)
     return {

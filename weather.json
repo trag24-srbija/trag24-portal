@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-28T08:35:11.862838+00:00",
+  "updated_at": "2026-11-28T14:27:15.161095+00:00",
   "source": "MET Norway",
   "source_url": "https://api.met.no/",
   "license": "CC BY 4.0",
@@ -12,7 +12,7 @@
         {
           "date": "2026-11-28",
           "min_c": 3,
-          "max_c": 5,
+          "max_c": 4,
           "condition": "Kiša",
           "icon": "🌧️"
         },
@@ -20,8 +20,8 @@
           "date": "2026-11-29",
           "min_c": -2,
           "max_c": 2,
-          "condition": "Oblačno",
-          "icon": "☁️"
+          "condition": "Delimično oblačno",
+          "icon": "🌤️"
         },
         {
           "date": "2026-11-30",
@@ -31,7 +31,7 @@
           "icon": "☀️"
         }
       ],
-      "retrieved_at": "2026-11-28T08:35:05.050324+00:00"
+      "retrieved_at": "2026-11-28T14:27:06.858007+00:00"
     },
     {
       "name": "Novi Sad",
@@ -58,7 +58,7 @@
           "icon": "☀️"
         }
       ],
-      "retrieved_at": "2026-11-28T08:35:05.808402+00:00"
+      "retrieved_at": "2026-11-28T14:27:07.768013+00:00"
     },
     {
       "name": "Niš",
@@ -67,25 +67,25 @@
           "date": "2026-11-28",
           "min_c": 0,
           "max_c": 2,
-          "condition": "Kiša",
-          "icon": "🌧️"
+          "condition": "Susnežica",
+          "icon": "🌨️"
         },
         {
           "date": "2026-11-29",
-          "min_c": -5,
-          "max_c": 0,
-          "condition": "Delimično oblačno",
-          "icon": "🌤️"
+          "min_c": -6,
+          "max_c": -1,
+          "condition": "Oblačno",
+          "icon": "☁️"
         },
         {
           "date": "2026-11-30",
-          "min_c": -7,
-          "max_c": -1,
-          "condition": "Vedro",
-          "icon": "☀️"
+          "min_c": -8,
+          "max_c": -2,
+          "condition": "Delimično oblačno",
+          "icon": "🌤️"
         }
       ],
-      "retrieved_at": "2026-11-28T08:35:06.431618+00:00"
+      "retrieved_at": "2026-11-28T14:27:08.682028+00:00"
     },
     {
       "name": "Kragujevac",
@@ -108,11 +108,11 @@
           "date": "2026-11-30",
           "min_c": -12,
           "max_c": -3,
-          "condition": "Vedro",
-          "icon": "☀️"
+          "condition": "Delimično oblačno",
+          "icon": "🌤️"
         }
       ],
-      "retrieved_at": "2026-11-28T08:35:07.065533+00:00"
+      "retrieved_at": "2026-11-28T14:27:09.600956+00:00"
     },
     {
       "name": "Subotica",
@@ -134,12 +134,12 @@
         {
           "date": "2026-11-30",
           "min_c": -4,
-          "max_c": 2,
+          "max_c": 1,
           "condition": "Vedro",
           "icon": "☀️"
         }
       ],
-      "retrieved_at": "2026-11-28T08:35:07.680548+00:00"
+      "retrieved_at": "2026-11-28T14:27:10.553510+00:00"
     },
     {
       "name": "Smederevo",
@@ -147,7 +147,7 @@
         {
           "date": "2026-11-28",
           "min_c": 3,
-          "max_c": 6,
+          "max_c": 5,
           "condition": "Kiša",
           "icon": "🌧️"
         },
@@ -155,8 +155,8 @@
           "date": "2026-11-29",
           "min_c": -2,
           "max_c": 2,
-          "condition": "Delimično oblačno",
-          "icon": "🌤️"
+          "condition": "Vedro",
+          "icon": "☀️"
         },
         {
           "date": "2026-11-30",
@@ -166,7 +166,7 @@
           "icon": "☀️"
         }
       ],
-      "retrieved_at": "2026-11-28T08:35:08.443618+00:00"
+      "retrieved_at": "2026-11-28T14:27:11.467481+00:00"
     },
     {
       "name": "Velika Plana",
@@ -174,7 +174,7 @@
         {
           "date": "2026-11-28",
           "min_c": 2,
-          "max_c": 5,
+          "max_c": 4,
           "condition": "Kiša",
           "icon": "🌧️"
         },
@@ -187,13 +187,13 @@
         },
         {
           "date": "2026-11-30",
-          "min_c": -6,
+          "min_c": -7,
           "max_c": 0,
           "condition": "Vedro",
           "icon": "☀️"
         }
       ],
-      "retrieved_at": "2026-11-28T08:35:09.428788+00:00"
+      "retrieved_at": "2026-11-28T14:27:12.379415+00:00"
     },
     {
       "name": "Kraljevo",
@@ -201,26 +201,26 @@
         {
           "date": "2026-11-28",
           "min_c": 1,
-          "max_c": 2,
+          "max_c": 1,
           "condition": "Susnežica",
           "icon": "🌨️"
         },
         {
           "date": "2026-11-29",
           "min_c": -5,
-          "max_c": 1,
-          "condition": "Oblačno",
-          "icon": "☁️"
+          "max_c": 0,
+          "condition": "Delimično oblačno",
+          "icon": "🌤️"
         },
         {
           "date": "2026-11-30",
-          "min_c": -11,
+          "min_c": -12,
           "max_c": -3,
           "condition": "Delimično oblačno",
           "icon": "🌤️"
         }
       ],
-      "retrieved_at": "2026-11-28T08:35:10.355043+00:00"
+      "retrieved_at": "2026-11-28T14:27:13.294143+00:00"
     },
     {
       "name": "Užice",
@@ -228,7 +228,7 @@
         {
           "date": "2026-11-28",
           "min_c": 0,
-          "max_c": 2,
+          "max_c": 1,
           "condition": "Susnežica",
           "icon": "🌨️"
         },
@@ -241,13 +241,13 @@
         },
         {
           "date": "2026-11-30",
-          "min_c": -8,
-          "max_c": -4,
+          "min_c": -9,
+          "max_c": -5,
           "condition": "Oblačno",
           "icon": "☁️"
         }
       ],
-      "retrieved_at": "2026-11-28T08:35:11.098752+00:00"
+      "retrieved_at": "2026-11-28T14:27:14.246855+00:00"
     },
     {
       "name": "Novi Pazar",
@@ -255,26 +255,26 @@
         {
           "date": "2026-11-28",
           "min_c": 0,
-          "max_c": 3,
+          "max_c": 2,
           "condition": "Susnežica",
           "icon": "🌨️"
         },
         {
           "date": "2026-11-29",
-          "min_c": -4,
+          "min_c": -5,
           "max_c": 0,
           "condition": "Delimično oblačno",
           "icon": "🌤️"
         },
         {
           "date": "2026-11-30",
-          "min_c": -9,
-          "max_c": 0,
+          "min_c": -10,
+          "max_c": -1,
           "condition": "Vedro",
           "icon": "☀️"
         }
       ],
-      "retrieved_at": "2026-11-28T08:35:11.862759+00:00"
+      "retrieved_at": "2026-11-28T14:27:15.161010+00:00"
     }
   ]
 }
